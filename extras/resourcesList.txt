@@ -1,0 +1,34 @@
+For Video and Audio:
+
+As we are allowed to use some Qt 5.0 C++ elements, we can look at things like qtmultimedia:
+
+http://qt-project.org/doc/qt-5.0/qtmultimedia/multimediaoverview.html
+
+This allows us to create super simple Qt 5.0 Audio and Media players which can pick and choose different audio files for our music player and various videos from our video player. I’ve seen some examples of possible youtube streaming which would be cool to implement in the coming weeks if we get time.
+
+Transit/Traffic:
+
+Transit is actually not a problem especially with stuff like etachicago.com which has an interactive interface embedded into the website itself. Another thing we can easily implement would be this: http://www.transitchicago.com/developers/diybtform.aspx which is done by CTA itself, it would require the user to fill out a form (and not sure how they can do it without interacting with a browser, we *could* force the user to use whatever they see (we set up the generated URL and just run with it)
+
+Weather:
+
+Using the design we can pull resources from our weather apps. We don’t have to be as extensive as our projects, just pull current conditions and maybe stuff like high/lows for the 5 day, let’s not get so amped up over this feature.
+
+Unit Convertor
+
+Again not something we should be very elaborate on, Just enough to show some work initially, however some code we could use might be useful from here:
+
+https://gitorious.org/yuc-yet-another-unit-converter/yuc-yet-another-unit-converter
+
+It’s pretty interesting however I actually didn’t take the time to look it over so if someone is able to check this out that would be awesome. As I said we only need the formula’s or whatever method they use for conversion.
+
+Social Media/News:
+
+This is a pretty interesting RSS feed reader to take some inspiration from:
+
+https://projects.developer.nokia.com/QMLRSSReader
+
+It’s written in QML/C++ so we shouldn’t have too much of a problem trying to understand this code, but there is *a lot* of stuff. It would also be very cool if we can get a live news feed from a place like BBC or Al-Jazeera English but hey a kid can dream right?
+
+That’s all I have for now,
+if you guys find anything feel free to post up stuff.
