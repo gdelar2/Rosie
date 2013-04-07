@@ -4,6 +4,8 @@ Rectangle {
     width: 1920
     height: 1080
     color: mainColor
+    //0-1 scale, doesn't work great but still gives a bit more insight as to how it looks
+    scale: 1
 
     property string mainColor: "#0e51a7"
 
@@ -30,7 +32,6 @@ Rectangle {
         y: 105
     }
     Header {
-
         onSettingsShortcutClicked: {
             //load the settings app here
         }

@@ -22,7 +22,7 @@ Rectangle {
             font.bold: true
             font.pointSize: 94
             font.family: mediumFont.name
-            color: "#000000"
+            color: "#FFFFFF"
             opacity: 0.9
             text: "*"
         }
@@ -49,7 +49,7 @@ Rectangle {
             font.bold: true
             font.pointSize: 52
             font.family: mediumFont.name
-            color: "#000000"
+            color: "#FFFFFF"
             opacity: 0.9
             lineHeight: 0.2
             text: ""
@@ -63,9 +63,11 @@ Rectangle {
             if (qMenuView.visible == true) {
                 qMenuView.visible = false
                 quickMenuShortcut.y = 0
+                quickMenuShortcut.rotation = 0
             } else {
                 qMenuView.visible = true;
                 quickMenuShortcut.y = qMenuView.height
+                quickMenuShortcut.rotation = 180
             }
         }
     }
@@ -83,7 +85,7 @@ Rectangle {
             font.bold: true
             font.pointSize: 94
             font.family: mediumFont.name
-            color: "#000000"
+            color: "#FFFFFF"
             opacity: 0.9
             rotation: 180
             lineHeight: 0.2
