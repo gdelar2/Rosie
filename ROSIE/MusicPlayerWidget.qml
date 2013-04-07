@@ -19,7 +19,7 @@ Rectangle {
 
     MouseArea {
         id: music_back
-        x: 254
+        x: 242
         y: 114
         width: 70
         height: 69
@@ -36,7 +36,7 @@ Rectangle {
 
     MouseArea {
         id: music_play
-        x: 335
+        x: 323
         y: 114
         width: 70
         height: 69
@@ -53,7 +53,7 @@ Rectangle {
 
     MouseArea {
         id: music_pause
-        x: 414
+        x: 402
         y: 114
         width: 70
         height: 69
@@ -70,7 +70,7 @@ Rectangle {
 
     MouseArea {
         id: music_forward
-        x: 495
+        x: 483
         y: 114
         width: 70
         height: 69
@@ -83,5 +83,33 @@ Rectangle {
             height: 70
             source: "../Image/MusicPlayer/Forward.png"
         }
+    }
+
+    Text {
+        id: songTitle
+        x: 211
+        y: 60
+        width: 373
+        height: 39
+        text: qsTr("Who's Awesome? Rosie Is")
+        font.strikeout: false
+        font.underline: false
+        font.family: "Exo"
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 25
+    }
+
+    Text {
+        id: artist
+        x: 211
+        y: 18
+        width: 373
+        height: 39
+        text: qsTr("The Rosies")
+        font.family: "Exo"
+        font.pixelSize: 33
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
     }
 }
