@@ -24,13 +24,15 @@ Rectangle {
         id: regularFont
         source: "fonts/Exo-Regular.otf"
     }
-    Header {
-        x: 0
-        y: 0
-    }
 
     MusicPlayerWidget {
         x: 5
         y: 105
+    }
+    Header {
+
+        onSettingsShortcutClicked: {
+            //load the settings app here
+        }
     }
 }

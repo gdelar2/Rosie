@@ -5,6 +5,8 @@ Rectangle {
     height: 100
     color: mainColor
 
+    signal settingsShortcutClicked
+
     Rectangle {
         id: settingsShortcut
         width: 105
@@ -12,7 +14,7 @@ Rectangle {
         x: 0
         color: "#000000"
         opacity: 0.69
-        //Display the settings title
+
         Text {
             id: settingsTxt
             x: (parent.width / 2) - (width / 2)
@@ -24,27 +26,13 @@ Rectangle {
             opacity: 0.9
             text: "*"
         }
-    }
-
-    Rectangle {
-        id: quickMenuShortcut
-        width: 445
-        height: 100
-        x: 705
-        color: "#000000"
-        opacity: 0.69
-        Text {
-            id: qmenuTxt
-            x: (parent.width / 2) - (width / 2)
-            y: 50
-            font.bold: true
-            font.pointSize: 94
-            font.family: mediumFont.name
-            color: "#000000"
-            opacity: 0.9
-            rotation: 180
-            lineHeight: 0.2
-            text: "^\n^"
+        MouseArea {
+            id: settingsMouseRegion
+            anchors.fill: settingsShortcut
+            //Call clicked signal if button is clicked
+            onClicked: {
+                settingsShortcutClicked()
+            }
         }
     }
 
@@ -67,6 +55,50 @@ Rectangle {
             text: ""
         }
     }
+    QuickMenu {
+        id: qMenuView
+        visible: false
+
+        function toggle() {
+            if (qMenuView.visible == true) {
+                qMenuView.visible = false
+                quickMenuShortcut.y = 0
+            } else {
+                qMenuView.visible = true;
+                quickMenuShortcut.y = qMenuView.height
+            }
+        }
+    }
+    Rectangle {
+        id: quickMenuShortcut
+        width: 445
+        height: 100
+        x: 705
+        color: "#000000"
+        opacity: 0.69
+        Text {
+            id: qmenuTxt
+            x: (parent.width / 2) - (width / 2)
+            y: 50
+            font.bold: true
+            font.pointSize: 94
+            font.family: mediumFont.name
+            color: "#000000"
+            opacity: 0.9
+            rotation: 180
+            lineHeight: 0.2
+            text: "^\n^"
+        }
+        MouseArea {
+            id: qMenuMouseRegion
+            anchors.fill: quickMenuShortcut
+            //Call clicked signal if button is clicked
+            onClicked: {
+                qMenuView.toggle()
+            }
+        }
+    }
+
     Timer {
         id: timeTimer
         running: true
