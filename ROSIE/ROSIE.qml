@@ -3,7 +3,9 @@ import QtQuick 2.0
 Rectangle {
     width: 1920
     height: 1080
-    color: "#0e51a7"
+    color: mainColor
+
+    property string mainColor: "#0e51a7"
 
     //Load fonts
     FontLoader {

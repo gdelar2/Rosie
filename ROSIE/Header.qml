@@ -3,23 +3,20 @@ import QtQuick 2.0
 Rectangle {
     width: 1920
     height: 100
-    color: "#0e51a7"
-    //opacity: 0
+    color: mainColor
 
     Rectangle {
-
         id: settingsShortcut
         width: 105
         height: 100
         x: 0
         color: "#000000"
         opacity: 0.69
-        //settings button
         //Display the settings title
         Text {
             id: settingsTxt
             x: (parent.width / 2) - (width / 2)
-            y: (parent.height / 2) - (height / 3)
+            y: -10
             font.bold: true
             font.pointSize: 94
             font.family: mediumFont.name
@@ -36,7 +33,19 @@ Rectangle {
         x: 705
         color: "#000000"
         opacity: 0.69
-        //quick menu button
+        Text {
+            id: qmenuTxt
+            x: (parent.width / 2) - (width / 2)
+            y: 50
+            font.bold: true
+            font.pointSize: 94
+            font.family: mediumFont.name
+            color: "#000000"
+            opacity: 0.9
+            rotation: 180
+            lineHeight: 0.2
+            text: "^\n^"
+        }
     }
 
     Rectangle {
@@ -46,6 +55,25 @@ Rectangle {
         x: 1600
         color: "#000000"
         opacity: 0.69
-        //time
+        Text {
+            id: timeTxt
+            x: (parent.width / 2) - (width / 2)
+            font.bold: true
+            font.pointSize: 52
+            font.family: mediumFont.name
+            color: "#000000"
+            opacity: 0.9
+            lineHeight: 0.2
+            text: ""
+        }
+    }
+    Timer {
+        id: timeTimer
+        running: true
+        repeat: true
+        interval: 1000
+        onTriggered: {
+            timeTxt.text = Qt.formatDateTime(new Date(), "h:mm AP")
+        }
     }
 }
