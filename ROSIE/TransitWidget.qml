@@ -12,6 +12,6 @@ Rectangle {
         y: 1
         width: 598
         height: 778
-        url: "http://www.etachicago.com"
+        url: "http://www.transitchicago.com/diydisplay/?s1=40350&s2=201&size=big&w=0&tto=n"
     }
 }
