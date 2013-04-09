@@ -19,7 +19,7 @@ Rectangle {
 
     MouseArea {
         id: music_back
-        x: 242
+        x: 282
         y: 114
         width: 70
         height: 69
@@ -30,13 +30,13 @@ Rectangle {
             y: -1
             width: 70
             height: 70
-            source: "../Image/MusicPlayer/Rewind.png"
+            source: "Image/MusicPlayer/Rewind.png"
         }
     }
 
     MouseArea {
         id: music_play
-        x: 323
+        x: 363
         y: 114
         width: 70
         height: 69
@@ -47,30 +47,13 @@ Rectangle {
             y: -1
             width: 70
             height: 70
-            source: "../Image/MusicPlayer/Play.png"
-        }
-    }
-
-    MouseArea {
-        id: music_pause
-        x: 402
-        y: 114
-        width: 70
-        height: 69
-
-        Image {
-            id: pauseIcon
-            x: 0
-            y: -1
-            width: 70
-            height: 70
-            source: "../Image/MusicPlayer/Pause.png"
+            source: "Image/MusicPlayer/Play.png"
         }
     }
 
     MouseArea {
         id: music_forward
-        x: 483
+        x: 445
         y: 114
         width: 70
         height: 69
@@ -81,7 +64,7 @@ Rectangle {
             y: -1
             width: 70
             height: 70
-            source: "../Image/MusicPlayer/Forward.png"
+            source: "Image/MusicPlayer/Forward.png"
         }
     }
 
