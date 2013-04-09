@@ -3,7 +3,7 @@ import QtWebKit 3.0
 
 Rectangle {
     width: 600
-    height: 700
+    height: 650
     border.width: 3
 
     WebView {
@@ -11,7 +11,7 @@ Rectangle {
         x: 1
         y: 1
         width: 598
-        height: 699
+        height: 648
         url: "http://www.transitchicago.com/diydisplay/?s1=40350&s2=201&size=big&w=0&tto=n"
     }
 }
