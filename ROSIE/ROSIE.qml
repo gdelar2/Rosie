@@ -27,19 +27,28 @@ Rectangle {
         source: "fonts/Exo-Regular.otf"
     }
 
-    MusicPlayerWidget {
-        x: 1181
-        y: 721
-    }
     Header {
         onSettingsShortcutClicked: {
             //load the settings app here
         }
-
-        WeatherWidget {
-            id: weatherwidget1
-            x: 1620
-            y: 118
-        }
     }
+
+    //Everything below this comment is where widgets should be placed
+
+    WeatherWidget {
+        id: weatherwidget1
+        x: 1620
+        y: 118
+    }
+
+    MusicPlayerWidget {
+        x: 1181
+        y: 721
+    }
+
+    TransitWidget {
+        x: 200
+        y:200
+    }
+
 }
