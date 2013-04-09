@@ -4,7 +4,7 @@ Rectangle {
     width: 600
     height: 200
     color: "#a09b9b"
-    opacity: 0.750
+    opacity: 0.7
     border.width: 2
     border.color: "#000000"
 

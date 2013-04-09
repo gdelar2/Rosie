@@ -48,7 +48,7 @@ Rectangle {
 
     TransitWidget {
         x: 200
-        y:200
+        y: 200
     }
 
 }

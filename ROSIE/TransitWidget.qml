@@ -4,7 +4,7 @@ import QtWebKit 3.0
 Rectangle {
     width: 600
     height: 650
-    border.width: 3
+    border.width: 2
 
     WebView {
         id: transit
