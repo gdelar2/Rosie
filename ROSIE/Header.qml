@@ -45,29 +45,29 @@ Rectangle {
         opacity: 0.69
         Text {
             id: dateTxt
-            x: 44
-            y: -8
+            x: 59
+            y: -6
+            font.bold: true
+            font.pointSize: 35
+            font.family: mediumFont.name
+            color: "#FFFFFF"
+            opacity: 0.9
+            lineHeight: 0.2
+            text: Qt.formatDateTime(new Date(), "MM/dd/yy")
+            horizontalAlignment: Text.AlignHCenter
+        }
+        Text {
+            id: timeTxt
+            x: 34
+            y: 36
             font.bold: true
             font.pointSize: 45
             font.family: mediumFont.name
             color: "#FFFFFF"
             opacity: 0.9
             lineHeight: 0.2
-            text: Qt.formatDateTime(new Date(), "MM/dd/yy")
-            horizontalAlignment: Text.AlignRight
-        }
-        Text {
-            id: timeTxt
-            x: 89
-            y: 44
-            font.bold: true
-            font.pointSize: 40
-            font.family: mediumFont.name
-            color: "#FFFFFF"
-            opacity: 0.9
-            lineHeight: 0.2
             text: Qt.formatDateTime(new Date(), "h:mm AP")
-            horizontalAlignment: Text.AlignRight
+            horizontalAlignment: Text.AlignHCenter
         }
     }
     QuickMenu {
