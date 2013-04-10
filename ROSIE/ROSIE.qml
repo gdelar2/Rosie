@@ -5,7 +5,7 @@ Rectangle {
     height: 1080
     color: mainColor
     //0-1 scale, doesn't work great but still gives a bit more insight as to how it looks
-    scale: 1
+    scale: .5
 
     property string mainColor: "#0e51a7"
 
@@ -47,8 +47,8 @@ Rectangle {
     }
 
     TransitWidget {
-        x: 200
-        y: 200
+        x: 8
+        y: 152
     }
 
 }

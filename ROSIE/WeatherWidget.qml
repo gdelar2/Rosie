@@ -23,7 +23,7 @@ Rectangle {
         y: 162
         text: qsTr("text")
         font.bold: true
-        font.family: "Exo"
+        font.family: mediumFont
         color: "#FFFFFF"
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
@@ -36,7 +36,7 @@ Rectangle {
         y: 214
         text: qsTr("text")
         font.bold: true
-        font.family: "Exo"
+        font.family: mediumFont
         color: "#FFFFFF"
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 40
@@ -49,7 +49,7 @@ Rectangle {
         y: 214
         text: qsTr("text")
         font.bold: true
-        font.family: "Exo"
+        font.family: mediumFont
         color: "#FFFFFF"
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 40

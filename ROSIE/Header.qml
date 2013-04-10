@@ -44,15 +44,30 @@ Rectangle {
         color: "#000000"
         opacity: 0.69
         Text {
-            id: timeTxt
-            x: (parent.width / 2) - (width / 2)
+            id: dateTxt
+            x: 44
+            y: -8
             font.bold: true
-            font.pointSize: 52
+            font.pointSize: 45
             font.family: mediumFont.name
             color: "#FFFFFF"
             opacity: 0.9
             lineHeight: 0.2
-            text: ""
+            text: Qt.formatDateTime(new Date(), "MM/dd/yy")
+            horizontalAlignment: Text.AlignRight
+        }
+        Text {
+            id: timeTxt
+            x: 89
+            y: 44
+            font.bold: true
+            font.pointSize: 40
+            font.family: mediumFont.name
+            color: "#FFFFFF"
+            opacity: 0.9
+            lineHeight: 0.2
+            text: Qt.formatDateTime(new Date(), "h:mm AP")
+            horizontalAlignment: Text.AlignRight
         }
     }
     QuickMenu {
@@ -108,6 +123,7 @@ Rectangle {
         interval: 1000
         onTriggered: {
             timeTxt.text = Qt.formatDateTime(new Date(), "h:mm AP")
+            dateTxt.text = Qt.formatDateTime(new Date(), "MM/dd/yy")
         }
     }
 }
