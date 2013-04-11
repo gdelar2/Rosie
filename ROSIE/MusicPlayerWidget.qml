@@ -3,7 +3,7 @@ import QtQuick 2.0
 Rectangle {
     width: 600
     height: 200
-    color: "#a09b9b"
+    color: "#000000"
     opacity: 0.7
     border.width: 2
     border.color: "#000000"
@@ -74,6 +74,7 @@ Rectangle {
         y: 60
         width: 373
         height: 39
+        color: "#ffffff"
         text: qsTr("Who's Awesome? Rosie Is")
         font.strikeout: false
         font.underline: false
@@ -89,6 +90,7 @@ Rectangle {
         y: 18
         width: 373
         height: 39
+        color: "#ffffff"
         text: qsTr("The Rosies")
         font.family: "Exo"
         font.pixelSize: 33

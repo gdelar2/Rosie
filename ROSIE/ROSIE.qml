@@ -51,4 +51,9 @@ Rectangle {
         y: 152
     }
 
+    UnitConvertWidget{
+        x: 200
+        y: 200
+    }
+
 }
