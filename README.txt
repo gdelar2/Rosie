@@ -9,7 +9,7 @@ Progress as of 4/12/2013:
 unit conversion - Widget DONE - App TODO - Implementation TODO
 gallery - Widget TODO - App TODO - Implmentation TODO
 recipe - Widget DONE - App TODO - Implmentation TODO
-timer - Widget TODO - App TODO - Implmentation TODO
+timer - Widget DONE - App TODO - Implmentation TODO
 todo list notes. - Widget TODO - App TODO - Implmentation TODO
 video - Widget TODO - App TODO - Implmentation TODO
 news - Widget TODO - App TODO - Implmentation TODO

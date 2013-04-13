@@ -60,7 +60,7 @@ Rectangle {
 
     Rectangle {
         id: minuteRectangle
-        x: 316
+        x: 306
         y: 94
         width: 200
         height: 200
@@ -89,6 +89,238 @@ Rectangle {
             font.family: "Exo"
             font.pixelSize: 137
             horizontalAlignment: Text.AlignHCenter
+        }
+    }
+
+
+
+    MouseArea {
+        id: upButton1
+        x: 220
+        y: 108
+        width: 75
+        height: 75
+
+        Rectangle {
+            id: rectangle4
+            x: 0
+            y: 0
+            width: 75
+            height: 75
+            color: "#000000"
+            opacity: 0.800
+
+            Text {
+                id: uparrow1
+                x: 23
+                y: 66
+                width: 30
+                height: 0
+                color: "#ffffff"
+                text: qsTr("^")
+                style: Text.Raised
+                font.bold: true
+                font.family: "Exo"
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: 125
+            }
+        }
+    }
+
+    MouseArea {
+        id: upButton2
+        x: 517
+        y: 108
+        width: 75
+        height: 75
+
+        Rectangle {
+            id: rectangle7
+            x: 0
+            y: 0
+            width: 75
+            height: 75
+            color: "#000000"
+            opacity: 0.800
+
+            Text {
+                id: uparrow2
+                x: 23
+                y: 65
+                width: 30
+                height: 0
+                color: "#ffffff"
+                text: qsTr("^")
+                style: Text.Raised
+                font.pixelSize: 125
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.family: "Exo"
+                font.bold: true
+            }
+        }
+    }
+
+    MouseArea {
+        id: downButton1
+        x: 220
+        y: 195
+        width: 75
+        height: 75
+
+        Rectangle {
+            id: rectangle5
+            x: 0
+            y: 0
+            width: 75
+            height: 75
+            color: "#000000"
+            opacity: 0.800
+
+            Text {
+                id: downarrow1
+                x: 3
+                y: -151
+                width: 30
+                height: 0
+                color: "#ffffff"
+                text: qsTr("^")
+                rotation: 180
+                style: Text.Raised
+                font.pixelSize: 125
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.family: "Exo"
+                font.bold: true
+            }
+        }
+    }
+
+    MouseArea {
+        id: downButton2
+        x: 517
+        y: 195
+        width: 75
+        height: 75
+
+        Rectangle {
+            id: rectangle6
+            x: 0
+            y: 0
+            width: 75
+            height: 75
+            color: "#000000"
+            opacity: 0.800
+
+            Text {
+                id: downarrow2
+                x: 3
+                y: -151
+                width: 30
+                height: 0
+                color: "#ffffff"
+                text: qsTr("^")
+                rotation: 180
+                style: Text.Raised
+                font.pixelSize: 125
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.family: "Exo"
+                font.bold: true
+            }
+        }
+    }
+
+
+    MouseArea {
+        id: startButton
+        x: 12
+        y: 329
+        width: 241
+        height: 70
+
+        Rectangle {
+            id: startRectangle
+            x: 0
+            y: 0
+            width: 241
+            height: 70
+            color: "#000000"
+            opacity: 0.800
+
+            Text {
+                id: startText
+                x: 84
+                y: 14
+                color: "#ffffff"
+                text: qsTr("Start")
+                font.family: "Exo"
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: 32
+            }
+        }
+    }
+
+
+    MouseArea {
+        id: stopButton
+        x: 345
+        y: 329
+        width: 241
+        height: 70
+
+        Rectangle {
+            id: stopRectangle
+            x: 0
+            y: 0
+            width: 241
+            height: 70
+            color: "#000000"
+            opacity: 0.800
+
+            Text {
+                id: stopText
+                x: 88
+                y: 14
+                color: "#ffffff"
+                text: qsTr("Stop")
+                font.pixelSize: 32
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.family: "Exo"
+            }
+        }
+    }
+
+    MouseArea {
+        id: changeButton
+        x: 180
+        y: 440
+        width: 241
+        height: 70
+
+        Rectangle {
+            id: changeRectangle
+            x: 0
+            y: 0
+            width: 241
+            height: 70
+            color: "#000000"
+            opacity: 0.800
+
+            Text {
+                id: changeText
+                x: 7
+                y: 17
+                color: "#ffffff"
+                text: qsTr("Minutes / Seconds")
+                font.family: "Exo"
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: 28
+            }
         }
     }
 }
