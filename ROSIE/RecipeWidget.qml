@@ -20,7 +20,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 12
         font.bold: true
-        font.family: "Exo"
+        font.family: mediumFont
         verticalAlignment: Text.AlignVCenter
         opacity: 1
         font.pixelSize: 36
@@ -45,7 +45,7 @@ Rectangle {
         height: 33
         color: "#ffffff"
         text: qsTr("Serves 4")
-        font.family: "Exo"
+        font.family: mediumFont
         font.pixelSize: 24
     }
 
@@ -55,7 +55,7 @@ Rectangle {
         y: 114
         color: "#ffffff"
         text: qsTr("Prep Time: 1 hour and 30 minutes")
-        font.family: "Exo"
+        font.family: mediumFont
         font.pixelSize: 24
     }
 
@@ -68,7 +68,7 @@ Rectangle {
         color: "#ffffff"
         text: "1 lb penne rigate\n3 tablespoons extra virgin olive oil\n3 cloves garlic, minced\n1 pint ripe cherry tomatoes, sliced in half (approximately 1.5 cups)\n2 tablespoons fresh basil, chopped\n1 teaspoon dried red pepper flakes\nsalt and black pepper\ngrated parmesan cheese\n"
         style: Text.Normal
-        font.family: "Exo"
+        font.family: mediumFont
         font.pointSize: 11
         wrapMode: Text.WordWrap
 
@@ -106,7 +106,7 @@ Rectangle {
             color: "#ffffff"
             text: qsTr("Go to Recipe")
             font.bold: true
-            font.family: "Exo"
+            font.family: mediumFont
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 24
@@ -130,7 +130,7 @@ Rectangle {
             y: 14
             color: "#ffffff"
             text: qsTr("Go to Recipe App")
-            font.family: "Exo"
+            font.family: mediumFont
             font.bold: true
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter

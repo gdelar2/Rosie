@@ -18,7 +18,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 12
         font.bold: true
-        font.family: "Exo"
+        font.family: mediumFont
         verticalAlignment: Text.AlignVCenter
         opacity: 1
         font.pixelSize: 36

@@ -78,7 +78,7 @@ Rectangle {
         text: qsTr("Who's Awesome? Rosie Is")
         font.strikeout: false
         font.underline: false
-        font.family: "Exo"
+        font.family: mediumFont
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 25
@@ -92,7 +92,7 @@ Rectangle {
         height: 39
         color: "#ffffff"
         text: qsTr("The Rosies")
-        font.family: "Exo"
+        font.family: mediumFont
         font.pixelSize: 33
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter

@@ -18,7 +18,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 12
         font.bold: true
-        font.family: "Exo"
+        font.family: mediumFont
         verticalAlignment: Text.AlignVCenter
         opacity: 1
         font.pixelSize: 36
@@ -43,7 +43,7 @@ Rectangle {
             height: 112
             color: "#ffffff"
             text: qsTr("text edit")
-            font.family: "Exo"
+            font.family: mediumFont
             textFormat: TextEdit.RichText
             horizontalAlignment: TextEdit.AlignHCenter
             font.pixelSize: 83
@@ -56,7 +56,7 @@ Rectangle {
         y: 66
         color: "#ffffff"
         text: qsTr("From")
-        font.family: "Exo"
+        font.family: mediumFont
         font.pixelSize: 32
     }
 
@@ -67,7 +67,7 @@ Rectangle {
         color: "#ffffff"
         text: qsTr("To")
         font.pixelSize: 32
-        font.family: "Exo"
+        font.family: mediumFont
     }
 
     Rectangle {
@@ -89,7 +89,7 @@ Rectangle {
             height: 112
             color: "#ffffff"
             text: qsTr("Number")
-            font.family: "Exo"
+            font.family: mediumFont
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 83
         }
