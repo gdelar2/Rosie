@@ -9,6 +9,9 @@ Rectangle {
 
     property string mainColor: "#0e51a7"
 
+
+
+
     //Load fonts
     FontLoader {
         id: mediumFont
@@ -57,4 +60,24 @@ Rectangle {
         visible: false
     }
 
+
+    TimerWidget{
+
+    visible: true
+    }
+
+    Image{
+        id: welcomeImage
+        width: 1920
+        height:1080
+        source: "Image/welcome.png"
+        visible: true
+        MouseArea{
+        anchors.fill: parent
+           onClicked: {
+               welcomeImage.visible=false
+           }
+    }
+
+    }
 }
