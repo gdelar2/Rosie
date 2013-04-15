@@ -52,8 +52,9 @@ Rectangle {
     }
 
     UnitConvertWidget{
-        x: 200
-        y: 200
+        x:8
+        y: 152
+        visible: false
     }
 
 }
