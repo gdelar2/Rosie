@@ -47,8 +47,8 @@ Rectangle {
 
         Text {
             id: hour
-            x: 12
-            y: 0
+            x: 25
+            y: 3
             color: "#ffffff"
             text: qsTr("00")
             font.family: mediumFont
@@ -81,8 +81,8 @@ Rectangle {
 
         Text {
             id: minute
-            x: 12
-            y: 0
+            x: 27
+            y: 6
             color: "#ffffff"
             text: qsTr("00")
             verticalAlignment: Text.AlignVCenter
@@ -113,7 +113,7 @@ Rectangle {
             Text {
                 id: uparrow1
                 x: 23
-                y: 66
+                y: 49
                 width: 30
                 height: 0
                 color: "#ffffff"
@@ -147,7 +147,7 @@ Rectangle {
             Text {
                 id: uparrow2
                 x: 23
-                y: 65
+                y: 49
                 width: 30
                 height: 0
                 color: "#ffffff"
@@ -180,8 +180,8 @@ Rectangle {
 
             Text {
                 id: downarrow1
-                x: 3
-                y: -151
+                x: 53
+                y: 26
                 width: 30
                 height: 0
                 color: "#ffffff"
@@ -215,8 +215,8 @@ Rectangle {
 
             Text {
                 id: downarrow2
-                x: 3
-                y: -151
+                x: 53
+                y: 25
                 width: 30
                 height: 0
                 color: "#ffffff"
@@ -312,8 +312,8 @@ Rectangle {
 
             Text {
                 id: changeText
-                x: 7
-                y: 17
+                x: 5
+                y: 19
                 color: "#ffffff"
                 text: qsTr("Minutes / Seconds")
                 font.family: mediumFont

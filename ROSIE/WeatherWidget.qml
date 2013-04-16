@@ -7,7 +7,7 @@ Rectangle {
     border.width: 2
     border.color: "#000000"
     opacity: 0.700
-   // Component.onCompleted: getData()
+    //Component.onCompleted: getData()
 
     property var jsonObject // weather data stored hear no need to recall api
     property var city: "Chicago"
