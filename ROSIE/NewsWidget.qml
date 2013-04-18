@@ -23,4 +23,10 @@ Rectangle {
         opacity: 1
         font.pixelSize: 36
     }
+
+    MouseArea {
+        anchors.fill: parent
+        drag.target: parent
+        drag.axis: Drag.XandYAxis
+    }
 }

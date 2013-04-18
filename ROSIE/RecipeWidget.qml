@@ -138,4 +138,10 @@ Rectangle {
         }
     }
 
+    MouseArea {
+        anchors.fill: parent
+        drag.target: parent
+        drag.axis: Drag.XandYAxis
+    }
+
 }

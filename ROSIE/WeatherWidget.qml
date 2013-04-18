@@ -100,4 +100,10 @@ Rectangle {
          horizontalAlignment: Text.AlignHCenter
          font.pixelSize: 40
      }
+
+     MouseArea {
+         anchors.fill: parent
+         drag.target: parent
+         drag.axis: Drag.XandYAxis
+     }
 }

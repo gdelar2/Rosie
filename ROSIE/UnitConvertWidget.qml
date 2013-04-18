@@ -120,5 +120,10 @@ Rectangle {
         border.color: "#000000"
     }
 
+    MouseArea {
+        anchors.fill: parent
+        drag.target: parent
+        drag.axis: Drag.XandYAxis
+    }
 }
 

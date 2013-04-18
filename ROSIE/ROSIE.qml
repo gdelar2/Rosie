@@ -33,12 +33,6 @@ Flickable {
         //0-1 scale, doesn't work great but still gives a bit more insight as to how it looks
         scale: .5
 
-        Header {
-            onSettingsShortcutClicked: {
-                //load the settings app here
-            }
-        }
-
         //Everything below this comment is where widgets should be placed
 
         WeatherWidget {
@@ -67,6 +61,14 @@ Flickable {
         TimerWidget{
 
         visible: true
+        }
+
+        //leave the header at the bottom, items are loaded top down and
+        // header needs to be on top of everything else
+        Header {
+            onSettingsShortcutClicked: {
+                //load the settings app here
+            }
         }
 
         Image{
