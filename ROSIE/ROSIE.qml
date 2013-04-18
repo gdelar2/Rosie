@@ -24,6 +24,83 @@ Flickable {
         source: "fonts/Exo-Regular.otf"
     }
 
+    function convertWeatherIcon(icon) {
+        var daytime = false;
+        if(Qt.formatDateTime(new Date(), "AP") == "AM")
+            daytime = true;
+        console.log(icon)
+        switch(icon) {
+            case "113":
+                if (daytime)
+                    return "Image/Weather/1.png";
+                else
+                    return "Image/Weather/9.png";
+            case "116":
+                if(daytime)
+                    return "Image/Weather/2.png";
+                else
+                    return "Image/Weather/10.png";
+            case "119":
+            case "122":
+            case "122":
+                return "Image/Weather/3.png";
+            case "176":
+            case "182":
+            case "185":
+            case "263":
+            case "266":
+            case "281":
+            case "293":
+            case "296":
+            case "317":
+            case "353":
+            case "362":
+                if(daytime)
+                    return "Image/Weather/4.png";
+                else
+                    return "Image/Weather/11.png";
+            case "299":
+            case "302":
+            case "305":
+            case "308":
+            case "312":
+            case "284":
+            case "311":
+            case "314":
+            case "320":
+            case "350":
+            case "356":
+            case "359":
+            case "365":
+            case "374":
+            case "377":
+            case "386":
+                return "Image/Weather/5.png";
+            case "200":
+            case "389":
+            case "392":
+            case "395":
+                return "Image/Weather/6.png";
+            case "143":
+            case "248":
+            case "260":
+                return "Image/Weather/7.png";
+            case "179":
+            case "227":
+            case "230":
+            case "323":
+            case "326":
+            case "329":
+            case "332":
+            case "335":
+            case "338":
+            case "368":
+            case "371":
+                return "Image/Weather/8.png";
+            default: return "Image/Weather/1.png";
+        }
+    }
+
     //Click and drag to see
     Rectangle {
         id: application
@@ -44,22 +121,24 @@ Flickable {
         MusicPlayerWidget {
             x: 1181
             y: 721
+            visible: false
         }
 
         TransitWidget {
             x: 8
             y: 152
+            visible: false
         }
 
         UnitConvertWidget{
             x:8
             y: 152
-            visible: true
+            visible: false
         }
 
 
         TimerWidget{
-            visible: true
+            visible: false
         }
 
         //leave the header at the bottom, items are loaded top down and

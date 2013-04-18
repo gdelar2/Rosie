@@ -7,14 +7,15 @@ Rectangle {
     border.width: 2
     border.color: "#000000"
     opacity: 0.700
-    //Component.onCompleted: getData()
+    Component.onCompleted: getData()
 
     property var jsonObject // weather data stored hear no need to recall api
     property var city: "Chicago"
 
 
     function loadData(jsonObject){
-         currentWeatherImage.source=jsonObject.data.current_condition[0].weatherIconUrl[0].value
+        console.log(jsonObject.data.current_condition[0].weatherCode)
+         currentWeatherImage.source=convertWeatherIcon(jsonObject.data.current_condition[0].weatherCode)
         currentTemp.text=qsTr(jsonObject.data.current_condition[0].temp_F+"°F")
 
         //not sure if these max and min are the temps for tomorrow or today
