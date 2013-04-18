@@ -7,18 +7,24 @@ Rectangle {
 
     signal settingsShortcutClicked
 
+    function getQuickMenu() {
+        return qMenuView
+    }
+
     Rectangle {
         id: settingsShortcut
-        width: 105
-        height: 100
-        x: 0
+        width: 115
+        height: 110
+        y: -10
+        x: -10
         color: "#000000"
         opacity: 0.69
+        radius: 10
 
         Text {
             id: settingsTxt
             x: (parent.width / 2) - (width / 2)
-            y: -10
+            //y: -10
             font.bold: true
             font.pointSize: 94
             font.family: mediumFont.name
@@ -38,15 +44,17 @@ Rectangle {
 
     Rectangle {
         id: timeBlock
-        width: 320
-        height: 100
+        width: 330
+        height: 110
+        y: -10
         x: 1600
         color: "#000000"
         opacity: 0.69
+        radius: 10
         Text {
             id: dateTxt
             x: 59
-            y: -6
+            y: 1
             font.bold: true
             font.pointSize: 35
             font.family: mediumFont.name
@@ -66,10 +74,11 @@ Rectangle {
             color: "#FFFFFF"
             opacity: 0.9
             lineHeight: 0.2
-            text: Qt.formatDateTime(new Date(), "h:mm AP")
+            text: Qt.formatDateTime(new Date(), "hh:mm AP")
             horizontalAlignment: Text.AlignHCenter
         }
     }
+
     QuickMenu {
         id: qMenuView
         visible: false
@@ -77,7 +86,7 @@ Rectangle {
         function toggle() {
             if (qMenuView.visible == true) {
                 qMenuView.visible = false
-                quickMenuShortcut.y = 0
+                quickMenuShortcut.y = -10
                 quickMenuShortcut.rotation = 0
             } else {
                 qMenuView.visible = true;
@@ -89,14 +98,16 @@ Rectangle {
     Rectangle {
         id: quickMenuShortcut
         width: 445
-        height: 100
+        height: 110
+        y: -10
         x: 705
         color: "#000000"
         opacity: 0.69
+        radius: 10
         Text {
             id: qmenuTxt
             x: (parent.width / 2) - (width / 2)
-            y: 50
+            y: 60
             font.bold: true
             font.pointSize: 94
             font.family: mediumFont.name
@@ -122,7 +133,7 @@ Rectangle {
         repeat: true
         interval: 1000
         onTriggered: {
-            timeTxt.text = Qt.formatDateTime(new Date(), "h:mm AP")
+            timeTxt.text = Qt.formatDateTime(new Date(), "hh:mm AP")
             dateTxt.text = Qt.formatDateTime(new Date(), "MM/dd/yy")
         }
     }

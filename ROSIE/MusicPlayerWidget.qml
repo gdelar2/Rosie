@@ -7,6 +7,7 @@ Rectangle {
     opacity: 0.7
     border.width: 2
     border.color: "#000000"
+    radius: 10
 
     Image {
         id: albumArt

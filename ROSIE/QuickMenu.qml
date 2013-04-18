@@ -4,7 +4,15 @@ Rectangle {
     width: 1920
     height: 975
     color: "#000000"
-    opacity: .8
+    opacity: .95
+
+    function getWidget1() {
+        return widget1;
+    }
+
+    function getWidget2() {
+        return widget2;
+    }
 
     Text {
         id: rosieTxt
@@ -28,6 +36,8 @@ Rectangle {
         opacity: 0.7
         radius: 50
         smooth: true
+        border.color: "#FFFFFF"
+        border.width: 2
         Text {
             id: shortcutMenuHome
             x: (parent.width / 2) - (width / 2)
@@ -49,5 +59,16 @@ Rectangle {
             opacity: .8
             text: "LOGOUT"
         }
+    }
+
+    Rectangle {
+        id: widget1
+        x:0
+        y:50
+    }
+
+    Rectangle {
+        id: widget2
+        y:50
     }
 }

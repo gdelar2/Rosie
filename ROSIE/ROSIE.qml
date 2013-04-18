@@ -16,8 +16,8 @@ Flickable {
         source: "fonts/Exo-Bold.otf"
     }
     FontLoader {
-        id: lightfont
-        source: "fonts/Exo-Light.otf"
+        id: lightFont
+        source: "fonts/Exo-ExtraLight.otf"
     }
     FontLoader {
         id: regularFont
@@ -28,7 +28,6 @@ Flickable {
         var daytime = false;
         if(Qt.formatDateTime(new Date(), "AP") == "AM")
             daytime = true;
-        console.log(icon)
         switch(icon) {
             case "113":
                 if (daytime)
@@ -102,6 +101,11 @@ Flickable {
     }
 
     //Click and drag to see
+    /*
+    The buttons in the header hang outside the screen a bit to
+    hide some of the rounded corners, this is visible when scaled
+    down but isn't when full screen
+    **/
     Rectangle {
         id: application
         width: 1920
@@ -109,6 +113,17 @@ Flickable {
         color: mainColor
         //0-1 scale, doesn't work great but still gives a bit more insight as to how it looks
         scale: .5
+
+       Component.onCompleted: {
+           var quickMenu = header.getQuickMenu();
+           var qMenuWidget1 = Qt.createComponent("TransitWidget.qml");
+           var qMenuWidget2 = Qt.createComponent("WeatherWidget.qml");
+           var widget1 = quickMenu.getWidget1();
+           var widget2 = quickMenu.getWidget2();
+           qMenuWidget1.createObject(widget1, {"y": 500, "border.color": "#FFFFFF", "border.width": 2});
+           widget1.scale = 0.61;
+           qMenuWidget2.createObject(widget2, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2});
+       }
 
         //Everything below this comment is where widgets should be placed
 
@@ -121,7 +136,7 @@ Flickable {
         MusicPlayerWidget {
             x: 1181
             y: 721
-            visible: false
+            visible: true
         }
 
         TransitWidget {
@@ -144,6 +159,7 @@ Flickable {
         //leave the header at the bottom, items are loaded top down and
         // header needs to be on top of everything else
         Header {
+            id: header
             onSettingsShortcutClicked: {
                 //load the settings app here
             }

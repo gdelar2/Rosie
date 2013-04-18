@@ -7,6 +7,7 @@ Rectangle {
     border.width: 2
     border.color: "#000000"
     opacity: 0.700
+    radius: 13
     Component.onCompleted: getData()
 
     property var jsonObject // weather data stored hear no need to recall api
@@ -14,7 +15,6 @@ Rectangle {
 
 
     function loadData(jsonObject){
-        console.log(jsonObject.data.current_condition[0].weatherCode)
          currentWeatherImage.source=convertWeatherIcon(jsonObject.data.current_condition[0].weatherCode)
         currentTemp.text=qsTr(jsonObject.data.current_condition[0].temp_F+"°F")
 
@@ -22,7 +22,7 @@ Rectangle {
         maxTemp.text=qsTr(jsonObject.data.weather[0].tempMaxF+"°F")
 
         minTemp.text=qsTr(jsonObject.data.weather[0].tempMinF+"°F")
-        currentDesc.text=qsTr( jsonObject.data.current_condition[0].weatherDesc[0].value+"  ")
+        currentDesc.text=qsTr( jsonObject.data.current_condition[0].weatherDesc[0].value)
 
     }
 
@@ -45,40 +45,53 @@ Rectangle {
         x: 72
         y: 5
         width: 156
-        height: 149
+        height: 156
        // source: "qrc:/qtquickplugin/images/template_image.png"
     }
 
     Text {
         id: currentTemp
-        x: 112
+        //x: 112
+        anchors.horizontalCenter: parent.horizontalCenter
         y: 162
         text: qsTr("text")
         font.bold: true
-        font.family: mediumFont.name
+        font.family: boldFont.name
         color: "#FFFFFF"
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: 40
+        font.pixelSize: 52
     }
 
     Text {
         id: maxTemp
-        x: 199
-        y: 214
+        x: 189
+        y: 230
         text: qsTr("text")
         font.bold: true
         font.family: mediumFont.name
         color: "#FFFFFF"
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 40
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    Text {
+        x: 193
+        y: 265
+        text: qsTr("MAX")
+        font.family: lightFont.name
+        color: "#FFFFFF"
+        opacity: .6
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 34
         verticalAlignment: Text.AlignVCenter
     }
 
     Text {
         id: minTemp
-        x: 35
-        y: 214
+        x: 25
+        y: 230
         text: qsTr("text")
         font.bold: true
         font.family: mediumFont.name
@@ -88,27 +101,38 @@ Rectangle {
         verticalAlignment: Text.AlignVCenter
     }
 
-     Text{
-         id: currentDesc
-         //x:15
-          anchors.horizontalCenter: parent.horizontalCenter
-         y:300
-         text: qsTr("text")
-         font.bold: true
-         font.family: mediumFont.name
-         color: "#FFFFFF"
-         verticalAlignment: Text.AlignVCenter
-         horizontalAlignment: Text.AlignHCenter
-         font.pixelSize: 40
-     }
+    Text {
+        x: 35
+        y: 265
+        text: qsTr("MIN")
+        font.family: lightFont.name
+        color: "#FFFFFF"
+        opacity: .6
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 34
+        verticalAlignment: Text.AlignVCenter
+    }
 
-     MouseArea {
-         anchors.fill: parent
-         drag.target: parent
-         drag.axis: Drag.XandYAxis
-         drag.minimumX: 0
-         drag.maximumX: application.width - parent.width
-         drag.minimumY: 100
-         drag.maximumY: application.height - parent.height
-     }
+    Text {
+        id: currentDesc
+        anchors.horizontalCenter: parent.horizontalCenter
+        y:320
+        text: qsTr("text")
+        font.bold: true
+        font.family: mediumFont.name
+        color: "#FFFFFF"
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 40
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        drag.target: parent
+        drag.axis: Drag.XandYAxis
+        drag.minimumX: 0
+        drag.maximumX: application.width - parent.width
+        drag.minimumY: 100
+        drag.maximumY: application.height - parent.height
+    }
 }

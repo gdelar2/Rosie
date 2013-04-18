@@ -5,13 +5,14 @@ Rectangle {
     width: 600
     height: 650
     border.width: 2
+    radius: 10
 
     WebView {
         id: transit
-        x: 1
-        y: 1
-        width: 598
-        height: 648
+        x: 2
+        y: 2
+        width: 593
+        height: 643
         url: "http://www.transitchicago.com/diydisplay/?s1=40350&s2=201&size=big&w=0&tto=n"
     }
 
