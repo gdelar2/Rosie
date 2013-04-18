@@ -54,13 +54,12 @@ Flickable {
         UnitConvertWidget{
             x:8
             y: 152
-            visible: false
+            visible: true
         }
 
 
         TimerWidget{
-
-        visible: true
+            visible: true
         }
 
         //leave the header at the bottom, items are loaded top down and

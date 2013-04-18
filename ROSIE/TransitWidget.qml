@@ -19,5 +19,9 @@ Rectangle {
         anchors.fill: parent
         drag.target: parent
         drag.axis: Drag.XandYAxis
+        drag.minimumX: 0
+        drag.maximumX: application.width - parent.width
+        drag.minimumY: 100
+        drag.maximumY: application.height - parent.height
     }
 }
