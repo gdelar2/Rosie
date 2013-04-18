@@ -115,14 +115,21 @@ Flickable {
         scale: .5
 
        Component.onCompleted: {
+           qMenuWidgetLoad(1, "TransitWidget.qml", true, {"y": 500, "border.color": "#FFFFFF", "border.width": 2});
+           qMenuWidgetLoad(2, "WeatherWidget.qml", false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2});
+       }
+
+       function qMenuWidgetLoad(widgetId, widget, scale, properties) {
            var quickMenu = header.getQuickMenu();
-           var qMenuWidget1 = Qt.createComponent("TransitWidget.qml");
-           var qMenuWidget2 = Qt.createComponent("WeatherWidget.qml");
-           var widget1 = quickMenu.getWidget1();
-           var widget2 = quickMenu.getWidget2();
-           qMenuWidget1.createObject(widget1, {"y": 500, "border.color": "#FFFFFF", "border.width": 2});
-           widget1.scale = 0.61;
-           qMenuWidget2.createObject(widget2, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2});
+           var qMenuWidget = Qt.createComponent(widget);
+           var qWidget;
+           if(widgetId === 1)
+               qWidget = quickMenu.getWidget1();
+           else
+               qWidget = quickMenu.getWidget2();
+           qMenuWidget.createObject(qWidget, properties);
+           if(scale)
+               qWidget.scale = 0.61;
        }
 
         //Everything below this comment is where widgets should be placed
