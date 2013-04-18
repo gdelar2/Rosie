@@ -18,7 +18,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 12
         font.bold: true
-        font.family: mediumFont
+        font.family: mediumFont.name
         verticalAlignment: Text.AlignVCenter
         opacity: 1
         font.pixelSize: 36
@@ -39,7 +39,7 @@ Rectangle {
             color: "#ffffff"
             text: qsTr("Hour")
             font.bold: true
-            font.family: mediumFont
+            font.family: mediumFont.name
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 22
@@ -51,7 +51,7 @@ Rectangle {
             y: 3
             color: "#ffffff"
             text: qsTr("00")
-            font.family: mediumFont
+            font.family: mediumFont.name
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 137
@@ -73,7 +73,7 @@ Rectangle {
             color: "#ffffff"
             text: qsTr("Minute")
             font.bold: true
-            font.family: mediumFont
+            font.family: mediumFont.name
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 22
             horizontalAlignment: Text.AlignHCenter
@@ -86,7 +86,7 @@ Rectangle {
             color: "#ffffff"
             text: qsTr("00")
             verticalAlignment: Text.AlignVCenter
-            font.family: mediumFont
+            font.family: mediumFont.name
             font.pixelSize: 137
             horizontalAlignment: Text.AlignHCenter
         }
@@ -120,7 +120,7 @@ Rectangle {
                 text: qsTr("^")
                 style: Text.Raised
                 font.bold: true
-                font.family: mediumFont
+                font.family: mediumFont.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 125
@@ -156,7 +156,7 @@ Rectangle {
                 font.pixelSize: 125
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: mediumFont
+                font.family: mediumFont.name
                 font.bold: true
             }
         }
@@ -191,7 +191,7 @@ Rectangle {
                 font.pixelSize: 125
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: mediumFont
+                font.family: mediumFont.name
                 font.bold: true
             }
         }
@@ -226,7 +226,7 @@ Rectangle {
                 font.pixelSize: 125
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: mediumFont
+                font.family: mediumFont.name
                 font.bold: true
             }
         }
@@ -255,7 +255,7 @@ Rectangle {
                 y: 14
                 color: "#ffffff"
                 text: qsTr("Start")
-                font.family: mediumFont
+                font.family: mediumFont.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 32
@@ -289,7 +289,7 @@ Rectangle {
                 font.pixelSize: 32
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: mediumFont
+                font.family: mediumFont.name
             }
         }
     }
@@ -316,7 +316,7 @@ Rectangle {
                 y: 19
                 color: "#ffffff"
                 text: qsTr("Minutes / Seconds")
-                font.family: mediumFont
+                font.family: mediumFont.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 28

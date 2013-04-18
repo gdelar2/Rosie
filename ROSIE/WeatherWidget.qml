@@ -54,7 +54,7 @@ Rectangle {
         y: 162
         text: qsTr("text")
         font.bold: true
-        font.family: mediumFont
+        font.family: mediumFont.name
         color: "#FFFFFF"
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
@@ -67,7 +67,7 @@ Rectangle {
         y: 214
         text: qsTr("text")
         font.bold: true
-        font.family: mediumFont
+        font.family: mediumFont.name
         color: "#FFFFFF"
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 40
@@ -80,7 +80,7 @@ Rectangle {
         y: 214
         text: qsTr("text")
         font.bold: true
-        font.family: mediumFont
+        font.family: mediumFont.name
         color: "#FFFFFF"
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 40
@@ -94,7 +94,7 @@ Rectangle {
          y:300
          text: qsTr("text")
          font.bold: true
-         font.family: mediumFont
+         font.family: mediumFont.name
          color: "#FFFFFF"
          verticalAlignment: Text.AlignVCenter
          horizontalAlignment: Text.AlignHCenter
