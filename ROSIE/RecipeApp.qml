@@ -34,7 +34,7 @@ Rectangle {
                 color: "#ffffff"
                 text: qsTr("Breakfast")
                 font.bold: true
-                font.family: "Exo"
+                font.family: mediumFont.bold
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: 70
@@ -71,7 +71,7 @@ Rectangle {
                 font.pixelSize: 70
                 font.bold: true
                 verticalAlignment: Text.AlignVCenter
-                font.family: "Exo"
+                font.family: mediumFont.bold
                 horizontalAlignment: Text.AlignRight
             }
         }
@@ -105,7 +105,7 @@ Rectangle {
                 color: "#ffffff"
                 text: qsTr("Dinner")
                 font.bold: true
-                font.family: "Exo"
+                font.family: mediumFont.bold
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: 70
@@ -139,7 +139,7 @@ Rectangle {
                 height: 94
                 color: "#ffffff"
                 text: qsTr("Snacks")
-                font.family: "Exo"
+                font.family: mediumFont.bold
                 font.bold: true
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
@@ -194,7 +194,7 @@ Rectangle {
                     height: 145
                     color: "#ffffff"
                     text: qsTr("text")
-                    font.family: "Exo"
+                    font.family: mediumFont
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignLeft
                     font.pixelSize: 70
@@ -237,7 +237,7 @@ Rectangle {
                     color: "#ffffff"
                     text: qsTr("text")
                     horizontalAlignment: Text.AlignLeft
-                    font.family: "Exo"
+                    font.family: mediumFont
                     font.pixelSize: 70
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -278,7 +278,7 @@ Rectangle {
                     color: "#ffffff"
                     text: qsTr("text")
                     horizontalAlignment: Text.AlignLeft
-                    font.family: "Exo"
+                    font.family: mediumFont
                     font.pixelSize: 70
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -320,7 +320,7 @@ Rectangle {
                     color: "#ffffff"
                     text: qsTr("text")
                     horizontalAlignment: Text.AlignLeft
-                    font.family: "Exo"
+                    font.family: mediumFont
                     font.pixelSize: 70
                     verticalAlignment: Text.AlignVCenter
                 }
