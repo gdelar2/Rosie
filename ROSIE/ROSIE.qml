@@ -25,9 +25,10 @@ Flickable {
     }
 
     function convertWeatherIcon(icon) {
-        var daytime = false;
-        if(Qt.formatDateTime(new Date(), "AP") == "AM")
-            daytime = true;
+        var daytime = true;
+        var currentDate = new Date()
+        if(currentDate.getHours() > 19 || currentDate.getHours() < 5)
+            daytime = false;
         switch(icon) {
             case "113":
                 if (daytime)
@@ -118,6 +119,7 @@ Flickable {
            qMenuWidgetLoad(1, "TransitWidget.qml", true, {"y": 500, "border.color": "#FFFFFF", "border.width": 2});
            qMenuWidgetLoad(2, "WeatherWidget.qml", false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2});
            header.toggleQuickMenu();
+           loadApp("WeatherApp.qml", {})
        }
 
        function qMenuWidgetLoad(widgetId, widget, scale, properties) {
@@ -131,13 +133,14 @@ Flickable {
            qMenuWidget.createObject(qWidget, properties);
            if(scale)
                qWidget.scale = 0.61;
-       }
+        }
 
-       function loadApp(appQmlFile, properties) {
-           currentApp.children.destroy();
-           var app = Qt.createComponent(appQmlFile);
-           app.createObject(currentApp, properties);
-       }
+        function loadApp(appQmlFile, properties) {
+            var app = Qt.createComponent(appQmlFile);
+            app.createObject(currentApp, properties);
+            if (!currentApp.visible)
+                currentApp.visible = true;
+        }
 
         //Everything below this comment is where widgets should be placed
 
@@ -182,8 +185,14 @@ Flickable {
         // header needs to be on top of everything else
         Header {
             id: header
-            onSettingsShortcutClicked: {
+            onReturnShortcutClicked: {
                 //load the settings app here
+                if (currentApp.children.length > 0) {
+                    for (var i = 0; i < currentApp.children.length; i++) {
+                        currentApp.children[i].destroy()
+                    }
+                    currentApp.visible = false
+                }
             }
         }
 
