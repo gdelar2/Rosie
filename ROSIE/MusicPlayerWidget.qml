@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtMultimedia 5.0
 
 Rectangle {
     width: 600
@@ -9,13 +10,18 @@ Rectangle {
     border.color: "#000000"
     radius: 10
 
+    Audio{
+        id: currentMusic
+        source: "music/02 - November 25_ Morning.mp3"
+    }
+
     Image {
         id: albumArt
         x: 16
         y: 13
         width: 174
         height: 170
-        source: "qrc:/qtquickplugin/images/template_image.png"
+        source: "Image/RecipeApp/MacAndCheese.jpg"
     }
 
     MouseArea {
@@ -41,6 +47,7 @@ Rectangle {
         y: 114
         width: 70
         height: 69
+        property int whichState: 1
 
         Image {
             id: playIcon
@@ -49,6 +56,25 @@ Rectangle {
             width: 70
             height: 70
             source: "Image/MusicPlayer/Play.png"
+        }
+
+        onClicked: {
+
+            songTitle.text = currentMusic.metaData.title
+            artist.text = currentMusic.metaData.albumArtist
+            if(whichState === 1){
+                whichState = 2
+                currentMusic.play()
+                playIcon.source = "Image/MusicPlayer/Pause.png"
+            }
+
+            else{
+                whichState = 1
+                currentMusic.pause()
+                playIcon.source = "Image/MusicPlayer/Play.png"
+            }
+
+
         }
     }
 
@@ -76,7 +102,7 @@ Rectangle {
         width: 373
         height: 39
         color: "#ffffff"
-        text: qsTr("Who's Awesome? Rosie Is")
+        text: "currentMusic.metaData.title"
         font.strikeout: false
         font.underline: false
         font.family: mediumFont.name
@@ -92,14 +118,14 @@ Rectangle {
         width: 373
         height: 39
         color: "#ffffff"
-        text: qsTr("The Rosies")
+        text: "currentMusic.metaData.albumArtist"
         font.family: mediumFont.name
         font.pixelSize: 33
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
     }
 
-    MouseArea {
+    /*MouseArea {
         anchors.fill: parent
         drag.target: parent
         drag.axis: Drag.XandYAxis
@@ -107,5 +133,5 @@ Rectangle {
         drag.maximumX: application.width - parent.width
         drag.minimumY: 100
         drag.maximumY: application.height - parent.height
-    }
+    }*/
 }
