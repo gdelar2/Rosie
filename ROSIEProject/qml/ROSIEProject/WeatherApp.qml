@@ -50,6 +50,9 @@ Rectangle {
         low5.text = qsTr(jsonObject.data.weather[4].tempMinF+"°F")
         high5.text = qsTr(jsonObject.data.weather[4].tempMaxF+"°F")
         dayText5.text = qsTr(Qt.formatDate(jsonObject.data.weather[4].date, "dddd"))
+
+        all.visible = true
+        loading.visible = false
     }
 
     function getData(){
@@ -65,8 +68,19 @@ Rectangle {
         doc.send();
     }
 
+    Text {
+        id: loading
+        font.family: boldFont.name
+        font.bold: true
+        font.pointSize: 124
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: "Loading..."
+    }
+
     Rectangle {
         id: all
+        visible: false
 
         Rectangle {
             id: currentWeatherView
