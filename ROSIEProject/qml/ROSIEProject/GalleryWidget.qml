@@ -18,7 +18,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 12
         font.bold: true
-        font.family: mediumFont
+        font.family: mediumFont.name
         verticalAlignment: Text.AlignVCenter
         opacity: 1
         font.pixelSize: 36

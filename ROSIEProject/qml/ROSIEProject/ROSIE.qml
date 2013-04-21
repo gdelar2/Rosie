@@ -10,19 +10,19 @@ Flickable {
     //Load fonts
     FontLoader {
         id: mediumFont
-        source: "fonts\Exo-Medium.otf"
+        source: "fonts/Exo-Medium.otf"
     }
     FontLoader {
         id: boldFont
-        source: "fonts\Exo-Black.otfold.otf"
+        source: "fonts/Exo-Black.otf"
     }
     FontLoader {
         id: lightFont
-        source: "fonts\Exo-ExtraLight.otf"
+        source: "fonts/Exo-ExtraLight.otf"
     }
     FontLoader {
         id: regularFont
-        source: "fonts\Exo-Regular.otf"
+        source: "fonts/Exo-Regular.otf"
     }
 
     function convertWeatherIcon(icon) {
