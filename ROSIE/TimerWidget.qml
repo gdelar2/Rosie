@@ -1,10 +1,21 @@
 import QtQuick 2.0
 
 Rectangle {
+
+
     width: 600
     height: 650
     color: "#000000"
     opacity: 0.7
+
+
+    property int seconds:0
+    property int minutes:0
+    property int hours: 7
+
+    function test(){
+
+    }
 
     Text {
         id: convertTitle
@@ -50,7 +61,7 @@ Rectangle {
             x: 25
             y: 3
             color: "#ffffff"
-            text: qsTr("00")
+            text: qsTr(" "+hours)
             font.family: mediumFont.name
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
@@ -84,7 +95,7 @@ Rectangle {
             x: 27
             y: 6
             color: "#ffffff"
-            text: qsTr("00")
+            text: qsTr(""+minutes)
             verticalAlignment: Text.AlignVCenter
             font.family: mediumFont.name
             font.pixelSize: 137
@@ -94,17 +105,12 @@ Rectangle {
 
 
 
-    MouseArea {
-        id: upButton1
-        x: 220
-        y: 108
-        width: 75
-        height: 75
+
 
         Rectangle {
             id: rectangle4
-            x: 0
-            y: 0
+            x: 220
+            y: 108
             width: 75
             height: 75
             color: "#000000"
@@ -113,7 +119,7 @@ Rectangle {
             Text {
                 id: uparrow1
                 x: 23
-                y: 49
+                y: 55
                 width: 30
                 height: 0
                 color: "#ffffff"
@@ -125,8 +131,19 @@ Rectangle {
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 125
             }
-        }
-    }
+            MouseArea {
+                id: hoursUpButton
+               anchors.fill: parent
+
+             onClicked  :{
+
+                }
+
+            }
+}
+
+
+
 
     MouseArea {
         id: upButton2
@@ -147,7 +164,7 @@ Rectangle {
             Text {
                 id: uparrow2
                 x: 23
-                y: 49
+                y: 55
                 width: 30
                 height: 0
                 color: "#ffffff"
@@ -180,8 +197,8 @@ Rectangle {
 
             Text {
                 id: downarrow1
-                x: 53
-                y: 26
+                x: 20
+                y: 20
                 width: 30
                 height: 0
                 color: "#ffffff"
@@ -215,8 +232,8 @@ Rectangle {
 
             Text {
                 id: downarrow2
-                x: 53
-                y: 25
+                x: 20
+                y: 20
                 width: 30
                 height: 0
                 color: "#ffffff"
@@ -244,8 +261,7 @@ Rectangle {
             id: startRectangle
             x: 0
             y: 0
-            width: 241
-            height: 70
+           anchors.fill: startButton
             color: "#000000"
             opacity: 0.800
 
@@ -260,6 +276,10 @@ Rectangle {
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 32
             }
+        }
+
+        onClicked: {
+            startText.text="changed"
         }
     }
 

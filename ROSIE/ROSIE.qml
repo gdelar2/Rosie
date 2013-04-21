@@ -1,4 +1,5 @@
 import QtQuick 2.0
+
 Flickable {
     width: 1360//800
     height: 760//600
@@ -9,19 +10,19 @@ Flickable {
     //Load fonts
     FontLoader {
         id: mediumFont
-        source: "fonts/Exo-Medium.otf"
+        source: "fonts\Exo-Medium.otf"
     }
     FontLoader {
         id: boldFont
-        source: "fonts/Exo-Bold.otf"
+        source: "fonts\Exo-Black.otfold.otf"
     }
     FontLoader {
         id: lightFont
-        source: "fonts/Exo-ExtraLight.otf"
+        source: "fonts\Exo-ExtraLight.otf"
     }
     FontLoader {
         id: regularFont
-        source: "fonts/Exo-Regular.otf"
+        source: "fonts\Exo-Regular.otf"
     }
 
     function convertWeatherIcon(icon) {
@@ -159,7 +160,9 @@ Flickable {
         }
 
         TimerWidget{
-            visible: false
+
+            y: 300
+            visible: true
         }
 
         //leave the header at the bottom, items are loaded top down and
@@ -169,6 +172,19 @@ Flickable {
             onSettingsShortcutClicked: {
                 //load the settings app here
             }
+        }
+
+        GalleryApp{
+
+        visible: false
+        }
+
+        GalleryTinyWidget{
+        visible: false
+        }
+
+        GalleryWidget{
+    visible: false
         }
 
         Image{
@@ -185,4 +201,6 @@ Flickable {
             }
         }
     }
+
+
 }

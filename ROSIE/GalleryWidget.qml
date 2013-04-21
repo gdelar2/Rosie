@@ -1,5 +1,5 @@
 import QtQuick 2.0
-
+//import QtQuick 1.1
 Rectangle {
     width: 600
     height: 650

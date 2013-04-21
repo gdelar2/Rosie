@@ -1,10 +1,11 @@
 import QtQuick 2.0
-
+//import FileIO 1.0
 Rectangle {
     width: 600
     height: 650
     color: "#000000"
     opacity: 0.7
+
 
     Text {
         id: convertTitle

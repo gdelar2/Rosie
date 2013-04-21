@@ -11,7 +11,7 @@ Rectangle {
     Component.onCompleted: getData()
 
     property var jsonObject // weather data stored hear no need to recall api
-    property var city: "Chicago"
+    property var city: "Chicago"//default city
 
 
     function loadData(jsonObject){
@@ -35,7 +35,7 @@ Rectangle {
             }
         }
         // Replace YOURPRIVATEKEY by your key from free.worldweatheronline.com
-        doc.open("GET", "http://free.worldweatheronline.com/feed/weather.ashx?q=" + "Chicago" + "&format=json&num_of_days=5&extra=localObsTime&key=6d31e73ed0202130133001");
+        doc.open("GET", "http://free.worldweatheronline.com/feed/weather.ashx?q=" + city + "&format=json&num_of_days=5&extra=localObsTime&key=6d31e73ed0202130133001");
         doc.send();
     }
 
