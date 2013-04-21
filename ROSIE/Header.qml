@@ -5,14 +5,18 @@ Rectangle {
     height: 100
     color: mainColor
 
-    signal settingsShortcutClicked
+    signal returnShortcutClicked
+
+    function toggleQuickMenu() {
+        quickMenuShortcut.visible = !quickMenuShortcut.visible;
+    }
 
     function getQuickMenu() {
         return qMenuView
     }
 
     Rectangle {
-        id: settingsShortcut
+        id: returnShortcut
         width: 115
         height: 110
         y: -10
@@ -22,7 +26,7 @@ Rectangle {
         radius: 10
 
         Text {
-            id: settingsTxt
+            id: returnTxt
             x: (parent.width / 2) - (width / 2)
             //y: -10
             font.bold: true
@@ -33,11 +37,11 @@ Rectangle {
             text: "*"
         }
         MouseArea {
-            id: settingsMouseRegion
-            anchors.fill: settingsShortcut
+            id: returnMouseRegion
+            anchors.fill: returnShortcut
             //Call clicked signal if button is clicked
             onClicked: {
-                settingsShortcutClicked()
+                returnShortcutClicked()
             }
         }
     }
