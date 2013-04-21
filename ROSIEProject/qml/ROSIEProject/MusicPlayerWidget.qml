@@ -10,9 +10,21 @@ Rectangle {
     border.color: "#000000"
     radius: 10
 
-    Audio{
+    MouseArea {
+        anchors.fill: parent
+        drag.target: parent
+        drag.axis: Drag.XandYAxis
+        drag.minimumX: 0
+        drag.maximumX: application.width - parent.width
+        drag.minimumY: 100
+        drag.maximumY: application.height - parent.height
+    }
+
+    MediaPlayer{
         id: currentMusic
-        source: "music/02 - November 25_ Morning.mp3"
+        property var myArray: ["music/02 - November 25_ Morning.mp3", "music/02 - Roy Orbison - In Dreams.mp3", "music/03 - 1934_ Grandmother & Kimitake.mp3", "music/06 - 1937_ Saint Sebastian.mp3", "music/07 Cousins.mp3"];
+        source: myArray[0]
+        property int arrayIndex: 0
     }
 
     Image {
@@ -38,6 +50,21 @@ Rectangle {
             width: 70
             height: 70
             source: "Image/MusicPlayer/Rewind.png"
+        }
+
+        onClicked:{
+            currentMusic.stop()
+            currentMusic.arrayIndex -= 1
+            if (currentMusic.arrayIndex === -1){
+                currentMusic.arrayIndex = 4
+                currentMusic.source = currentMusic.myArray[currentMusic.arrayIndex]
+            }
+
+            else{
+                currentMusic.source = currentMusic.myArray[currentMusic.arrayIndex]
+            }
+
+            playIcon.source = "Image/MusicPlayer/Play.png"
         }
     }
 
@@ -93,6 +120,21 @@ Rectangle {
             height: 70
             source: "Image/MusicPlayer/Forward.png"
         }
+
+        onClicked:{
+            currentMusic.stop()
+            currentMusic.arrayIndex += 1
+            if (currentMusic.arrayIndex === 5){
+                currentMusic.arrayIndex = 0
+                currentMusic.source = currentMusic.myArray[currentMusic.arrayIndex]
+            }
+
+            else{
+                currentMusic.source = currentMusic.myArray[currentMusic.arrayIndex]
+            }
+
+            playIcon.source = "Image/MusicPlayer/Play.png"
+        }
     }
 
     Text {
@@ -125,13 +167,4 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
     }
 
-    /*MouseArea {
-        anchors.fill: parent
-        drag.target: parent
-        drag.axis: Drag.XandYAxis
-        drag.minimumX: 0
-        drag.maximumX: application.width - parent.width
-        drag.minimumY: 100
-        drag.maximumY: application.height - parent.height
-    }*/
 }
