@@ -117,6 +117,7 @@ Flickable {
        Component.onCompleted: {
            qMenuWidgetLoad(1, "TransitWidget.qml", true, {"y": 500, "border.color": "#FFFFFF", "border.width": 2});
            qMenuWidgetLoad(2, "WeatherWidget.qml", false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2});
+           header.toggleQuickMenu();
        }
 
        function qMenuWidgetLoad(widgetId, widget, scale, properties) {
@@ -130,6 +131,12 @@ Flickable {
            qMenuWidget.createObject(qWidget, properties);
            if(scale)
                qWidget.scale = 0.61;
+       }
+
+       function loadApp(appQmlFile, properties) {
+           currentApp.children.destroy();
+           var app = Qt.createComponent(appQmlFile);
+           app.createObject(currentApp, properties);
        }
 
         //Everything below this comment is where widgets should be placed
@@ -160,6 +167,15 @@ Flickable {
 
         TimerWidget{
             visible: false
+        }
+
+        Rectangle {
+            id: currentApp
+            x:0
+            y:100
+            visible: false
+            width: 1920
+            height: 980
         }
 
         //leave the header at the bottom, items are loaded top down and

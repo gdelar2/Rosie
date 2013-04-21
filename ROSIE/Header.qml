@@ -7,6 +7,10 @@ Rectangle {
 
     signal settingsShortcutClicked
 
+    function toggleQuickMenu() {
+        quickMenuShortcut.visible = !quickMenuShortcut.visible;
+    }
+
     function getQuickMenu() {
         return qMenuView
     }
