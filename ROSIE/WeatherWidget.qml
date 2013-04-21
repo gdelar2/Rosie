@@ -8,10 +8,12 @@ Rectangle {
     border.color: "#000000"
     opacity: 0.700
     radius: 13
+    signal widgetClicked
+
     Component.onCompleted: getData()
 
     property var jsonObject // weather data stored hear no need to recall api
-    property var city: "Chicago"
+    property var city: "Chicago"//default city
 
 
     function loadData(jsonObject){
@@ -35,7 +37,7 @@ Rectangle {
             }
         }
         // Replace YOURPRIVATEKEY by your key from free.worldweatheronline.com
-        doc.open("GET", "http://free.worldweatheronline.com/feed/weather.ashx?q=" + "Chicago" + "&format=json&num_of_days=5&extra=localObsTime&key=6d31e73ed0202130133001");
+        doc.open("GET", "http://free.worldweatheronline.com/feed/weather.ashx?q=" + city + "&format=json&num_of_days=5&extra=localObsTime&key=6d31e73ed0202130133001");
         doc.send();
     }
 
@@ -134,5 +136,9 @@ Rectangle {
         drag.maximumX: application.width - parent.width
         drag.minimumY: 100
         drag.maximumY: application.height - parent.height
+
+        onClicked: {
+            parent.widgetClicked()
+        }
     }
 }
