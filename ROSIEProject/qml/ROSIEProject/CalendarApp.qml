@@ -161,6 +161,7 @@ Rectangle {
             cellWidth: width / 7
             model: calendarInfoModel
             delegate: calendarDelegate
+
         }
 
         CalendarReminderView {
