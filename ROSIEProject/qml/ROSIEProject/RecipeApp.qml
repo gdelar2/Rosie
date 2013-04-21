@@ -7,6 +7,183 @@ Rectangle {
     opacity: 0.700
     border.width: 3
 
+    Item{
+        id: breakfast1
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: breakfast2
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: breakfast3
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: breakfast4
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: lunch1
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: lunch2
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: lunch3
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: lunch4
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: dinner1
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: dinner2
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: dinner3
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: dinner4
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: dessert1
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: dessert2
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: dessert3
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+    Item{
+        id: dessert4
+        property string recipeTitle: "Mac and Cheese"
+        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
+        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
+2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
+3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
+4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
+        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+    }
+
+
     MouseArea {
         id: breakfastButton
         x: 0
@@ -183,7 +360,7 @@ Rectangle {
                     y: 12
                     width: 190
                     height: 145
-                    source: "qrc:/qtquickplugin/images/template_image.png"
+                    source: lunch1.imageSource
                 }
 
                 Text {
@@ -193,7 +370,7 @@ Rectangle {
                     width: 807
                     height: 145
                     color: "#ffffff"
-                    text: qsTr("text")
+                    text: lunch1.recipeTitle
                     font.family: mediumFont
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignLeft
@@ -328,11 +505,5 @@ Rectangle {
         }
 
     }
-
-
-
-
-
-
 
 }
