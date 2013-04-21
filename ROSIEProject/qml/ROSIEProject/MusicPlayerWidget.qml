@@ -10,7 +10,7 @@ Rectangle {
     border.color: "#000000"
     radius: 10
 
-    Audio{
+    MediaPlayer{
         id: currentMusic
         source: "music/02 - November 25_ Morning.mp3"
     }
