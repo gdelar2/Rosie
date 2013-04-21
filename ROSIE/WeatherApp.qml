@@ -66,555 +66,559 @@ Rectangle {
     }
 
     Rectangle {
-        id: currentWeatherView
-        width: 1920
-        height: 510
-        color: mainColor
-
-        Image {
-            id: currentWeatherIcon
-            width: 325
-            height: 325
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: -40
-            y: 50
-            source: "Image/Weather/1.png"
-        }
-
-        Text {
-            id: currentDescription
-            font.family: mediumFont.name
-            font.pointSize: 60
-            opacity: .68
-            anchors.top: currentWeatherIcon.bottom
-            anchors.verticalCenterOffset: 10
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: "Sunny"
-        }
-
-        Text {
-            id: currentTemp
-            font.family: boldFont.name
-            font.pointSize: 124
-            font.bold: true
-            opacity: .68
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: -40
-            x: (parent.width / 4) - (width / 2) - 50
-            text: "40F"
-        }
-
-        Text {
-            id: currentLow
-            font.family: boldFont.name
-            font.pointSize: 100
-            font.bold: true
-            opacity: .68
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: -40
-            anchors.left: currentWeatherIcon.right
-            anchors.leftMargin: 80
-            text: "30F"
-        }
-
-        Text {
-            font.family: lightFont.name
-            font.pointSize: 60
-            opacity: .45
-            anchors.top: currentLow.bottom
-            anchors.topMargin: -20
-            anchors.horizontalCenter: currentLow.horizontalCenter
-            text: "MIN"
-        }
-
-        Text {
-            id: currentHigh
-            font.family: boldFont.name
-            font.pointSize: 100
-            font.bold: true
-            opacity: .68
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: -40
-            anchors.left: currentLow.right
-            anchors.leftMargin: 150
-            text: "45F"
-        }
-
-        Text {
-            font.family: lightFont.name
-            font.pointSize: 60
-            opacity: .45
-            anchors.top: currentHigh.bottom
-            anchors.topMargin: -20
-            anchors.horizontalCenter: currentHigh.horizontalCenter
-            text: "MAX"
-        }
-    }
-
-    Rectangle {
-        id: futureWeatherView
-        width: 1920
-        height: 470
-        y: 510
-        color: mainColor
+        id: all
 
         Rectangle {
-            id: day1
-            width: parent.width / 5
-            height: parent.height
+            id: currentWeatherView
+            width: 1920
+            height: 510
             color: mainColor
 
-            Rectangle {
-                width: parent.width
-                height: parent.height
-                color: "#000000"
-                border.color: "#FFFFFF"
-                border.width: 2
-                opacity: 0.3
-            }
-
             Image {
-                id: icon1
-                width: 202
-                height: 202
+                id: currentWeatherIcon
+                width: 325
+                height: 325
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: 20
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.verticalCenterOffset: -40
+                y: 50
                 source: "Image/Weather/1.png"
             }
 
             Text {
-                id: description1
-                anchors.top: icon1.bottom
-                anchors.horizontalCenter: icon1.horizontalCenter
+                id: currentDescription
                 font.family: mediumFont.name
-                font.pointSize: 36
+                font.pointSize: 60
+                opacity: .68
+                anchors.top: currentWeatherIcon.bottom
+                anchors.verticalCenterOffset: 10
+                anchors.horizontalCenter: parent.horizontalCenter
                 text: "Sunny"
             }
 
             Text {
-                id: low1
-                anchors.top: description1.bottom
-                anchors.topMargin: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: -(parent.width / 4)
+                id: currentTemp
                 font.family: boldFont.name
+                font.pointSize: 124
                 font.bold: true
-                font.pointSize: 36
+                opacity: .68
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.verticalCenterOffset: -40
+                x: (parent.width / 4) - (width / 2) - 50
+                text: "40F"
+            }
+
+            Text {
+                id: currentLow
+                font.family: boldFont.name
+                font.pointSize: 100
+                font.bold: true
+                opacity: .68
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.verticalCenterOffset: -40
+                anchors.left: currentWeatherIcon.right
+                anchors.leftMargin: 80
                 text: "30F"
             }
 
             Text {
-                anchors.top: low1.bottom
-                anchors.topMargin: -10
-                anchors.horizontalCenter: low1.horizontalCenter
                 font.family: lightFont.name
-                font.pointSize: 24
-                opacity: .68
+                font.pointSize: 60
+                opacity: .45
+                anchors.top: currentLow.bottom
+                anchors.topMargin: -20
+                anchors.horizontalCenter: currentLow.horizontalCenter
                 text: "MIN"
             }
 
             Text {
-                id: high1
-                anchors.top: description1.bottom
-                anchors.topMargin: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: (parent.width / 4)
+                id: currentHigh
                 font.family: boldFont.name
+                font.pointSize: 100
                 font.bold: true
-                font.pointSize: 36
+                opacity: .68
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.verticalCenterOffset: -40
+                anchors.left: currentLow.right
+                anchors.leftMargin: 150
                 text: "45F"
             }
 
             Text {
-                anchors.top: high1.bottom
-                anchors.topMargin: -10
-                anchors.horizontalCenter: high1.horizontalCenter
                 font.family: lightFont.name
-                font.pointSize: 24
-                opacity: .68
+                font.pointSize: 60
+                opacity: .45
+                anchors.top: currentHigh.bottom
+                anchors.topMargin: -20
+                anchors.horizontalCenter: currentHigh.horizontalCenter
                 text: "MAX"
-            }
-
-            Text {
-                id: dayText1
-                anchors.top: high1.bottom
-                anchors.topMargin: 40
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 24
-                opacity: .68
-                text: ""
             }
         }
 
         Rectangle {
-            id: day2
-            width: parent.width / 5
-            height: parent.height
-            x: day1.x + day1.width
+            id: futureWeatherView
+            width: 1920
+            height: 470
+            y: 510
             color: mainColor
 
             Rectangle {
-                width: parent.width
+                id: day1
+                width: parent.width / 5
                 height: parent.height
-                color: "#000000"
-                border.color: "#FFFFFF"
-                border.width: 2
-                opacity: 0.3
-            }
+                color: mainColor
 
-            Image {
-                id: icon2
-                width: 202
-                height: 202
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: 20
-                source: "Image/Weather/1.png"
-            }
+                Rectangle {
+                    width: parent.width
+                    height: parent.height
+                    color: "#000000"
+                    border.color: "#FFFFFF"
+                    border.width: 2
+                    opacity: 0.3
+                }
 
-            Text {
-                id: description2
-                anchors.top: icon2.bottom
-                anchors.horizontalCenter: icon2.horizontalCenter
-                font.family: mediumFont.name
-                font.pointSize: 36
-                text: "Sunny"
-            }
+                Image {
+                    id: icon1
+                    width: 202
+                    height: 202
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    anchors.topMargin: 20
+                    source: "Image/Weather/1.png"
+                }
 
-            Text {
-                id: low2
-                anchors.top: description2.bottom
-                anchors.topMargin: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: -(parent.width / 4)
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 36
-                text: "30F"
-            }
+                Text {
+                    id: description1
+                    anchors.top: icon1.bottom
+                    anchors.horizontalCenter: icon1.horizontalCenter
+                    font.family: mediumFont.name
+                    font.pointSize: 36
+                    text: "Sunny"
+                }
 
-            Text {
-                anchors.top: low2.bottom
-                anchors.topMargin: -10
-                anchors.horizontalCenter: low2.horizontalCenter
-                font.family: lightFont.name
-                font.pointSize: 24
-                opacity: .68
-                text: "MIN"
-            }
+                Text {
+                    id: low1
+                    anchors.top: description1.bottom
+                    anchors.topMargin: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: -(parent.width / 4)
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 36
+                    text: "30F"
+                }
 
-            Text {
-                id: high2
-                anchors.top: description2.bottom
-                anchors.topMargin: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: (parent.width / 4)
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 36
-                text: "45F"
-            }
+                Text {
+                    anchors.top: low1.bottom
+                    anchors.topMargin: -10
+                    anchors.horizontalCenter: low1.horizontalCenter
+                    font.family: lightFont.name
+                    font.pointSize: 24
+                    opacity: .68
+                    text: "MIN"
+                }
 
-            Text {
-                anchors.top: high2.bottom
-                anchors.topMargin: -10
-                anchors.horizontalCenter: high2.horizontalCenter
-                font.family: lightFont.name
-                font.pointSize: 24
-                opacity: .68
-                text: "MAX"
-            }
+                Text {
+                    id: high1
+                    anchors.top: description1.bottom
+                    anchors.topMargin: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: (parent.width / 4)
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 36
+                    text: "45F"
+                }
 
-            Text {
-                id: dayText2
-                anchors.top: high2.bottom
-                anchors.topMargin: 40
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 24
-                opacity: .68
-                text: ""
-            }
-        }
+                Text {
+                    anchors.top: high1.bottom
+                    anchors.topMargin: -10
+                    anchors.horizontalCenter: high1.horizontalCenter
+                    font.family: lightFont.name
+                    font.pointSize: 24
+                    opacity: .68
+                    text: "MAX"
+                }
 
-        Rectangle {
-            id: day3
-            width: parent.width / 5
-            height: parent.height
-            x: day2.x + day2.width
-            color: mainColor
+                Text {
+                    id: dayText1
+                    anchors.top: high1.bottom
+                    anchors.topMargin: 40
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 24
+                    opacity: .68
+                    text: ""
+                }
+            }
 
             Rectangle {
-                width: parent.width
+                id: day2
+                width: parent.width / 5
                 height: parent.height
-                color: "#000000"
-                border.color: "#FFFFFF"
-                border.width: 2
-                opacity: 0.3
-            }
+                x: day1.x + day1.width
+                color: mainColor
 
-            Image {
-                id: icon3
-                width: 202
-                height: 202
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: 20
-                source: "Image/Weather/1.png"
-            }
+                Rectangle {
+                    width: parent.width
+                    height: parent.height
+                    color: "#000000"
+                    border.color: "#FFFFFF"
+                    border.width: 2
+                    opacity: 0.3
+                }
 
-            Text {
-                id: description3
-                anchors.top: icon3.bottom
-                anchors.horizontalCenter: icon3.horizontalCenter
-                font.family: mediumFont.name
-                font.pointSize: 36
-                text: "Sunny"
-            }
+                Image {
+                    id: icon2
+                    width: 202
+                    height: 202
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    anchors.topMargin: 20
+                    source: "Image/Weather/1.png"
+                }
 
-            Text {
-                id: low3
-                anchors.top: description3.bottom
-                anchors.topMargin: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: -(parent.width / 4)
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 36
-                text: "30F"
-            }
+                Text {
+                    id: description2
+                    anchors.top: icon2.bottom
+                    anchors.horizontalCenter: icon2.horizontalCenter
+                    font.family: mediumFont.name
+                    font.pointSize: 36
+                    text: "Sunny"
+                }
 
-            Text {
-                anchors.top: low3.bottom
-                anchors.topMargin: -10
-                anchors.horizontalCenter: low3.horizontalCenter
-                font.family: lightFont.name
-                font.pointSize: 24
-                opacity: .68
-                text: "MIN"
-            }
+                Text {
+                    id: low2
+                    anchors.top: description2.bottom
+                    anchors.topMargin: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: -(parent.width / 4)
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 36
+                    text: "30F"
+                }
 
-            Text {
-                id: high3
-                anchors.top: description3.bottom
-                anchors.topMargin: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: (parent.width / 4)
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 36
-                text: "45F"
-            }
+                Text {
+                    anchors.top: low2.bottom
+                    anchors.topMargin: -10
+                    anchors.horizontalCenter: low2.horizontalCenter
+                    font.family: lightFont.name
+                    font.pointSize: 24
+                    opacity: .68
+                    text: "MIN"
+                }
 
-            Text {
-                anchors.top: high3.bottom
-                anchors.topMargin: -10
-                anchors.horizontalCenter: high3.horizontalCenter
-                font.family: lightFont.name
-                font.pointSize: 24
-                opacity: .68
-                text: "MAX"
-            }
+                Text {
+                    id: high2
+                    anchors.top: description2.bottom
+                    anchors.topMargin: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: (parent.width / 4)
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 36
+                    text: "45F"
+                }
 
-            Text {
-                id: dayText3
-                anchors.top: high3.bottom
-                anchors.topMargin: 40
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 24
-                opacity: .68
-                text: ""
-            }
-        }
+                Text {
+                    anchors.top: high2.bottom
+                    anchors.topMargin: -10
+                    anchors.horizontalCenter: high2.horizontalCenter
+                    font.family: lightFont.name
+                    font.pointSize: 24
+                    opacity: .68
+                    text: "MAX"
+                }
 
-        Rectangle {
-            id: day4
-            width: parent.width / 5
-            height: parent.height
-            x: day3.x + day3.width
-            color: mainColor
+                Text {
+                    id: dayText2
+                    anchors.top: high2.bottom
+                    anchors.topMargin: 40
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 24
+                    opacity: .68
+                    text: ""
+                }
+            }
 
             Rectangle {
-                width: parent.width
+                id: day3
+                width: parent.width / 5
                 height: parent.height
-                color: "#000000"
-                border.color: "#FFFFFF"
-                border.width: 2
-                opacity: 0.3
-            }
+                x: day2.x + day2.width
+                color: mainColor
 
-            Image {
-                id: icon4
-                width: 202
-                height: 202
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: 20
-                source: "Image/Weather/1.png"
-            }
+                Rectangle {
+                    width: parent.width
+                    height: parent.height
+                    color: "#000000"
+                    border.color: "#FFFFFF"
+                    border.width: 2
+                    opacity: 0.3
+                }
 
-            Text {
-                id: description4
-                anchors.top: icon4.bottom
-                anchors.horizontalCenter: icon4.horizontalCenter
-                font.family: mediumFont.name
-                font.pointSize: 36
-                text: "Sunny"
-            }
+                Image {
+                    id: icon3
+                    width: 202
+                    height: 202
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    anchors.topMargin: 20
+                    source: "Image/Weather/1.png"
+                }
 
-            Text {
-                id: low4
-                anchors.top: description4.bottom
-                anchors.topMargin: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: -(parent.width / 4)
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 36
-                text: "30F"
-            }
+                Text {
+                    id: description3
+                    anchors.top: icon3.bottom
+                    anchors.horizontalCenter: icon3.horizontalCenter
+                    font.family: mediumFont.name
+                    font.pointSize: 36
+                    text: "Sunny"
+                }
 
-            Text {
-                anchors.top: low4.bottom
-                anchors.topMargin: -10
-                anchors.horizontalCenter: low4.horizontalCenter
-                font.family: lightFont.name
-                font.pointSize: 24
-                opacity: .68
-                text: "MIN"
-            }
+                Text {
+                    id: low3
+                    anchors.top: description3.bottom
+                    anchors.topMargin: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: -(parent.width / 4)
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 36
+                    text: "30F"
+                }
 
-            Text {
-                id: high4
-                anchors.top: description4.bottom
-                anchors.topMargin: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: (parent.width / 4)
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 36
-                text: "45F"
-            }
+                Text {
+                    anchors.top: low3.bottom
+                    anchors.topMargin: -10
+                    anchors.horizontalCenter: low3.horizontalCenter
+                    font.family: lightFont.name
+                    font.pointSize: 24
+                    opacity: .68
+                    text: "MIN"
+                }
 
-            Text {
-                anchors.top: high4.bottom
-                anchors.topMargin: -10
-                anchors.horizontalCenter: high4.horizontalCenter
-                font.family: lightFont.name
-                font.pointSize: 24
-                opacity: .68
-                text: "MAX"
-            }
+                Text {
+                    id: high3
+                    anchors.top: description3.bottom
+                    anchors.topMargin: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: (parent.width / 4)
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 36
+                    text: "45F"
+                }
 
-            Text {
-                id: dayText4
-                anchors.top: high4.bottom
-                anchors.topMargin: 40
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 24
-                opacity: .68
-                text: ""
-            }
-        }
+                Text {
+                    anchors.top: high3.bottom
+                    anchors.topMargin: -10
+                    anchors.horizontalCenter: high3.horizontalCenter
+                    font.family: lightFont.name
+                    font.pointSize: 24
+                    opacity: .68
+                    text: "MAX"
+                }
 
-        Rectangle {
-            id: day5
-            width: parent.width / 5
-            height: parent.height
-            x: day4.x + day4.width
-            color: mainColor
+                Text {
+                    id: dayText3
+                    anchors.top: high3.bottom
+                    anchors.topMargin: 40
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 24
+                    opacity: .68
+                    text: ""
+                }
+            }
 
             Rectangle {
-                width: parent.width
+                id: day4
+                width: parent.width / 5
                 height: parent.height
-                color: "#000000"
-                border.color: "#FFFFFF"
-                border.width: 2
-                opacity: 0.3
+                x: day3.x + day3.width
+                color: mainColor
+
+                Rectangle {
+                    width: parent.width
+                    height: parent.height
+                    color: "#000000"
+                    border.color: "#FFFFFF"
+                    border.width: 2
+                    opacity: 0.3
+                }
+
+                Image {
+                    id: icon4
+                    width: 202
+                    height: 202
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    anchors.topMargin: 20
+                    source: "Image/Weather/1.png"
+                }
+
+                Text {
+                    id: description4
+                    anchors.top: icon4.bottom
+                    anchors.horizontalCenter: icon4.horizontalCenter
+                    font.family: mediumFont.name
+                    font.pointSize: 36
+                    text: "Sunny"
+                }
+
+                Text {
+                    id: low4
+                    anchors.top: description4.bottom
+                    anchors.topMargin: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: -(parent.width / 4)
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 36
+                    text: "30F"
+                }
+
+                Text {
+                    anchors.top: low4.bottom
+                    anchors.topMargin: -10
+                    anchors.horizontalCenter: low4.horizontalCenter
+                    font.family: lightFont.name
+                    font.pointSize: 24
+                    opacity: .68
+                    text: "MIN"
+                }
+
+                Text {
+                    id: high4
+                    anchors.top: description4.bottom
+                    anchors.topMargin: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: (parent.width / 4)
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 36
+                    text: "45F"
+                }
+
+                Text {
+                    anchors.top: high4.bottom
+                    anchors.topMargin: -10
+                    anchors.horizontalCenter: high4.horizontalCenter
+                    font.family: lightFont.name
+                    font.pointSize: 24
+                    opacity: .68
+                    text: "MAX"
+                }
+
+                Text {
+                    id: dayText4
+                    anchors.top: high4.bottom
+                    anchors.topMargin: 40
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 24
+                    opacity: .68
+                    text: ""
+                }
             }
 
-            Image {
-                id: icon5
-                width: 202
-                height: 202
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: 20
-                source: "Image/Weather/1.png"
-            }
+            Rectangle {
+                id: day5
+                width: parent.width / 5
+                height: parent.height
+                x: day4.x + day4.width
+                color: mainColor
 
-            Text {
-                id: description5
-                anchors.top: icon5.bottom
-                anchors.horizontalCenter: icon5.horizontalCenter
-                font.family: mediumFont.name
-                font.pointSize: 36
-                text: "Sunny"
-            }
+                Rectangle {
+                    width: parent.width
+                    height: parent.height
+                    color: "#000000"
+                    border.color: "#FFFFFF"
+                    border.width: 2
+                    opacity: 0.3
+                }
 
-            Text {
-                id: low5
-                anchors.top: description5.bottom
-                anchors.topMargin: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: -(parent.width / 4)
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 36
-                text: "30F"
-            }
+                Image {
+                    id: icon5
+                    width: 202
+                    height: 202
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    anchors.topMargin: 20
+                    source: "Image/Weather/1.png"
+                }
 
-            Text {
-                anchors.top: low5.bottom
-                anchors.topMargin: -10
-                anchors.horizontalCenter: low5.horizontalCenter
-                font.family: lightFont.name
-                font.pointSize: 24
-                opacity: .68
-                text: "MIN"
-            }
+                Text {
+                    id: description5
+                    anchors.top: icon5.bottom
+                    anchors.horizontalCenter: icon5.horizontalCenter
+                    font.family: mediumFont.name
+                    font.pointSize: 36
+                    text: "Sunny"
+                }
 
-            Text {
-                id: high5
-                anchors.top: description5.bottom
-                anchors.topMargin: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: (parent.width / 4)
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 36
-                text: "45F"
-            }
+                Text {
+                    id: low5
+                    anchors.top: description5.bottom
+                    anchors.topMargin: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: -(parent.width / 4)
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 36
+                    text: "30F"
+                }
 
-            Text {
-                anchors.top: high5.bottom
-                anchors.topMargin: -10
-                anchors.horizontalCenter: high5.horizontalCenter
-                font.family: lightFont.name
-                font.pointSize: 24
-                opacity: .68
-                text: "MAX"
-            }
+                Text {
+                    anchors.top: low5.bottom
+                    anchors.topMargin: -10
+                    anchors.horizontalCenter: low5.horizontalCenter
+                    font.family: lightFont.name
+                    font.pointSize: 24
+                    opacity: .68
+                    text: "MIN"
+                }
 
-            Text {
-                id: dayText5
-                anchors.top: high5.bottom
-                anchors.topMargin: 40
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.family: boldFont.name
-                font.bold: true
-                font.pointSize: 24
-                opacity: .68
-                text: ""
+                Text {
+                    id: high5
+                    anchors.top: description5.bottom
+                    anchors.topMargin: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: (parent.width / 4)
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 36
+                    text: "45F"
+                }
+
+                Text {
+                    anchors.top: high5.bottom
+                    anchors.topMargin: -10
+                    anchors.horizontalCenter: high5.horizontalCenter
+                    font.family: lightFont.name
+                    font.pointSize: 24
+                    opacity: .68
+                    text: "MAX"
+                }
+
+                Text {
+                    id: dayText5
+                    anchors.top: high5.bottom
+                    anchors.topMargin: 40
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.family: boldFont.name
+                    font.bold: true
+                    font.pointSize: 24
+                    opacity: .68
+                    text: ""
+                }
             }
         }
     }

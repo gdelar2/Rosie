@@ -119,7 +119,8 @@ Flickable {
            qMenuWidgetLoad(1, "TransitWidget.qml", true, {"y": 500, "border.color": "#FFFFFF", "border.width": 2});
            qMenuWidgetLoad(2, "WeatherWidget.qml", false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2});
            header.toggleQuickMenu();
-           loadApp("WeatherApp.qml", {})
+           //Auto load an app you're working on
+           //loadApp("WeatherApp.qml", {})
        }
 
        function qMenuWidgetLoad(widgetId, widget, scale, properties) {
@@ -148,6 +149,20 @@ Flickable {
             id: weatherwidget1
             x: 1620
             y: 118
+
+            onWidgetClicked: {
+                parent.loadApp("WeatherApp.qml", {})
+            }
+        }
+
+        CalendarWidget {
+            id: calendarWidget
+            x: 0
+            y: 100
+
+            onWidgetClicked: {
+                parent.loadApp("CalendarApp.qml", {})
+            }
         }
 
         MusicPlayerWidget {
