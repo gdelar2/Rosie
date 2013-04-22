@@ -7,6 +7,187 @@ Rectangle {
     opacity: 0.700
     border.width: 3
 
+    Rectangle {
+        id: rectangle5
+        x: 639
+        y: 116
+        width: 1200
+        height: 806
+        color: "#000000"
+        radius: 0
+        border.width: 3
+        opacity: 0.500
+        border.color: "#000000"
+
+        MouseArea {
+            id: item1Button
+            x: 65
+            y: 30
+            width: 1070
+            height: 170
+
+            Rectangle {
+                id: rectangle6
+                x: 0
+                y: 0
+                width: 1070
+                height: 170
+                color: "#000000"
+                radius: 13
+                border.color: "#000000"
+
+                Image {
+                    id: item1image
+                    x: 16
+                    y: 12
+                    width: 190
+                    height: 145
+                    source: lunch1.imageSource
+                }
+
+                Text {
+                    id: item1text
+                    x: 226
+                    y: 12
+                    width: 807
+                    height: 145
+                    color: "#ffffff"
+                    text: lunch1.recipeTitle
+                    font.family: mediumFont.name
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignLeft
+                    font.pixelSize: 70
+                }
+            }
+        }
+
+        MouseArea {
+            id: item2Button
+            x: 65
+            y: 218
+            width: 1070
+            height: 170
+
+            Rectangle {
+                id: rectangle7
+                x: 0
+                y: 0
+                width: 1070
+                height: 170
+                color: "#000000"
+                radius: 13
+                border.color: "#000000"
+
+                Image {
+                    id: item2image
+                    x: 16
+                    y: 12
+                    width: 190
+                    height: 145
+                    source: "qrc:/qtquickplugin/images/template_image.png"
+                }
+
+                Text {
+                    id: item2text
+                    x: 226
+                    y: 13
+                    width: 807
+                    height: 145
+                    color: "#ffffff"
+                    text: qsTr("text")
+                    horizontalAlignment: Text.AlignLeft
+                    font.family: mediumFont.name
+                    font.pixelSize: 70
+                    verticalAlignment: Text.AlignVCenter
+                }
+            }
+        }
+
+        MouseArea {
+            id: item3Button
+            x: 65
+            y: 408
+            width: 1070
+            height: 170
+
+            Rectangle {
+                id: rectangle8
+                x: 0
+                y: 0
+                width: 1070
+                height: 170
+                color: "#000000"
+                radius: 13
+
+                Image {
+                    id: item3image
+                    x: 16
+                    y: 12
+                    width: 190
+                    height: 145
+                    source: "qrc:/qtquickplugin/images/template_image.png"
+                }
+
+                Text {
+                    id: item3text
+                    x: 224
+                    y: 12
+                    width: 807
+                    height: 145
+                    color: "#ffffff"
+                    text: qsTr("text")
+                    horizontalAlignment: Text.AlignLeft
+                    font.family: mediumFont.name
+                    font.pixelSize: 70
+                    verticalAlignment: Text.AlignVCenter
+                }
+            }
+        }
+
+        MouseArea {
+            id: item4Button
+            x: 65
+            y: 597
+            width: 1070
+            height: 170
+
+            Rectangle {
+                id: rectangle9
+                x: 0
+                y: 0
+                width: 1070
+                height: 170
+                color: "#000000"
+                radius: 13
+                border.color: "#000000"
+
+                Image {
+                    id: item4image
+                    x: 16
+                    y: 11
+                    width: 190
+                    height: 145
+                    source: "qrc:/qtquickplugin/images/template_image.png"
+                }
+
+                Text {
+                    id: item4text
+                    x: 226
+                    y: 11
+                    width: 807
+                    height: 145
+                    color: "#ffffff"
+                    text: qsTr("text")
+                    horizontalAlignment: Text.AlignLeft
+                    font.family: mediumFont.name
+                    font.pixelSize: 70
+                    verticalAlignment: Text.AlignVCenter
+                }
+            }
+        }
+
+    }
+
     Item{
         id: breakfast1
         property string recipeTitle: "Cereal and Milk"
@@ -125,69 +306,97 @@ Over medium-low heat, heat griddle or skillet coated with a thin layer of butter
     Item{
         id: dinner2
         property string recipeTitle: "Lemon Pepper Salmon"
-        property string ingredients: "v"
-        property string directions: "n"
+        property string ingredients: "4 (4 ounce) salmon fillets\n
+2 tablespoons butter, melted\n
+2 tablespoons soy sauce\n
+lemon pepper to taste\n"
+        property string directions: "1.	Preheat the oven broiler. Lightly grease a baking sheet.\n
+2.	Place salmon on the baking sheet. Mix the melted butter and soy sauce in a small bowl, and brush over the salmon. Sprinkle salmon with lemon pepper.\n
+3.	Broil salmon 6 to 8 minutes, depending on thickness, or until easily flaked with a fork.\n"
         property string imageSource: "Image/RecipeApp/Salmon.jpg"
     }
 
     Item{
         id: dinner3
         property string recipeTitle: "Chorizo Mac and Cheese"
-        property string ingredients: "v"
-        property string directions: "n"
+        property string ingredients: "2 cups elbow macaroni\n
+1 cup milk\n
+1 teaspoon corn starch\n
+4 ounces shredded cheddar cheese (about 1 cup)\n
+4 ounces shredded pepper jack cheese (about 1 cup)\n
+6 ounces Mexican chorizo\n
+1/2 cup minced red onion\n
+2 Tbsp flour\n
+2 teaspoons lime juice\n
+2 Tbsp breadcrumbs\n
+1 Tbsp butter\n"
+        property string directions: "1. Mix the corn starch with the 2 cheeses in a bowl and set aside. The corn starch will help prevent the cheese sauce from getting too stringy.\n
+2. Put the milk into a small saucepan and heat until steamy. Keep warm while you are preparing the recipe, do not let boil.\n
+3. Put 2 quarts of water, salted with 1 Tbsp salt, into a large pot and heat to a boil. Once the water is at a full boil, add the macaroni to the pot. Return to a boil, and cook, uncovered, for about 2 minutes less than the macaroni package specifies, so that it is al dente, cooked, but still firm to the bite.\n
+4. While the water is heating and the macaroni cooking, prepare the chorizo cheese sauce. Remove chorizo from its casing and put into a medium thick-bottomed saucepan on medium high heat. When the chorizo begins to sizzle, reduce the heat to medium. Cook the chorizo, stirring often, for 2 minutes. Add the minced red onion and cook the mixture until the onions soften, about 3-4 minutes.\n
+5. When the macaroni is cooked, but still a bit firm, drain it and set aside. Preheat oven to 375°.\n
+6. Add the flour to the pot with the chorizo and mix well. Everything will clump up. Reduce the heat to medium-low and cook, stirring constantly and scraping the bottom of the pot, for 2 minutes. Add the hot milk a tablespoon at a time, stirring constantly. When all the milk has been added, heat the mixture to a gentle simmer and cook for 2 minutes.\n
+7. Mix the grated cheese into the chorizo milk sauce. Mix in the cooked macaroni into the chorizo cheese sauce. Stir in the lime juice. Pour the macaroni and cheese into a small casserole dish. Make sure the top is level. Dust the top with the breadcrumbs, then dot with the butter. Bake until the breadcrumbs are golden, about 20 to 25 minutes.\n"
         property string imageSource: "Image/RecipeApp/ChorizoMacAndCheese.jpg"
     }
 
     Item{
         id: dinner4
         property string recipeTitle: "Fried Chicken"
-        property string ingredients: "v"
-        property string directions: "n"
+        property string ingredients: "3 eggs\n
+1/3 cup water\n
+About 1 cup hot red pepper sauce\n
+2 cups self-rising flour\n
+1 teaspoon pepper\n
+House seasoning (1 cup salt, 1/4 cup black pepper,1/4 cup garlic powder)\n
+1 (1 to 2 1/2-pound) chicken, cut into pieces\n
+Oil, for frying, preferably peanut oil\n"
+        property string directions: "1. In a medium size bowl, beat the eggs with the water. Add enough hot sauce so the egg mixture is bright orange. In another bowl, combine the flour and pepper. Season the chicken with the house seasoning. Dip the seasoned chicken in the egg, and then coat well in the flour mixture.\n
+2. Heat the oil to 350 degrees F in a deep pot. Do not fill the pot more than 1/2 full with oil.\n
+3. Fry the chicken in the oil until brown and crisp. Dark meat takes longer then white meat. It should take dark meat about 13 to 14 minutes, white meat around 8 to 10 minutes.\n"
         property string imageSource: "Image/RecipeApp/FriedChicken.jpg"
     }
 
     Item{
         id: snacks1
-        property string recipeTitle: "Mac and Cheese"
-        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
-        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
-2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
-3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
-4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
-        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+        property string recipeTitle: "Tiramisu"
+        property string ingredients: "6 egg yolks\n
+3/4 cup white sugar\n
+2/3 cup milk\n
+1 1/4 cups heavy cream\n
+1/2 teaspoon vanilla extract\n
+1 pound mascarpone cheese\n
+1/4 cup strong brewed coffee, room temperature\n
+2 tablespoons rum\n
+2 (3 ounce) packages ladyfinger cookies\n
+1 tablespoon unsweetened cocoa powder\n"
+        property string directions: "1.	In a medium saucepan, whisk together egg yolks and sugar until well blended. Whisk in milk and cook over medium heat, stirring constantly, until mixture boils. Boil gently for 1 minute, remove from heat and allow to cool slightly. Cover tightly and chill in refrigerator 1 hour.\n
+2.	In a medium bowl, beat cream with vanilla until stiff peaks form. Whisk mascarpone into yolk mixture until smooth.\n
+3.	In a small bowl, combine coffee and rum. Split ladyfingers in half lengthwise and drizzle with coffee mixture.\n
+4.	Arrange half of soaked ladyfingers in bottom of a 7x11 inch dish. Spread half of mascarpone mixture over ladyfingers, then half of whipped cream over that. Repeat layers and sprinkle with cocoa. Cover and refrigerate 4 to 6 hours, until set.\n"
+        property string imageSource: "Image/RecipeApp/Tiramisu.jpg"
     }
 
     Item{
         id: snacks2
-        property string recipeTitle: "Mac and Cheese"
-        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
-        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
-2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
-3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
-4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
-        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+        property string recipeTitle: "S'mores"
+        property string ingredients: "1 large marshmallow\n
+1 graham cracker\n
+1 (1.5 ounce) bar chocolate candy bar\n"
+        property string directions: "1.	Heat the marshmallow over an open flame until it begins to brown and melt.\n
+2.	Break the graham cracker in half. Sandwich the chocolate between the cracker and the hot marshmallow. Allow the marshmallow to cool a moment before eating.\n"
+        property string imageSource: "Image/RecipeApp/Smores.jpg"
     }
 
     Item{
         id: snacks3
-        property string recipeTitle: "Mac and Cheese"
-        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
-        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
-2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
-3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
-4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
-        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
-    }
-
-    Item{
-        id: snacks4
-        property string recipeTitle: "Mac and Cheese"
-        property string ingredients: "1 1/2 cups uncooked elbow macaroni\n 1/4 cup butter\n 2 tablespoons all-purpose flour\n 1 teaspoon mustard powder\n 1 teaspoon ground black pepper\n 2 cups milk\n 8 ounces American cheese, cubed\n 8 ounces processed cheese food (eg.Velveeta), cubed\n 1/4 cup seasoned dry bread crumbs"
-        property string directions: "1.	Preheat oven to 400 degrees F (205 degrees C). Butter a 1 1/2 quart casserole dish. Bring a saucepan of lightly salted water to a boil. Add macaroni, and cook until not quite done, about 6 minutes. Drain.\n
-2.	In a separate saucepan, melt the butter over medium heat. Blend in the flour, mustard powder, and pepper until smooth. Slowly stir in the milk, beating out any lumps. Add the American and processed cheeses, and stir constantly until the sauce is thick and smooth.\n
-3.	Drain noodles, and stir them into the cheese sauce. Transfer the mixture to the prepared casserole dish. Sprinkle bread crumbs over the top.\n
-4.	Cover the dish, and bake for 20 to 25 minutes, or until sauce is thick and bubbly.\n"
-        property string imageSource: "Image/RecipeApp/MacAndCheese.jpg"
+        property string recipeTitle: "Popcorn"
+        property string ingredients: "1/2 cup unpopped popcorn\n
+1 teaspoon vegetable oil\n
+1/2 teaspoon salt, or to taste\n"
+        property string directions: "1.	In a cup or small bowl, mix together the unpopped popcorn and oil. Pour the coated corn into a brown paper lunch sack, and sprinkle in the salt. Fold the top of the bag over twice to seal in the ingredients.\n
+2.	Cook in the microwave at full power for 2 1/2 to 3 minutes, or until you hear pauses of about 2 seconds between pops. Carefully open the bag to avoid steam, and pour into a serving bowl.\n"
+        property string imageSource: "Image/RecipeApp/Popcorn.jpg"
     }
 
 
@@ -218,11 +427,24 @@ Over medium-low heat, heat griddle or skillet coated with a thin layer of butter
                 color: "#ffffff"
                 text: qsTr("Breakfast")
                 font.bold: true
-                font.family: mediumFont.bold
+                font.family: mediumFont.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: 70
             }
+        }
+
+        onClicked: {
+            rectangle1.color = "#ffffff"
+            text1.color = "#000000"
+            item1text = breakfast1.recipeTitle
+            item1image = breakfast1.imageSource
+            item2text = breakfast2.recipeTitle
+            item2image = breakfast2.imageSource
+            item3text = breakfast3.recipeTitle
+            item3image = breakfast3.imageSource
+            item4text = breakfast4.recipeTitle
+            item4image = breakfast4.imageSource
         }
     }
 
@@ -255,9 +477,22 @@ Over medium-low heat, heat griddle or skillet coated with a thin layer of butter
                 font.pixelSize: 70
                 font.bold: true
                 verticalAlignment: Text.AlignVCenter
-                font.family: mediumFont.bold
+                font.family: mediumFont.name
                 horizontalAlignment: Text.AlignRight
             }
+        }
+
+        onClicked:{
+            rectangle2.color = "#ffffff"
+            text2.color = "#000000"
+            item1text = lunch1.recipeTitle
+            item1image = lunch1.imageSource
+            item2text = lunch2.recipeTitle
+            item2image = lunch2.imageSource
+            item3text = lunch3.recipeTitle
+            item3image = lunch3.imageSource
+            item4text = lunch4.recipeTitle
+            item4image = lunch4.imageSource
         }
     }
 
@@ -289,11 +524,24 @@ Over medium-low heat, heat griddle or skillet coated with a thin layer of butter
                 color: "#ffffff"
                 text: qsTr("Dinner")
                 font.bold: true
-                font.family: mediumFont.bold
+                font.family: mediumFont.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: 70
             }
+        }
+
+        onClicked: {
+            rectangle3.color = "#ffffff"
+            text3.color = "#000000"
+            item1text = dinner1.recipeTitle
+            item1image = dinner1.imageSource
+            item2text = dinner2.recipeTitle
+            item2image = dinner2.imageSource
+            item3text = dinner3.recipeTitle
+            item3image = dinner3.imageSource
+            item4text = dinner4.recipeTitle
+            item4image = dinner4.imageSource
         }
     }
 
@@ -323,194 +571,24 @@ Over medium-low heat, heat griddle or skillet coated with a thin layer of butter
                 height: 94
                 color: "#ffffff"
                 text: qsTr("Snacks")
-                font.family: mediumFont.bold
+                font.family: mediumFont.name
                 font.bold: true
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: 70
             }
         }
-    }
 
-    Rectangle {
-        id: rectangle5
-        x: 639
-        y: 116
-        width: 1200
-        height: 806
-        color: "#000000"
-        radius: 0
-        border.width: 3
-        opacity: 0.500
-        border.color: "#000000"
-
-        MouseArea {
-            id: item1Button
-            x: 65
-            y: 30
-            width: 1070
-            height: 170
-
-            Rectangle {
-                id: rectangle6
-                x: 0
-                y: 0
-                width: 1070
-                height: 170
-                color: "#000000"
-                radius: 13
-                border.color: "#000000"
-
-                Image {
-                    id: image1
-                    x: 16
-                    y: 12
-                    width: 190
-                    height: 145
-                    source: lunch1.imageSource
-                }
-
-                Text {
-                    id: text5
-                    x: 226
-                    y: 12
-                    width: 807
-                    height: 145
-                    color: "#ffffff"
-                    text: lunch1.recipeTitle
-                    font.family: mediumFont
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignLeft
-                    font.pixelSize: 70
-                }
-            }
+        onClicked:{
+            rectangle4.color = "#ffffff"
+            text4.color = "#000000"
+            item1text = snacks1.recipeTitle
+            item1image = snacks1.imageSource
+            item2text = snacks2.recipeTitle
+            item2image = snacks2.imageSource
+            item3text = snacks3.recipeTitle
+            item3image = snacks3.imageSource
         }
-
-        MouseArea {
-            id: item2Button
-            x: 65
-            y: 218
-            width: 1070
-            height: 170
-
-            Rectangle {
-                id: rectangle7
-                x: 0
-                y: 0
-                width: 1070
-                height: 170
-                color: "#000000"
-                radius: 13
-                border.color: "#000000"
-
-                Image {
-                    id: image2
-                    x: 16
-                    y: 12
-                    width: 190
-                    height: 145
-                    source: "qrc:/qtquickplugin/images/template_image.png"
-                }
-
-                Text {
-                    id: text6
-                    x: 226
-                    y: 13
-                    width: 807
-                    height: 145
-                    color: "#ffffff"
-                    text: qsTr("text")
-                    horizontalAlignment: Text.AlignLeft
-                    font.family: mediumFont
-                    font.pixelSize: 70
-                    verticalAlignment: Text.AlignVCenter
-                }
-            }
-        }
-
-        MouseArea {
-            id: item3Button
-            x: 65
-            y: 408
-            width: 1070
-            height: 170
-
-            Rectangle {
-                id: rectangle8
-                x: 0
-                y: 0
-                width: 1070
-                height: 170
-                color: "#000000"
-                radius: 13
-
-                Image {
-                    id: image3
-                    x: 16
-                    y: 12
-                    width: 190
-                    height: 145
-                    source: "qrc:/qtquickplugin/images/template_image.png"
-                }
-
-                Text {
-                    id: text7
-                    x: 224
-                    y: 12
-                    width: 807
-                    height: 145
-                    color: "#ffffff"
-                    text: qsTr("text")
-                    horizontalAlignment: Text.AlignLeft
-                    font.family: mediumFont
-                    font.pixelSize: 70
-                    verticalAlignment: Text.AlignVCenter
-                }
-            }
-        }
-
-        MouseArea {
-            id: item4Button
-            x: 65
-            y: 597
-            width: 1070
-            height: 170
-
-            Rectangle {
-                id: rectangle9
-                x: 0
-                y: 0
-                width: 1070
-                height: 170
-                color: "#000000"
-                radius: 13
-                border.color: "#000000"
-
-                Image {
-                    id: image4
-                    x: 16
-                    y: 11
-                    width: 190
-                    height: 145
-                    source: "qrc:/qtquickplugin/images/template_image.png"
-                }
-
-                Text {
-                    id: text8
-                    x: 226
-                    y: 11
-                    width: 807
-                    height: 145
-                    color: "#ffffff"
-                    text: qsTr("text")
-                    horizontalAlignment: Text.AlignLeft
-                    font.family: mediumFont
-                    font.pixelSize: 70
-                    verticalAlignment: Text.AlignVCenter
-                }
-            }
-        }
-
     }
 
 }

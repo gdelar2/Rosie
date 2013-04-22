@@ -219,6 +219,12 @@ Flickable {
         visible: false
         }
 
+        RecipeApp{
+            x: 0
+            y: 100
+            visible: false
+        }
+
         GalleryTinyWidget{
         visible: false
         }
