@@ -16,8 +16,9 @@ Rectangle {
         color: "#000000"
         radius: 0
         border.width: 3
-        opacity: 0.500
+        opacity: 0.850
         border.color: "#000000"
+
 
         MouseArea {
             id: item1Button
@@ -185,7 +186,6 @@ Rectangle {
                 }
             }
         }
-
     }
 
     Item{
@@ -337,7 +337,7 @@ lemon pepper to taste\n"
 5. When the macaroni is cooked, but still a bit firm, drain it and set aside. Preheat oven to 375°.\n
 6. Add the flour to the pot with the chorizo and mix well. Everything will clump up. Reduce the heat to medium-low and cook, stirring constantly and scraping the bottom of the pot, for 2 minutes. Add the hot milk a tablespoon at a time, stirring constantly. When all the milk has been added, heat the mixture to a gentle simmer and cook for 2 minutes.\n
 7. Mix the grated cheese into the chorizo milk sauce. Mix in the cooked macaroni into the chorizo cheese sauce. Stir in the lime juice. Pour the macaroni and cheese into a small casserole dish. Make sure the top is level. Dust the top with the breadcrumbs, then dot with the butter. Bake until the breadcrumbs are golden, about 20 to 25 minutes.\n"
-        property string imageSource: "Image/RecipeApp/ChorizoMacAndCheese.jpg"
+        property string imageSource: "Image/RecipeApp/ChorizoMacAndCheese.png"
     }
 
     Item{
@@ -354,7 +354,7 @@ Oil, for frying, preferably peanut oil\n"
         property string directions: "1. In a medium size bowl, beat the eggs with the water. Add enough hot sauce so the egg mixture is bright orange. In another bowl, combine the flour and pepper. Season the chicken with the house seasoning. Dip the seasoned chicken in the egg, and then coat well in the flour mixture.\n
 2. Heat the oil to 350 degrees F in a deep pot. Do not fill the pot more than 1/2 full with oil.\n
 3. Fry the chicken in the oil until brown and crisp. Dark meat takes longer then white meat. It should take dark meat about 13 to 14 minutes, white meat around 8 to 10 minutes.\n"
-        property string imageSource: "Image/RecipeApp/FriedChicken.jpg"
+        property string imageSource: "Image/RecipeApp/FriedChicken.jpeg"
     }
 
     Item{
@@ -437,14 +437,20 @@ Oil, for frying, preferably peanut oil\n"
         onClicked: {
             rectangle1.color = "#ffffff"
             text1.color = "#000000"
-            item1text = breakfast1.recipeTitle
-            item1image = breakfast1.imageSource
-            item2text = breakfast2.recipeTitle
-            item2image = breakfast2.imageSource
-            item3text = breakfast3.recipeTitle
-            item3image = breakfast3.imageSource
-            item4text = breakfast4.recipeTitle
-            item4image = breakfast4.imageSource
+            rectangle2.color = "#000000"
+            text2.color = "#ffffff"
+            rectangle3.color = "#000000"
+            text3.color = "#ffffff"
+            rectangle4.color = "#000000"
+            text4.color = "#ffffff"
+            item1text.text = breakfast1.recipeTitle
+            item1image.source = breakfast1.imageSource
+            item2text.text = breakfast2.recipeTitle
+            item2image.source = breakfast2.imageSource
+            item3text.text = breakfast3.recipeTitle
+            item3image.source = breakfast3.imageSource
+            item4text.text = breakfast4.recipeTitle
+            item4image.source = breakfast4.imageSource
         }
     }
 
@@ -485,14 +491,20 @@ Oil, for frying, preferably peanut oil\n"
         onClicked:{
             rectangle2.color = "#ffffff"
             text2.color = "#000000"
-            item1text = lunch1.recipeTitle
-            item1image = lunch1.imageSource
-            item2text = lunch2.recipeTitle
-            item2image = lunch2.imageSource
-            item3text = lunch3.recipeTitle
-            item3image = lunch3.imageSource
-            item4text = lunch4.recipeTitle
-            item4image = lunch4.imageSource
+            rectangle1.color = "#000000"
+            text1.color = "#ffffff"
+            rectangle3.color = "#000000"
+            text3.color = "#ffffff"
+            rectangle4.color = "#000000"
+            text4.color = "#ffffff"
+            item1text.text = lunch1.recipeTitle
+            item1image.source = lunch1.imageSource
+            item2text.text = lunch2.recipeTitle
+            item2image.source = lunch2.imageSource
+            item3text.text = lunch3.recipeTitle
+            item3image.source = lunch3.imageSource
+            item4text.text = lunch4.recipeTitle
+            item4image.source = lunch4.imageSource
         }
     }
 
@@ -534,14 +546,20 @@ Oil, for frying, preferably peanut oil\n"
         onClicked: {
             rectangle3.color = "#ffffff"
             text3.color = "#000000"
-            item1text = dinner1.recipeTitle
-            item1image = dinner1.imageSource
-            item2text = dinner2.recipeTitle
-            item2image = dinner2.imageSource
-            item3text = dinner3.recipeTitle
-            item3image = dinner3.imageSource
-            item4text = dinner4.recipeTitle
-            item4image = dinner4.imageSource
+            rectangle1.color = "#000000"
+            text1.color = "#ffffff"
+            rectangle2.color = "#000000"
+            text2.color = "#ffffff"
+            rectangle4.color = "#000000"
+            text4.color = "#ffffff"
+            item1text.text = dinner1.recipeTitle
+            item1image.source = dinner1.imageSource
+            item2text.text = dinner2.recipeTitle
+            item2image.source = dinner2.imageSource
+            item3text.text = dinner3.recipeTitle
+            item3image.source = dinner3.imageSource
+            item4text.text = dinner4.recipeTitle
+            item4image.source = dinner4.imageSource
         }
     }
 
@@ -582,12 +600,20 @@ Oil, for frying, preferably peanut oil\n"
         onClicked:{
             rectangle4.color = "#ffffff"
             text4.color = "#000000"
-            item1text = snacks1.recipeTitle
-            item1image = snacks1.imageSource
-            item2text = snacks2.recipeTitle
-            item2image = snacks2.imageSource
-            item3text = snacks3.recipeTitle
-            item3image = snacks3.imageSource
+            rectangle1.color = "#000000"
+            text1.color = "#ffffff"
+            rectangle3.color = "#000000"
+            text3.color = "#ffffff"
+            rectangle2.color = "#000000"
+            text2.color = "#ffffff"
+            item1text.text = snacks1.recipeTitle
+            item1image.source = snacks1.imageSource
+            item2text.text = snacks2.recipeTitle
+            item2image.source = snacks2.imageSource
+            item3text.text = snacks3.recipeTitle
+            item3image.source = snacks3.imageSource
+            item4text.text = ""
+            item4image.source = ""
         }
     }
 
