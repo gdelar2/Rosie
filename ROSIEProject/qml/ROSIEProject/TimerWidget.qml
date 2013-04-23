@@ -16,7 +16,8 @@ Rectangle {
 
 
     width: 600
-    height: 650
+    //height: 650
+    height:450
     color: "#000000"
     opacity: 0.7
 
@@ -29,13 +30,19 @@ Rectangle {
 
     function timeHandler(){
         if(start){
-            if(minutes==0){
-                minutes=59
-                hours=(hours%12)-1
+            if(hours==0&&minutes==0){
+                timerStatusText.text="DONE!!!"
+                start=false;
             }else{
 
-           minutes=(minutes%60)-1
-            }
+                 minutes=((minutes)%60)-1;
+                if(minutes==-1){
+                    minutes=59;
+                    hours--;
+                    if(hours==-1)hours=23;
+                }
+              }
+
         }
 
 
@@ -171,7 +178,8 @@ Rectangle {
                anchors.fill: parent
 
              onClicked  :{
-                 hours++
+                 hours=((hours+1)%24);
+
                 }
 
             }
@@ -211,7 +219,7 @@ Rectangle {
                  anchors.fill: parent
 
                  onClicked:{
-                     minutes++
+                     minutes=((minutes+1)%60);
                  }
 
             }
@@ -250,7 +258,8 @@ Rectangle {
                 id: downButton1
                 anchors.fill: parent
                onClicked:{
-                   hours--
+                   hours--;
+                   if(hours==-1) hours=23
                }
             }
         }
@@ -288,7 +297,8 @@ Rectangle {
                 anchors.fill: parent
 
                 onClicked:{
-                minutes--
+                   minutes--;
+                    if(minutes==-1)minutes=59;
                 }
             }
         }
@@ -297,7 +307,8 @@ Rectangle {
 
     MouseArea {
         id: startButton
-        x: 12
+        //x: 12
+        anchors.horizontalCenter: parent.horizontalCenter
         y: 329
         width: 241
         height: 70
@@ -312,10 +323,12 @@ Rectangle {
             radius:13
             Text {
                 id: startText
-                x: 84
-                y: 14
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter:  parent.verticalCenter
+               // x: 84
+                //y: 14
                 color: "#ffffff"
-                text: qsTr("Start")
+                text: qsTr("Start/Stop")
                 font.family: mediumFont.name
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -324,53 +337,26 @@ Rectangle {
         }
 
         onClicked: {
-            start=true
-             timerStatusText.text=qsTr("Running")
+            start=!start
+            if(start){
+             timerStatusText.text=qsTr("Running")}
+            else{
+                timerStatusText.text=qsTr("Not Running")}
+
         }
     }
 
 
-    MouseArea {
-        id: stopButton
-        x: 345
-        y: 329
-        width: 241
-        height: 70
 
-        Rectangle {
-            id: stopRectangle
-            x: 0
-            y: 0
-            width: 241
-            height: 70
-            color: "#000000"
-            opacity: 0.800
-
-            Text {
-                id: stopText
-                x: 88
-                y: 14
-                color: "#ffffff"
-                text: qsTr("Stop")
-                font.pixelSize: 32
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.family: mediumFont.name
-            }
-        }
-        onClicked:{
-            start=false
-            timerStatusText.text=qsTr("Not Running")
-        }
-    }
 
     //status
 
     Text{
         id: timerStatusText
         text:qsTr("Not Running")
-        x:250
-        y:400
+       // x:250
+        anchors.horizontalCenter: parent.horizontalCenter
+        y:convertTitle.y
         font.pixelSize: 32
         font.family: mediumFont.name
         color: "#ffffff"
