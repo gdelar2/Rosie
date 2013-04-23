@@ -13,7 +13,7 @@ Rectangle {
         width: 523
         height: 48
         color: "#ffffff"
-        text: qsTr("Video/Youtube")
+        text: qsTr("Video")
         style: Text.Raised
         anchors.left: parent.left
         anchors.leftMargin: 12
