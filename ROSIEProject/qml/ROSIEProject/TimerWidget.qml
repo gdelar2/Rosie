@@ -49,7 +49,7 @@ Rectangle {
     }
 
     Timer{
-        interval:1000//milliseconds
+        interval:60000//milliseconds
         running: true
         repeat: true
 
@@ -339,7 +339,9 @@ Rectangle {
         onClicked: {
             start=!start
             if(start){
-             timerStatusText.text=qsTr("Running")}
+             timerStatusText.text=qsTr("Running")
+                //rectangle4.visible=false;
+            }
             else{
                 timerStatusText.text=qsTr("Not Running")}
 
