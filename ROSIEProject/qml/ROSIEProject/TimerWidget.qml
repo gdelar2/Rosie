@@ -2,6 +2,18 @@ import QtQuick 2.0
 
 Rectangle {
 
+    //drag code
+    MouseArea {
+        anchors.fill: parent
+        drag.target: parent
+        drag.axis: Drag.XandYAxis
+        drag.minimumX: 0
+        drag.maximumX: application.width - parent.width
+        drag.minimumY: 100
+        drag.maximumY: application.height - parent.height
+    }
+
+
 
     width: 600
     height: 650
@@ -9,13 +21,36 @@ Rectangle {
     opacity: 0.7
 
 
-    property int seconds:0
-    property int minutes:0
+    //property int seconds:0
+    property int minutes:10
     property int hours: 7
+    property bool start:false
 
-    function test(){
+
+    function timeHandler(){
+        if(start){
+            if(minutes==0){
+                minutes=59
+                hours=(hours%12)-1
+            }else{
+
+           minutes=(minutes%60)-1
+            }
+        }
+
 
     }
+
+    Timer{
+        interval:1000//milliseconds
+        running: true
+        repeat: true
+
+        onTriggered: {
+            timeHandler()
+        }
+    }
+
 
     Text {
         id: convertTitle
@@ -36,7 +71,7 @@ Rectangle {
     }
 
     Rectangle {
-        id: hourRectangle
+        id: leftRectangle
         x: 12
         y: 94
         width: 200
@@ -61,7 +96,7 @@ Rectangle {
             x: 25
             y: 3
             color: "#ffffff"
-            text: qsTr(" "+hours)
+            text: qsTr(""+hours)
             font.family: mediumFont.name
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
@@ -70,7 +105,7 @@ Rectangle {
     }
 
     Rectangle {
-        id: minuteRectangle
+        id: rightRectangle
         x: 306
         y: 94
         width: 200
@@ -136,7 +171,7 @@ Rectangle {
                anchors.fill: parent
 
              onClicked  :{
-
+                 hours++
                 }
 
             }
@@ -145,17 +180,12 @@ Rectangle {
 
 
 
-    MouseArea {
-        id: upButton2
-        x: 517
-        y: 108
-        width: 75
-        height: 75
+
 
         Rectangle {
             id: rectangle7
-            x: 0
-            y: 0
+            x: 517
+            y: 108
             width: 75
             height: 75
             color: "#000000"
@@ -176,20 +206,24 @@ Rectangle {
                 font.family: mediumFont.name
                 font.bold: true
             }
-        }
-    }
+            MouseArea {
+                id: upButton2
+                 anchors.fill: parent
 
-    MouseArea {
-        id: downButton1
-        x: 220
-        y: 195
-        width: 75
-        height: 75
+                 onClicked:{
+                     minutes++
+                 }
+
+            }
+        }
+
+
+
 
         Rectangle {
             id: rectangle5
-            x: 0
-            y: 0
+            x: 220
+            y: 195
             width: 75
             height: 75
             color: "#000000"
@@ -211,20 +245,23 @@ Rectangle {
                 font.family: mediumFont.name
                 font.bold: true
             }
-        }
-    }
 
-    MouseArea {
-        id: downButton2
-        x: 517
-        y: 195
-        width: 75
-        height: 75
+            MouseArea {
+                id: downButton1
+                anchors.fill: parent
+               onClicked:{
+                   hours--
+               }
+            }
+        }
+
+
+
 
         Rectangle {
             id: rectangle6
-            x: 0
-            y: 0
+            x: 517
+            y: 195
             width: 75
             height: 75
             color: "#000000"
@@ -246,8 +283,16 @@ Rectangle {
                 font.family: mediumFont.name
                 font.bold: true
             }
+            MouseArea {
+                id: downButton2
+                anchors.fill: parent
+
+                onClicked:{
+                minutes--
+                }
+            }
         }
-    }
+
 
 
     MouseArea {
@@ -264,7 +309,7 @@ Rectangle {
            anchors.fill: startButton
             color: "#000000"
             opacity: 0.800
-
+            radius:13
             Text {
                 id: startText
                 x: 84
@@ -279,7 +324,8 @@ Rectangle {
         }
 
         onClicked: {
-            startText.text="changed"
+            start=true
+             timerStatusText.text=qsTr("Running")
         }
     }
 
@@ -312,45 +358,25 @@ Rectangle {
                 font.family: mediumFont.name
             }
         }
-    }
-
-    MouseArea {
-        id: changeButton
-        x: 180
-        y: 440
-        width: 241
-        height: 70
-
-        Rectangle {
-            id: changeRectangle
-            x: 0
-            y: 0
-            width: 241
-            height: 70
-            color: "#000000"
-            opacity: 0.800
-
-            Text {
-                id: changeText
-                x: 5
-                y: 19
-                color: "#ffffff"
-                text: qsTr("Minutes / Seconds")
-                font.family: mediumFont.name
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: 28
-            }
+        onClicked:{
+            start=false
+            timerStatusText.text=qsTr("Not Running")
         }
     }
 
-    MouseArea {
-        anchors.fill: parent
-        drag.target: parent
-        drag.axis: Drag.XandYAxis
-        drag.minimumX: 0
-        drag.maximumX: application.width - parent.width
-        drag.minimumY: 100
-        drag.maximumY: application.height - parent.height
+    //status
+
+    Text{
+        id: timerStatusText
+        text:qsTr("Not Running")
+        x:250
+        y:400
+        font.pixelSize: 32
+        font.family: mediumFont.name
+        color: "#ffffff"
+
     }
+
+
+
 }
