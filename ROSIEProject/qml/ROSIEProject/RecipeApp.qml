@@ -60,6 +60,11 @@ Rectangle {
                     font.pixelSize: 70
                 }
             }
+
+            onClicked:{
+                rectangle5.visible = false
+                recipeview1.visible = true
+            }
         }
 
         MouseArea {
@@ -102,6 +107,11 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                 }
             }
+
+            onClicked:{
+                rectangle5.visible = false
+                recipeview1.visible = true
+            }
         }
 
         MouseArea {
@@ -143,6 +153,12 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                 }
             }
+
+            onClicked:{
+                rectangle5.visible = false
+                recipeview1.visible = true
+            }
+
         }
 
         MouseArea {
@@ -184,6 +200,12 @@ Rectangle {
                     font.pixelSize: 70
                     verticalAlignment: Text.AlignVCenter
                 }
+            }
+
+            onClicked:{
+                rectangle5.visible = false
+                recipeview1.visible = true
+                recipeview1.setRecipe(dinner3.recipeTitle, dinner3.ingredients, dinner3.directions, dinner3.imageSource)
             }
         }
     }
@@ -296,8 +318,8 @@ Over medium-low heat, heat griddle or skillet coated with a thin layer of butter
 
     Item{
         id: dinner1
-        property string recipeTitle: "Spaghetti and Basil Garlic Sauce"
-        property string ingredients: "1 lb penne rigate\n3 tablespoons extra virgin olive oil\n3 cloves garlic, minced\n1 pint ripe cherry tomatoes, sliced in half (approximately 1.5 cups)\n2 tablespoons fresh basil, chopped\n1 teaspoon dried red pepper flakes\nsalt and black pepper\ngrated parmesan cheese\n"
+        property string recipeTitle: "Spaghetti and Sauce"
+        property string ingredients: "1 lb Spaghetti\n3 tablespoons extra virgin olive oil\n3 cloves garlic, minced\n1 pint ripe cherry tomatoes, sliced in half (approximately 1.5 cups)\n2 tablespoons fresh basil, chopped\n1 teaspoon dried red pepper flakes\nsalt and black pepper\ngrated parmesan cheese\n"
         property string directions: "1. Bring a large pot of lightly salted water to a boil. Place spaghetti in the pot, cook for 8 to 10 minutes, until al dente, and drain.\n
 2. In a large bowl, toss the spaghetti with the olive oil, butter, garlic, basil, salt, and pepper until evenly coated. Serve with Parmesan cheese.\n"
         property string imageSource: "Image/RecipeApp/Spaghetti.jpg"
@@ -451,6 +473,8 @@ Oil, for frying, preferably peanut oil\n"
             item3image.source = breakfast3.imageSource
             item4text.text = breakfast4.recipeTitle
             item4image.source = breakfast4.imageSource
+            recipeview1.visible = false
+            rectangle5.visible = true
         }
     }
 
@@ -505,6 +529,8 @@ Oil, for frying, preferably peanut oil\n"
             item3image.source = lunch3.imageSource
             item4text.text = lunch4.recipeTitle
             item4image.source = lunch4.imageSource
+            recipeview1.visible = false
+            rectangle5.visible = true
         }
     }
 
@@ -560,6 +586,8 @@ Oil, for frying, preferably peanut oil\n"
             item3image.source = dinner3.imageSource
             item4text.text = dinner4.recipeTitle
             item4image.source = dinner4.imageSource
+            recipeview1.visible = false
+            rectangle5.visible = true
         }
     }
 
@@ -614,7 +642,17 @@ Oil, for frying, preferably peanut oil\n"
             item3image.source = snacks3.imageSource
             item4text.text = ""
             item4image.source = ""
+            recipeview1.visible = false
+            rectangle5.visible = true
         }
     }
+
+    RecipeView {
+        id: recipeview1
+        x: 639
+        y: 20
+        visible: false
+    }
+
 
 }
