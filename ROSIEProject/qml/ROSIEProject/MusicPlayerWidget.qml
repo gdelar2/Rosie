@@ -27,18 +27,9 @@ Rectangle {
         property int arrayIndex: 0
     }
 
-    Image {
-        id: albumArt
-        x: 16
-        y: 13
-        width: 174
-        height: 170
-        source: "Image/RecipeApp/MacAndCheese.jpg"
-    }
-
     MouseArea {
         id: music_back
-        x: 282
+        x: 176
         y: 114
         width: 70
         height: 69
@@ -70,7 +61,7 @@ Rectangle {
 
     MouseArea {
         id: music_play
-        x: 363
+        x: 265
         y: 114
         width: 70
         height: 69
@@ -107,7 +98,7 @@ Rectangle {
 
     MouseArea {
         id: music_forward
-        x: 445
+        x: 357
         y: 114
         width: 70
         height: 69
@@ -139,8 +130,8 @@ Rectangle {
 
     Text {
         id: songTitle
-        x: 211
-        y: 60
+        x: 114
+        y: 63
         width: 373
         height: 39
         color: "#ffffff"
@@ -155,8 +146,8 @@ Rectangle {
 
     Text {
         id: artist
-        x: 211
-        y: 18
+        x: 114
+        y: 21
         width: 373
         height: 39
         color: "#ffffff"
