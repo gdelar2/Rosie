@@ -89,7 +89,7 @@ Rectangle {
             text: qsTr("text")
             font.family: regularFont.name
             wrapMode: Text.WordWrap
-            font.pixelSize: 12
+            font.pixelSize: 16
         }
     }
 }

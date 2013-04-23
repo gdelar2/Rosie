@@ -166,6 +166,17 @@ Flickable {
             }
         }
 
+        RecipeWidget{
+            id: recipeWidget
+            x: 100
+            y: 200
+            visible: false
+
+            onWidgetClicked:{
+                parent.loadApp("RecipeApp.qml", {})
+            }
+        }
+
         MusicPlayerWidget {
             x: 1181
             y: 721
