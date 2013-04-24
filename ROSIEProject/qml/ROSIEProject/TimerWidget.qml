@@ -31,21 +31,21 @@ Rectangle {
 
     function timeHandler(){
         if(start){
-            if(hours==0&&minutes==0){
-                timerStatusText.text="DONE!!!"
-                alarm.play()
-                start=false;
-            }else{
 
-                 minutes=((minutes)%60)-1;
-                if(minutes==-1){
-                    minutes=59;
-                    hours--;
-                    if(hours==-1)hours=23;
-                }
-              }
 
-        }
+            minutes=((minutes)%60)-1;
+           if(minutes==-1){
+               minutes=59;
+               hours--;
+               if(hours==-1)hours=23;
+           }
+           if(hours==0&&minutes==0){
+               timerStatusText.text="DONE!!!"
+               alarm.play()
+               start=false;
+           }
+
+   }
 
 
     }
@@ -144,7 +144,7 @@ Rectangle {
             x: 27
             y: 6
             color: "#ffffff"
-            text: qsTr(""+minutes)
+            text: qsTr(""+(minutes))
             verticalAlignment: Text.AlignVCenter
             font.family: mediumFont.name
             font.pixelSize: 137
