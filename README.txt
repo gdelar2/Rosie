@@ -11,7 +11,7 @@ gallery - Widget TODO - App TODO - Implmentation TODO
 recipe - Widget DONE - App DONE - Implmentation DONE ===FINISHED===
 timer - Widget DONE - App DONE (not needed) - Implmentation DONE ===FINISHED===
 todo list notes. - Widget TODO - App TODO - Implmentation TODO
-video - Widget TODO - App TODO - Implmentation TODO
+video - Widget DONE - App DONE - Implmentation DONE ===FINISHED===
 news - Widget TODO - App TODO - Implmentation TODO
 browser - Widget TODO - App TODO - Implmentation TODO
 weather - Widget DONE - App DONE - Implmentation DONE ===FINISHED===

@@ -58,6 +58,12 @@ Rectangle {
                             onClicked: {
                                 title.text = fileName
                                 fileVideo = fileName
+                                text1.color = "#ffffff"
+                                play.color = "#000000"
+                                text2.color = "#ffffff"
+                                pause.color = "#000000"
+                                text3.color = "#ffffff"
+                                stop.color = "#000000"
                             }
 
                         }

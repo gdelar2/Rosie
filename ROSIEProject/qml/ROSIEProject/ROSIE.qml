@@ -177,6 +177,17 @@ Flickable {
             }
         }
 
+        VideoWiget{
+            id: videoWidget
+            x: 100
+            y: 300
+            visible: true
+
+            onWidgetClicked:{
+                parent.loadApp("VideoApp.qml", {})
+            }
+        }
+
         MusicPlayerWidget {
             x: 1181
             y: 721
@@ -228,12 +239,6 @@ Flickable {
         GalleryApp{
 
         visible: false
-        }
-
-        VideoApp{
-            x: 0
-            y: 100
-            visible: false
         }
 
         GalleryTinyWidget{
