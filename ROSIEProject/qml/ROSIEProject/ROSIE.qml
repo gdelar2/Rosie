@@ -233,7 +233,7 @@ Flickable {
         VideoApp{
             x: 0
             y: 100
-            visible: true
+            visible: false
         }
 
         GalleryTinyWidget{
