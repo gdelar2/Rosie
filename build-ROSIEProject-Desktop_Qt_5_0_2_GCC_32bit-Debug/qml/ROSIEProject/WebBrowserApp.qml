@@ -62,11 +62,40 @@ Rectangle  {
 
     BrowserHeader  {
         id: header
-        x: 170
-        y: 0
-        width: 500
         editUrl: webBrowser.urlString
-        height: headerSpace.height
+        width: headerSpace.width; height: headerSpace.height
+        Button {
+            id: reloadButton
+            x: -169
+            y: 0
+            anchors { right: quitButton.left; rightMargin: 69 }
+            action: webView.reload; image: "Image/browser/refresh.png"
+            visible: webView.progress == 1.0 && !header.urlChanged
+        }
+        Text {
+            id: quitButton
+            color: "white"
+            style: Text.Sunken
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: 18
+            width: 60
+            text: "Quit"
+            MouseArea {
+                anchors.fill: parent
+                onClicked: Qt.quit()
+            }
+            Rectangle {
+                width: 1
+                y: 5
+                height: parent.height-10
+                anchors.right: parent.left
+                color: "darkgray"
+            }
+        }
     }
 
     ScrollBar  {
