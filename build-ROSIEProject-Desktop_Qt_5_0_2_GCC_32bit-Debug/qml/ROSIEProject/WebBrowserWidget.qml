@@ -46,14 +46,14 @@ import QtWebKit 3.0
 Rectangle  {
     id: webBrowser
 
-    property string urlString
+    property string urlString: "http://www.google.com"
 
     width: 800; height: 600
     color: "#343434"
 
     FlickableView  {
         id: webView
-        url: "http://www.google.com"
+        url: webBrowser.urlString
         onProgressChanged: header.urlChanged = false
         anchors  { top: headerSpace.bottom; left: parent.left; right: parent.right; bottom: parent.bottom }
     }
