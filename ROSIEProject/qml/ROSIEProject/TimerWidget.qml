@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtMultimedia 5.0
 
 Rectangle {
 
@@ -23,8 +24,8 @@ Rectangle {
 
 
     //property int seconds:0
-    property int minutes:10
-    property int hours: 7
+    property int minutes:0
+    property int hours: 0
     property bool start:false
 
 
@@ -32,6 +33,7 @@ Rectangle {
         if(start){
             if(hours==0&&minutes==0){
                 timerStatusText.text="DONE!!!"
+                alarm.play()
                 start=false;
             }else{
 
@@ -46,6 +48,11 @@ Rectangle {
         }
 
 
+    }
+
+    Audio{
+        id: alarm
+        source: "music/alarm.mp3"
     }
 
     Timer{
