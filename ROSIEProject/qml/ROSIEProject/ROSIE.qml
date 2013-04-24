@@ -230,10 +230,10 @@ Flickable {
         visible: false
         }
 
-        RecipeApp{
+        VideoApp{
             x: 0
             y: 100
-            visible: false
+            visible: true
         }
 
         GalleryTinyWidget{

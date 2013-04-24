@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import Qt.labs.folderlistmodel 1.0
 import QtMultimedia 5.0
 
 Rectangle {
@@ -14,7 +15,6 @@ Rectangle {
         height: 899
         color: "#000000"
         opacity: 0.600
-        border.color: "#ffffff"
 
         ListView {
             id: list_view1
@@ -22,47 +22,50 @@ Rectangle {
             y: 23
             width: 262
             height: 854
-            model: ListModel {
-                ListElement {
-                    name: "Grey"
-                    colorCode: "grey"
-                }
+            highlightRangeMode: ListView.ApplyRange
+            flickDeceleration: 1748
 
-                ListElement {
-                    name: "Red"
-                    colorCode: "red"
-                }
-
-                ListElement {
-                    name: "Blue"
-                    colorCode: "blue"
-                }
-
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
+            FolderListModel{
+                id: foldermodel
+                folder: "video"
+                nameFilters: ["*.*"]
             }
-            delegate: Item {
-                x: 5
-                height: 40
+
+            Component {
+                id: fileDelegate
                 Row {
                     id: row1
-                    Rectangle {
-                        width: 40
-                        height: 40
-                        color: colorCode
-                    }
 
                     Text {
-                        text: name
-                        font.bold: true
+                        color: "#ffffff"
+                        text: fileName
+                        font.pointSize: 20
+                        style: Text.Sunken
+                        wrapMode: Text.WordWrap
+                        font.family: mediumFont.name
                         anchors.verticalCenter: parent.verticalCenter
+                        font.bold: false
+
+                        MouseArea {
+                            id: mouse_area1
+                            z: 1
+                            hoverEnabled: false
+                            anchors.fill: parent
+
+                            onClicked: {
+                                text1.text = fileName
+                            }
+
+                        }
                     }
                     spacing: 10
                 }
             }
+
+            model: foldermodel
+            delegate: fileDelegate
         }
+
     }
 
     Rectangle {
@@ -74,4 +77,16 @@ Rectangle {
         color: "#000000"
         opacity: 0.900
     }
+
+    Text {
+        id: text1
+        x: 446
+        y: 457
+        color: "#ffffff"
+        text: qsTr("text")
+        font.pixelSize: 50
+    }
+
+
+
 }

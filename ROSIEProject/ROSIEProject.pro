@@ -18,4 +18,7 @@ QT += opengl
 include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
 qtcAddDeployment()
 
-OTHER_FILES +=
+OTHER_FILES += \
+    qml/ROSIEProject/video/Kodak Zi8 Test footage.mp \
+    qml/ROSIEProject/video/Kodak Zi8.mp4 \
+    qml/ROSIEProject/video/Mishima.mp4
