@@ -12,7 +12,7 @@ Rectangle {
 
 
     function loadData(jsonObject){
-         currentWeatherIcon.source=convertWeatherIcon(jsonObject.data.current_condition[0].weatherCode)
+         currentWeatherIcon.source=convertWeatherIcon(jsonObject.data.current_condition[0].weatherCode, true)
         currentTemp.text=qsTr(jsonObject.data.current_condition[0].temp_F+"°F")
 
         //not sure if these max and min are the temps for tomorrow or today
@@ -21,31 +21,31 @@ Rectangle {
         currentLow.text=qsTr(jsonObject.data.weather[0].tempMinF+"°F")
         currentDescription.text=qsTr( jsonObject.data.current_condition[0].weatherDesc[0].value)
 
-        icon1.source = convertWeatherIcon(jsonObject.data.weather[0].weatherCode)
+        icon1.source = convertWeatherIcon(jsonObject.data.weather[0].weatherCode, false)
         description1.text = qsTr(jsonObject.data.weather[0].weatherDesc[0].value)
         low1.text = qsTr(jsonObject.data.weather[0].tempMinF+"°F")
         high1.text = qsTr(jsonObject.data.weather[0].tempMaxF+"°F")
         dayText1.text = qsTr(Qt.formatDate(jsonObject.data.weather[0].date, "dddd"))
 
-        icon2.source = convertWeatherIcon(jsonObject.data.weather[1].weatherCode)
+        icon2.source = convertWeatherIcon(jsonObject.data.weather[1].weatherCode, false)
         description2.text = qsTr(jsonObject.data.weather[1].weatherDesc[0].value)
         low2.text = qsTr(jsonObject.data.weather[1].tempMinF+"°F")
         high2.text = qsTr(jsonObject.data.weather[1].tempMaxF+"°F")
         dayText2.text = qsTr(Qt.formatDate(jsonObject.data.weather[1].date, "dddd"))
 
-        icon3.source = convertWeatherIcon(jsonObject.data.weather[2].weatherCode)
+        icon3.source = convertWeatherIcon(jsonObject.data.weather[2].weatherCode, false)
         description3.text = qsTr(jsonObject.data.weather[2].weatherDesc[0].value)
         low3.text = qsTr(jsonObject.data.weather[2].tempMinF+"°F")
         high3.text = qsTr(jsonObject.data.weather[2].tempMaxF+"°F")
         dayText3.text = qsTr(Qt.formatDate(jsonObject.data.weather[2].date, "dddd"))
 
-        icon4.source = convertWeatherIcon(jsonObject.data.weather[3].weatherCode)
+        icon4.source = convertWeatherIcon(jsonObject.data.weather[3].weatherCode, false)
         description4.text = qsTr(jsonObject.data.weather[3].weatherDesc[0].value)
         low4.text = qsTr(jsonObject.data.weather[3].tempMinF+"°F")
         high4.text = qsTr(jsonObject.data.weather[3].tempMaxF+"°F")
         dayText4.text = qsTr(Qt.formatDate(jsonObject.data.weather[3].date, "dddd"))
 
-        icon5.source = convertWeatherIcon(jsonObject.data.weather[4].weatherCode)
+        icon5.source = convertWeatherIcon(jsonObject.data.weather[4].weatherCode, false)
         description5.text = qsTr(jsonObject.data.weather[4].weatherDesc[0].value)
         low5.text = qsTr(jsonObject.data.weather[4].tempMinF+"°F")
         high5.text = qsTr(jsonObject.data.weather[4].tempMaxF+"°F")

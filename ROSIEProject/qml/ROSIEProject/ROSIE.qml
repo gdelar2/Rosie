@@ -1,5 +1,4 @@
 import QtQuick 2.0
-
 Flickable {
     width: 1360//800
     height: 760//600
@@ -25,10 +24,10 @@ Flickable {
         source: "fonts/Exo-Regular.otf"
     }
 
-    function convertWeatherIcon(icon) {
+    function convertWeatherIcon(icon, checkTime) {
         var daytime = true;
         var currentDate = new Date()
-        if(currentDate.getHours() > 19 || currentDate.getHours() < 5)
+        if(checkTime && (currentDate.getHours() > 19 || currentDate.getHours() < 5))
             daytime = false;
         switch(icon) {
             case "113":
@@ -121,7 +120,7 @@ Flickable {
            qMenuWidgetLoad(2, "WeatherWidget.qml", false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2});
            header.toggleQuickMenu();
            //Auto load an app you're working on
-           //loadApp("WeatherApp.qml", {})
+           loadApp("SettingsApp.qml", {})
        }
 
        function qMenuWidgetLoad(widgetId, widget, scale, properties) {

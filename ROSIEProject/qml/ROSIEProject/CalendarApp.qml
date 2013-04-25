@@ -32,7 +32,7 @@ Rectangle {
             var day = ""
             if(i < 7)
                 day = Qt.formatDate(curDate, "ddd")
-            calendarInfoModel.append({ title: curDay,curMonth: isCurrent,curDay:curDay==lastDay,day:day })
+            calendarInfoModel.append({ title: curDay,curMonth: isCurrent,curDay:curDay==lastDay,day:day,date:curDate })
             curDate.setDate(curDate.getDate()+1)
             curDay = Qt.formatDate(curDate, "d")
         }
@@ -40,7 +40,7 @@ Rectangle {
         for (var i = daysBefore; i < 28; ++i) {
             if (isCurrent && curDay < lastDay)
                 isCurrent = false
-            calendarInfoModel.append({ title: curDay,curMonth: isCurrent,curDay:curDay==lastDay,day:"" })
+            calendarInfoModel.append({ title: curDay,curMonth: isCurrent,curDay:curDay==lastDay,day:"",date:curDate })
             curDate.setDate(curDate.getDate()+1)
             curDay = Qt.formatDate(curDate, "d")
         }
@@ -146,7 +146,7 @@ Rectangle {
 
                         onClicked: {
                             createReminderView.visible = true
-                            createReminderView.setDate(title)
+                            createReminderView.setDate(Qt.formatDate(date, "dddd MMMM dd yyyy"))
                         }
                     }
                 }
