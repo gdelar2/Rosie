@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtWebKit 3.0
+import QtWebKit.experimental 1.0
 
 Rectangle {
     width: 1920
@@ -14,31 +15,20 @@ Rectangle {
         height: 736
 
         url: "http://www.google.com"
+
+        onFocusChanged: {
+            vkeyboard.visible = true
+        }
+
     }
 
 
-    Rectangle {
-        id: rectangle1
-        x: 302
-        y: 90
-        width: 957
-        height: 82
-        color: "#000000"
-        opacity: 0.700
-
-        TextInput {
-            id: urltext
-            x: 14
-            y: 6
-            width: 930
-            height: 71
-            color: "#ffffff"
-            text: qsTr("http://")
-            selectedTextColor: "#5a2b2b"
-            selectionColor: "#884f3b"
-            font.family: mediumFont.name
-            font.pixelSize: 55
-        }
+    Textbox {
+        id: textbox1
+        x: 306
+        y: 80
+        width: 980
+        strText: "http://"
     }
 
     Image {
@@ -134,9 +124,14 @@ Rectangle {
             anchors.fill: parent
 
             onClicked: {
-                webview1.url = urltext.text
+                webview1.url = textbox1.strText
             }
         }
     }
 
+    VirtualKeyboard{
+        id: vkeyboard
+        visible: false
+        y: 1080 - 400
+    }
 }
