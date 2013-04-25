@@ -114,7 +114,7 @@ Flickable {
         height: 1080
         color: mainColor
         //0-1 scale, doesn't work great but still gives a bit more insight as to how it looks
-        scale: 0.5
+        scale: 1.0
 
        Component.onCompleted: {
            qMenuWidgetLoad(1, "TransitWidget.qml", true, {"y": 500, "border.color": "#FFFFFF", "border.width": 2});
@@ -170,7 +170,7 @@ Flickable {
             id: recipeWidget
             x: 100
             y: 200
-            visible: false
+            visible: true
 
             onWidgetClicked:{
                 parent.loadApp("RecipeApp.qml", {})
@@ -239,6 +239,13 @@ Flickable {
         GalleryApp{
 
         visible: false
+        }
+
+        WebBrowserApp{
+            x: 0
+            y: 100
+
+            visible: false
         }
 
         GalleryTinyWidget{
