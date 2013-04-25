@@ -241,10 +241,299 @@ Rectangle {
             anchors.fill: parent
             color: mainColor
 
+            Text {
+                id: nameTxt
+                anchors.left: parent.left
+                anchors.leftMargin: 80
+                anchors.top: parent.top
+                anchors.topMargin: 120
+                font.family: mediumFont.name
+                font.pointSize: 64
+                color: "#000"
+                opacity: .68
+                text: "Name:"
+            }
+
+
             Textbox {
+                id: nameTxtbox
                 anchors.leftMargin: 80
                 strText: ""
+                x: 400
+                y: 120
                 z:999
+            }
+
+            Text {
+                id: avatarTxt
+                x: 80
+                y: 253
+                color: "#000000"
+                text: "Avatar:"
+                anchors.topMargin: 253
+                anchors.top: parent.top
+                font.pointSize: 64
+                anchors.leftMargin: 80
+                anchors.left: parent.left
+                font.family: mediumFont.name
+                opacity: 0.680
+            }
+
+            Row {
+                id: row1
+                x: 370
+                y: 243
+                width: 1075
+                height: 117
+                spacing: 18
+
+                Rectangle {
+                    id: rectangle1
+                    x: 0
+                    y: 0
+                    width: 118
+                    height: 117
+                    color: "#000000"
+                    opacity: 0.800
+
+                    Image {
+                        width: 118
+                        height: 117
+                        source: "Image/User/chess.png"
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+
+                        onClicked: {
+                            rectangle1.color = "#ffffff"
+                            rectangle2.color = "#000000"
+                            rectangle3.color = "#000000"
+                            rectangle4.color = "#000000"
+                            rectangle5.color = "#000000"
+                            rectangle6.color = "#000000"
+                            rectangle7.color = "#000000"
+                            rectangle8.color = "#000000"
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle2
+                    x: 8
+                    y: 0
+                    width: 118
+                    height: 117
+                    color: "#000000"
+                    opacity: 0.800
+
+                    Image {
+                        width: 118
+                        height: 117
+                        source: "Image/User/games.png"
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+
+                        onClicked: {
+                            rectangle2.color = "#ffffff"
+                            rectangle1.color = "#000000"
+                            rectangle3.color = "#000000"
+                            rectangle4.color = "#000000"
+                            rectangle5.color = "#000000"
+                            rectangle6.color = "#000000"
+                            rectangle7.color = "#000000"
+                            rectangle8.color = "#000000"
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle3
+                    x: -3
+                    y: 0
+                    width: 118
+                    height: 117
+                    color: "#000000"
+                    opacity: 0.800
+
+                    Image {
+                        width: 118
+                        height: 117
+                        source: "Image/User/light_bulb.png"
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+
+                        onClicked: {
+                            rectangle3.color = "#ffffff"
+                            rectangle2.color = "#000000"
+                            rectangle1.color = "#000000"
+                            rectangle4.color = "#000000"
+                            rectangle5.color = "#000000"
+                            rectangle6.color = "#000000"
+                            rectangle7.color = "#000000"
+                            rectangle8.color = "#000000"
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle4
+                    x: -8
+                    y: 0
+                    width: 118
+                    height: 117
+                    color: "#000000"
+                    opacity: 0.800
+
+                    Image {
+                        width: 118
+                        height: 117
+                        source: "Image/User/magic_wand.png"
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+
+                        onClicked: {
+                            rectangle4.color = "#ffffff"
+                            rectangle2.color = "#000000"
+                            rectangle3.color = "#000000"
+                            rectangle1.color = "#000000"
+                            rectangle5.color = "#000000"
+                            rectangle6.color = "#000000"
+                            rectangle7.color = "#000000"
+                            rectangle8.color = "#000000"
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle5
+                    x: -3
+                    y: 0
+                    width: 118
+                    height: 117
+                    color: "#000000"
+                    opacity: 0.800
+
+                    Image {
+                        width: 118
+                        height: 117
+                        source: "Image/User/paint_brush.png"
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+
+                        onClicked: {
+                            rectangle5.color = "#ffffff"
+                            rectangle2.color = "#000000"
+                            rectangle3.color = "#000000"
+                            rectangle4.color = "#000000"
+                            rectangle1.color = "#000000"
+                            rectangle6.color = "#000000"
+                            rectangle7.color = "#000000"
+                            rectangle8.color = "#000000"
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle6
+                    x: -2
+                    y: 0
+                    width: 118
+                    height: 117
+                    color: "#000000"
+                    opacity: 0.800
+
+                    Image {
+                        width: 118
+                        height: 117
+                        source: "Image/User/star.png"
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+
+                        onClicked: {
+                            rectangle6.color = "#ffffff"
+                            rectangle2.color = "#000000"
+                            rectangle3.color = "#000000"
+                            rectangle4.color = "#000000"
+                            rectangle5.color = "#000000"
+                            rectangle1.color = "#000000"
+                            rectangle7.color = "#000000"
+                            rectangle8.color = "#000000"
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle7
+                    x: 1
+                    y: 0
+                    width: 118
+                    height: 117
+                    color: "#000000"
+                    opacity: 0.800
+
+                    Image {
+                        width: 118
+                        height: 117
+                        source: "Image/User/target.png"
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+
+                        onClicked: {
+                            rectangle7.color = "#ffffff"
+                            rectangle2.color = "#000000"
+                            rectangle3.color = "#000000"
+                            rectangle4.color = "#000000"
+                            rectangle5.color = "#000000"
+                            rectangle6.color = "#000000"
+                            rectangle1.color = "#000000"
+                            rectangle8.color = "#000000"
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle8
+                    x: -1
+                    y: 0
+                    width: 118
+                    height: 117
+                    color: "#000000"
+                    opacity: 0.800
+
+                    Image {
+                        width: 118
+                        height: 117
+                        source: "Image/User/umbrella.png"
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+
+                        onClicked: {
+                            rectangle8.color = "#ffffff"
+                            rectangle2.color = "#000000"
+                            rectangle3.color = "#000000"
+                            rectangle4.color = "#000000"
+                            rectangle5.color = "#000000"
+                            rectangle6.color = "#000000"
+                            rectangle7.color = "#000000"
+                            rectangle1.color = "#000000"
+                        }
+                    }
+                }
             }
         }
 
