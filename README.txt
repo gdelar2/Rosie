@@ -13,7 +13,7 @@ timer - Widget DONE - App DONE (not needed) - Implmentation DONE ===FINISHED===
 todo list notes. - Widget TODO - App TODO - Implmentation TODO
 video - Widget DONE - App DONE - Implmentation DONE ===FINISHED===
 news - Widget TODO - App TODO - Implmentation TODO
-browser - Widget TODO - App TODO - Implmentation TODO
+browser - Widget DONE - App DONE - Implmentation DONE ===FINISHED===
 weather - Widget DONE - App DONE - Implmentation DONE ===FINISHED===
 time - Widget DONE - App TODO - Implmentation DONE
 date - Widget DONE - App TODO - Implmentation TODO
