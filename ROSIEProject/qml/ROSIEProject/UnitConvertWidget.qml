@@ -19,6 +19,13 @@ Rectangle {
 
     property string conversionTo: ""
 
+    function loadApp(appQmlFile, properties) {
+        var app = Qt.createComponent(appQmlFile);
+        app.createObject(currentApp, properties);
+        if (!currentApp.visible)
+            currentApp.visible = true;
+    }
+
     function conversion(){
         //conversions (26 of them total)
         if(dropdownmenu1.selectedItem == "Gram(g)" && dropdownmenu2.selectedItem == "Kilogram(kg)"){
@@ -150,7 +157,7 @@ Rectangle {
         y: 404
         width: 276
         height: 84
-        color: "#000000"
+        color: "#fdfafa"
         visible: true
         opacity: 0.700
         border.width: 2
@@ -162,9 +169,10 @@ Rectangle {
             y: 10
             width: 249
             height: 74
-            color: "#ffffff"
+            color: "#090808"
             text: qsTr("")
             font.pixelSize: 50
+            font.family: mediumFont.name
         }
     }
 
@@ -175,16 +183,16 @@ Rectangle {
         //chosenItem.text
         x: 0
         y: 132
-        width: 1
-        height: 1
+        width: 276
+        height: 85
     }
 
     DropDownMenu {
         id: dropdownmenu2
         x: 301
         y: 132
-        width: 0
-        height: 1
+        width: 279
+        height: 85
 
     }
 
@@ -194,7 +202,7 @@ Rectangle {
         y: 404
         width: 274
         height: 84
-        color: "#000000"
+        color: "#fdfafa"
         opacity: 0.700
         visible: true
         border.width: 2
@@ -206,7 +214,7 @@ Rectangle {
             y: 10
             width: 264
             height: 64
-            color: "#ffffff"
+            color: "#070606"
             text: conversionTo
             font.family: mediumFont.name
             font.pixelSize: 50
@@ -221,6 +229,7 @@ Rectangle {
         color: "#ffffff"
         text: qsTr("Go to App")
         font.pixelSize: 30
+        font.family: mediumFont.name
 
         MouseArea {
             id: mouse_area1
@@ -228,9 +237,9 @@ Rectangle {
             y: 0
             width: 256
             height: 36
-            onClicked:{
-                loadApp("UnitConverterApp.qml", {})
-            }
+           onClicked:{
+               loadApp("UnitConverterApp.qml", {})
+           }
         }
     }
 }

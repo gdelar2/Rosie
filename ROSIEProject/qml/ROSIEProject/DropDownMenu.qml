@@ -8,6 +8,7 @@ Rectangle {
         "cup"]
     property alias selectedItem: chosenItemText.text;
     property alias selectedIndex: listView.currentIndex;
+    color: mainColor
     signal comboClicked;
 
     function setText(){
@@ -28,8 +29,8 @@ Rectangle {
            // property alias selectedItem: chosenItemText.text;
            // property alias selectedIndex: listView.currentIndex;
            // signal comboClicked;
-            width: 279
-            height: 90
+            width: parent.width
+            height: parent.height
             z: 100;
             smooth:true;
 

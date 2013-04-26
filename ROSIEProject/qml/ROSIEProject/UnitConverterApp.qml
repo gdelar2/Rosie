@@ -1,8 +1,8 @@
 import QtQuick 2.0
 
 Rectangle {
-    width: 1360
-    height: 760
+    width: 1900
+    height: 1000
     color: "#000000"
     opacity: 0.7
 
@@ -89,11 +89,7 @@ Rectangle {
             conversionTo = parseInt(cFrom.text)/15.999
         }
 
-
-
     }
-
-
 
     Text {
         id: convertTitle
@@ -125,21 +121,21 @@ Rectangle {
 
     Text {
         id: to
-        x: 598
-        y: 190
+        x: 814
+        y: 162
         color: "#ffffff"
         text: qsTr("TO")
-        font.pixelSize: 70
+        font.pixelSize: 100
         font.family: mediumFont.name
     }
 
     Rectangle {
         id: unitsFromBorder
-        x: 45
-        y: 450
-        width: 467
-        height: 84
-        color: "#000000"
+        x: 33
+        y: 648
+        width: 695
+        height: 198
+        color: "#f5f0f0"
         visible: true
         opacity: 0.700
         border.width: 2
@@ -147,11 +143,11 @@ Rectangle {
 
         TextEdit {
             id: cFrom
-            x: 9
-            y: 10
-            width: 249
-            height: 74
-            color: "#ffffff"
+            x: 10
+            y: -8
+            width: 685
+            height: 200
+            color: "#030202"
             text: qsTr("")
             font.pixelSize: 50
             font.family: mediumFont.name
@@ -163,28 +159,29 @@ Rectangle {
         //variables to change:
         //items
         //chosenItem.text
-        x: 45
-        y: 148
-        width: 467
-        height: 168
+        x: 40
+        y: 138
+        width: 688
+        height: 312
+
     }
 
     DropDownMenu {
         id: dropdownmenu2
-        x: 763
-        y: 148
-        width: 467
-        height: 168
+        x: 1043
+        y: 136
+        width: 688
+        height: 312
 
     }
 
     Rectangle {
         id: unitstoBorder
-        x: 763
-        y: 450
-        width: 467
-        height: 84
-        color: "#000000"
+        x: 1043
+        y: 645
+        width: 685
+        height: 200
+        color: "#fbf8f8"
         opacity: 0.700
         visible: true
         border.width: 2
@@ -192,11 +189,11 @@ Rectangle {
 
         Text {
             id: cTo
-            x: 10
-            y: 10
-            width: 264
-            height: 64
-            color: "#ffffff"
+            x: 5
+            y: 5
+            width: 685
+            height: 200
+            color: "#0b0a0a"
             text: conversionTo
             font.family: mediumFont.name
             font.pixelSize: 50
