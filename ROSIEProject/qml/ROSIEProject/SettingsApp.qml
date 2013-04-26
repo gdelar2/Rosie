@@ -1110,6 +1110,55 @@ Rectangle {
 
             }
 
+            Text {
+                id: passTxt1
+                x: 80
+                y: 671
+                color: "#000000"
+                text: "Password:"
+                anchors.topMargin: 671
+                opacity: 0.680
+                anchors.leftMargin: 80
+                font.family: mediumFont.name
+                anchors.left: parent.left
+                anchors.top: parent.top
+                font.pointSize: 64
+            }
+
+            Textbox {
+                id: passTxtbox1
+                x: 485
+                y: 670
+                strText: ""
+                anchors.leftMargin: 80
+                z: 999
+            }
+
+            Rectangle {
+                id: addBox
+                x: 80
+                y: 811
+                width: 429
+                height: 120
+                color: "#000000"
+                radius: 20
+                opacity: 0.700
+
+                Text {
+                    id: addText
+                    x: 82
+                    y: 24
+                    color: "#ffffff"
+                    text: qsTr("Add User")
+                    font.family: mediumFont.name
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 64
+                }
+            }
+
+
+
 
         }
 
@@ -1119,9 +1168,27 @@ Rectangle {
             color: mainColor
 
             Textbox {
+                id: locBox
+                x: 80
+                y: 250
                 anchors.leftMargin: 80
                 strText: ""
                 z:999
+            }
+
+            Text {
+                id: locTxt
+                x: 80
+                y: 120
+                color: "#000000"
+                text: "Location (city or zipcode):"
+                opacity: 0.680
+                anchors.topMargin: 120
+                anchors.leftMargin: 80
+                font.family: mediumFont.name
+                anchors.left: parent.left
+                anchors.top: parent.top
+                font.pointSize: 64
             }
         }
 
@@ -1160,5 +1227,6 @@ Rectangle {
                 z:999
             }
         }
+
     }
 }
