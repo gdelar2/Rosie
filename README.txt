@@ -5,8 +5,8 @@ Family Display in the kitchen Project for CS 422
 
 apps to implement:
 
-Progress as of 4/23/2013:
-unit conversion - Widget DONE - App TODO - Implementation TODO
+Progress as of 4/26/2013:
+unit conversion - Widget DONE - App TODO - Implementation TODO ===FINISHED===
 gallery - Widget TODO - App TODO - Implmentation TODO
 recipe - Widget DONE - App DONE - Implmentation DONE ===FINISHED===
 timer - Widget DONE - App DONE (not needed) - Implmentation DONE ===FINISHED===
