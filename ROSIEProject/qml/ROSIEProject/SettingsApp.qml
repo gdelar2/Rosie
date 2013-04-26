@@ -7,6 +7,10 @@ Rectangle {
     property string changedSetting
     signal settingChanged
 
+    MouseArea {
+        anchors.fill: parent
+    }
+
     Rectangle {
         id: settingsChooser
         height: parent.height
@@ -26,6 +30,7 @@ Rectangle {
                 newsSettings.visible = false;
                 transitSettings.visible = false;
                 browserSettings.visible = false;
+                quickMenuSettings.visible = false;
             } else if (view === 1){
                 generalSettings.visible = false;
                 accountSettings.visible = true;
@@ -33,6 +38,7 @@ Rectangle {
                 newsSettings.visible = false;
                 transitSettings.visible = false;
                 browserSettings.visible = false;
+                quickMenuSettings.visible = false;
             } else if (view === 2){
                 generalSettings.visible = false;
                 accountSettings.visible = false;
@@ -40,6 +46,7 @@ Rectangle {
                 newsSettings.visible = false;
                 transitSettings.visible = false;
                 browserSettings.visible = false;
+                quickMenuSettings.visible = false;
             } else if (view === 3){
                 generalSettings.visible = false;
                 accountSettings.visible = false;
@@ -47,6 +54,7 @@ Rectangle {
                 newsSettings.visible = true;
                 transitSettings.visible = false;
                 browserSettings.visible = false;
+                quickMenuSettings.visible = false;
             } else if (view === 4){
                 generalSettings.visible = false;
                 accountSettings.visible = false;
@@ -54,6 +62,7 @@ Rectangle {
                 newsSettings.visible = false;
                 transitSettings.visible = true;
                 browserSettings.visible = false;
+                quickMenuSettings.visible = false;
             } else if (view === 5){
                 generalSettings.visible = false;
                 accountSettings.visible = false;
@@ -61,6 +70,15 @@ Rectangle {
                 newsSettings.visible = false;
                 transitSettings.visible = false;
                 browserSettings.visible = true;
+                quickMenuSettings.visible = false;
+            } else if (view === 6){
+                generalSettings.visible = false;
+                accountSettings.visible = false;
+                locationSettings.visible = false;
+                newsSettings.visible = false;
+                transitSettings.visible = false;
+                browserSettings.visible = false;
+                quickMenuSettings.visible = true;
             }
         }
 
@@ -72,6 +90,7 @@ Rectangle {
             ListElement {txt:"News";}
             ListElement {txt:"Transit";}
             ListElement {txt:"Browser";}
+            ListElement {txt:"Quick Menu";}
         }
         Component {
             id: calendarDelegate
@@ -240,6 +259,10 @@ Rectangle {
             id: accountSettings
             anchors.fill: parent
             color: mainColor
+
+            MouseArea {
+                anchors.fill: parent
+            }
 
             Text {
                 id: nameTxt
@@ -555,9 +578,9 @@ Rectangle {
                 id: appRow1
                 x: 80
                 y: 524
-                width: 1231
+                width: 1434
                 height: 111
-                spacing: 28
+                spacing: 18
                 property int numSelected: 0
 
                 Rectangle {
@@ -1108,6 +1131,128 @@ Rectangle {
                     }
                 }
 
+                Rectangle {
+                    id: rectangle18
+                    x: 21
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.800
+                    property int stateSel: 0
+
+                    Image {
+                        id: image10
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/cloud.png"
+                    }
+
+                    Text {
+                        id: text10
+                        x: 33
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Weather")
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                        font.pixelSize: 12
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle18.stateSel === 0){
+                                    rectangle18.color = "#ffffff"
+                                    rectangle18.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+                                }
+
+                                else{
+                                    rectangle18.color = "#000000"
+                                    rectangle18.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle18.stateSel === 1){
+                                    rectangle18.color = "#000000"
+                                    rectangle18.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle19
+                    x: 21
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.800
+                    property int stateSel: 0
+
+                    Image {
+                        id: image11
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/map_pin.png"
+                    }
+
+                    Text {
+                        id: text11
+                        x: 38
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Transit")
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                        font.pixelSize: 12
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle19.stateSel === 0){
+                                    rectangle19.color = "#ffffff"
+                                    rectangle19.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+                                }
+
+                                else{
+                                    rectangle19.color = "#000000"
+                                    rectangle19.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle19.stateSel === 1){
+                                    rectangle19.color = "#000000"
+                                    rectangle19.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
             }
 
             Text {
@@ -1131,7 +1276,6 @@ Rectangle {
                 y: 670
                 strText: ""
                 anchors.leftMargin: 80
-                z: 999
             }
 
             Rectangle {
@@ -1226,6 +1370,216 @@ Rectangle {
                 strText: ""
                 z:999
             }
+        }
+
+        Rectangle {
+            id: quickMenuSettings
+            anchors.fill: parent
+            color: mainColor
+
+            Text {
+                id: locTxt1
+                x: 80
+                y: 120
+                color: "#000000"
+                text: "Select 2 Quick Menu Widgets:"
+                anchors.leftMargin: 80
+                font.family: mediumFont.name
+                anchors.left: parent.left
+                anchors.topMargin: 120
+                anchors.top: parent.top
+                opacity: 0.680
+                font.pointSize: 64
+            }
+
+            Row {
+                id: tinyWidRow
+                x: 456
+                y: 250
+                width: 392
+                height: 111
+                spacing: 28
+                property int numSelected: 0
+
+                Rectangle {
+                    id: quickWidget1
+                    x: 13
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.80
+                    property int stateSel: 0
+
+                    Image {
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/cloud.png"
+                    }
+
+                    Text {
+                        x: 33
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Weather")
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                        font.pixelSize: 12
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(tinyWidRow.numSelected < 2){
+                                if(quickWidget1.stateSel === 0){
+                                    quickWidget1.color = "#ffffff"
+                                    quickWidget1.stateSel = 1
+                                    tinyWidRow.numSelected = tinyWidRow.numSelected + 1
+                                }
+
+                                else{
+                                    quickWidget1.color = "#000000"
+                                    quickWidget1.stateSel = 0
+                                    tinyWidRow.numSelected = tinyWidRow.numSelected - 1
+                                }
+
+                            }
+
+                            else if(tinyWidRow.numSelected === 2){
+                                if(quickWidget1.stateSel === 1){
+                                    quickWidget1.color = "#000000"
+                                    quickWidget1.stateSel = 0
+                                    tinyWidRow.numSelected = tinyWidRow.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: quickWidget2
+                    x: 13
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.80
+                    property int stateSel: 0
+
+                    Image {
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/map_pin.png"
+                    }
+
+                    Text {
+                        x: 37
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Transit")
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                        font.pixelSize: 12
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(tinyWidRow.numSelected < 2){
+                                if(quickWidget2.stateSel === 0){
+                                    quickWidget2.color = "#ffffff"
+                                    quickWidget2.stateSel = 1
+                                    tinyWidRow.numSelected = tinyWidRow.numSelected + 1
+                                }
+
+                                else{
+                                    quickWidget2.color = "#000000"
+                                    quickWidget2.stateSel = 0
+                                    tinyWidRow.numSelected = tinyWidRow.numSelected - 1
+                                }
+
+                            }
+
+                            else if(tinyWidRow.numSelected === 2){
+                                if(quickWidget2.stateSel === 1){
+                                    quickWidget2.color = "#000000"
+                                    quickWidget2.stateSel = 0
+                                    tinyWidRow.numSelected = tinyWidRow.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: quickWidget3
+                    x: 13
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.80
+                    property int stateSel: 0
+
+                    Image {
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/photo.png"
+                    }
+
+                    Text {
+                        x: 37
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Gallery")
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                        font.pixelSize: 12
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(tinyWidRow.numSelected < 2){
+                                if(quickWidget3.stateSel === 0){
+                                    quickWidget3.color = "#ffffff"
+                                    quickWidget3.stateSel = 1
+                                    tinyWidRow.numSelected = tinyWidRow.numSelected + 1
+                                }
+
+                                else{
+                                    quickWidget3.color = "#000000"
+                                    quickWidget3.stateSel = 0
+                                    tinyWidRow.numSelected = tinyWidRow.numSelected - 1
+                                }
+
+                            }
+
+                            else if(tinyWidRow.numSelected === 2){
+                                if(quickWidget3.stateSel === 1){
+                                    quickWidget3.color = "#000000"
+                                    quickWidget3.stateSel = 0
+                                    tinyWidRow.numSelected = tinyWidRow.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+            }
+
         }
 
     }

@@ -56,7 +56,7 @@ Rectangle {
     }
 
     Timer{
-        interval:1000//milliseconds
+        interval:60000//milliseconds
         running: true
         repeat: true
 
@@ -97,7 +97,7 @@ Rectangle {
             x: 76
             y: 157
             color: "#ffffff"
-            text: qsTr("Minutes")
+            text: qsTr("Hours")
             font.bold: true
             font.family: mediumFont.name
             horizontalAlignment: Text.AlignHCenter
@@ -131,7 +131,7 @@ Rectangle {
             x: 67
             y: 160
             color: "#ffffff"
-            text: qsTr("Seconds")
+            text: qsTr("Minutes")
             font.bold: true
             font.family: mediumFont.name
             verticalAlignment: Text.AlignVCenter
