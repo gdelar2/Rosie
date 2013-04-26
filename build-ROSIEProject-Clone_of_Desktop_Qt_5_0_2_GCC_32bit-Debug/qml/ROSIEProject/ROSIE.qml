@@ -1,5 +1,4 @@
 import QtQuick 2.0
-
 Flickable {
     width: 1360//800
     height: 760//600
@@ -25,10 +24,10 @@ Flickable {
         source: "fonts/Exo-Regular.otf"
     }
 
-    function convertWeatherIcon(icon) {
+    function convertWeatherIcon(icon, checkTime) {
         var daytime = true;
         var currentDate = new Date()
-        if(currentDate.getHours() > 19 || currentDate.getHours() < 5)
+        if(checkTime && (currentDate.getHours() > 19 || currentDate.getHours() < 5))
             daytime = false;
         switch(icon) {
             case "113":
@@ -114,14 +113,14 @@ Flickable {
         height: 1080
         color: mainColor
         //0-1 scale, doesn't work great but still gives a bit more insight as to how it looks
-        scale: 0.5
+        scale: 1.0
 
        Component.onCompleted: {
            qMenuWidgetLoad(1, "TransitWidget.qml", true, {"y": 500, "border.color": "#FFFFFF", "border.width": 2});
            qMenuWidgetLoad(2, "WeatherWidget.qml", false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2});
            header.toggleQuickMenu();
            //Auto load an app you're working on
-           //loadApp("WeatherApp.qml", {})
+           loadApp("SettingsApp.qml", {})
        }
 
        function qMenuWidgetLoad(widgetId, widget, scale, properties) {
@@ -170,10 +169,21 @@ Flickable {
             id: recipeWidget
             x: 100
             y: 200
-            visible: false
+            visible: true
 
             onWidgetClicked:{
                 parent.loadApp("RecipeApp.qml", {})
+            }
+        }
+
+        VideoWiget{
+            id: videoWidget
+            x: 100
+            y: 300
+            visible: true
+
+            onWidgetClicked:{
+                parent.loadApp("VideoApp.qml", {})
             }
         }
 
@@ -230,9 +240,10 @@ Flickable {
         visible: false
         }
 
-        RecipeApp{
+        WebBrowserApp{
             x: 0
             y: 100
+
             visible: false
         }
 

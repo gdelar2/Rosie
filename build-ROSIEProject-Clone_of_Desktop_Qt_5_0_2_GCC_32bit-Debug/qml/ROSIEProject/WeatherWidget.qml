@@ -17,7 +17,7 @@ Rectangle {
 
 
     function loadData(jsonObject){
-         currentWeatherImage.source=convertWeatherIcon(jsonObject.data.current_condition[0].weatherCode)
+         currentWeatherImage.source=convertWeatherIcon(jsonObject.data.current_condition[0].weatherCode, true)
         currentTemp.text=qsTr(jsonObject.data.current_condition[0].temp_F+"°F")
 
         //not sure if these max and min are the temps for tomorrow or today

@@ -56,7 +56,7 @@ Rectangle {
     }
 
     Timer{
-        interval:60000//milliseconds
+        interval:1000//milliseconds
         running: true
         repeat: true
 

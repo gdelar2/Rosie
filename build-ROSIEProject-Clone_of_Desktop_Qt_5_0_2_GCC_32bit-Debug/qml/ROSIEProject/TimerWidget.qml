@@ -33,19 +33,19 @@ Rectangle {
         if(start){
 
 
-                 minutes=((minutes)%60)-1;
-                if(minutes==-1){
-                    minutes=59;
-                    hours--;
-                    if(hours==-1)hours=23;
-                }
-                if(hours==0&&minutes==0){
-                    timerStatusText.text="DONE!!!"
-                    alarm.play()
-                    start=false;
-                }
+            minutes=((minutes)%60)-1;
+           if(minutes==-1){
+               minutes=59;
+               hours--;
+               if(hours==-1)hours=23;
+           }
+           if(hours==0&&minutes==0){
+               timerStatusText.text="DONE!!!"
+               alarm.play()
+               start=false;
+           }
 
-        }
+   }
 
 
     }
