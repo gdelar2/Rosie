@@ -202,7 +202,7 @@ Flickable {
         UnitConvertWidget{
             x:8
             y: 152
-            visible: false
+            visible: true
         }
 
         TimerWidget{
