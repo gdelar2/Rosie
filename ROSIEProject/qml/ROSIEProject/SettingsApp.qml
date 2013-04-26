@@ -535,6 +535,582 @@ Rectangle {
                     }
                 }
             }
+
+            Text {
+                id: appTxt1
+                x: 80
+                y: 397
+                color: "#000000"
+                text: "Select Your 3 Apps:"
+                anchors.top: parent.top
+                opacity: 0.680
+                font.pointSize: 64
+                anchors.leftMargin: 80
+                anchors.topMargin: 397
+                anchors.left: parent.left
+                font.family: mediumFont.name
+            }
+
+            Row {
+                id: appRow1
+                x: 80
+                y: 524
+                width: 1231
+                height: 111
+                spacing: 28
+                property int numSelected: 0
+
+                Rectangle {
+                    id: rectangle9
+                    x: 13
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.80
+                    property int stateSel: 0
+
+                    Image {
+                        id: image1
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/calculator.png"
+                    }
+
+                    Text {
+                        id: text1
+                        x: 17
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Unit Convertor")
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                        font.pixelSize: 12
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle9.stateSel === 0){
+                                    rectangle9.color = "#ffffff"
+                                    rectangle9.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+                                }
+
+                                else{
+                                    rectangle9.color = "#000000"
+                                    rectangle9.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle9.stateSel === 1){
+                                    rectangle9.color = "#000000"
+                                    rectangle9.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle10
+                    x: 17
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.800
+                    property int stateSel: 0
+
+                    Image {
+                        id: image2
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/music_note.png"
+                    }
+
+                    Text {
+                        id: text2
+                        x: 40
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Music")
+                        verticalAlignment: Text.AlignVCenter
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignHCenter
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle10.stateSel === 0){
+                                    rectangle10.color = "#ffffff"
+                                    rectangle10.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+                                }
+
+                                else{
+                                    rectangle10.color = "#000000"
+                                    rectangle10.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle10.stateSel === 1){
+                                    rectangle10.color = "#000000"
+                                    rectangle10.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle11
+                    x: 14
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.800
+                    property int stateSel: 0
+
+                    Image {
+                        id: image3
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/photo.png"
+                    }
+
+                    Text {
+                        id: text3
+                        x: 37
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Gallery")
+                        verticalAlignment: Text.AlignVCenter
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignHCenter
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle11.stateSel === 0){
+                                    rectangle11.color = "#ffffff"
+                                    rectangle11.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+                                }
+
+                                else{
+                                    rectangle11.color = "#000000"
+                                    rectangle11.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle11.stateSel === 1){
+                                    rectangle11.color = "#000000"
+                                    rectangle11.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle12
+                    x: 18
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.800
+                    property int stateSel: 0
+
+                    Image {
+                        id: image4
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/rss.png"
+                    }
+
+                    Text {
+                        id: text4
+                        x: 41
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("News")
+                        verticalAlignment: Text.AlignVCenter
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignHCenter
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle12.stateSel === 0){
+                                    rectangle12.color = "#ffffff"
+                                    rectangle12.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+                                }
+
+                                else{
+                                    rectangle12.color = "#000000"
+                                    rectangle12.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle12.stateSel === 1){
+                                    rectangle12.color = "#000000"
+                                    rectangle12.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle13
+                    x: 19
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.800
+                    property int stateSel: 0
+
+                    Image {
+                        id: image5
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/film.png"
+                    }
+
+                    Text {
+                        id: text5
+                        x: 22
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Video Player")
+                        verticalAlignment: Text.AlignVCenter
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignHCenter
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle13.stateSel === 0){
+                                    rectangle13.color = "#ffffff"
+                                    rectangle13.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+                                }
+
+                                else{
+                                    rectangle13.color = "#000000"
+                                    rectangle13.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle13.stateSel === 1){
+                                    rectangle13.color = "#000000"
+                                    rectangle13.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle14
+                    x: 12
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.800
+                    property int stateSel: 0
+
+                    Image {
+                        id: image6
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/world.png"
+                    }
+
+                    Text {
+                        id: text6
+                        x: 34
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Browser")
+                        verticalAlignment: Text.AlignVCenter
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignHCenter
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle14.stateSel === 0){
+                                    rectangle14.color = "#ffffff"
+                                    rectangle14.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+                                }
+
+                                else{
+                                    rectangle14.color = "#000000"
+                                    rectangle14.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle14.stateSel === 1){
+                                    rectangle14.color = "#000000"
+                                    rectangle14.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle15
+                    x: 6
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.800
+                    property int stateSel: 0
+
+                    Image {
+                        id: image7
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/coffee.png"
+                    }
+
+                    Text {
+                        id: text7
+                        x: 35
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Recipes")
+                        verticalAlignment: Text.AlignVCenter
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignHCenter
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle15.stateSel === 0){
+                                    rectangle15.color = "#ffffff"
+                                    rectangle15.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+                                }
+
+                                else{
+                                    rectangle15.color = "#000000"
+                                    rectangle15.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle15.stateSel === 1){
+                                    rectangle15.color = "#000000"
+                                    rectangle15.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle16
+                    x: 19
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.800
+                    property int stateSel: 0
+
+                    Image {
+                        id: image8
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/clock.png"
+                    }
+
+                    Text {
+                        id: text8
+                        x: 40
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Timer")
+                        verticalAlignment: Text.AlignVCenter
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignHCenter
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle16.stateSel === 0){
+                                    rectangle16.color = "#ffffff"
+                                    rectangle16.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+                                }
+
+                                else{
+                                    rectangle16.color = "#000000"
+                                    rectangle16.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle16.stateSel === 1){
+                                    rectangle16.color = "#000000"
+                                    rectangle16.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle17
+                    x: 21
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.800
+                    property int stateSel: 0
+
+                    Image {
+                        id: image9
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/calendar.png"
+                    }
+
+                    Text {
+                        id: text9
+                        x: 32
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Calendar")
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                        font.pixelSize: 12
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle17.stateSel === 0){
+                                    rectangle17.color = "#ffffff"
+                                    rectangle17.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+                                }
+
+                                else{
+                                    rectangle17.color = "#000000"
+                                    rectangle17.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle17.stateSel === 1){
+                                    rectangle17.color = "#000000"
+                                    rectangle17.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+            }
+
+
         }
 
         Rectangle {
