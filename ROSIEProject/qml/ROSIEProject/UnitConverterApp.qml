@@ -1,21 +1,10 @@
-import QtQuick 2.0
+import QtQuick 1.1
 
 Rectangle {
-    width: 600
-    height: 650
+    width: 1360
+    height: 760
     color: "#000000"
     opacity: 0.7
-    signal widgetClicked
-
-    MouseArea {
-        anchors.fill: parent
-        drag.target: parent
-        drag.axis: Drag.XandYAxis
-        drag.minimumX: 0
-        drag.maximumX: application.width - parent.width
-        drag.minimumY: 100
-        drag.maximumY: application.height - parent.height
-    }
 
     property string conversionTo: ""
 
@@ -113,42 +102,42 @@ Rectangle {
         width: 523
         height: 48
         color: "#ffffff"
-        text: qsTr("Convert")
+        text: qsTr("Unit Converter")
         style: Text.Raised
         anchors.left: parent.left
         anchors.leftMargin: 12
         font.bold: true
-        font.family: mediumFont.name
+        font.family: boldFont.name
         verticalAlignment: Text.AlignVCenter
         opacity: 1
-        font.pixelSize: 36
+        font.pixelSize: 60
     }
 
     Text {
         id: from
-        x: 12
-        y: 66
+        x: 50
+        y: 78
         color: "#ffffff"
         text: qsTr("From")
         font.family: mediumFont.name
-        font.pixelSize: 32
+        font.pixelSize: 50
     }
 
     Text {
         id: to
-        x: 312
-        y: 66
+        x: 598
+        y: 190
         color: "#ffffff"
-        text: qsTr("To")
-        font.pixelSize: 32
+        text: qsTr("TO")
+        font.pixelSize: 70
         font.family: mediumFont.name
     }
 
     Rectangle {
         id: unitsFromBorder
-        x: 0
-        y: 404
-        width: 276
+        x: 45
+        y: 450
+        width: 467
         height: 84
         color: "#000000"
         visible: true
@@ -165,6 +154,7 @@ Rectangle {
             color: "#ffffff"
             text: qsTr("")
             font.pixelSize: 50
+            font.family: mediumFont.name
         }
     }
 
@@ -173,26 +163,26 @@ Rectangle {
         //variables to change:
         //items
         //chosenItem.text
-        x: 0
-        y: 132
-        width: 1
-        height: 1
+        x: 45
+        y: 148
+        width: 467
+        height: 168
     }
 
     DropDownMenu {
         id: dropdownmenu2
-        x: 301
-        y: 132
-        width: 0
-        height: 1
+        x: 763
+        y: 148
+        width: 467
+        height: 168
 
     }
 
     Rectangle {
         id: unitstoBorder
-        x: 306
-        y: 404
-        width: 274
+        x: 763
+        y: 450
+        width: 467
         height: 84
         color: "#000000"
         opacity: 0.700
@@ -212,26 +202,4 @@ Rectangle {
             font.pixelSize: 50
         }
     }
-    Text {
-        id: toApp
-        x: 0
-        y: 614
-        width: 256
-        height: 36
-        color: "#ffffff"
-        text: qsTr("Go to App")
-        font.pixelSize: 30
-
-        MouseArea {
-            id: mouse_area1
-            x: 0
-            y: 0
-            width: 256
-            height: 36
-            onClicked:{
-                loadApp("UnitConverterApp.qml", {})
-            }
-        }
-    }
 }
-
