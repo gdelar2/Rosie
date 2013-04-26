@@ -5,7 +5,6 @@ Rectangle {
     height: 980
     color: mainColor
     opacity: 1
-    border.width: 3
     property int stateCode: 0
 
     Rectangle {
