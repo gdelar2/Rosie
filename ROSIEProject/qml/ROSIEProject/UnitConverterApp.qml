@@ -3,8 +3,8 @@ import QtQuick 2.0
 Rectangle {
     width: 1900
     height: 1000
-    color: "#000000"
-    opacity: 0.7
+    color: mainColor
+    opacity: 1
 
     property string conversionTo: ""
 

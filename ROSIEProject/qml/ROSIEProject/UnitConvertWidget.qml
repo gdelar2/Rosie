@@ -15,6 +15,10 @@ Rectangle {
         drag.maximumX: application.width - parent.width
         drag.minimumY: 100
         drag.maximumY: application.height - parent.height
+
+        onClicked: {
+            parent.widgetClicked()
+        }
     }
 
     property string conversionTo: ""
@@ -220,7 +224,7 @@ Rectangle {
             font.pixelSize: 50
         }
     }
-    Text {
+    /*Text {
         id: toApp
         x: 0
         y: 614
@@ -241,6 +245,6 @@ Rectangle {
                loadApp("UnitConverterApp.qml", {})
            }
         }
-    }
+    }*/
 }
 
