@@ -253,10 +253,20 @@ Flickable {
 
         GalleryTinyWidget{
         visible: false
+
+
+        onWidgetClicked: {
+            parent.loadApp("GalleryApp.qml",{})
+        }
         }
 
         GalleryWidget{
-    visible: false
+
+             visible: true
+             onWidgetClicked: {
+                 parent.loadApp("GalleryApp.qml",{})
+             }
+
         }
 
         Image{

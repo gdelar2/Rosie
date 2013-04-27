@@ -9,6 +9,18 @@ Rectangle {
     opacity: 0.700
     radius: 13
 
+    signal widgetClicked
+
+    MouseArea {
+        anchors.fill: parent
+        drag.target: parent
+        drag.axis: Drag.XandYAxis
+        drag.minimumX: 0
+        drag.maximumX: application.width - parent.width
+        drag.minimumY: 100
+        drag.maximumY: application.height - parent.height
+    }
+
     Image {
         id: currentPicture
         x: 14
@@ -24,6 +36,8 @@ Rectangle {
         y: 277
         width: 249
         height: 61
+
+
 
         Rectangle {
             id: gotoGalleryBorder
@@ -50,16 +64,12 @@ Rectangle {
                 font.pixelSize: 34
             }
         }
+
+        onClicked: {
+            parent.widgetClicked()
+        }
     }
 
-    MouseArea {
-        anchors.fill: parent
-        drag.target: parent
-        drag.axis: Drag.XandYAxis
-        drag.minimumX: 0
-        drag.maximumX: application.width - parent.width
-        drag.minimumY: 100
-        drag.maximumY: application.height - parent.height
-    }
+
 
 }

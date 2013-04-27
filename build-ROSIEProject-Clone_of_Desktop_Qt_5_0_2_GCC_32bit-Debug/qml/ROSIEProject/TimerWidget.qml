@@ -22,7 +22,7 @@ Rectangle {
     color: "#000000"
     opacity: 0.7
 
-
+    //minutes are seconds and hours are minutes
     //property int seconds:0
     property int minutes:0
     property int hours: 0
@@ -56,7 +56,7 @@ Rectangle {
     }
 
     Timer{
-        interval:1000//milliseconds
+        interval:60000//milliseconds
         running: true
         repeat: true
 
@@ -97,7 +97,7 @@ Rectangle {
             x: 76
             y: 157
             color: "#ffffff"
-            text: qsTr("Hour")
+            text: qsTr("Hours")
             font.bold: true
             font.family: mediumFont.name
             horizontalAlignment: Text.AlignHCenter
@@ -131,7 +131,7 @@ Rectangle {
             x: 67
             y: 160
             color: "#ffffff"
-            text: qsTr("Minute")
+            text: qsTr("Minutes")
             font.bold: true
             font.family: mediumFont.name
             verticalAlignment: Text.AlignVCenter

@@ -40,7 +40,7 @@ Rectangle {
             y: -1
             width: 70
             height: 70
-            source: "Image/MusicPlayer/Rewind.png"
+            source: "Image/MusicPlayer/skip_backward.png"
         }
 
         onClicked:{
@@ -55,7 +55,7 @@ Rectangle {
                 currentMusic.source = currentMusic.myArray[currentMusic.arrayIndex]
             }
 
-            playIcon.source = "Image/MusicPlayer/Play.png"
+            playIcon.source = "Image/MusicPlayer/play.png"
         }
     }
 
@@ -73,7 +73,7 @@ Rectangle {
             y: -1
             width: 70
             height: 70
-            source: "Image/MusicPlayer/Play.png"
+            source: "Image/MusicPlayer/play.png"
         }
 
         onClicked: {
@@ -83,13 +83,13 @@ Rectangle {
             if(whichState === 1){
                 whichState = 2
                 currentMusic.play()
-                playIcon.source = "Image/MusicPlayer/Pause.png"
+                playIcon.source = "Image/MusicPlayer/pause.png"
             }
 
             else{
                 whichState = 1
                 currentMusic.pause()
-                playIcon.source = "Image/MusicPlayer/Play.png"
+                playIcon.source = "Image/MusicPlayer/play.png"
             }
 
 
@@ -109,7 +109,7 @@ Rectangle {
             y: -1
             width: 70
             height: 70
-            source: "Image/MusicPlayer/Forward.png"
+            source: "Image/MusicPlayer/skip_forward.png"
         }
 
         onClicked:{
@@ -124,7 +124,7 @@ Rectangle {
                 currentMusic.source = currentMusic.myArray[currentMusic.arrayIndex]
             }
 
-            playIcon.source = "Image/MusicPlayer/Play.png"
+            playIcon.source = "Image/MusicPlayer/play.png"
         }
     }
 
