@@ -8,6 +8,7 @@ Rectangle {
     color: mainColor
     property string fileVideo: ""
 
+
     Rectangle {
         id: rectangle1
         x: 0

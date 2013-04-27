@@ -66,8 +66,8 @@ Rectangle {
         height: 339
         id: displayedImage
 
-
-        source:picArray[picIndex]
+        source: picArray[picIndex]
+      //  source:picArray[picIndex]
     }
 
     MouseArea {
