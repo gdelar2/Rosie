@@ -148,6 +148,14 @@ Flickable {
            "Image/GalleryPictures/Picture (21).jpg",
            ]
 
+
+       function addPicture(){
+           var path
+
+           //getpathsomehow
+           picPaths.push(path)
+       }
+
        function qMenuWidgetLoad(widgetId, widget, scale, properties) {
            var quickMenu = header.getQuickMenu();
            var qMenuWidget = Qt.createComponent(widget);
@@ -252,7 +260,7 @@ Flickable {
 
 
         GalleryApp{
-
+        picArray: parent.picPaths
         visible: false
         }
 
@@ -268,15 +276,15 @@ Flickable {
         x:10
         y:50
 
-    picArray: parent.picPaths
+         picArray: parent.picPaths
 
         onWidgetClicked: {
-            parent.loadApp("GalleryApp.qml",{})
+            parent.loadApp("GalleryApp.qml",{picArray: parent.picPaths})
         }
         }
 
         GalleryWidget{
-
+            picArray: parent.picPaths
              visible: false
              onWidgetClicked: {
                  parent.loadApp("GalleryApp.qml",{})

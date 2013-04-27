@@ -279,7 +279,7 @@ Flickable {
          picArray: parent.picPaths
 
         onWidgetClicked: {
-            parent.loadApp("GalleryApp.qml",{})
+            parent.loadApp("GalleryApp.qml",{picArray: parent.picPaths})
         }
         }
 
@@ -287,7 +287,7 @@ Flickable {
             picArray: parent.picPaths
              visible: false
              onWidgetClicked: {
-                 parent.loadApp("GalleryApp.qml",{})
+                  parent.loadApp("GalleryApp.qml",{picArray: parent.picPaths})
              }
 
         }
