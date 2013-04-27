@@ -12,19 +12,6 @@ int main(int argc, char *argv[])
     viewer.showExpanded();
 
 
-    QStringList picturePaths;
-    picturePaths.append("Image/GalleryPictures");
-
-    /*
-    QFileDialog dialog;
-
-
-
-   QDir dir;
-   dir.setPath("Image/GalleryPictures");
-
-   picturePaths=dir.entryList( );
-*/
 
     return app.exec();
 }

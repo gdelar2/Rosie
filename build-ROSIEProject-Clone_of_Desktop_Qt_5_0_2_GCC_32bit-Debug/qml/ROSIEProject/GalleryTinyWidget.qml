@@ -21,28 +21,7 @@ Rectangle {
         drag.maximumY: application.height - parent.height
     }
 
-    property var picArray:["Image/GalleryPictures/Picture (1).jpg",
-        "Image/GalleryPictures/Picture (2).jpg",
-        "Image/GalleryPictures/Picture (3).jpg",
-        "Image/GalleryPictures/Picture (4).jpg",
-        "Image/GalleryPictures/Picture (5).jpg",
-        "Image/GalleryPictures/Picture (6).jpg",
-        "Image/GalleryPictures/Picture (7).jpg",
-        "Image/GalleryPictures/Picture (8).jpg",
-        "Image/GalleryPictures/Picture (9).jpg",
-        "Image/GalleryPictures/Picture (10).jpg",
-        "Image/GalleryPictures/Picture (11).jpg",
-        "Image/GalleryPictures/Picture (12).jpg",
-        "Image/GalleryPictures/Picture (13).jpg",
-        "Image/GalleryPictures/Picture (14).jpg",
-        "Image/GalleryPictures/Picture (15).jpg",
-        "Image/GalleryPictures/Picture (16).jpg",
-        "Image/GalleryPictures/Picture (17).jpg",
-        "Image/GalleryPictures/Picture (18).jpg",
-        "Image/GalleryPictures/Picture (19).jpg",
-        "Image/GalleryPictures/Picture (20).jpg",
-        "Image/GalleryPictures/Picture (21).jpg",
-        ]
+    property var picArray
     property int picIndex:0
 
 

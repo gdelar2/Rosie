@@ -52,17 +52,50 @@ Rectangle {
 
 
 
-    Rectangle {
+    function picSelected(pathOfClickedPic)
+{
+        imageToDisplay.source=pathOfClickedPic;
+        pictureClicked.visible=true;
 
+
+
+    }
+
+
+
+
+
+        //this rectangle is for the grid of pictures to be displayed
+    Rectangle {
+           id: grid
         x: 0
-        y: 172
+        y: 100
         width: 1920
-        height: 652
+        height: 750
         color: "#000000"
         opacity: 0.800
+//9X3 Grid
 
-        id: displayedImageRectangle
 
+        Image{
+            y:1.5
+            height:213 //216.66
+            width:213  //213.33
+            source:picArray[0];
+
+            MouseArea{
+                anchors.fill: parent
+
+                onClicked: {
+                    picSelected(parent.source);
+                }
+            }
+
+        }
+
+
+
+        /*
         Image {
 
           //  x: 0
@@ -73,10 +106,12 @@ Rectangle {
           //  opacity: 0.800
 
             id: displayedImage
-            fillMode: Image.PreserveAspectFit
+                    fillMode: Image.PreserveAspectFit
 
             source:picArray[picIndex]
         }
+
+        */
 
 
 
@@ -148,5 +183,34 @@ Rectangle {
                 font.pixelSize: 22
             }
         }
+    }
+
+
+    //this rectangle will show the picture selected. it will take up the whole screen and will close when the user touches it
+    Rectangle{
+
+        id: pictureClicked
+        width: 1920
+        height:parent.height
+        visible:false
+
+        Image{
+            id:imageToDisplay
+            width: 1920
+            height:parent.height
+            fillMode: Image.PreserveAspectFit
+            //source:
+        }
+
+        MouseArea{
+            anchors.fill: parent
+
+            onClicked: {
+                parent.visible=false;
+            }
+        }
+
+
+
     }
 }

@@ -8,29 +8,10 @@ Rectangle {
     border.width: 3
 
 
-    property var picArray:["Image/GalleryPictures/Picture (1).jpg",
-        "Image/GalleryPictures/Picture (2).jpg",
-        "Image/GalleryPictures/Picture (3).jpg",
-        "Image/GalleryPictures/Picture (4).jpg",
-        "Image/GalleryPictures/Picture (5).jpg",
-        "Image/GalleryPictures/Picture (6).jpg",
-        "Image/GalleryPictures/Picture (7).jpg",
-        "Image/GalleryPictures/Picture (8).jpg",
-        "Image/GalleryPictures/Picture (9).jpg",
-        "Image/GalleryPictures/Picture (10).jpg",
-        "Image/GalleryPictures/Picture (11).jpg",
-        "Image/GalleryPictures/Picture (12).jpg",
-        "Image/GalleryPictures/Picture (13).jpg",
-        "Image/GalleryPictures/Picture (14).jpg",
-        "Image/GalleryPictures/Picture (15).jpg",
-        "Image/GalleryPictures/Picture (16).jpg",
-        "Image/GalleryPictures/Picture (17).jpg",
-        "Image/GalleryPictures/Picture (18).jpg",
-        "Image/GalleryPictures/Picture (19).jpg",
-        "Image/GalleryPictures/Picture (20).jpg",
-        "Image/GalleryPictures/Picture (21).jpg",
-        ]
+    property var picArray
     property int picIndex:0
+
+
 
 
     Timer{
@@ -65,16 +46,33 @@ Rectangle {
 
 
 
-
+        //this rectangle is for the grid of pictures to be displayed
     Rectangle {
-           id: displayedImagesRectangle
+           id: grid
         x: 0
-        y: 172
+        y: 100
         width: 1920
-        height: 652
+        height: 750
         color: "#000000"
         opacity: 0.800
+//9X3 Grid
 
+
+        Image{
+            y:1.5
+            height:213 //216.66
+            width:213  //213.33
+            source:picArray[0];
+
+            MouseArea{
+                anchors.fill: parent
+
+                onClicked: {
+                    picSelected(parent.source);
+                }
+            }
+
+        }
 
 
 
@@ -168,19 +166,29 @@ Rectangle {
         }
     }
 
+
+    //this rectangle will show the picture selected. it will take up the whole screen and will close when the user touches it
     Rectangle{
 
         id: pictureClicked
         width: 1920
-        height:1080
+        height:parent.height
         visible:false
 
         Image{
             id:imageToDisplay
             width: 1920
-            height:1080
+            height:parent.height
             fillMode: Image.PreserveAspectFit
             //source:
+        }
+
+        MouseArea{
+            anchors.fill: parent
+
+            onClicked: {
+                parent.visible=false;
+            }
         }
 
 

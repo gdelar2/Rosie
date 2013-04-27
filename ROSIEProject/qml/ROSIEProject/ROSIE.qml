@@ -123,6 +123,39 @@ Flickable {
            loadApp("SettingsApp.qml", {})
        }
 
+
+
+       property var picPaths:["Image/GalleryPictures/Picture (1).jpg",
+           "Image/GalleryPictures/Picture (2).jpg",
+           "Image/GalleryPictures/Picture (3).jpg",
+           "Image/GalleryPictures/Picture (4).jpg",
+           "Image/GalleryPictures/Picture (5).jpg",
+           "Image/GalleryPictures/Picture (6).jpg",
+           "Image/GalleryPictures/Picture (7).jpg",
+           "Image/GalleryPictures/Picture (8).jpg",
+           "Image/GalleryPictures/Picture (9).jpg",
+           "Image/GalleryPictures/Picture (10).jpg",
+           "Image/GalleryPictures/Picture (11).jpg",
+           "Image/GalleryPictures/Picture (12).jpg",
+           "Image/GalleryPictures/Picture (13).jpg",
+           "Image/GalleryPictures/Picture (14).jpg",
+           "Image/GalleryPictures/Picture (15).jpg",
+           "Image/GalleryPictures/Picture (16).jpg",
+           "Image/GalleryPictures/Picture (17).jpg",
+           "Image/GalleryPictures/Picture (18).jpg",
+           "Image/GalleryPictures/Picture (19).jpg",
+           "Image/GalleryPictures/Picture (20).jpg",
+           "Image/GalleryPictures/Picture (21).jpg",
+           ]
+
+
+       function addPicture(){
+           var path
+
+           //getpathsomehow
+           picPaths.push(path)
+       }
+
        function qMenuWidgetLoad(widgetId, widget, scale, properties) {
            var quickMenu = header.getQuickMenu();
            var qMenuWidget = Qt.createComponent(widget);
@@ -224,23 +257,10 @@ Flickable {
             height: 980
         }
 
-        //leave the header at the bottom, items are loaded top down and
-        // header needs to be on top of everything else
-        Header {
-            id: header
-            onReturnShortcutClicked: {
-                //load the settings app here
-                if (currentApp.children.length > 0) {
-                    for (var i = 0; i < currentApp.children.length; i++) {
-                        currentApp.children[i].destroy()
-                    }
-                    currentApp.visible = false
-                }
-            }
-        }
+
 
         GalleryApp{
-
+        picArray: parent.picPaths
         visible: false
         }
 
@@ -256,6 +276,7 @@ Flickable {
         x:10
         y:50
 
+         picArray: parent.picPaths
 
         onWidgetClicked: {
             parent.loadApp("GalleryApp.qml",{})
@@ -263,12 +284,28 @@ Flickable {
         }
 
         GalleryWidget{
-
+            picArray: parent.picPaths
              visible: false
              onWidgetClicked: {
                  parent.loadApp("GalleryApp.qml",{})
              }
 
+        }
+
+
+        //leave the header at the bottom, items are loaded top down and
+        // header needs to be on top of everything else
+        Header {
+            id: header
+            onReturnShortcutClicked: {
+                //load the settings app here
+                if (currentApp.children.length > 0) {
+                    for (var i = 0; i < currentApp.children.length; i++) {
+                        currentApp.children[i].destroy()
+                    }
+                    currentApp.visible = false
+                }
+            }
         }
 
         Image{
