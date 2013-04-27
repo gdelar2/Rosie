@@ -9,6 +9,7 @@ Rectangle {
     opacity: 0.700
     radius: 13
     signal widgetClicked
+    property bool draggable: true;
 
     Component.onCompleted: getData()
 
@@ -41,6 +42,23 @@ Rectangle {
         doc.send();
     }
 
+    MouseArea {
+        anchors.fill: parent
+        drag.target: parent
+        drag.axis: Drag.XandYAxis
+        drag.minimumX: 0
+        drag.maximumX: application.width - parent.width
+        drag.minimumY: 100
+        drag.maximumY: application.height - parent.height
+
+        onClicked: {
+            parent.widgetClicked()
+        }
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
+        }
+    }
 
     Image {
         id: currentWeatherImage
@@ -126,19 +144,5 @@ Rectangle {
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 40
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        drag.target: parent
-        drag.axis: Drag.XandYAxis
-        drag.minimumX: 0
-        drag.maximumX: application.width - parent.width
-        drag.minimumY: 100
-        drag.maximumY: application.height - parent.height
-
-        onClicked: {
-            parent.widgetClicked()
-        }
     }
 }

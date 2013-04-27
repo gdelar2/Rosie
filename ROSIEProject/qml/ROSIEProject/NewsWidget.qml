@@ -5,6 +5,7 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
+    property bool draggable: true;
 
     MouseArea {
         anchors.fill: parent
@@ -16,6 +17,11 @@ Rectangle {
         drag.maximumY: application.height - parent.height
 
         //clicking here opens up the WebBrowserApp with the appropriate headline link
+
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
+        }
     }
 
     Text {
@@ -30,7 +36,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 12
         font.bold: true
-        font.family: mediumFont
+        font.family: mediumFont.name
         verticalAlignment: Text.AlignVCenter
         opacity: 1
         font.pixelSize: 36

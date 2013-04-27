@@ -7,8 +7,8 @@ Rectangle {
 
     signal returnShortcutClicked
 
-    function toggleQuickMenu() {
-        quickMenuShortcut.visible = !quickMenuShortcut.visible;
+    function toggleQuickMenu(vis) {
+        quickMenuShortcut.visible = vis;
     }
 
     function getQuickMenu() {

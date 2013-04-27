@@ -5,11 +5,10 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
-
-
     signal widgetClicked
     property variant picArray
     property int picIndex:0
+    property bool draggable: true;
 
 
     Timer{
@@ -45,6 +44,11 @@ Rectangle {
         drag.maximumX: application.width - parent.width
         drag.minimumY: 100
         drag.maximumY: application.height - parent.height
+
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
+        }
     }
 
 

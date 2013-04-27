@@ -8,7 +8,6 @@ Flickable {
     property string mainColor: "#0e51a7"
     property string currentState: "HOME"
     property int currentUser: -1
-    //guest, none, [news, unit, weather], [],
     property string userSkeleton: '{'+
         '"username":"",'+
         '"password":"",'+
@@ -133,7 +132,7 @@ Flickable {
                 '}'+
             '},'+
             '"unitconverter":{'+
-                '"file":"UnitConvertWidget",'+
+                '"file":"UnitConvertWidget.qml",'+
                 '"properties":{'+
                 '}'+
             '},'+
@@ -190,6 +189,16 @@ Flickable {
     FontLoader {
         id: regularFont
         source: "fonts/Exo-Regular.otf"
+    }
+
+    //For logging in
+    function getUser(username) {
+        var users = JSON.parse(userInfo)
+        for(var key in users) {
+            if (users[key].username === username)
+                return users[key];
+        }
+        return null;
     }
 
     function getSetting(name) {
@@ -263,6 +272,23 @@ Flickable {
     function refreshHome() {
         //load in currentUser settings
         //apps, etc.
+        removeApps();
+        removeWidgets();
+
+        qMenuWidgetLoad(1, getSetting("widgets."+getSetting("qmWidgets[0].name")+".file"), false, {"y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false});
+        qMenuWidgetLoad(2, getSetting("widgets."+getSetting("qmWidgets[1].name")+".file"), false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false});
+        loadWidget(getSetting("widgets."+getSetting("homeWidgets[0].name")+".file"), {"x": 0,"y":300});
+        loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": 1920/2,"y":300})
+        loadWidget(getSetting("widgets."+getSetting("homeWidgets[2].name")+".file"), {"x": 1600,"y":300})
+
+        //load quick menu items
+
+        if (currentUser == 0)
+            header.toggleQuickMenu(true);
+        else
+            header.toggleQuickMenu(true);
+        //Auto load an app you're working on
+        //loadApp("SettingsApp.qml", {})
     }
 
     function qMenuWidgetLoad(widgetId, widget, scale, properties) {
@@ -270,25 +296,38 @@ Flickable {
         var qMenuWidget = Qt.createComponent(widget);
         var qWidget;
         if(widgetId === 1)
-        qWidget = quickMenu.getWidget1();
+            qWidget = quickMenu.getWidget1();
         else
-        qWidget = quickMenu.getWidget2();
+            qWidget = quickMenu.getWidget2();
         qMenuWidget.createObject(qWidget, properties);
         if(scale)
-        qWidget.scale = 0.61;
+            qWidget.scale = 0.61;
     }
 
     function loadApp(appQmlFile, properties) {
         var app = Qt.createComponent(appQmlFile);
         app.createObject(currentApp, properties);
         if (!currentApp.visible)
-        currentApp.visible = true;
+            currentApp.visible = true;
         currentState = "APP"
     }
 
     function loadWidget(widgetQmlFile, properties) {
-        var app = Qt.createComponent(appQmlFile);
+        var app = Qt.createComponent(widgetQmlFile);
         app.createObject(widgetScreen, properties);
+    }
+
+    function removeApps() {
+        for (var i = 0; i < currentApp.children.length; i++) {
+            currentApp.children[i].destroy();
+        }
+        currentApp.visible = false;
+    }
+
+    function removeWidgets() {
+        for (var i = 0; i < widgetScreen.children.length; i++) {
+            widgetScreen.children[i].destroy();
+        }
     }
 
     function convertWeatherIcon(icon, checkTime) {
@@ -402,12 +441,9 @@ Flickable {
            //Set setting example
            setSetting("homeWidgets[0].name", "weather")
            console.log("NEW HW[0]: " + getSetting("homeWidgets[0].name"));
+           setSetting("homeWidgets[0].name", "news")
 
-           qMenuWidgetLoad(1, "TransitWidget.qml", true, {"y": 500, "border.color": "#FFFFFF", "border.width": 2});
-           qMenuWidgetLoad(2, "WeatherWidget.qml", false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2});
-           header.toggleQuickMenu();
-           //Auto load an app you're working on
-           loadApp("SettingsApp.qml", {})
+           refreshHome();
        }
 
        //Everything below this comment is where widgets should be placed
@@ -416,118 +452,12 @@ Flickable {
        Rectangle {
            id: widgetScreen
            x: 0
-           y: header.height
            width: 1920
-           height: 1080-header.height
+           height: 1080
            color: mainColor
        }
 
-        WeatherWidget {
-            id: weatherwidget1
-            x: 1620
-            y: 118
-
-            onWidgetClicked: {
-                loadApp("WeatherApp.qml", {})
-            }
-        }
-
-        CalendarWidget {
-            id: calendarWidget
-            x: 0
-            y: 100
-
-            onWidgetClicked: {
-                loadApp("CalendarApp.qml", {})
-            }
-        }
-
-        RecipeWidget{
-            id: recipeWidget
-            x: 100
-            y: 200
-            visible: true
-
-            onWidgetClicked:{
-                loadApp("RecipeApp.qml", {})
-            }
-        }
-
-        VideoWiget{
-            id: videoWidget
-            x: 100
-            y: 300
-            visible: true
-
-            onWidgetClicked:{
-                loadApp("VideoApp.qml", {})
-            }
-        }
-
-        MusicPlayerWidget {
-            x: 1181
-            y: 721
-            visible: true
-        }
-
-        TransitWidget {
-            x: 8
-            y: 152
-            visible: false
-        }
-
-        UnitConvertWidget{
-            x:8
-            y: 152
-            visible: true
-
-            onWidgetClicked:{
-                loadApp("UnitConverterApp.qml", {})
-            }
-        }
-
-        TimerWidget{
-
-            y: 300
-            visible: true
-        }
-
-
-
-        GalleryApp{
-            picArray: picPaths
-            visible: false
-        }
-
-        WebBrowserApp{
-            x: 0
-            y: 100
-
-            visible: false
-        }
-
-        GalleryTinyWidget{
-            visible: true
-            x:10
-            y:50
-            picArray: picPaths
-
-            onWidgetClicked: {
-                loadApp("GalleryApp.qml",{picArray: picPaths})
-            }
-        }
-
-        GalleryWidget{
-            picArray: picPaths
-             visible: false
-             onWidgetClicked: {
-                  loadApp("GalleryApp.qml",{picArray: picPaths})
-             }
-
-        }
-
-        //Place any widgets above this, currentApp, header, and welcomeImage
-        // must be the last items in the file
+       //Rectangle to load apps into
         Rectangle {
             id: currentApp
             x:0
@@ -537,28 +467,23 @@ Flickable {
             height: 1080-header.height
         }
 
-        //leave the header at the bottom, items are loaded top down and
-        // header needs to be on top of everything else
+        //header
         Header {
             id: header
 
             onReturnShortcutClicked: {
                 if (currentUser == 0 && currentState === "HOME") {
                     //show login, call refreshHome() after logging in
-                    // and header.toggleQuickMenu();
+                    //loadApp("Login.qml", {onLoggedIn:refreshHome()});
                 } else if (currentState === "HOME") {
                     //Log out
                     //Show message "You have been logged out"
                     //Activate timer to fade out message
                     currentUser = 0;
                     refreshHome();
-                    header.toggleQuickMenu();
                 } else if (currentState === "APP") {
                     //
-                    for (var i = 0; i < currentApp.children.length; i++) {
-                        currentApp.children[i].destroy();
-                    }
-                    currentApp.visible = false;
+                    removeApps();
                     currentState = "HOME";
                 }
             }

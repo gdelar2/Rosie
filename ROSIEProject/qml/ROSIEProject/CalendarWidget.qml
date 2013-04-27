@@ -6,6 +6,7 @@ Rectangle {
     color: "#000000"
     opacity: 0.7
     signal widgetClicked
+    property bool draggable: true;
 
     Rectangle {
         id: titleView
@@ -58,6 +59,11 @@ Rectangle {
         drag.maximumY: application.height - parent.height
         onClicked: {
             parent.widgetClicked()
+        }
+
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
         }
     }
 }

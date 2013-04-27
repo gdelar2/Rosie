@@ -8,6 +8,7 @@ Rectangle {
     opacity: 0.700
     border.width: 3
     signal widgetClicked
+    property bool draggable: true;
 
     Text {
         id: foodTitle
@@ -76,6 +77,11 @@ Rectangle {
 
         onClicked: {
             parent.widgetClicked()
+        }
+
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
         }
     }
 

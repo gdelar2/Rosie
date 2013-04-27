@@ -46,7 +46,7 @@ Rectangle {
             font.family: mediumFont.name
             color: "#FFFFFF"
             opacity: .8
-            text: "HOME"
+            text: "SETTINGS"
         }
         Text {
             id: shortcutMenuLogout

@@ -5,6 +5,7 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
+    property bool draggable: true;
 
 
     Text {
@@ -33,5 +34,10 @@ Rectangle {
         drag.maximumX: application.width - parent.width
         drag.minimumY: 100
         drag.maximumY: application.height - parent.height
+
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
+        }
     }
 }

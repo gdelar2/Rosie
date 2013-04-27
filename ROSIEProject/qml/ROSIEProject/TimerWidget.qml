@@ -2,38 +2,21 @@ import QtQuick 2.0
 import QtMultimedia 5.0
 
 Rectangle {
-
-    //drag code
-    MouseArea {
-        anchors.fill: parent
-        drag.target: parent
-        drag.axis: Drag.XandYAxis
-        drag.minimumX: 0
-        drag.maximumX: application.width - parent.width
-        drag.minimumY: 100
-        drag.maximumY: application.height - parent.height
-    }
-
-
-
     width: 600
     //height: 650
     height:450
     color: "#000000"
     opacity: 0.7
-
     //minutes are seconds and hours are minutes
     //property int seconds:0
     property int minutes:0
     property int hours: 0
     property bool start:false
-
+    property bool draggable: true;
 
     function timeHandler(){
         if(start){
-
-
-            minutes=((minutes)%60)-1;
+           minutes=((minutes)%60)-1;
            if(minutes==-1){
                minutes=59;
                hours--;
@@ -44,10 +27,23 @@ Rectangle {
                alarm.play()
                start=false;
            }
+        }
+    }
 
-   }
+    //drag code
+    MouseArea {
+        anchors.fill: parent
+        drag.target: parent
+        drag.axis: Drag.XandYAxis
+        drag.minimumX: 0
+        drag.maximumX: application.width - parent.width
+        drag.minimumY: 100
+        drag.maximumY: application.height - parent.height
 
-
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
+        }
     }
 
     Audio{
