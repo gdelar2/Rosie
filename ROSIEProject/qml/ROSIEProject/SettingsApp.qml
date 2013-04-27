@@ -309,6 +309,8 @@ Rectangle {
                 width: 1075
                 height: 117
                 spacing: 18
+                property string imageSource: ""
+                //Store the User's imageSource of their avatar
 
                 Rectangle {
                     id: rectangle1
@@ -337,6 +339,7 @@ Rectangle {
                             rectangle6.color = "#000000"
                             rectangle7.color = "#000000"
                             rectangle8.color = "#000000"
+                            row1.imageSource = "Image/User/chess.png"
                         }
                     }
                 }
@@ -368,6 +371,7 @@ Rectangle {
                             rectangle6.color = "#000000"
                             rectangle7.color = "#000000"
                             rectangle8.color = "#000000"
+                            row1.imageSource = "Image/User/games.png"
                         }
                     }
                 }
@@ -399,6 +403,7 @@ Rectangle {
                             rectangle6.color = "#000000"
                             rectangle7.color = "#000000"
                             rectangle8.color = "#000000"
+                            row1.imageSource = "Image/User/light_bulb.png"
                         }
                     }
                 }
@@ -430,6 +435,7 @@ Rectangle {
                             rectangle6.color = "#000000"
                             rectangle7.color = "#000000"
                             rectangle8.color = "#000000"
+                            row1.imageSource = "Image/User/magic_wand.png"
                         }
                     }
                 }
@@ -461,6 +467,7 @@ Rectangle {
                             rectangle6.color = "#000000"
                             rectangle7.color = "#000000"
                             rectangle8.color = "#000000"
+                            row1.imageSource = "Image/User/paint_brush.png"
                         }
                     }
                 }
@@ -492,6 +499,7 @@ Rectangle {
                             rectangle1.color = "#000000"
                             rectangle7.color = "#000000"
                             rectangle8.color = "#000000"
+                            row1.imageSource = "Image/User/star.png"
                         }
                     }
                 }
@@ -523,6 +531,7 @@ Rectangle {
                             rectangle6.color = "#000000"
                             rectangle1.color = "#000000"
                             rectangle8.color = "#000000"
+                            row1.imageSource = "Image/User/target.png"
                         }
                     }
                 }
@@ -554,6 +563,7 @@ Rectangle {
                             rectangle6.color = "#000000"
                             rectangle7.color = "#000000"
                             rectangle1.color = "#000000"
+                            row1.imageSource = "Image/User/umbrella.png"
                         }
                     }
                 }
@@ -576,12 +586,14 @@ Rectangle {
 
             Row {
                 id: appRow1
-                x: 80
-                y: 524
-                width: 1434
+                x: 11
+                y: 525
+                width: 1499
                 height: 111
-                spacing: 18
+                spacing: 14
                 property int numSelected: 0
+                property var appArray: ["UnitConverWidget.qml","RecipeWidget.qml","MusicPlayerWidget.qml"]
+                //appArray is what will store their top 3 apps
 
                 Rectangle {
                     id: rectangle9
@@ -621,6 +633,8 @@ Rectangle {
                                     rectangle9.color = "#ffffff"
                                     rectangle9.stateSel = 1
                                     appRow1.numSelected = appRow1.numSelected + 1
+                                    //if selected add the .qml widget file associated
+
                                 }
 
                                 else{
@@ -681,6 +695,7 @@ Rectangle {
                                     rectangle10.color = "#ffffff"
                                     rectangle10.stateSel = 1
                                     appRow1.numSelected = appRow1.numSelected + 1
+
                                 }
 
                                 else{
@@ -742,6 +757,7 @@ Rectangle {
                                     rectangle11.color = "#ffffff"
                                     rectangle11.stateSel = 1
                                     appRow1.numSelected = appRow1.numSelected + 1
+
                                 }
 
                                 else{
@@ -803,6 +819,7 @@ Rectangle {
                                     rectangle12.color = "#ffffff"
                                     rectangle12.stateSel = 1
                                     appRow1.numSelected = appRow1.numSelected + 1
+
                                 }
 
                                 else{
@@ -864,6 +881,7 @@ Rectangle {
                                     rectangle13.color = "#ffffff"
                                     rectangle13.stateSel = 1
                                     appRow1.numSelected = appRow1.numSelected + 1
+
                                 }
 
                                 else{
@@ -986,6 +1004,7 @@ Rectangle {
                                     rectangle15.color = "#ffffff"
                                     rectangle15.stateSel = 1
                                     appRow1.numSelected = appRow1.numSelected + 1
+
                                 }
 
                                 else{
@@ -1047,6 +1066,7 @@ Rectangle {
                                     rectangle16.color = "#ffffff"
                                     rectangle16.stateSel = 1
                                     appRow1.numSelected = appRow1.numSelected + 1
+
                                 }
 
                                 else{
@@ -1108,6 +1128,7 @@ Rectangle {
                                     rectangle17.color = "#ffffff"
                                     rectangle17.stateSel = 1
                                     appRow1.numSelected = appRow1.numSelected + 1
+
                                 }
 
                                 else{
@@ -1169,6 +1190,7 @@ Rectangle {
                                     rectangle18.color = "#ffffff"
                                     rectangle18.stateSel = 1
                                     appRow1.numSelected = appRow1.numSelected + 1
+
                                 }
 
                                 else{
@@ -1230,6 +1252,7 @@ Rectangle {
                                     rectangle19.color = "#ffffff"
                                     rectangle19.stateSel = 1
                                     appRow1.numSelected = appRow1.numSelected + 1
+
                                 }
 
                                 else{
@@ -1244,6 +1267,68 @@ Rectangle {
                                 if(rectangle19.stateSel === 1){
                                     rectangle19.color = "#000000"
                                     rectangle19.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle20
+                    x: 21
+                    y: 0
+                    width: 112
+                    height: 112
+                    color: "#000000"
+                    opacity: 0.800
+                    property int stateSel: 0
+
+                    Image {
+                        id: image12
+                        x: 15
+                        y: 6
+                        width: 83
+                        height: 83
+                        source: "Image/User/edit.png"
+                    }
+
+                    Text {
+                        id: text12
+                        x: 32
+                        y: 92
+                        color: "#ffffff"
+                        text: qsTr("Todo List")
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                        font.pixelSize: 12
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:{
+                            if(appRow1.numSelected < 3){
+                                if(rectangle20.stateSel === 0){
+                                    rectangle20.color = "#ffffff"
+                                    rectangle20.stateSel = 1
+                                    appRow1.numSelected = appRow1.numSelected + 1
+
+                                }
+
+                                else{
+                                    rectangle20.color = "#000000"
+                                    rectangle20.stateSel = 0
+                                    appRow1.numSelected = appRow1.numSelected - 1
+                                }
+
+                            }
+
+                            else if(appRow1.numSelected === 3){
+                                if(rectangle20.stateSel === 1){
+                                    rectangle20.color = "#000000"
+                                    rectangle20.stateSel = 0
                                     appRow1.numSelected = appRow1.numSelected - 1
                                 }
 
@@ -1299,10 +1384,14 @@ Rectangle {
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 64
                 }
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        //User information get's stored and calls the addUser function.
+                    }
+                }
             }
-
-
-
 
         }
 
