@@ -21,7 +21,7 @@ Rectangle {
         drag.maximumY: application.height - parent.height
     }
 
-    property var picArray
+    property variant picArray
     property int picIndex:0
 
 

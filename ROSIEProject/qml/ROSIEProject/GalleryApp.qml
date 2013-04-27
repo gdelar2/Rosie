@@ -8,7 +8,7 @@ Rectangle {
     border.width: 3
 
 
-    property var picArray
+    property variant picArray
     property int picIndex:0
 
 

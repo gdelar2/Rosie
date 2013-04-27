@@ -8,7 +8,7 @@ Rectangle {
 
 
     signal widgetClicked
-    property var picArray
+    property variant picArray
     property int picIndex:0
 
 
