@@ -252,7 +252,9 @@ Flickable {
         }
 
         GalleryTinyWidget{
-        visible: false
+        visible: true
+        x:10
+        y:50
 
 
         onWidgetClicked: {
@@ -262,7 +264,7 @@ Flickable {
 
         GalleryWidget{
 
-             visible: true
+             visible: false
              onWidgetClicked: {
                  parent.loadApp("GalleryApp.qml",{})
              }

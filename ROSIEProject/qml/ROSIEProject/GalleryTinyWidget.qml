@@ -21,19 +21,59 @@ Rectangle {
         drag.maximumY: application.height - parent.height
     }
 
-    Image {
-        id: currentPicture
-        x: 14
-        y: 20
-        width: 271
-        height: 227
-        source: "qrc:/qtquickplugin/images/template_image.png"
+    property var picArray:["Image/GalleryPictures/Picture (1).jpg",
+        "Image/GalleryPictures/Picture (2).jpg",
+        "Image/GalleryPictures/Picture (3).jpg",
+        "Image/GalleryPictures/Picture (4).jpg",
+        "Image/GalleryPictures/Picture (5).jpg",
+        "Image/GalleryPictures/Picture (6).jpg",
+        "Image/GalleryPictures/Picture (7).jpg",
+        "Image/GalleryPictures/Picture (8).jpg",
+        "Image/GalleryPictures/Picture (9).jpg",
+        "Image/GalleryPictures/Picture (10).jpg",
+        "Image/GalleryPictures/Picture (11).jpg",
+        "Image/GalleryPictures/Picture (12).jpg",
+        "Image/GalleryPictures/Picture (13).jpg",
+        "Image/GalleryPictures/Picture (14).jpg",
+        "Image/GalleryPictures/Picture (15).jpg",
+        "Image/GalleryPictures/Picture (16).jpg",
+        "Image/GalleryPictures/Picture (17).jpg",
+        "Image/GalleryPictures/Picture (18).jpg",
+        "Image/GalleryPictures/Picture (19).jpg",
+        "Image/GalleryPictures/Picture (20).jpg",
+        "Image/GalleryPictures/Picture (21).jpg",
+        ]
+    property int picIndex:0
+
+
+    Timer{
+        interval:1000//milliseconds
+        running: true
+        repeat: true
+
+        onTriggered: {
+            picIndex++;
+            if(picIndex>picArray.length){
+                picIndex=0;
+            }
+
+            picArray[picIndex]
+        }
+    }
+
+    Image{
+        width:parent.width
+        height: 339
+        id: displayedImage
+
+
+        source:picArray[picIndex]
     }
 
     MouseArea {
         id: goToGalleryButton
         x: 26
-        y: 277
+        y: 339 //277
         width: 249
         height: 61
 
