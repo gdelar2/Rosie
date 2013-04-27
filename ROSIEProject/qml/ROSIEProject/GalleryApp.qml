@@ -7,14 +7,98 @@ Rectangle {
     opacity: 0.700
     border.width: 3
 
+
+    property var picArray:["Image/GalleryPictures/Picture (1).jpg",
+        "Image/GalleryPictures/Picture (2).jpg",
+        "Image/GalleryPictures/Picture (3).jpg",
+        "Image/GalleryPictures/Picture (4).jpg",
+        "Image/GalleryPictures/Picture (5).jpg",
+        "Image/GalleryPictures/Picture (6).jpg",
+        "Image/GalleryPictures/Picture (7).jpg",
+        "Image/GalleryPictures/Picture (8).jpg",
+        "Image/GalleryPictures/Picture (9).jpg",
+        "Image/GalleryPictures/Picture (10).jpg",
+        "Image/GalleryPictures/Picture (11).jpg",
+        "Image/GalleryPictures/Picture (12).jpg",
+        "Image/GalleryPictures/Picture (13).jpg",
+        "Image/GalleryPictures/Picture (14).jpg",
+        "Image/GalleryPictures/Picture (15).jpg",
+        "Image/GalleryPictures/Picture (16).jpg",
+        "Image/GalleryPictures/Picture (17).jpg",
+        "Image/GalleryPictures/Picture (18).jpg",
+        "Image/GalleryPictures/Picture (19).jpg",
+        "Image/GalleryPictures/Picture (20).jpg",
+        "Image/GalleryPictures/Picture (21).jpg",
+        ]
+    property int picIndex:0
+
+
+    Timer{
+        id:timer
+        interval:1000//milliseconds
+        running: false
+        repeat: true
+
+        onTriggered: {
+            picIndex++;
+            if(picIndex>picArray.length){
+                picIndex=0;
+            }
+
+            picArray[picIndex]
+        }
+    }
+
+
+
+
+    function picSelected(pathOfClickedPic)
+{
+        imageToDisplay.source=pathOfClickedPic;
+        pictureClicked.visible=true;
+
+
+
+    }
+
+
+
+
+
+
     Rectangle {
-        id: rectangle2
+           id: displayedImagesRectangle
         x: 0
         y: 172
         width: 1920
         height: 652
         color: "#000000"
         opacity: 0.800
+
+
+
+
+        /*
+        Image {
+
+          //  x: 0
+           // y: 172
+            width: 1920
+            height: 652
+
+          //  opacity: 0.800
+
+            id: displayedImage
+                    fillMode: Image.PreserveAspectFit
+
+            source:picArray[picIndex]
+        }
+
+        */
+
+
+
+
     }
 
     MouseArea {
@@ -47,6 +131,10 @@ Rectangle {
                 font.pixelSize: 22
             }
         }
+
+        onClicked: {
+            timer.running=!(timer.running)
+        }
     }
 
     MouseArea {
@@ -78,5 +166,24 @@ Rectangle {
                 font.pixelSize: 22
             }
         }
+    }
+
+    Rectangle{
+
+        id: pictureClicked
+        width: 1920
+        height:1080
+        visible:false
+
+        Image{
+            id:imageToDisplay
+            width: 1920
+            height:1080
+            fillMode: Image.PreserveAspectFit
+            //source:
+        }
+
+
+
     }
 }

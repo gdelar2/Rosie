@@ -66,7 +66,7 @@ Rectangle {
         height: 339
         id: displayedImage
 
-
+           // fillMode: Image.PreserveAspectFit
         source:picArray[picIndex]
     }
 
