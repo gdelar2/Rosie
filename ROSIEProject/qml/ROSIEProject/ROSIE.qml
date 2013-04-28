@@ -5,7 +5,7 @@ Flickable {
     contentWidth: application.width
     contentHeight: application.height
 
-    property string mainColor: "#0e51a7"
+    property string mainColor: "#08216F" //"#008F24" //"#8F1E00"
     property string currentState: "HOME"
     property int currentUser: -1
     property string userSkeleton: '{'+
@@ -32,20 +32,13 @@ Flickable {
         '],'+
         '"qmItems":['+
             '{'+
-              '"app":"",'+ //if app is not null load app, else do action
-              '"action":""'+
+                '"value":"SETTINGS",'+
+                '"app":"settings",'+ //if app is not blank load app, else do action
+                '"action":""'+
             '},{'+
-              '"app":"",'+
-              '"action":""'+
-            '},{'+
-              '"app":"",'+
-              '"action":""'+
-            '},{'+
-              '"app":"",'+
-              '"action":""'+
-            '},{'+
-              '"app":"",'+
-              '"action":""'+
+                '"value":"LOGOUT",'+
+                '"app":"",'+
+                '"action":"logout"'+
             '}'+
         '],'+
         '"apps":{'+
@@ -61,6 +54,11 @@ Flickable {
             '},'+
             '"recipe":{'+
                 '"file":"RecipeApp.qml",'+
+                '"properties":{'+
+                '}'+
+            '},'+
+            '"settings":{'+
+                '"file":"SettingsApp.qml",'+
                 '"properties":{'+
                 '}'+
             '},'+
@@ -201,9 +199,11 @@ Flickable {
         return null;
     }
 
-    function getSetting(name) {
+    function getSetting(name, user) {
+        if (typeof user === 'undefined')
+            user = currentUser;
         var uInfo = JSON.parse(userInfo);
-        var retValue = uInfo[currentUser];
+        var retValue = uInfo[user];
         var tmpGet = name;
         while (tmpGet.length > 0) {
             var idx = -1;
@@ -223,12 +223,14 @@ Flickable {
         return retValue;
     }
 
-    function setSetting(name, value) {
+    function setSetting(name, value, user) {
+        if(typeof user === 'undefined')
+            user = currentUser;
         var uInfo = JSON.parse(userInfo);
-        var retValue = uInfo[currentUser];
+        var retValue = uInfo[user];
         var startedWith = JSON.stringify(retValue);
 
-        uInfo[currentUser] = setSettingRecurse(retValue, name, value);
+        uInfo[user] = setSettingRecurse(retValue, name, value);
 
         userInfo = JSON.stringify(uInfo);
     }
@@ -267,6 +269,8 @@ Flickable {
             currentUser = 0;
         } else
             userInfo = userInfo.substring(0, userInfo.length - 1) + ',' + skeletonStr + ']';
+        var uInfo = JSON.parse(userInfo);
+        return uInfo.length - 1;
     }
 
     function refreshHome() {
@@ -287,8 +291,9 @@ Flickable {
             header.toggleQuickMenu(true);
         else
             header.toggleQuickMenu(true);
+
         //Auto load an app you're working on
-        //loadApp("SettingsApp.qml", {})
+        loadApp("SettingsApp.qml", {})
     }
 
     function qMenuWidgetLoad(widgetId, widget, scale, properties) {
@@ -428,7 +433,8 @@ Flickable {
         scale: 0.5
 
        Component.onCompleted: {
-           addUser("Guest", "", "Image/User/chess.png");
+           var newUser = addUser("Guest", "", "Image/User/chess.png");
+           console.log("Guest ID: " + newUser)
 
            //Get setting example
            console.log("U: " + getSetting("username"));
@@ -482,7 +488,7 @@ Flickable {
                     currentUser = 0;
                     refreshHome();
                 } else if (currentState === "APP") {
-                    //
+                    //Close app
                     removeApps();
                     currentState = "HOME";
                 }

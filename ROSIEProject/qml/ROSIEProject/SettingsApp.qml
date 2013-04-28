@@ -159,11 +159,11 @@ Rectangle {
 
                 onComboClicked: {
                     if (selectedIndex == 0)
-                        mainColor = "#0e51a7";
+                        mainColor = "#08216F";
                     else if (selectedIndex == 1)
-                        mainColor = "red";
+                        mainColor = "#8F1E00";
                     else
-                        mainColor = "green";
+                        mainColor = "#008F24";
                 }
             }
             Text {
@@ -1389,6 +1389,10 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         //User information get's stored and calls the addUser function.
+                        var newUser = addUser("username", "password", "avatar_source_url");
+                        setSetting("homeWidgets[0].name", "", newUser);
+                        setSetting("homeWidgets[1].name", "", newUser);
+                        setSetting("homeWidgets[2].name", "", newUser);
                     }
                 }
             }
