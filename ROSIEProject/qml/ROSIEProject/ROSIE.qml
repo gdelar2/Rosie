@@ -25,7 +25,7 @@ Flickable {
         '"units":"F",'+
         '"homeWidgets":['+
             '{'+
-                '"name":"todo"'+
+                '"name":"gallery"'+
             '},{'+
                 '"name":"news"'+
             '},{'+

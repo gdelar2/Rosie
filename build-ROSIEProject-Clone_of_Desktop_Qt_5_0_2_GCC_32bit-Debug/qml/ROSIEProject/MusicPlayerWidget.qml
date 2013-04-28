@@ -9,6 +9,7 @@ Rectangle {
     border.width: 2
     border.color: "#000000"
     radius: 10
+    property bool draggable: true;
 
     MouseArea {
         anchors.fill: parent
@@ -18,6 +19,11 @@ Rectangle {
         drag.maximumX: application.width - parent.width
         drag.minimumY: 100
         drag.maximumY: application.height - parent.height
+
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
+        }
     }
 
     MediaPlayer{

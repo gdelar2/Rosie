@@ -6,6 +6,7 @@ Rectangle {
     height: 650
     border.width: 2
     radius: 10
+    property bool draggable: true;
 
     WebView {
         id: transit
@@ -24,5 +25,10 @@ Rectangle {
         drag.maximumX: application.width - parent.width
         drag.minimumY: 100
         drag.maximumY: application.height - parent.height
+
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
+        }
     }
 }

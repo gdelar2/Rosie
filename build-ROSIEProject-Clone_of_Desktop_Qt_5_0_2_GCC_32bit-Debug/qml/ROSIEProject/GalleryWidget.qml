@@ -5,15 +5,14 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
-
-
-    signal widgetClicked
-    property var picArray
+    radius: 13
+    property variant picArray: picPaths
     property int picIndex:0
+    property bool draggable: true;
 
 
     Timer{
-        interval:1000//milliseconds
+        interval:5000//milliseconds
         running: true
         repeat: true
 
@@ -45,15 +44,14 @@ Rectangle {
         drag.maximumX: application.width - parent.width
         drag.minimumY: 100
         drag.maximumY: application.height - parent.height
-    }
 
-
-    MouseArea{
-        anchors.fill: parent
         onClicked:{
-            parent.widgetClicked()
+            loadApp("GalleryApp.qml", {picArray: picPaths});
         }
-
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
+        }
     }
 
     Text {

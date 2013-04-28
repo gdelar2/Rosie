@@ -6,7 +6,8 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
-    signal widgetClicked
+    radius: 13
+    property bool draggable: true;
 
     MediaPlayer{
         id: videoFile
@@ -42,7 +43,11 @@ Rectangle {
 
         onClicked: {
             videoFile.stop()
-            parent.widgetClicked()
+            loadApp("VideoApp.qml", {});
+        }
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
         }
     }
 

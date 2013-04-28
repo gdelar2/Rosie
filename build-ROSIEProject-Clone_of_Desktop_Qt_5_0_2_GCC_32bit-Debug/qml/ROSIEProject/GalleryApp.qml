@@ -6,9 +6,7 @@ Rectangle {
     color: "#000000"
     opacity: 0.700
     border.width: 3
-
-
-    property var picArray
+    property variant picArray
     property int picIndex:0
 
 
@@ -54,9 +52,51 @@ Rectangle {
         width: 1920
         height: 750
         color: "#000000"
-        opacity: 0.800
+       // opacity: 0.800
 //9X3 Grid
 
+Row{
+    spacing:30
+    x:3
+    Repeater{
+      //  id:column
+         model:8
+        delegate:
+       Column{
+            spacing: 28
+            y:28
+
+            Repeater{
+                model:3
+                delegate:
+                    Image{
+                    height:213 //216.66
+                    width:213  //213.33
+                    source:picArray[0];
+
+                    MouseArea{
+                        anchors.fill: parent
+
+                        onClicked:{
+                            picSelected(parent.source);
+                        }
+                    }
+
+                }
+            }
+
+
+        }
+
+
+
+    }
+
+}
+
+//--------------------------------------------------------------------------------
+
+/*
 
         Image{
             y:1.5
@@ -95,7 +135,7 @@ Rectangle {
         */
 
 
-
+//------------------------------------------------------------
 
     }
 

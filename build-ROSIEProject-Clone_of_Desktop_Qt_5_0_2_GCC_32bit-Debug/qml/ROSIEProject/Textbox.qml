@@ -3,7 +3,8 @@ import QtQuick 2.0
 Rectangle {
     property string strText
     property double tboxScale: 1
-    signal comboClicked
+    property int maxChars: 12
+    signal textEntered
 
     width: 655;
     height: 100;
@@ -68,12 +69,15 @@ Rectangle {
         y: 1080-height-parent.y-parent.height
         visible: false
         txtBox: textboxText
+        maximumChars: maxChars
 
         onReturnClicked: {
             textbox.visible = false;
             keyboard.visible = false;
             textboxText.visible = false;
-            strText = textboxText.text
+            strText = textboxText.text;
+            parent.textEntered();
+            textboxText.text = "";
         }
     }
 }

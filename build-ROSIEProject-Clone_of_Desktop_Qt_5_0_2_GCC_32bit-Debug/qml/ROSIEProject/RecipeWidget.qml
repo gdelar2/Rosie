@@ -7,7 +7,8 @@ Rectangle {
     color: "#000000"
     opacity: 0.700
     border.width: 3
-    signal widgetClicked
+    radius: 13
+    property bool draggable: true;
 
     Text {
         id: foodTitle
@@ -75,7 +76,12 @@ Rectangle {
         drag.maximumY: application.height - parent.height
 
         onClicked: {
-            parent.widgetClicked()
+            loadApp("RecipeApp.qml", {});
+        }
+
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
         }
     }
 

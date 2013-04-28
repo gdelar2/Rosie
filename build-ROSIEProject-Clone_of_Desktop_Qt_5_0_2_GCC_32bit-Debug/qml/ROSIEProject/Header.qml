@@ -7,8 +7,8 @@ Rectangle {
 
     signal returnShortcutClicked
 
-    function toggleQuickMenu() {
-        quickMenuShortcut.visible = !quickMenuShortcut.visible;
+    function toggleQuickMenu(vis) {
+        quickMenuShortcut.visible = vis;
     }
 
     function getQuickMenu() {
@@ -85,17 +85,29 @@ Rectangle {
 
     QuickMenu {
         id: qMenuView
+        y: 0-height
         visible: false
+
+        Behavior on y { PropertyAnimation {
+                easing.type: Easing.InOutQuad
+            }
+        }
+
+        onYChanged: {
+            if(quickMenuShortcut.rotation == 0 && y == 0-height)
+                visible = false;
+        }
 
         function toggle() {
             if (qMenuView.visible == true) {
-                qMenuView.visible = false
-                quickMenuShortcut.y = -10
                 quickMenuShortcut.rotation = 0
+                y = 0-height;
+                quickMenuShortcut.y = -10
             } else {
-                qMenuView.visible = true;
-                quickMenuShortcut.y = qMenuView.height
                 quickMenuShortcut.rotation = 180
+                visible = true;
+                y = 0;
+                quickMenuShortcut.y = qMenuView.height
             }
         }
     }

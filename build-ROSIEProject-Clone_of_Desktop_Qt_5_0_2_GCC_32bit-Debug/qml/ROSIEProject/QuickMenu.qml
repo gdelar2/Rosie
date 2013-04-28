@@ -14,6 +14,10 @@ Rectangle {
         return widget2;
     }
 
+    MouseArea {
+        anchors.fill: parent
+    }
+
     Text {
         id: rosieTxt
         x: (parent.width / 2) - (width / 2)
@@ -46,7 +50,7 @@ Rectangle {
             font.family: mediumFont.name
             color: "#FFFFFF"
             opacity: .8
-            text: "HOME"
+            text: "SETTINGS"
         }
         Text {
             id: shortcutMenuLogout
