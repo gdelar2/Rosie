@@ -447,7 +447,7 @@ Flickable {
            //Set setting example
            setSetting("homeWidgets[0].name", "gallery")
            console.log("NEW HW[0]: " + getSetting("homeWidgets[0].name"));
-           //setSetting("homeWidgets[0].name", "news")
+           setSetting("homeWidgets[0].name", "news")
 
            refreshHome();
        }

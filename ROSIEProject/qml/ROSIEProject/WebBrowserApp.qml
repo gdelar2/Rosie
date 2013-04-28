@@ -5,6 +5,7 @@ Rectangle {
     width: 1920
     height: 980
     color: mainColor
+    property string webUrl: "http://www.google.com"
 
     WebView{
         id: webview1
@@ -13,10 +14,9 @@ Rectangle {
         width: 1856
         height: 736
 
-        url: "http://www.google.com"
+        url: webUrl
 
     }
-
 
     Textbox {
         id: textbox1

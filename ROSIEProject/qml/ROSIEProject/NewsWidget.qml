@@ -6,6 +6,25 @@ Rectangle {
     color: "#000000"
     opacity: 0.7
     property bool draggable: true;
+    property var newsData
+    property int curIndex: 0
+
+    Component.onCompleted: {
+        getData();
+    }
+
+    function getData(){
+        var doc = new XMLHttpRequest();
+        doc.onreadystatechange = function() {
+           if (doc.readyState === XMLHttpRequest.DONE) {
+               newsData = JSON.parse(doc.responseText);
+               ticker.start();
+               ticker.triggeredOnStart = true;
+           }
+        }
+        doc.open("GET", "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss");
+        doc.send();
+    }
 
     MouseArea {
         anchors.fill: parent
@@ -17,10 +36,43 @@ Rectangle {
         drag.maximumY: application.height - parent.height
 
         //clicking here opens up the WebBrowserApp with the appropriate headline link
+        onClicked: {
+            loadApp("WebBrowserApp.qml", {webUrl: newsData.responseData.feed.entries[curIndex].link})
+        }
 
         onPressed: {
             if(!draggable)
                 drag.target = null;
+        }
+    }
+
+    Timer {
+        id: ticker
+        interval:10000//milliseconds
+        running: false
+        repeat: true
+
+        onTriggered: {
+            title.text = newsData.responseData.feed.title;
+            var head =  newsData.responseData.feed.entries[curIndex].title;
+            while (head.match(/&#39;/))
+                head = head.replace("&#39;", "'");
+            for (var i = 0; i < head.length; ++i) {
+                if (i % 28 == 0 && i != 0) {
+                    head = head.substring(0, i) + "\n" + head.substring(i, head.length);
+                }
+            }
+            headline.text = head;
+            var bod = newsData.responseData.feed.entries[curIndex].contentSnippet;
+            while (bod.match(/&#39;/))
+                bod = bod.replace("&#39;", "'");
+            for (i = 0; i < bod.length; ++i) {
+                if (i % 31 == 0 && i != 0) {
+                    bod = bod.substring(0, i) + "\n" + bod.substring(i, bod.length);
+                }
+            }
+            body.text = bod;
+            curIndex++;
         }
     }
 
@@ -49,7 +101,7 @@ Rectangle {
         width: 521
         height: 90
         color: "#ffffff"
-        text: qsTr("Headline Goes Here")
+        text: qsTr("LOADING FEED...")
         font.family: mediumFont.name
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 40
@@ -71,9 +123,9 @@ Rectangle {
     Rectangle {
         id: textBackground
         x: 40
-        y: 432
+        y: 372
         width: 521
-        height: 200
+        height: 250
         color: "#000000"
 
         Text {
@@ -81,11 +133,11 @@ Rectangle {
             x: 10
             y: 12
             width: 501
-            height: 176
+            height: 226
             color: "#ffffff"
-            text: qsTr("text")
+            text: qsTr("")
             font.family: mediumFont.name
-            font.pixelSize: 20
+            font.pixelSize: 32
 
             //a small beginning part of the article
         }
