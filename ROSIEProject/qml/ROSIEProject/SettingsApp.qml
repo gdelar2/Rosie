@@ -1561,6 +1561,12 @@ Rectangle {
                     onClicked: {
                         setSetting("avatar", row1.imageSource);
                         setSetting("password", passTxtbox1.strText);
+                        if (appRow1.appArray[0] === "")
+                            appRow1.appArray[0] = "-1";
+                        if (appRow1.appArray[1] === "")
+                            appRow1.appArray[1] = "-1";
+                        if (appRow1.appArray[2] === "")
+                            appRow1.appArray[2] = "-1";
                         setSetting("homeWidgets[0].name", appRow1.appArray[0]);
                         setSetting("homeWidgets[1].name", appRow1.appArray[1]);
                         setSetting("homeWidgets[2].name", appRow1.appArray[2]);
@@ -1600,6 +1606,13 @@ Rectangle {
                         //User information get's stored and calls the addUser function.
                         if (nameTxtbox.enabled == true) {
                             var newUser = addUser(nameTxtbox.strText, passTxtbox1.strText, row1.imageSource);
+                            if (appRow1.appArray[0] === "")
+                                appRow1.appArray[0] = "-1";
+                            if (appRow1.appArray[1] === "")
+                                appRow1.appArray[1] = "-1";
+                            if (appRow1.appArray[2] === "")
+                                appRow1.appArray[2] = "-1";
+
                             setSetting("homeWidgets[0].name", appRow1.appArray[0], newUser);
                             setSetting("homeWidgets[1].name", appRow1.appArray[1], newUser);
                             setSetting("homeWidgets[2].name", appRow1.appArray[2], newUser);

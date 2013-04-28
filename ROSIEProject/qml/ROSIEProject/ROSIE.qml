@@ -158,7 +158,7 @@ Flickable {
                 '}'+
             '},'+
             '"video":{'+
-                '"file":"VideoWidget.qml",'+
+                '"file":"VideoWiget.qml",'+
                 '"properties":{'+
                     '"width":600'+
                 '}'+
@@ -306,6 +306,7 @@ Flickable {
             removeApps();
         removeWidgets();
         removeQmWidgets();
+
         if (getSetting("qmWidgets[0].name") !== "-1") {
             if (getSetting("qmWidgets[0].name") === "transit")
                 qMenuWidgetLoad(1, getSetting("widgets."+getSetting("qmWidgets[0].name")+".file"), false, {"scale":0.6, "y":200, "x": -122,"border.color": "#FFFFFF", "border.width": 2, "draggable": false});
@@ -318,9 +319,12 @@ Flickable {
             else
                 qMenuWidgetLoad(2, getSetting("widgets."+getSetting("qmWidgets[1].name")+".file"), false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false, "clickable":false});
         }
-        loadWidget(getSetting("widgets."+getSetting("homeWidgets[0].name")+".file"), {"x": 0,"y":300});
-        loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": (1920/2)-(getSetting("widgets."+getSetting("homeWidgets[1].name")+".properties.width")/4),"y":300})
-        loadWidget(getSetting("widgets."+getSetting("homeWidgets[2].name")+".file"), {"x": 1920-getSetting("widgets."+getSetting("homeWidgets[2].name")+".properties.width"),"y":300})
+        if (getSetting("homeWidgets[0].name") !== "-1")
+            loadWidget(getSetting("widgets."+getSetting("homeWidgets[0].name")+".file"), {"x": 0,"y":300});
+        if (getSetting("homeWidgets[1].name") !== "-1")
+            loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": (1920/2)-(getSetting("widgets."+getSetting("homeWidgets[1].name")+".properties.width")/4),"y":300})
+        if (getSetting("homeWidgets[2].name") !== "-1")
+            loadWidget(getSetting("widgets."+getSetting("homeWidgets[2].name")+".file"), {"x": 1920-getSetting("widgets."+getSetting("homeWidgets[2].name")+".properties.width"),"y":300})
         mainColor = getSetting("theme");
 
         //load quick menu items
