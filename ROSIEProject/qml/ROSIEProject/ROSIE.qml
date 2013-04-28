@@ -21,8 +21,12 @@ Flickable {
         '"timeFormat":"hh:mm AP",'+
         '"homepage":"http://google.com",'+
         '"city":"chicago",'+
+        '"transit1":"6700",'+
+        '"transit2":" ",'+
+        '"transit3":" ",'+
         '"theme":"#2C3E50",'+
         '"units":"F",'+
+        '"news":"http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss",'+
         '"homeWidgets":['+
             '{'+
                 '"name":"gallery"'+
@@ -154,7 +158,7 @@ Flickable {
                 '}'+
             '},'+
             '"video":{'+
-                '"file":"VideoWidget.qml",'+
+                '"file":"VideoWiget.qml",'+
                 '"properties":{'+
                     '"width":600'+
                 '}'+
@@ -235,7 +239,7 @@ Flickable {
             }
             if (idx > -1)
                 retValue = retValue[idx];
-            var prop = tmpGet.match(/^[a-zA-Z]*/);
+            var prop = tmpGet.match(/^[a-zA-Z0-9]*/);
             if (retValue[prop])
                 retValue = retValue[prop];
             tmpGet = tmpGet.substring(prop[0].length);
@@ -293,31 +297,50 @@ Flickable {
         return uInfo.length - 1;
     }
 
-    function refreshHome() {
+    function refreshHome(removeApp) {
+        if (typeof removeApp === 'undefined')
+            removeApp = true;
         //load in currentUser settings
         //apps, etc.
-        removeApps();
+        if (removeApp)
+            removeApps();
         removeWidgets();
+        removeQmWidgets();
 
-        qMenuWidgetLoad(1, getSetting("widgets."+getSetting("qmWidgets[0].name")+".file"), false, {"y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false});
-        qMenuWidgetLoad(2, getSetting("widgets."+getSetting("qmWidgets[1].name")+".file"), false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false, "clickable":false});
-        loadWidget(getSetting("widgets."+getSetting("homeWidgets[0].name")+".file"), {"x": 0,"y":300});
-        loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": (1920/2)-(getSetting("widgets."+getSetting("homeWidgets[1].name")+".properties.width")/4),"y":300})
-        loadWidget(getSetting("widgets."+getSetting("homeWidgets[2].name")+".file"), {"x": 1920-getSetting("widgets."+getSetting("homeWidgets[2].name")+".properties.width"),"y":300})
+        if (getSetting("qmWidgets[0].name") !== "-1") {
+            if (getSetting("qmWidgets[0].name") === "transit")
+                qMenuWidgetLoad(1, getSetting("widgets."+getSetting("qmWidgets[0].name")+".file"), false, {"scale":0.6, "y":200, "x": -122,"border.color": "#FFFFFF", "border.width": 2, "draggable": false});
+            else
+                qMenuWidgetLoad(1, getSetting("widgets."+getSetting("qmWidgets[0].name")+".file"), false, {"y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false});
+        }
+        if (getSetting("qmWidgets[1].name") !== "-1") {
+            if (getSetting("qmWidgets[1].name") === "transit")
+                qMenuWidgetLoad(2, getSetting("widgets."+getSetting("qmWidgets[1].name")+".file"), false, {"x": 1440, "scale":0.6, "y":180, "border.color": "#FFFFFF", "border.width": 2, "draggable": false, "clickable":false});
+            else
+                qMenuWidgetLoad(2, getSetting("widgets."+getSetting("qmWidgets[1].name")+".file"), false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false, "clickable":false});
+        }
+        if (getSetting("homeWidgets[0].name") !== "-1")
+            loadWidget(getSetting("widgets."+getSetting("homeWidgets[0].name")+".file"), {"x": 0,"y":300});
+        if (getSetting("homeWidgets[1].name") !== "-1")
+            loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": (1920/2)-(getSetting("widgets."+getSetting("homeWidgets[1].name")+".properties.width")/4),"y":300})
+        if (getSetting("homeWidgets[2].name") !== "-1")
+            loadWidget(getSetting("widgets."+getSetting("homeWidgets[2].name")+".file"), {"x": 1920-getSetting("widgets."+getSetting("homeWidgets[2].name")+".properties.width"),"y":300})
         mainColor = getSetting("theme");
 
         //load quick menu items
 
         if (currentUser == 0)
-            header.toggleQuickMenu(false);
+            header.toggleQuickMenu(true);
         else
             header.toggleQuickMenu(true);
 
         //Auto load an app you're working on
-        if (currentUser == 0 && JSON.parse(userInfo).length === 1)
-            loadApp("SettingsApp.qml", {view: 1, setSettingsEnabled:false});
-        else
-            loadApp("SettingsApp.qml", {});
+        if (removeApp) {
+            if (currentUser == 0 && JSON.parse(userInfo).length === 1)
+                loadApp("SettingsApp.qml", {view: 1, setSettingsEnabled:false});
+            else
+                loadApp("SettingsApp.qml", {});
+        }
     }
 
     function qMenuWidgetLoad(widgetId, widget, scale, properties) {
@@ -344,6 +367,14 @@ Flickable {
     function loadWidget(widgetQmlFile, properties) {
         var app = Qt.createComponent(widgetQmlFile);
         app.createObject(widgetScreen, properties);
+    }
+
+    function removeQmWidgets() {
+        var quickMenu = header.getQuickMenu();
+        if (quickMenu.getWidget1().children.length > 0)
+            quickMenu.getWidget1().children[0].destroy();
+        if (quickMenu.getWidget2().children.length > 0)
+            quickMenu.getWidget2().children[0].destroy();
     }
 
     function removeApps() {
@@ -518,17 +549,82 @@ Flickable {
             }
         }
 
-        Image{
-            id: welcomeImage
-            width: 1920
-            height:1080
-            source: "Image/welcome.png"
+        Rectangle {
+            width: 1920;
+            height: 1080;
+            anchors.centerIn: parent
+            color: mainColor;
             visible: true
+
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    welcomeImage.visible=false
+                    parent.visible=false
                 }
+            }
+
+            //Needs to be replaced!!!!
+            Rectangle {
+                id: bg
+                anchors.centerIn: parent
+                height: 500
+                width: 400
+                border.color: "#FFF"
+                border.width: 5
+                color: "#000";
+                opacity: 0.3
+            }
+
+            Image{
+                id: welcomeImage
+                anchors.top: bg.top
+                anchors.topMargin: 25
+                anchors.left: bg.left
+                anchors.leftMargin: 75
+                width: 250
+                height: 250
+                source: "Image/welcome.png"
+            }
+            Text {
+                id: rtxt
+                anchors.top: welcomeImage.bottom
+                anchors.topMargin: 25
+                anchors.horizontalCenter: welcomeImage.horizontalCenter
+                font.bold: true
+                font.family: boldFont.name
+                font.pointSize: 36
+                horizontalAlignment: Text.AlignHCenter
+                text: "R.O.S.I.E"
+            }
+            Text {
+                id: wtxt
+                anchors.top: rtxt.bottom
+                anchors.topMargin: 3
+                anchors.horizontalCenter: rtxt.horizontalCenter
+                font.bold: true
+                font.family: boldFont.name
+                font.pointSize: 36
+                horizontalAlignment: Text.AlignHCenter
+                text: "Welcomes"
+            }
+            Text {
+                anchors.top: wtxt.bottom
+                anchors.topMargin: 3
+                anchors.horizontalCenter: wtxt.horizontalCenter
+                font.bold: true
+                font.family: boldFont.name
+                font.pointSize: 36
+                horizontalAlignment: Text.AlignHCenter
+                text: "YOU!"
+            }
+
+            Text {
+                anchors.top: bg.bottom
+                anchors.topMargin: 50
+                anchors.horizontalCenter: bg.horizontalCenter
+                font.family: mediumFont.name
+                font.pointSize: 36
+                text: "Touch anywhere to proceed to the main screen"
             }
         }
     }

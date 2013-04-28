@@ -14,6 +14,12 @@ Rectangle {
         return widget2;
     }
 
+    onVisibleChanged: {
+        if (visible) {
+
+        }
+    }
+
     MouseArea {
         anchors.fill: parent
     }

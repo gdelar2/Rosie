@@ -150,7 +150,7 @@ Rectangle {
 
     Rectangle {
         id: unitsFromBorder
-        x: 0
+        x: 12
         y: 404
         width: 276
         height: 84
@@ -160,16 +160,22 @@ Rectangle {
         border.width: 2
         border.color: "#000000"
 
-        TextEdit {
+        Text {
             id: cFrom
-            x: 9
-            y: 10
-            width: 249
-            height: 74
-            color: "#090808"
-            text: qsTr("")
-            font.pixelSize: 50
+            x: 0
+            y: 0
+            width: 276
+            height: 84
             font.family: mediumFont.name
+            font.pixelSize: 50
+            text: ""
+        }
+
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                vkeyboard.visible = true
+            }
         }
     }
 
@@ -217,5 +223,22 @@ Rectangle {
             font.pixelSize: 50
         }
     }
+
+
+    VirtualKeyboard{
+        id: vkeyboard
+        visible: false
+        x: 0 - parent.x
+        y: 1080-height-parent.y
+        txtBox: cFrom
+        z:12
+
+        onReturnClicked: {
+            vkeyboard.visible = false
+        }
+
+    }
+
+
 }
 
