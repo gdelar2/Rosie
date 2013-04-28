@@ -556,25 +556,75 @@ Flickable {
             color: mainColor;
             visible: true
 
-            Image{
-                id: welcomeImage
-                anchors.centerIn: parent
-                source: "Image/clOn.png"
-            }
-            Text {
-                anchors.top: welcomeImage.bottom
-                anchors.topMargin: 50
-                anchors.horizontalCenter: welcomeImage.horizontalCenter
-                font.family: mediumFont.name
-                font.pointSize: 36
-                text: "Touch anywhere to proceed to the main screen"
-            }
-
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
                     parent.visible=false
                 }
+            }
+
+            //Needs to be replaced!!!!
+            Rectangle {
+                id: bg
+                anchors.centerIn: parent
+                height: 500
+                width: 400
+                border.color: "#FFF"
+                border.width: 5
+                color: "#000";
+                opacity: 0.3
+            }
+
+            Image{
+                id: welcomeImage
+                anchors.top: bg.top
+                anchors.topMargin: 25
+                anchors.left: bg.left
+                anchors.leftMargin: 75
+                width: 250
+                height: 250
+                source: "Image/welcome.png"
+            }
+            Text {
+                id: rtxt
+                anchors.top: welcomeImage.bottom
+                anchors.topMargin: 25
+                anchors.horizontalCenter: welcomeImage.horizontalCenter
+                font.bold: true
+                font.family: boldFont.name
+                font.pointSize: 36
+                horizontalAlignment: Text.AlignHCenter
+                text: "R.O.S.I.E"
+            }
+            Text {
+                id: wtxt
+                anchors.top: rtxt.bottom
+                anchors.topMargin: 3
+                anchors.horizontalCenter: rtxt.horizontalCenter
+                font.bold: true
+                font.family: boldFont.name
+                font.pointSize: 36
+                horizontalAlignment: Text.AlignHCenter
+                text: "Welcomes"
+            }
+            Text {
+                anchors.top: wtxt.bottom
+                anchors.topMargin: 3
+                anchors.horizontalCenter: wtxt.horizontalCenter
+                font.bold: true
+                font.family: boldFont.name
+                font.pointSize: 36
+                horizontalAlignment: Text.AlignHCenter
+                text: "YOU!"
+            }
+
+            Text {
+                anchors.top: bg.bottom
+                anchors.topMargin: 50
+                anchors.horizontalCenter: bg.horizontalCenter
+                font.family: mediumFont.name
+                font.pointSize: 36
+                text: "Touch anywhere to proceed to the main screen"
             }
         }
     }
