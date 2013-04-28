@@ -549,16 +549,31 @@ Flickable {
             }
         }
 
-        Image{
-            id: welcomeImage
-            width: 1920
-            height:1080
-            source: "Image/welcome.png"
+        Rectangle {
+            width: 1920;
+            height: 1080;
+            anchors.centerIn: parent
+            color: mainColor;
             visible: true
+
+            Image{
+                id: welcomeImage
+                anchors.centerIn: parent
+                source: "Image/clOn.png"
+            }
+            Text {
+                anchors.top: welcomeImage.bottom
+                anchors.topMargin: 50
+                anchors.horizontalCenter: welcomeImage.horizontalCenter
+                font.family: mediumFont.name
+                font.pointSize: 36
+                text: "Touch anywhere to proceed to the main screen"
+            }
+
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    welcomeImage.visible=false
+                    parent.visible=false
                 }
             }
         }
