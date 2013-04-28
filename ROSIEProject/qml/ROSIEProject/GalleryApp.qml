@@ -78,6 +78,8 @@ Row{
                         anchors.fill: parent
 
                         onClicked:{
+
+                            //lslsksldk
                             picSelected(parent.source);
                         }
                     }
