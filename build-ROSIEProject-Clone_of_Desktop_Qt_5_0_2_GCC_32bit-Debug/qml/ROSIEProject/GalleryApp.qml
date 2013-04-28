@@ -173,7 +173,8 @@ Row{
         height:parent.height
         visible:false
         opacity: 1
-        color:"black"
+       // color:"black"
+        color:mainColor
 
         Image{
             id:imageToDisplay
