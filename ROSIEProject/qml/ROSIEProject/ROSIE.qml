@@ -57,8 +57,7 @@ Flickable {
         '"apps":{'+
             '"calendar":{'+
                 '"file":"CalendarApp.qml",'+
-                '"properties":{'+
-                '}'+
+                '"reminders":[]'+
             '},'+
             '"gallery":{'+
                 '"file":"GalleryApp.qml",'+
@@ -505,7 +504,7 @@ Flickable {
            setSetting("homeWidgets[0].name", "gallery")
            console.log("NEW HW[0]: " + getSetting("homeWidgets[0].name"));
            setSetting("homeWidgets[0].name", "todo")*/
-
+setSetting("homeWidgets[0].name", "calendar")
            refreshHome();
        }
 

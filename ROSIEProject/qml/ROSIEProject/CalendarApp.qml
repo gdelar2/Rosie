@@ -4,6 +4,7 @@ Rectangle {
     width: 1920
     height: 980
     color: mainColor
+    property string reminderSkeleton: '{"name":"","index":"","dateA":"","dateB":"","startA":"","startM":"","endA":"","endM":""}'
 
     Component.onCompleted: {
         var curDate = new Date();
@@ -24,6 +25,7 @@ Rectangle {
         }
         curDate.setDate(curDate.getDate()-daysBefore)
         curDay = Qt.formatDate(curDate, "d")
+        var reminders = getSetting("apps.calendar.reminders")
         for (var i = 0; i < daysBefore; ++i) {
             if (curDay > lastDay)
                 isCurrent = false
@@ -32,15 +34,32 @@ Rectangle {
             var day = ""
             if(i < 7)
                 day = Qt.formatDate(curDate, "ddd")
-            calendarInfoModel.append({ title: curDay,curMonth: isCurrent,curDay:curDay==lastDay,day:day,date:curDate })
+            var chkStr = Qt.formatDate(curDate, "MM/dd/yy");
+            var hasReminder = false;
+            for (var key in reminders) {
+                if (reminders[key].dateA === chkStr) {
+                    hasReminder = true;
+                    break;
+                }
+            }
+
+            calendarInfoModel.append({ title: curDay,curMonth: isCurrent,curDay:curDay==lastDay,day:day,date:curDate,reminder:hasReminder })
             curDate.setDate(curDate.getDate()+1)
             curDay = Qt.formatDate(curDate, "d")
         }
 
-        for (var i = daysBefore; i < 28; ++i) {
+        for (i = daysBefore; i < 28; ++i) {
             if (isCurrent && curDay < lastDay)
                 isCurrent = false
-            calendarInfoModel.append({ title: curDay,curMonth: isCurrent,curDay:curDay==lastDay,day:"",date:curDate })
+            chkStr = Qt.formatDate(curDate, "MM/dd/yy");
+            hasReminder = false;
+            for (key in reminders) {
+                if (reminders[key].dateA === chkStr) {
+                    hasReminder = true;
+                    break;
+                }
+            }
+            calendarInfoModel.append({ title: curDay,curMonth: isCurrent,curDay:curDay==lastDay,day:"",date:curDate,reminder:hasReminder })
             curDate.setDate(curDate.getDate()+1)
             curDay = Qt.formatDate(curDate, "d")
         }
@@ -141,12 +160,34 @@ Rectangle {
                         anchors.rightMargin: 10
                     }
 
+                    Rectangle {
+                        width: parent.width-20
+                        height: 70
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        color: mainColor
+                        opacity: .5
+                        border.color: "#000"
+                        border.width: 4
+                        radius: 20
+                        visible: reminder
+                        Text {
+                            anchors.centerIn: parent
+                            font.family: mediumFont.name
+                            font.pointSize: 24
+                            text: "REMINDER"
+                        }
+                    }
+
                     MouseArea {
                         anchors.fill: parent
 
                         onClicked: {
                             createReminderView.visible = true
                             createReminderView.setDate(Qt.formatDate(date, "dddd MMMM dd yyyy"))
+                            createReminderView.dateA = Qt.formatDate(date, "MM/dd/yy");
+                            createReminderView.dateB = Qt.formatDate(date, "dd/MM/yy");
                         }
                     }
                 }
