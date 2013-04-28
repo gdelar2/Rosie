@@ -377,7 +377,6 @@ Rectangle {
                     passTxtbox1.strText = getSetting("password");
                 } else {
                     addBox.x = 80;
-                    addBox.anchors.left = undefined;
                 }
             }
 
@@ -708,11 +707,11 @@ Rectangle {
 
             Row {
                 id: appRow1
-                x: 11
+                x: 80
                 y: 525
                 width: 1499
                 height: 111
-                spacing: 14
+                spacing: 18
                 property int numSelected: 0
                 property var appArray: ["","",""]
                 //appArray is what will store their top 3 apps
@@ -762,6 +761,7 @@ Rectangle {
                     color: "#000000"
                     opacity: 0.80
                     property int stateSel: 0
+                    property string appselection: "unitconverter"
 
                     Image {
                         id: image1
@@ -825,6 +825,7 @@ Rectangle {
                     color: "#000000"
                     opacity: 0.800
                     property int stateSel: 0
+                    property string appselection: "musicplayer"
 
                     Image {
                         id: image2
@@ -888,6 +889,7 @@ Rectangle {
                     color: "#000000"
                     opacity: 0.800
                     property int stateSel: 0
+                    property string appselection: "gallery"
 
                     Image {
                         id: image3
@@ -951,6 +953,7 @@ Rectangle {
                     color: "#000000"
                     opacity: 0.800
                     property int stateSel: 0
+                    property string appselection: "news"
 
                     Image {
                         id: image4
@@ -1014,6 +1017,7 @@ Rectangle {
                     color: "#000000"
                     opacity: 0.800
                     property int stateSel: 0
+                    property string appselection: "video"
 
                     Image {
                         id: image5
@@ -1139,6 +1143,7 @@ Rectangle {
                     color: "#000000"
                     opacity: 0.800
                     property int stateSel: 0
+                    property string appselection: "recipe"
 
                     Image {
                         id: image7
@@ -1202,6 +1207,7 @@ Rectangle {
                     color: "#000000"
                     opacity: 0.800
                     property int stateSel: 0
+                    property string appselection: "timer"
 
                     Image {
                         id: image8
@@ -1265,6 +1271,7 @@ Rectangle {
                     color: "#000000"
                     opacity: 0.800
                     property int stateSel: 0
+                    property string appselection: "calendar"
 
                     Image {
                         id: image9
@@ -1328,6 +1335,7 @@ Rectangle {
                     color: "#000000"
                     opacity: 0.800
                     property int stateSel: 0
+                    property string appselection: "weather"
 
                     Image {
                         id: image10
@@ -1391,6 +1399,7 @@ Rectangle {
                     color: "#000000"
                     opacity: 0.800
                     property int stateSel: 0
+                    property string appselection: "transit"
 
                     Image {
                         id: image11
@@ -1454,6 +1463,7 @@ Rectangle {
                     color: "#000000"
                     opacity: 0.800
                     property int stateSel: 0
+                    property string appselection: "todo"
 
                     Image {
                         id: image12
@@ -1577,9 +1587,9 @@ Rectangle {
 
             Rectangle {
                 id: addBox
-                //x: 80
-                anchors.left: modifyButton.right
-                anchors.leftMargin: 20
+                x: modifyButton.x + modifyButton.width + 20
+                //anchors.left: modifyButton.right
+                //anchors.leftMargin: 20
                 y: 811
                 width: 429
                 height: 120
@@ -1640,7 +1650,7 @@ Rectangle {
                             rectangle11.color = "#000000";
                             rectangle12.color = "#000000";
                             rectangle13.color = "#000000";
-                            rectangle14.color = "#000000";
+                            //rectangle14.color = "#000000";
                             rectangle15.color = "#000000";
                             rectangle16.color = "#000000";
                             rectangle17.color = "#000000";
@@ -1648,8 +1658,7 @@ Rectangle {
                             rectangle19.color = "#000000";
                             rectangle20.color = "#000000";
                             appRow1.numSelected = 0;
-                            x = 80;
-                            anchors.left = undefined;
+                            addBox.x = 80;
                             modifyButton.visible = false;
                         }
                     }

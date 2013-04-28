@@ -5,7 +5,8 @@ Rectangle {
 
     width: 1920
     height: 980
-    color: "#000000"
+    //color: "#000000"
+    color:mainColor
     opacity: 0.700
     border.width: 3
     property variant picArray:[]
