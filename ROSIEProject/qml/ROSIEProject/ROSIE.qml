@@ -29,7 +29,7 @@ Flickable {
         '"news":"http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss",'+
         '"homeWidgets":['+
             '{'+
-                '"name":"todo"'+
+                '"name":"gallery"'+
             '},{'+
                 '"name":"news"'+
             '},{'+

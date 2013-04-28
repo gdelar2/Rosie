@@ -5,7 +5,8 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
-    signal widgetClicked
+    radius: 13
+    property bool draggable: true;
 
     MouseArea {
         anchors.fill: parent
@@ -17,18 +18,15 @@ Rectangle {
         drag.maximumY: application.height - parent.height
 
         onClicked: {
-            parent.widgetClicked()
+            loadApp("UnitConverterApp.qml", {});
+        }
+        onPressed: {
+            if(!draggable)
+                drag.target = null;
         }
     }
 
     property string conversionTo: ""
-
-    function loadApp(appQmlFile, properties) {
-        var app = Qt.createComponent(appQmlFile);
-        app.createObject(currentApp, properties);
-        if (!currentApp.visible)
-            currentApp.visible = true;
-    }
 
     function conversion(){
         //conversions (26 of them total)
@@ -110,12 +108,7 @@ Rectangle {
         if(dropdownmenu1.selectedItem == "tablespoon" && dropdownmenu2.selectedItem == "cup"){
             conversionTo = parseInt(cFrom.text)/15.999
         }
-
-
-
     }
-
-
 
     Text {
         id: convertTitle
@@ -224,27 +217,5 @@ Rectangle {
             font.pixelSize: 50
         }
     }
-    /*Text {
-        id: toApp
-        x: 0
-        y: 614
-        width: 256
-        height: 36
-        color: "#ffffff"
-        text: qsTr("Go to App")
-        font.pixelSize: 30
-        font.family: mediumFont.name
-
-        MouseArea {
-            id: mouse_area1
-            x: 0
-            y: 0
-            width: 256
-            height: 36
-           onClicked:{
-               loadApp("UnitConverterApp.qml", {})
-           }
-        }
-    }*/
 }
 

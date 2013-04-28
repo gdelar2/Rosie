@@ -5,7 +5,9 @@ Rectangle {
     height: 980
     color: mainColor
     property string changedSetting
+    property int view: 0
     signal settingChanged
+    property bool setSettingsEnabled: true
 
     MouseArea {
         anchors.fill: parent
@@ -19,7 +21,8 @@ Rectangle {
         opacity: .45
 
         Component.onCompleted: {
-            showSettings(0);
+            showSettings(view);
+            gridView.currentIndex = view;
         }
 
         function showSettings(view) {
@@ -117,6 +120,7 @@ Rectangle {
         //Create the gridview that displays weather information in the block
         ListView {
             id: gridView
+            enabled: setSettingsEnabled
             anchors.fill: parent
             model: calendarInfoModel
             delegate: calendarDelegate
@@ -134,7 +138,29 @@ Rectangle {
             anchors.fill: parent
             color: mainColor
             z:2
-
+            onVisibleChanged: {
+                if (visible == true) {
+                    switch (getSetting("theme")) {
+                        case "#2C3E50": themeCombo.setSelectedText("Default", 0);break;
+                        case "#27AE60": themeCombo.setSelectedText("Nephritis", 1);break;
+                        case "#2980B9": themeCombo.setSelectedText("Belize Hole", 2);break;
+                        case "#8E44AD": themeCombo.setSelectedText("Wisteria", 3);break;
+                        case "#E74C3C": themeCombo.setSelectedText("Alizarin", 4);break;
+                    }
+                    switch (getSetting("units")) {
+                        case "F": unitCombo.setSelectedText("American", 0);break;
+                        case "C": unitCombo.setSelectedText("Metric", 1);break;
+                    }
+                    switch (getSetting("dateFormat")) {
+                        case "MM/dd/yy": unitCombo.setSelectedText("Month-Day-Year", 0);break;
+                        case "dd/MM/yy": unitCombo.setSelectedText("Day-Month-Year", 1);break;
+                    }
+                    switch (getSetting("timeFormat")) {
+                        case "hh:mm AP": unitCombo.setSelectedText("12-Hour", 0);break;
+                        case "hh:mm": unitCombo.setSelectedText("24-Hour", 1);break;
+                    }
+                }
+            }
 
             Text {
                 id: themeTxt
@@ -154,16 +180,21 @@ Rectangle {
                 anchors.rightMargin: 200
                 anchors.top: themeTxt.top
                 anchors.verticalCenter: themeTxt.verticalCenter
-                items: ["Default", "Red", "Green"]
+                items: ["Default", "Nephritis", "Belize Hole", "Wisteria", "Alizarin"]
                 z:1000
 
                 onComboClicked: {
                     if (selectedIndex == 0)
-                        mainColor = "#0e51a7";
+                        mainColor = "#2C3E50";
                     else if (selectedIndex == 1)
-                        mainColor = "red";
-                    else
-                        mainColor = "green";
+                        mainColor = "#27AE60";
+                    else if (selectedIndex == 2)
+                        mainColor = "#2980B9";
+                    else if (selectedIndex == 3)
+                        mainColor = "#8E44AD";
+                    else if (selectedIndex == 4)
+                        mainColor = "#E74C3C";
+                    setSetting("theme", mainColor);
                 }
             }
             Text {
@@ -208,6 +239,15 @@ Rectangle {
                 anchors.verticalCenter: unitTxt.verticalCenter
                 items: ["American", "Metric"]
                 z:900
+
+                onComboClicked: {
+                    console.log(selectedIndex)
+                    if (selectedIndex == 0)
+                        setSetting("units", "F");
+                    else
+                        setSetting("units", "C");
+                    refreshHome();
+                }
             }
 
             Text {
@@ -230,6 +270,13 @@ Rectangle {
                 anchors.verticalCenter: dateTxt.verticalCenter
                 items: ["Month-Day-Year", "Day-Month-Year"]
                 z:800
+
+                onComboClicked: {
+                    if (selectedIndex == 0)
+                        setSetting("dateFormat", "MM/dd/yy")
+                    else
+                        setSetting("dateFormat", "dd/MM/yy")
+                }
             }
 
             Text {
@@ -252,6 +299,13 @@ Rectangle {
                 anchors.verticalCenter: timeTxt.verticalCenter
                 items: ["12-Hour", "24-Hour"]
                 z:700
+
+                onComboClicked: {
+                    if (selectedIndex == 0)
+                        setSetting("timeFormat", "hh:mm AP")
+                    else
+                        setSetting("timeFormat", "hh:mm")
+                }
             }
         }
 
@@ -285,6 +339,7 @@ Rectangle {
                 x: 400
                 y: 120
                 z:999
+                maxChars: 8
             }
 
             Text {
@@ -592,7 +647,7 @@ Rectangle {
                 height: 111
                 spacing: 14
                 property int numSelected: 0
-                property var appArray: ["UnitConverWidget.qml","RecipeWidget.qml","MusicPlayerWidget.qml"]
+                property var appArray: ["unitconverter","recipe","musicplayer"]
                 //appArray is what will store their top 3 apps
 
                 Rectangle {
@@ -1389,6 +1444,12 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         //User information get's stored and calls the addUser function.
+                        var newUser = addUser(nameTxtbox.strText, passTxtbox1.strText, row1.imageSource);
+                        setSetting("homeWidgets[0].name", appRow1.appArray[0], newUser);
+                        setSetting("homeWidgets[1].name", appRow1.appArray[1], newUser);
+                        setSetting("homeWidgets[2].name", appRow1.appArray[2], newUser);
+                        if (newUser === 1)
+                            loadApp("Login.qml", {});
                     }
                 }
             }
@@ -1405,8 +1466,12 @@ Rectangle {
                 x: 80
                 y: 250
                 anchors.leftMargin: 80
-                strText: ""
+                strText: getSetting("city")
                 z:999
+
+                onTextEntered: {
+                    setSetting("city", strText);
+                }
             }
 
             Text {
