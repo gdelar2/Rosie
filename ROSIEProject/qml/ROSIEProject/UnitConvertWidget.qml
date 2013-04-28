@@ -5,7 +5,6 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
-    signal widgetClicked
     property bool draggable: true;
 
     MouseArea {
@@ -18,7 +17,7 @@ Rectangle {
         drag.maximumY: application.height - parent.height
 
         onClicked: {
-            parent.widgetClicked()
+            loadApp("UnitConverterApp.qml", {});
         }
         onPressed: {
             if(!draggable)

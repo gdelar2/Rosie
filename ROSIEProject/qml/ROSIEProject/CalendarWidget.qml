@@ -5,7 +5,6 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
-    signal widgetClicked
     property bool draggable: true;
 
     Rectangle {
@@ -58,7 +57,7 @@ Rectangle {
         drag.minimumY: 100
         drag.maximumY: application.height - parent.height
         onClicked: {
-            parent.widgetClicked()
+            loadApp("CalendarApp.qml");
         }
 
         onPressed: {

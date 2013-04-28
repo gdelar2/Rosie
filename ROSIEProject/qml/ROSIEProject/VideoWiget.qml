@@ -6,7 +6,6 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
-    signal widgetClicked
     property bool draggable: true;
 
     MediaPlayer{
@@ -43,7 +42,7 @@ Rectangle {
 
         onClicked: {
             videoFile.stop()
-            parent.widgetClicked()
+            loadApp("VideoApp.qml", {});
         }
         onPressed: {
             if(!draggable)

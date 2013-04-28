@@ -8,7 +8,6 @@ Rectangle {
     border.color: "#000000"
     opacity: 0.700
     radius: 13
-    signal widgetClicked
     property bool draggable: true;
 
     Component.onCompleted: getData()
@@ -52,7 +51,7 @@ Rectangle {
         drag.maximumY: application.height - parent.height
 
         onClicked: {
-            parent.widgetClicked()
+            loadApp("WeatherApp.qml", {});
         }
         onPressed: {
             if(!draggable)

@@ -5,8 +5,7 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
-    signal widgetClicked
-    property variant picArray
+    property variant picArray: picPaths
     property int picIndex:0
     property bool draggable: true;
 
@@ -45,19 +44,13 @@ Rectangle {
         drag.minimumY: 100
         drag.maximumY: application.height - parent.height
 
+        onClicked:{
+            loadApp("GalleryApp.qml", {picArray: picPaths});
+        }
         onPressed: {
             if(!draggable)
                 drag.target = null;
         }
-    }
-
-
-    MouseArea{
-        anchors.fill: parent
-        onClicked:{
-            parent.widgetClicked()
-        }
-
     }
 
     Text {

@@ -6,8 +6,6 @@ Rectangle {
     color: "#000000"
     opacity: 0.700
     border.width: 3
-
-
     property variant picArray
     property int picIndex:0
 

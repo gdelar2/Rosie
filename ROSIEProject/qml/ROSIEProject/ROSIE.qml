@@ -141,7 +141,7 @@ Flickable {
             '},'+
             '"weather":{'+
                 '"file":"WeatherWidget.qml",'+
-                '"properties":{'+
+                                  '"properties":{'+
                 '}'+
             '}'+
         '}'+
@@ -445,9 +445,9 @@ Flickable {
            //Get setting example
            console.log("HW[0]: " + getSetting("homeWidgets[0].name"));
            //Set setting example
-           setSetting("homeWidgets[0].name", "weather")
+           setSetting("homeWidgets[0].name", "gallery")
            console.log("NEW HW[0]: " + getSetting("homeWidgets[0].name"));
-           setSetting("homeWidgets[0].name", "news")
+           //setSetting("homeWidgets[0].name", "news")
 
            refreshHome();
        }

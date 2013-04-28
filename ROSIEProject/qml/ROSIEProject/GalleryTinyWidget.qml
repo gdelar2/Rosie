@@ -8,7 +8,8 @@ Rectangle {
     border.color: "#000000"
     opacity: 0.700
     radius: 13
-    signal widgetClicked
+    property variant picArray: picPaths
+    property int picIndex:0
     property bool draggable: true;
 
     MouseArea {
@@ -25,10 +26,6 @@ Rectangle {
                 drag.target = null;
         }
     }
-
-    property variant picArray
-    property int picIndex:0
-
 
     Timer{
         interval:1000//milliseconds
