@@ -141,7 +141,8 @@ Flickable {
             '"todo":{'+
                 '"file":"TodoListWidget.qml",'+
                 '"properties":{'+
-                    '"width":600'+
+                    '"width":600,'+
+                    '"notes":[]'+
                 '}'+
             '},'+
             '"transit":{'+
