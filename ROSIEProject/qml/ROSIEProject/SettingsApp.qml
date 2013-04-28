@@ -5,6 +5,7 @@ Rectangle {
     height: 980
     color: mainColor
     property string changedSetting
+    property int view: 0
     signal settingChanged
 
     MouseArea {
@@ -19,7 +20,8 @@ Rectangle {
         opacity: .45
 
         Component.onCompleted: {
-            showSettings(0);
+            showSettings(view);
+            gridView.currentIndex = view;
         }
 
         function showSettings(view) {

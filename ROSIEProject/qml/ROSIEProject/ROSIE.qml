@@ -141,7 +141,7 @@ Flickable {
             '},'+
             '"weather":{'+
                 '"file":"WeatherWidget.qml",'+
-                                  '"properties":{'+
+                '"properties":{'+
                 '}'+
             '}'+
         '}'+
@@ -293,7 +293,7 @@ Flickable {
             header.toggleQuickMenu(true);
 
         //Auto load an app you're working on
-        loadApp("SettingsApp.qml", {})
+        loadApp("SettingsApp.qml", {view: 1});
     }
 
     function qMenuWidgetLoad(widgetId, widget, scale, properties) {
