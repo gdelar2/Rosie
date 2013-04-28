@@ -3,6 +3,7 @@ import QtQuick 2.0
 Rectangle {
     id: vkeyb
     property variant txtBox
+    property int maximumChars: 12
     property int capsLock: Font.AllLowercase
     signal returnClicked
     width: 1920
@@ -129,11 +130,14 @@ Rectangle {
                                 vkeyb.capsLock = Font.AllUppercase;
                                 clIcon.source = "Image/clOn.png";
                             }
-                        else
-                            if (vkeyb.capsLock == Font.AllUppercase)
-                                txtBox.text += key.text.toUpperCase();
-                            else
-                                txtBox.text += key.text.toLowerCase();
+                        else {
+                            if (txtBox.text.length < maxChars) {
+                                if (vkeyb.capsLock == Font.AllUppercase)
+                                    txtBox.text += key.text.toUpperCase();
+                                else
+                                    txtBox.text += key.text.toLowerCase();
+                            }
+                        }
                     }
 
                     onReleased: {

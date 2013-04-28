@@ -138,7 +138,29 @@ Rectangle {
             anchors.fill: parent
             color: mainColor
             z:2
-
+            onVisibleChanged: {
+                if (visible == true) {
+                    switch (getSetting("theme")) {
+                        case "#2C3E50": themeCombo.setSelectedText("Default", 0);break;
+                        case "#27AE60": themeCombo.setSelectedText("Nephritis", 1);break;
+                        case "#2980B9": themeCombo.setSelectedText("Belize Hole", 2);break;
+                        case "#8E44AD": themeCombo.setSelectedText("Wisteria", 3);break;
+                        case "#E74C3C": themeCombo.setSelectedText("Alizarin", 4);break;
+                    }
+                    switch (getSetting("units")) {
+                        case "F": unitCombo.setSelectedText("American", 0);break;
+                        case "C": unitCombo.setSelectedText("Metric", 1);break;
+                    }
+                    switch (getSetting("dateFormat")) {
+                        case "MM/dd/yy": unitCombo.setSelectedText("Month-Day-Year", 0);break;
+                        case "dd/MM/yy": unitCombo.setSelectedText("Day-Month-Year", 1);break;
+                    }
+                    switch (getSetting("timeFormat")) {
+                        case "hh:mm AP": unitCombo.setSelectedText("12-Hour", 0);break;
+                        case "hh:mm": unitCombo.setSelectedText("24-Hour", 1);break;
+                    }
+                }
+            }
 
             Text {
                 id: themeTxt
@@ -158,16 +180,20 @@ Rectangle {
                 anchors.rightMargin: 200
                 anchors.top: themeTxt.top
                 anchors.verticalCenter: themeTxt.verticalCenter
-                items: ["Default", "Red", "Blue"]
+                items: ["Default", "Nephritis", "Belize Hole", "Wisteria", "Alizarin"]
                 z:1000
 
                 onComboClicked: {
                     if (selectedIndex == 0)
-                        mainColor = "#008F24";
+                        mainColor = "#2C3E50";
                     else if (selectedIndex == 1)
-                        mainColor = "#8F1E00";
-                    else
-                        mainColor = "#08216F";
+                        mainColor = "#27AE60";
+                    else if (selectedIndex == 2)
+                        mainColor = "#2980B9";
+                    else if (selectedIndex == 3)
+                        mainColor = "#8E44AD";
+                    else if (selectedIndex == 4)
+                        mainColor = "#E74C3C";
                     setSetting("theme", mainColor);
                 }
             }
@@ -244,6 +270,13 @@ Rectangle {
                 anchors.verticalCenter: dateTxt.verticalCenter
                 items: ["Month-Day-Year", "Day-Month-Year"]
                 z:800
+
+                onComboClicked: {
+                    if (selectedIndex == 0)
+                        setSetting("dateFormat", "MM/dd/yy")
+                    else
+                        setSetting("dateFormat", "dd/MM/yy")
+                }
             }
 
             Text {
@@ -266,6 +299,13 @@ Rectangle {
                 anchors.verticalCenter: timeTxt.verticalCenter
                 items: ["12-Hour", "24-Hour"]
                 z:700
+
+                onComboClicked: {
+                    if (selectedIndex == 0)
+                        setSetting("timeFormat", "hh:mm AP")
+                    else
+                        setSetting("timeFormat", "hh:mm")
+                }
             }
         }
 
@@ -299,6 +339,7 @@ Rectangle {
                 x: 400
                 y: 120
                 z:999
+                maxChars: 8
             }
 
             Text {

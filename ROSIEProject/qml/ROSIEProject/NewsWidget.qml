@@ -53,6 +53,8 @@ Rectangle {
         repeat: true
 
         onTriggered: {
+            if (curIndex >= 8)
+                curIndex = 0;
             title.text = newsData.responseData.feed.title;
             var head =  newsData.responseData.feed.entries[curIndex].title;
             while (head.match(/&#39;/))

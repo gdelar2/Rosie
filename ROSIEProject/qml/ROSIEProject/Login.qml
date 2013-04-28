@@ -4,13 +4,14 @@ Rectangle {
     width: 1920
     height: 980
     color: mainColor
-    property int selectedUser
+    property int selectedUser: -1
     property var selectedUserImage;
 
     onSelectedUserChanged: {
-        passwordBox.enabled = true;
-        //do something here maybe?
-        console.log("IT CHANGED!");
+        if (selectedUser != -1)
+            passwordBox.enabled = true;
+        else
+            passwordBox.enabled = false;
     }
 
     MouseArea {
@@ -46,7 +47,7 @@ Rectangle {
     Rectangle {
         id: userList
         height: 300
-        x: (parent.width / 2) - (width/2) - 50
+        x: (parent.width / 2) - (width/2) - 75
         anchors.top: parent.top
         anchors.topMargin: 300
         anchors.leftMargin: 20
@@ -56,13 +57,18 @@ Rectangle {
             var uInfo = JSON.parse(userInfo);
             var userOverlays = "";
             for (var user in uInfo) {
-                if (user !== 0) {
+                if (user != 0) {
                     var userName = uInfo[user].username;
                     var avatar = uInfo[user].avatar;
 
-
-                    var newObject = Qt.createQmlObject('import QtQuick 2.0; Rectangle {Rectangle{height:150;width:150;color:"#000";opacity:0.5}Image {id: user'+user+'; width: 150; height: 150; source: "' + avatar + '"} Rectangle{id:user'+user+'Overlay; anchors.fill:user'+user+';color:"#FFF";opacity:0.2;visible:false}MouseArea { anchors.fill: user'+user+'; onClicked: {user'+user+'Overlay.visible = true;selectedUser = '+user+'}}}',
+                    var anchor = "";
+                    if (user != 1)
+                        anchor = ' x:(200*'+(user-1)+')+(20*'+(user-1)+');';
+                    console.log(user)
+                    var newObject = Qt.createQmlObject('import QtQuick 2.0; Rectangle {'+anchor+' Rectangle{height:200;width:200;color:"#000";opacity:0.5}Image {id: user'+user+'; width: 200; height: 200; source: "' + avatar + '"} Text {anchors.top: user'+user+'.bottom;anchors.horizontalCenter: user'+user+'.horizontalCenter;font.family:mediumFont.name;font.pointSize:32;text:"'+userName+'";} Rectangle{id:user'+user+'Overlay; anchors.fill:user'+user+';color:"#FFF";opacity:0.2;visible:false}MouseArea { anchors.fill: user'+user+'; onClicked: {if(selectedUser==-1 && user'+user+'Overlay.visible==false){user'+user+'Overlay.visible = true;selectedUser = '+user+'}else if (selectedUser=='+user+' && user'+user+'Overlay.visible == true){selectedUser=-1;user'+user+'Overlay.visible=false;}}}}',
                          userList, "dynamicImg1");
+                    if (user != 1)
+                        x -= (110);
 
                     //need to figure out how to support more than 1 user
                 }
@@ -74,7 +80,7 @@ Rectangle {
         id: passwordBox
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: 100
+        anchors.verticalCenterOffset: 200
         enabled: false;
 
         onTextEntered: {

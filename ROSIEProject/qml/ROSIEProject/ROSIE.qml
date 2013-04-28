@@ -21,7 +21,7 @@ Flickable {
         '"timeFormat":"hh:mm AP",'+
         '"homepage":"http://google.com",'+
         '"city":"chicago",'+
-        '"theme":"#008F24",'+
+        '"theme":"#2C3E50",'+
         '"units":"F",'+
         '"homeWidgets":['+
             '{'+
@@ -96,61 +96,73 @@ Flickable {
             '"calendar":{'+
                 '"file":"CalendarWidget.qml",'+
                 '"properties":{'+
+                    '"width":600'+
                 '}'+
             '},'+
             '"gallery":{'+
                 '"file":"GalleryWidget.qml",'+
                 '"properties":{'+
+                    '"width":600'+
                 '}'+
             '},'+
             '"gallerytiny":{'+
                 '"file":"GalleryTinyWidget.qml",'+
                 '"properties":{'+
+                    '"width":300'+
                 '}'+
             '},'+
             '"musicplayer":{'+
                 '"file":"MusicPlayerWidget.qml",'+
                 '"properties":{'+
+                    '"width":600'+
                 '}'+
             '},'+
             '"news":{'+
                 '"file":"NewsWidget.qml",'+
                 '"properties":{'+
+                    '"width":600'+
                 '}'+
             '},'+
             '"recipe":{'+
                 '"file":"RecipeWidget.qml",'+
                 '"properties":{'+
+                    '"width":600'+
                 '}'+
             '},'+
             '"timer":{'+
                 '"file":"TimerWidget.qml",'+
                 '"properties":{'+
+                    '"width":600'+
                 '}'+
             '},'+
             '"todo":{'+
                 '"file":"TodoListWidget.qml",'+
                 '"properties":{'+
+                    '"width":600'+
                 '}'+
             '},'+
             '"transit":{'+
                 '"file":"TransitWidget.qml",'+
                 '"properties":{'+
+                    '"width":600'+
                 '}'+
             '},'+
             '"unitconverter":{'+
                 '"file":"UnitConvertWidget.qml",'+
                 '"properties":{'+
+                    '"width":600'+
                 '}'+
             '},'+
             '"video":{'+
                 '"file":"VideoWidget.qml",'+
                 '"properties":{'+
+                    '"width":600'+
                 '}'+
             '},'+
             '"weather":{'+
                 '"file":"WeatherWidget.qml",'+
                 '"properties":{'+
+                    '"width":300'+
                 '}'+
             '}'+
         '}'+
@@ -290,8 +302,8 @@ Flickable {
         qMenuWidgetLoad(1, getSetting("widgets."+getSetting("qmWidgets[0].name")+".file"), false, {"y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false});
         qMenuWidgetLoad(2, getSetting("widgets."+getSetting("qmWidgets[1].name")+".file"), false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false, "clickable":false});
         loadWidget(getSetting("widgets."+getSetting("homeWidgets[0].name")+".file"), {"x": 0,"y":300});
-        loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": (1920/2)-200,"y":300})
-        loadWidget(getSetting("widgets."+getSetting("homeWidgets[2].name")+".file"), {"x": 1500,"y":300})
+        loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": (1920/2)-(getSetting("widgets."+getSetting("homeWidgets[1].name")+".properties.width")/4),"y":300})
+        loadWidget(getSetting("widgets."+getSetting("homeWidgets[2].name")+".file"), {"x": 1920-getSetting("widgets."+getSetting("homeWidgets[2].name")+".properties.width"),"y":300})
         mainColor = getSetting("theme");
 
         //load quick menu items
@@ -489,7 +501,7 @@ Flickable {
             id: header
 
             onReturnShortcutClicked: {
-                if (currentUser == 0 && currentState === "HOME") {
+                if (currentUser == 0 && currentState === "HOME" && JSON.parse(userInfo).length > 1) {
                     //show login, call refreshHome() after logging in
                     loadApp("Login.qml", {});
                 } else if (currentState === "HOME") {
