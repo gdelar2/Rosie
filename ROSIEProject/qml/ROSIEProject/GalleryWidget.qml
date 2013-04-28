@@ -5,6 +5,7 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
+    radius: 13
     property variant picArray: picPaths
     property int picIndex:0
     property bool draggable: true;

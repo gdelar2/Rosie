@@ -7,6 +7,7 @@ Rectangle {
     height:450
     color: "#000000"
     opacity: 0.7
+    radius: 13
     //minutes are seconds and hours are minutes
     //property int seconds:0
     property int minutes:0

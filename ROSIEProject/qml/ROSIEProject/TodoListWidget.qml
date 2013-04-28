@@ -5,6 +5,7 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
+    radius: 13
     z: 10000
     property bool draggable: true;
 
@@ -109,12 +110,19 @@ Rectangle {
         y: 1080-height-parent.y
         visible: false
         txtBox: textboxText
+        maximumChars:300
 
         onReturnClicked: {
             keyboard.visible = false;
             textbox.visible = false
             textboxText.visible = false;
-            body.text += "·" + textboxText.text + "\n";
+            var txt = textboxText.text;
+            for (var i = 0; i < txt.length; ++i) {
+                if (i % 27 == 0 && i != 0) {
+                    txt = txt.substring(0, i) + "\n" + txt.substring(i, txt.length);
+                }
+            }
+            body.text += "·" + txt + "\n";
             textboxText.text = "";
         }
     }

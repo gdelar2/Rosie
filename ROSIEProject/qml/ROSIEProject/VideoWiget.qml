@@ -6,6 +6,7 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
+    radius: 13
     property bool draggable: true;
 
     MediaPlayer{

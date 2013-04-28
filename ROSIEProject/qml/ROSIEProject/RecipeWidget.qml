@@ -7,6 +7,7 @@ Rectangle {
     color: "#000000"
     opacity: 0.700
     border.width: 3
+    radius: 13
     property bool draggable: true;
 
     Text {

@@ -131,7 +131,7 @@ Rectangle {
                                 clIcon.source = "Image/clOn.png";
                             }
                         else {
-                            if (txtBox.text.length < maxChars) {
+                            if (txtBox.text.length < maximumChars) {
                                 if (vkeyb.capsLock == Font.AllUppercase)
                                     txtBox.text += key.text.toUpperCase();
                                 else

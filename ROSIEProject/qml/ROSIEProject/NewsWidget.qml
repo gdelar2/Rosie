@@ -5,6 +5,7 @@ Rectangle {
     height: 650
     color: "#000000"
     opacity: 0.7
+    radius: 13
     property bool draggable: true;
     property var newsData
     property int curIndex: 0
@@ -117,7 +118,6 @@ Rectangle {
         y: 185
         width: 277
         height: 217
-        source: "qrc:/qtquickplugin/images/template_image.png"
 
         //be able to pull (if possible) a photo from the headline
     }
