@@ -16,15 +16,16 @@ property int size: picArray.length
 
     Timer{
         id:timer
-        interval:5000//milliseconds
+        interval:10//milliseconds
         running: false
         repeat: true
 
         onTriggered: {
+            timer.interval=4000
             imageToDisplay.source=picArray[picIndex];
             pictureClicked.visible=true;
             grid.visible=false
-            picIndex++;
+           picIndex++;
 
 
         }
@@ -43,13 +44,7 @@ property int size: picArray.length
 
     }
 
-    function pictureToShow(rowIndex, columnIndex){
 
-
-       var value=(rowIndex*9)+columnIndex;
-      return value;
-
-    }
 
 
 
@@ -62,7 +57,14 @@ property int size: picArray.length
         height: 750
         color: "#000000"
        // opacity: 0.800
-//9X3 Grid
+
+/*
+        //MouseArea created to prevent ability to click items behind this app
+        MouseArea{
+            anchors.fill: parent
+        }
+*/
+//8X3 Grid
 
 Row{
     id:row
@@ -84,17 +86,25 @@ Row{
                 model:3
                 delegate:
                     Image{
+
                     height:213 //216.66
                     width:213  //213.33
                   //  source:picArray[pictureToShow(row.index, column.index)]; //
                     source:picArray[columnRepeater.rowIndex*3+index]
                     MouseArea{
+
                         anchors.fill: parent
 
                         onClicked:{
+
+                            if(parent.status==Image.Null){
+                                //no image is loaded so do nothing
+                            }else{
+
                             grid.visible=false
-                            //lslsksldk
-                            picSelected(parent.source);
+
+                            picSelected(parent.source);//display clicked image
+                            }
                         }
                     }
 
@@ -110,58 +120,17 @@ Row{
 
 }
 
-//--------------------------------------------------------------------------------
-
-/*
-
-        Image{
-            y:1.5
-            height:213 //216.66
-            width:213  //213.33
-            source:picArray[0];
-
-            MouseArea{
-                anchors.fill: parent
-
-                onClicked: {
-                    picSelected(parent.source);
-                }
-            }
-
-        }
 
 
-
-        /*
-        Image {
-
-          //  x: 0
-           // y: 172
-            width: 1920
-            height: 652
-
-          //  opacity: 0.800
-
-            id: displayedImage
-                    fillMode: Image.PreserveAspectFit
-
-            source:picArray[picIndex]
-        }
-
-        */
-
-
-//------------------------------------------------------------
-
-    }
+    }//end grid rectangle
 
     MouseArea {
         id: playSlideButton
-        x: 674
+        x: 830
         y: 874
         width: 253
         height: 70
-
+      //  horizontalCenter: parent.horizontalCenter
         Rectangle {
             id: rectangle1
             x: 0
@@ -192,36 +161,7 @@ Row{
         }
     }
 
-    MouseArea {
-        id: addPhotoButton
-        x: 965
-        y: 874
-        width: 253
-        height: 70
 
-        Rectangle {
-            id: rectangle3
-            x: 0
-            y: 0
-            width: 253
-            height: 70
-            color: "#000000"
-            radius: 13
-            opacity: 0.700
-            border.color: "#000000"
-            Text {
-                id: text2
-                x: 70
-                y: 21
-                color: "#ffffff"
-                text: qsTr("Add Photos")
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.family: "Exo"
-                font.pixelSize: 22
-            }
-        }
-    }
 
 
     //this rectangle will show the picture selected. it will take up the whole screen and will close when the user touches it

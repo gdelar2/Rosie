@@ -8,13 +8,27 @@ Rectangle {
     radius: 10
     property bool draggable: true;
 
+    Component.onCompleted: {
+        var stops = "";
+        if (getSetting("transit1") !== " ") {
+            stops += "s1=" + getSetting("transit1");
+            if (getSetting("transit2") !== " ") {
+                stops += "&s2=" + getSetting("transit2");
+                if (getSetting("transit3") !== " ")
+                    stops+= "&s3=" + getSetting("transit3");
+            }
+            stops += "&";
+        }
+        transit.url = "http://www.transitchicago.com/diydisplay/?"+stops + "size=big&w=0&tto=n"
+    }
+
     WebView {
         id: transit
         x: 2
         y: 2
         width: 593
         height: 643
-        url: "http://www.transitchicago.com/diydisplay/?s1=40350&s2=201&size=big&w=0&tto=n"
+        url: ""
     }
 
     MouseArea {

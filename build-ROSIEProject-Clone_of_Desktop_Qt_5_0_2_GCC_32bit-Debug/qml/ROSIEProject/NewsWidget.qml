@@ -23,7 +23,7 @@ Rectangle {
                ticker.triggeredOnStart = true;
            }
         }
-        doc.open("GET", "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss");
+        doc.open("GET", "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=" + getSetting("news"));
         doc.send();
     }
 
@@ -54,7 +54,7 @@ Rectangle {
         repeat: true
 
         onTriggered: {
-            if (curIndex >= 8)
+            if (curIndex >= newsData.responseData.feed.entries.length)
                 curIndex = 0;
             title.text = newsData.responseData.feed.title;
             var head =  newsData.responseData.feed.entries[curIndex].title;

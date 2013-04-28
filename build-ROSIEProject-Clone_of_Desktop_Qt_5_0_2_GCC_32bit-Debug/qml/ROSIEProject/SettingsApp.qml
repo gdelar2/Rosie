@@ -152,12 +152,12 @@ Rectangle {
                         case "C": unitCombo.setSelectedText("Metric", 1);break;
                     }
                     switch (getSetting("dateFormat")) {
-                        case "MM/dd/yy": unitCombo.setSelectedText("Month-Day-Year", 0);break;
-                        case "dd/MM/yy": unitCombo.setSelectedText("Day-Month-Year", 1);break;
+                        case "MM/dd/yy": dateCombo.setSelectedText("Month-Day-Year", 0);break;
+                        case "dd/MM/yy": dateCombo.setSelectedText("Day-Month-Year", 1);break;
                     }
                     switch (getSetting("timeFormat")) {
-                        case "hh:mm AP": unitCombo.setSelectedText("12-Hour", 0);break;
-                        case "hh:mm": unitCombo.setSelectedText("24-Hour", 1);break;
+                        case "hh:mm AP": timeCombo.setSelectedText("12-Hour", 0);break;
+                        case "hh:mm": timeCombo.setSelectedText("24-Hour", 1);break;
                     }
                 }
             }
@@ -246,7 +246,7 @@ Rectangle {
                         setSetting("units", "F");
                     else
                         setSetting("units", "C");
-                    refreshHome();
+                    refreshHome(false);
                 }
             }
 
@@ -313,6 +313,73 @@ Rectangle {
             id: accountSettings
             anchors.fill: parent
             color: mainColor
+
+            onVisibleChanged: {
+                if (currentUser != 0) {
+                    nameTxtbox.enabled = false;
+                    nameTxtbox.strText = getSetting("username");
+                    modifyButton.visible = true;
+                    switch (getSetting("avatar")) {
+                        case "Image/User/chess.png":rectangle1.color = "#FFFFFF";break;
+                        case "Image/User/games.png":rectangle2.color = "#FFFFFF";break;
+                        case "Image/User/light_bulb.png":rectangle3.color = "#FFFFFF";break;
+                        case "Image/User/magic_wand.png":rectangle4.color = "#FFFFFF";break;
+                        case "Image/User/paint_brush.png":rectangle5.color = "#FFFFFF";break;
+                        case "Image/User/star.png":rectangle6.color = "#FFFFFF";break;
+                        case "Image/User/target.png":rectangle7.color = "#FFFFFF";break;
+                        case "Image/User/umbrella.png":rectangle8.color = "#FFFFFF";break;
+                    }
+                    row1.imageSource = getSetting("avatar");
+                    appRow1.numSelected = 0;
+                    switch (getSetting("homeWidgets[0].name")) {
+                        case "unitconverter": rectangle9.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "musicplayer": rectangle10.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "gallery": rectangle11.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "news": rectangle12.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "video": rectangle13.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "webbrowser": rectangle14.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "recipe": rectangle15.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "timer": rectangle16.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "calendar": rectangle17.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "weather": rectangle18.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "transit": rectangle19.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "todo": rectangle20.color = "#FFFFFF"; appRow1.numSelected++;break;
+                    }
+                    switch (getSetting("homeWidgets[1].name")) {
+                        case "unitconverter": rectangle9.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "musicplayer": rectangle10.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "gallery": rectangle11.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "news": rectangle12.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "video": rectangle13.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "webbrowser": rectangle14.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "recipe": rectangle15.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "timer": rectangle16.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "calendar": rectangle17.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "weather": rectangle18.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "transit": rectangle19.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "todo": rectangle20.color = "#FFFFFF"; appRow1.numSelected++;break;
+
+                    }
+                    switch (getSetting("homeWidgets[2].name")) {
+                        case "unitconverter": rectangle9.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "musicplayer": rectangle10.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "gallery": rectangle11.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "news": rectangle12.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "video": rectangle13.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "webbrowser": rectangle14.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "recipe": rectangle15.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "timer": rectangle16.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "calendar": rectangle17.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "weather": rectangle18.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "transit": rectangle19.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "todo": rectangle20.color = "#FFFFFF"; appRow1.numSelected++;break;
+                    }
+                    passTxtbox1.strText = getSetting("password");
+                } else {
+                    addBox.x = 80;
+                    addBox.anchors.left = undefined;
+                }
+            }
 
             MouseArea {
                 anchors.fill: parent
@@ -647,8 +714,44 @@ Rectangle {
                 height: 111
                 spacing: 14
                 property int numSelected: 0
-                property var appArray: ["unitconverter","recipe","musicplayer"]
+                property var appArray: ["","",""]
                 //appArray is what will store their top 3 apps
+                property string lastMod: "";
+
+                onNumSelectedChanged: {
+                    if (numSelected == 0) {
+                        if (appArray[0] === lastMod)
+                            appArray[0] = "";
+                        else if (appArray[1] === lastMod)
+                            appArray[1] = "";
+                        else if (appArray[2] === lastMod)
+                            appArray[2] = "";
+                    } else if (numSelected == 1) {
+                        if (appArray[0] === lastMod)
+                            appArray[0] = "";
+                        else if (appArray[1] === lastMod)
+                            appArray[1] = "";
+                        else if (appArray[2] === lastMod)
+                            appArray[2] = "";
+                        else {
+                            if (appArray[0] === "")
+                                appArray[0] = lastMod;
+                            else if (appArray[1] === "")
+                                appArray[1] = lastMod;
+                            else if (appArray[2] === "")
+                                appArray[2] = lastMod;
+                        }
+                    } else {
+                        if (appArray[0] === "")
+                            appArray[0] = lastMod;
+                        else if (appArray[1] === "")
+                            appArray[1] = lastMod;
+                        else if (appArray[2] === "")
+                            appArray[2] = lastMod;
+                    }
+                    lastMod = "";
+                    refreshHome(false);
+                }
 
                 Rectangle {
                     id: rectangle9
@@ -683,6 +786,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "unitconverter";
                             if(appRow1.numSelected < 3){
                                 if(rectangle9.stateSel === 0){
                                     rectangle9.color = "#ffffff"
@@ -745,6 +849,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "musicplayer";
                             if(appRow1.numSelected < 3){
                                 if(rectangle10.stateSel === 0){
                                     rectangle10.color = "#ffffff"
@@ -807,6 +912,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "gallery";
                             if(appRow1.numSelected < 3){
                                 if(rectangle11.stateSel === 0){
                                     rectangle11.color = "#ffffff"
@@ -869,6 +975,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "news";
                             if(appRow1.numSelected < 3){
                                 if(rectangle12.stateSel === 0){
                                     rectangle12.color = "#ffffff"
@@ -931,6 +1038,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "video";
                             if(appRow1.numSelected < 3){
                                 if(rectangle13.stateSel === 0){
                                     rectangle13.color = "#ffffff"
@@ -960,7 +1068,7 @@ Rectangle {
                     }
                 }
 
-                Rectangle {
+                /*Rectangle {
                     id: rectangle14
                     x: 12
                     y: 0
@@ -993,6 +1101,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "webbrowser";
                             if(appRow1.numSelected < 3){
                                 if(rectangle14.stateSel === 0){
                                     rectangle14.color = "#ffffff"
@@ -1019,7 +1128,7 @@ Rectangle {
 
                         }
                     }
-                }
+                }*/
 
                 Rectangle {
                     id: rectangle15
@@ -1054,6 +1163,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "recipe";
                             if(appRow1.numSelected < 3){
                                 if(rectangle15.stateSel === 0){
                                     rectangle15.color = "#ffffff"
@@ -1116,6 +1226,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "timer";
                             if(appRow1.numSelected < 3){
                                 if(rectangle16.stateSel === 0){
                                     rectangle16.color = "#ffffff"
@@ -1178,6 +1289,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "calendar";
                             if(appRow1.numSelected < 3){
                                 if(rectangle17.stateSel === 0){
                                     rectangle17.color = "#ffffff"
@@ -1240,6 +1352,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "weather";
                             if(appRow1.numSelected < 3){
                                 if(rectangle18.stateSel === 0){
                                     rectangle18.color = "#ffffff"
@@ -1302,6 +1415,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "transit";
                             if(appRow1.numSelected < 3){
                                 if(rectangle19.stateSel === 0){
                                     rectangle19.color = "#ffffff"
@@ -1364,6 +1478,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            appRow1.lastMod = "todo";
                             if(appRow1.numSelected < 3){
                                 if(rectangle20.stateSel === 0){
                                     rectangle20.color = "#ffffff"
@@ -1416,11 +1531,55 @@ Rectangle {
                 y: 670
                 strText: ""
                 anchors.leftMargin: 80
+                z:100
+            }
+
+            Rectangle {
+                id: modifyButton
+                x: 80
+                y: 811
+                width: 429
+                height: 120
+                color: "#000000"
+                radius: 20
+                opacity: 0.700
+                visible: false
+
+                Text {
+                    id: modifyText
+                    anchors.centerIn: parent
+                    color: "#ffffff"
+                    text: qsTr("Modify")
+                    font.family: mediumFont.name
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 64
+                }
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        setSetting("avatar", row1.imageSource);
+                        setSetting("password", passTxtbox1.strText);
+                        if (appRow1.appArray[0] === "")
+                            appRow1.appArray[0] = "-1";
+                        if (appRow1.appArray[1] === "")
+                            appRow1.appArray[1] = "-1";
+                        if (appRow1.appArray[2] === "")
+                            appRow1.appArray[2] = "-1";
+                        setSetting("homeWidgets[0].name", appRow1.appArray[0]);
+                        setSetting("homeWidgets[1].name", appRow1.appArray[1]);
+                        setSetting("homeWidgets[2].name", appRow1.appArray[2]);
+                        refreshHome();
+                    }
+                }
             }
 
             Rectangle {
                 id: addBox
-                x: 80
+                //x: 80
+                anchors.left: modifyButton.right
+                anchors.leftMargin: 20
                 y: 811
                 width: 429
                 height: 120
@@ -1430,8 +1589,9 @@ Rectangle {
 
                 Text {
                     id: addText
-                    x: 82
-                    y: 24
+                    //x: 82
+                    //y: 24
+                    anchors.centerIn: parent
                     color: "#ffffff"
                     text: qsTr("Add User")
                     font.family: mediumFont.name
@@ -1444,12 +1604,54 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         //User information get's stored and calls the addUser function.
-                        var newUser = addUser(nameTxtbox.strText, passTxtbox1.strText, row1.imageSource);
-                        setSetting("homeWidgets[0].name", appRow1.appArray[0], newUser);
-                        setSetting("homeWidgets[1].name", appRow1.appArray[1], newUser);
-                        setSetting("homeWidgets[2].name", appRow1.appArray[2], newUser);
-                        if (newUser === 1)
-                            loadApp("Login.qml", {});
+                        if (nameTxtbox.enabled == true) {
+                            var newUser = addUser(nameTxtbox.strText, passTxtbox1.strText, row1.imageSource);
+                            if (appRow1.appArray[0] === "")
+                                appRow1.appArray[0] = "-1";
+                            if (appRow1.appArray[1] === "")
+                                appRow1.appArray[1] = "-1";
+                            if (appRow1.appArray[2] === "")
+                                appRow1.appArray[2] = "-1";
+
+                            setSetting("homeWidgets[0].name", appRow1.appArray[0], newUser);
+                            setSetting("homeWidgets[1].name", appRow1.appArray[1], newUser);
+                            setSetting("homeWidgets[2].name", appRow1.appArray[2], newUser);
+                            if (newUser === 1)
+                                loadApp("Login.qml", {});
+                            else
+                                refreshHome();
+                        } else {
+                            nameTxtbox.enabled = true;
+                            nameTxtbox.strText = "";
+                            passTxtbox1.strText = "";
+                            //clear selected avatar
+                            row1.imageSource = "";
+                            rectangle1.color = "#000000";
+                            rectangle2.color = "#000000";
+                            rectangle3.color = "#000000";
+                            rectangle4.color = "#000000";
+                            rectangle5.color = "#000000";
+                            rectangle6.color = "#000000";
+                            rectangle7.color = "#000000";
+                            rectangle8.color = "#000000";
+                            //clear selected apps
+                            rectangle9.color = "#000000";
+                            rectangle10.color = "#000000";
+                            rectangle11.color = "#000000";
+                            rectangle12.color = "#000000";
+                            rectangle13.color = "#000000";
+                            rectangle14.color = "#000000";
+                            rectangle15.color = "#000000";
+                            rectangle16.color = "#000000";
+                            rectangle17.color = "#000000";
+                            rectangle18.color = "#000000";
+                            rectangle19.color = "#000000";
+                            rectangle20.color = "#000000";
+                            appRow1.numSelected = 0;
+                            x = 80;
+                            anchors.left = undefined;
+                            modifyButton.visible = false;
+                        }
                     }
                 }
             }
@@ -1495,11 +1697,45 @@ Rectangle {
             anchors.fill: parent
             color: mainColor
 
-            Textbox {
-                anchors.leftMargin: 80
-                strText: ""
-                z:999
+            onVisibleChanged: {
+                if (visible) {
+                    switch(getSetting("news")) {
+                    case "http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss": newsCombo.setSelectedText("Google News", 0);break;
+                    case "http%3A%2F%2Frss.cnn.com%2Frss%2Fcnn_topstories.rss": newsCombo.setSelectedText("CNN News", 1);break;
+                    }
+                }
             }
+
+            Text {
+                id: newsTxt
+                anchors.left: parent.left
+                anchors.leftMargin: 80
+                anchors.top: parent.top
+                anchors.topMargin: 120
+                font.family: mediumFont.name
+                font.pointSize: 64
+                color: "#000"
+                opacity: .68
+                text: "News Source:"
+            }
+            Combobox {
+                id: newsCombo
+                anchors.right: parent.right
+                anchors.rightMargin: 200
+                anchors.top: newsTxt.top
+                anchors.verticalCenter: newsTxt.verticalCenter
+                items: ["Google News", "CNN News"]
+                z:950
+
+                onComboClicked: {
+                    if (selectedIndex == 0)
+                        setSetting("news", "http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss");
+                    else
+                        setSetting("news", "http%3A%2F%2Frss.cnn.com%2Frss%2Fcnn_topstories.rss");
+                    refreshHome(false);
+                }
+            }
+
         }
 
         Rectangle {
@@ -1507,10 +1743,72 @@ Rectangle {
             anchors.fill: parent
             color: mainColor
 
+            onVisibleChanged: {
+                if(visible) {
+                    transitTextbox1.strText = getSetting("transit1").replace(" ", "");
+                    transitTextbox2.strText = getSetting("transit2").replace(" ", "");
+                    transitTextbox3.strText = getSetting("transit3").replace(" ", "");
+                }
+            }
+
+            Text {
+                id: transitTxt
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: parent.top
+                anchors.topMargin: 120
+                font.family: mediumFont.name
+                font.pointSize: 64
+                color: "#000"
+                opacity: .68
+                text: "Monitor up to 3 stops"
+            }
             Textbox {
-                anchors.leftMargin: 80
+                id: transitTextbox1
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: transitTxt.bottom
+                anchors.topMargin: 20
                 strText: ""
                 z:999
+
+                onTextEntered: {
+                    if (strText != "")
+                        setSetting("transit1", strText);
+                    else
+                        setSetting("transit1", " ");
+                    refreshHome(false);
+                }
+            }
+            Textbox {
+                id: transitTextbox2
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: transitTextbox1.bottom
+                anchors.topMargin: 20
+                strText: ""
+                z:999
+
+                onTextEntered: {
+                    if (strText != "")
+                        setSetting("transit2", strText);
+                    else
+                        setSetting("transit2", " ");
+                    refreshHome(false);
+                }
+            }
+            Textbox {
+                id: transitTextbox3
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: transitTextbox2.bottom
+                anchors.topMargin: 20
+                strText: ""
+                z:999
+
+                onTextEntered: {
+                    if (strText != "")
+                        setSetting("transit3", strText);
+                    else
+                        setSetting("transit3", " ");
+                    refreshHome(false);
+                }
             }
         }
 
@@ -1519,10 +1817,37 @@ Rectangle {
             anchors.fill: parent
             color: mainColor
 
-            Textbox {
+            onVisibleChanged: {
+                if(visible) {
+                    homepageTextbox.strText = getSetting("homepage");
+                }
+            }
+
+            Text {
+                id: homepageTxt
+                anchors.left: parent.left
                 anchors.leftMargin: 80
+                anchors.top: parent.top
+                anchors.topMargin: 120
+                font.family: mediumFont.name
+                font.pointSize: 64
+                color: "#000"
+                opacity: .68
+                text: "Homepage:"
+            }
+            Textbox {
+                id: homepageTextbox
+                anchors.right: parent.right
+                anchors.rightMargin: 200
+                anchors.top: homepageTxt.top
+                anchors.verticalCenter: homepageTxt.verticalCenter
                 strText: ""
                 z:999
+
+                onTextEntered: {
+                    if (strText != "")
+                        setSetting("homepage", strText);
+                }
             }
         }
 
@@ -1530,6 +1855,22 @@ Rectangle {
             id: quickMenuSettings
             anchors.fill: parent
             color: mainColor
+
+            onVisibleChanged: {
+                if (visible) {
+                    switch (getSetting("qmWidgets[0].name")) {
+                        case "weather": quickWidget1.color = "#ffffff"; quickWidget1.stateSel = 1; break;
+                        case "transit": quickWidget2.color = "#ffffff"; quickWidget2.stateSel = 1; break;
+                        case "gallerytiny": quickWidget3.color = "#ffffff"; quickWidget3.stateSel = 1; break;
+                    }
+                    switch (getSetting("qmWidgets[1].name")) {
+                        case "weather": quickWidget1.color = "#ffffff"; quickWidget1.stateSel = 1; break;
+                        case "transit": quickWidget2.color = "#ffffff"; quickWidget2.stateSel = 1; break;
+                        case "gallerytiny": quickWidget3.color = "#ffffff"; quickWidget3.stateSel = 1; break;
+                    }
+                    tinyWidRow.numSelected = 2;
+                }
+            }
 
             Text {
                 id: locTxt1
@@ -1554,6 +1895,35 @@ Rectangle {
                 height: 111
                 spacing: 28
                 property int numSelected: 0
+                property string lastMod: ""
+
+                onNumSelectedChanged: {
+                    //Storing a blank string doesn't work for some odd reason, store -1 instead
+                    if (numSelected == 0) {
+                        if (getSetting("qmWidgets[0].name") === lastMod)
+                            setSetting("qmWidgets[0].name", "-1");
+                        else if (getSetting("qmWidgets[1].name") === lastMod)
+                            setSetting("qmWidgets[1].name", "-1");
+                    } else if (numSelected == 1) {
+                        if (getSetting("qmWidgets[0].name") === lastMod)
+                            setSetting("qmWidgets[0].name", "-1");
+                        else if (getSetting("qmWidgets[1].name") === lastMod)
+                            setSetting("qmWidgets[1].name", "-1");
+                        else {
+                            if (getSetting("qmWidgets[0].name") === "-1")
+                                setSetting("qmWidgets[0].name", lastMod);
+                            else if (getSetting("qmWidgets[1].name") === "-1")
+                                setSetting("qmWidgets[1].name", lastMod);
+                        }
+                    } else {
+                        if (getSetting("qmWidgets[0].name") === "-1")
+                            setSetting("qmWidgets[0].name", lastMod);
+                        else if (getSetting("qmWidgets[1].name") === "-1")
+                            setSetting("qmWidgets[1].name", lastMod);
+                    }
+                    lastMod = "";
+                    refreshHome(false);
+                }
 
                 Rectangle {
                     id: quickWidget1
@@ -1586,6 +1956,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            tinyWidRow.lastMod = "weather";
                             if(tinyWidRow.numSelected < 2){
                                 if(quickWidget1.stateSel === 0){
                                     quickWidget1.color = "#ffffff"
@@ -1645,6 +2016,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            tinyWidRow.lastMod = "transit";
                             if(tinyWidRow.numSelected < 2){
                                 if(quickWidget2.stateSel === 0){
                                     quickWidget2.color = "#ffffff"
@@ -1704,6 +2076,7 @@ Rectangle {
                     MouseArea{
                         anchors.fill: parent
                         onClicked:{
+                            tinyWidRow.lastMod = "gallerytiny";
                             if(tinyWidRow.numSelected < 2){
                                 if(quickWidget3.stateSel === 0){
                                     quickWidget3.color = "#ffffff"

@@ -194,6 +194,9 @@ Flickable {
         "Image/GalleryPictures/Picture (19).jpg",
         "Image/GalleryPictures/Picture (20).jpg",
         "Image/GalleryPictures/Picture (21).jpg",
+        "Image/GalleryPictures/Picture(22).jpg",
+        "Image/GalleryPictures/Picture(23).jpg",
+        "Image/GalleryPictures/Picture(24).jpg",
     ]
 
     //Load fonts
