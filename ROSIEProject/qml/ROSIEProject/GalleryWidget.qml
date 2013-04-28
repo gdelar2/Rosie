@@ -11,7 +11,7 @@ Rectangle {
 
 
     Timer{
-        interval:1000//milliseconds
+        interval:5000//milliseconds
         running: true
         repeat: true
 

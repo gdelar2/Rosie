@@ -5,7 +5,7 @@ Rectangle {
     width: 1920
     height: 980
     color: mainColor
-    property string webUrl: "http://www.google.com"
+    property string webUrl: getSetting("homepage");
 
     WebView{
         id: webview1
@@ -89,7 +89,7 @@ Rectangle {
             anchors.fill: parent
 
             onClicked: {
-                webview1.url = "http://www.google.com"
+                webview1.url = getSetting("homepage");
             }
         }
     }

@@ -7,6 +7,7 @@ Rectangle {
     property string changedSetting
     property int view: 0
     signal settingChanged
+    property bool setSettingsEnabled: true
 
     MouseArea {
         anchors.fill: parent
@@ -119,6 +120,7 @@ Rectangle {
         //Create the gridview that displays weather information in the block
         ListView {
             id: gridView
+            enabled: setSettingsEnabled
             anchors.fill: parent
             model: calendarInfoModel
             delegate: calendarDelegate
@@ -156,16 +158,17 @@ Rectangle {
                 anchors.rightMargin: 200
                 anchors.top: themeTxt.top
                 anchors.verticalCenter: themeTxt.verticalCenter
-                items: ["Default", "Red", "Green"]
+                items: ["Default", "Red", "Blue"]
                 z:1000
 
                 onComboClicked: {
                     if (selectedIndex == 0)
-                        mainColor = "#08216F";
+                        mainColor = "#008F24";
                     else if (selectedIndex == 1)
                         mainColor = "#8F1E00";
                     else
-                        mainColor = "#008F24";
+                        mainColor = "#08216F";
+                    setSetting("theme", mainColor);
                 }
             }
             Text {
@@ -210,6 +213,15 @@ Rectangle {
                 anchors.verticalCenter: unitTxt.verticalCenter
                 items: ["American", "Metric"]
                 z:900
+
+                onComboClicked: {
+                    console.log(selectedIndex)
+                    if (selectedIndex == 0)
+                        setSetting("units", "F");
+                    else
+                        setSetting("units", "C");
+                    refreshHome();
+                }
             }
 
             Text {
@@ -594,7 +606,7 @@ Rectangle {
                 height: 111
                 spacing: 14
                 property int numSelected: 0
-                property var appArray: ["UnitConverWidget.qml","RecipeWidget.qml","MusicPlayerWidget.qml"]
+                property var appArray: ["unitconverter","recipe","musicplayer"]
                 //appArray is what will store their top 3 apps
 
                 Rectangle {
@@ -1391,10 +1403,12 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         //User information get's stored and calls the addUser function.
-                        var newUser = addUser("username", "password", "avatar_source_url");
-                        setSetting("homeWidgets[0].name", "", newUser);
-                        setSetting("homeWidgets[1].name", "", newUser);
-                        setSetting("homeWidgets[2].name", "", newUser);
+                        var newUser = addUser(nameTxtbox.strText, passTxtbox1.strText, row1.imageSource);
+                        setSetting("homeWidgets[0].name", appRow1.appArray[0], newUser);
+                        setSetting("homeWidgets[1].name", appRow1.appArray[1], newUser);
+                        setSetting("homeWidgets[2].name", appRow1.appArray[2], newUser);
+                        if (newUser === 1)
+                            loadApp("Login.qml", {});
                     }
                 }
             }
@@ -1411,8 +1425,12 @@ Rectangle {
                 x: 80
                 y: 250
                 anchors.leftMargin: 80
-                strText: ""
+                strText: getSetting("city")
                 z:999
+
+                onTextEntered: {
+                    setSetting("city", strText);
+                }
             }
 
             Text {

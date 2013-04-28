@@ -5,7 +5,7 @@ Flickable {
     contentWidth: application.width
     contentHeight: application.height
 
-    property string mainColor: "#08216F" //"#008F24" //"#8F1E00"
+    property string mainColor
     property string currentState: "HOME"
     property int currentUser: -1
     property string userSkeleton: '{'+
@@ -14,6 +14,10 @@ Flickable {
         '"avatar":"",'+
         '"dateFormat":"MM/dd/yy",'+
         '"timeFormat":"hh:mm AP",'+
+        '"homepage":"http://google.com",'+
+        '"city":"chicago",'+
+        '"theme":"#008F24",'+
+        '"units":"F",'+
         '"homeWidgets":['+
             '{'+
                 '"name":"news"'+
@@ -280,20 +284,24 @@ Flickable {
         removeWidgets();
 
         qMenuWidgetLoad(1, getSetting("widgets."+getSetting("qmWidgets[0].name")+".file"), false, {"y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false});
-        qMenuWidgetLoad(2, getSetting("widgets."+getSetting("qmWidgets[1].name")+".file"), false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false});
+        qMenuWidgetLoad(2, getSetting("widgets."+getSetting("qmWidgets[1].name")+".file"), false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false, "clickable":false});
         loadWidget(getSetting("widgets."+getSetting("homeWidgets[0].name")+".file"), {"x": 0,"y":300});
-        loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": 1920/2,"y":300})
-        loadWidget(getSetting("widgets."+getSetting("homeWidgets[2].name")+".file"), {"x": 1600,"y":300})
+        loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": 1920/2-100,"y":300})
+        loadWidget(getSetting("widgets."+getSetting("homeWidgets[2].name")+".file"), {"x": 1500,"y":300})
+        mainColor = getSetting("theme");
 
         //load quick menu items
 
         if (currentUser == 0)
-            header.toggleQuickMenu(true);
+            header.toggleQuickMenu(false);
         else
             header.toggleQuickMenu(true);
 
         //Auto load an app you're working on
-        loadApp("SettingsApp.qml", {view: 1});
+        if (currentUser == 0 && JSON.parse(userInfo).length === 1)
+            loadApp("SettingsApp.qml", {view: 1, setSettingsEnabled:false});
+        else
+            loadApp("SettingsApp.qml", {});
     }
 
     function qMenuWidgetLoad(widgetId, widget, scale, properties) {
@@ -310,11 +318,11 @@ Flickable {
     }
 
     function loadApp(appQmlFile, properties) {
+        currentState = "APP"
         var app = Qt.createComponent(appQmlFile);
         app.createObject(currentApp, properties);
         if (!currentApp.visible)
             currentApp.visible = true;
-        currentState = "APP"
     }
 
     function loadWidget(widgetQmlFile, properties) {
@@ -434,7 +442,6 @@ Flickable {
 
        Component.onCompleted: {
            var newUser = addUser("Guest", "", "Image/User/chess.png");
-           console.log("Guest ID: " + newUser)
 
            //Get setting example
            console.log("U: " + getSetting("username"));
@@ -480,7 +487,7 @@ Flickable {
             onReturnShortcutClicked: {
                 if (currentUser == 0 && currentState === "HOME") {
                     //show login, call refreshHome() after logging in
-                    //loadApp("Login.qml", {onLoggedIn:refreshHome()});
+                    loadApp("Login.qml", {});
                 } else if (currentState === "HOME") {
                     //Log out
                     //Show message "You have been logged out"

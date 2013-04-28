@@ -28,7 +28,7 @@ Rectangle {
     }
 
     Timer{
-        interval:1000//milliseconds
+        interval:5000//milliseconds
         running: true
         repeat: true
 
@@ -44,14 +44,14 @@ Rectangle {
 
     Image{
         width:parent.width
-        height: 339
+        height: parent.height//339
         id: displayedImage
 
            // fillMode: Image.PreserveAspectFit
         source:picArray[picIndex]
     }
 
-    MouseArea {
+    /*MouseArea {
         id: goToGalleryButton
         x: 26
         y: 339 //277
@@ -85,12 +85,5 @@ Rectangle {
                 font.pixelSize: 34
             }
         }
-
-        onClicked: {
-            parent.widgetClicked()
-        }
-    }
-
-
-
+    }*/
 }
