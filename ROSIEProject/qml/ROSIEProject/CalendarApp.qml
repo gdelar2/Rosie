@@ -4,9 +4,11 @@ Rectangle {
     width: 1920
     height: 980
     color: mainColor
+    //Json skeleton for storing reminders
     property string reminderSkeleton: '{"name":"","index":"","dateA":"","dateB":"","startA":"","startM":"","endA":"","endM":""}'
 
     Component.onCompleted: {
+        //Get various information about the current day
         var curDate = new Date();
         var curDay = Qt.formatDate(curDate, "d");
         var curDayText = Qt.formatDate(curDate, "ddd")
@@ -14,6 +16,9 @@ Rectangle {
         var isCurrent = true;
         var daysBefore = 0
 
+        //Based on the current day of the week, figure out how many days
+        // there are until the previous sunday, we always show a week back
+        //from the current day and 2 weeks forward
         switch (curDayText) {
             case "Sun": daysBefore = 7;break;
             case "Mon": daysBefore = 8; break;
@@ -23,10 +28,14 @@ Rectangle {
             case "Fri": daysBefore = 12; break;
             case "Sat": daysBefore = 13; break;
         }
+        //Update our date variable
         curDate.setDate(curDate.getDate()-daysBefore)
         curDay = Qt.formatDate(curDate, "d")
+        //Get any existing reminders
         var reminders = getSetting("apps.calendar.reminders")
+        //Insert the days that come before today
         for (var i = 0; i < daysBefore; ++i) {
+            //Check if we are in a different month than the current one
             if (curDay > lastDay)
                 isCurrent = false
             else
@@ -36,6 +45,7 @@ Rectangle {
                 day = Qt.formatDate(curDate, "ddd")
             var chkStr = Qt.formatDate(curDate, "MM/dd/yy");
             var hasReminder = false;
+            //Check if there are any reminders for this date
             for (var key in reminders) {
                 if (reminders[key].dateA === chkStr) {
                     hasReminder = true;
@@ -43,11 +53,14 @@ Rectangle {
                 }
             }
 
+            //Add a day object into the calendar grid
             calendarInfoModel.append({ title: curDay,curMonth: isCurrent,curDay:curDay==lastDay,day:day,date:curDate,reminder:hasReminder })
+            //move to the following day
             curDate.setDate(curDate.getDate()+1)
             curDay = Qt.formatDate(curDate, "d")
         }
 
+        //Insert 2 more full weeks after our today
         for (i = daysBefore; i < 28; ++i) {
             if (isCurrent && curDay < lastDay)
                 isCurrent = false
@@ -59,6 +72,7 @@ Rectangle {
                     break;
                 }
             }
+            //Insert a day object into the calendar grid
             calendarInfoModel.append({ title: curDay,curMonth: isCurrent,curDay:curDay==lastDay,day:"",date:curDate,reminder:hasReminder })
             curDate.setDate(curDate.getDate()+1)
             curDay = Qt.formatDate(curDate, "d")
@@ -84,9 +98,11 @@ Rectangle {
         color: mainColor
         height: parent.height - monthText.height + 25
 
+        //The list that holds our day objects
         ListModel {
             id: calendarInfoModel
         }
+        //A grid component
         Component {
             id: calendarDelegate
             Item {
@@ -184,6 +200,7 @@ Rectangle {
                         anchors.fill: parent
 
                         onClicked: {
+                            //Show the reminder view
                             createReminderView.visible = true
                             createReminderView.setDate(Qt.formatDate(date, "dddd MMMM dd yyyy"))
                             createReminderView.dateA = Qt.formatDate(date, "MM/dd/yy");
@@ -193,7 +210,7 @@ Rectangle {
                 }
             }
         }
-        //Create the gridview that displays weather information in the block
+        //Calendar grid view
         GridView {
             id: gridView
             width: parent.width
