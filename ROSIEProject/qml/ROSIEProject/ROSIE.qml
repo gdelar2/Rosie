@@ -333,7 +333,7 @@ Flickable {
         //load quick menu items
 
         if (currentUser == 0)
-            header.toggleQuickMenu(true);
+            header.toggleQuickMenu(false);
         else
             header.toggleQuickMenu(true);
 
@@ -341,8 +341,6 @@ Flickable {
         if (removeApp) {
             if (currentUser == 0 && JSON.parse(userInfo).length === 1)
                 loadApp("SettingsApp.qml", {view: 1, setSettingsEnabled:false});
-            else
-                loadApp("SettingsApp.qml", {});
         }
     }
 
@@ -505,7 +503,7 @@ Flickable {
            setSetting("homeWidgets[0].name", "gallery")
            console.log("NEW HW[0]: " + getSetting("homeWidgets[0].name"));
            setSetting("homeWidgets[0].name", "todo")*/
-setSetting("homeWidgets[0].name", "calendar")
+
            refreshHome();
        }
 

@@ -75,7 +75,7 @@ Rectangle {
 
             Rectangle {
                 width: parent.width
-                height: 100
+                height: 80
                 color: mainColor
                 opacity: .5
                 property string action
