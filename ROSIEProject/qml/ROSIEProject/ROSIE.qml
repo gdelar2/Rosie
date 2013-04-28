@@ -8,6 +8,11 @@ Flickable {
     property string mainColor
     property string currentState: "HOME"
     property int currentUser: -1
+    /**
+     * The default home widgets should be enough for guests
+     * they won't have access to settings anyway
+     * We can just say that guests have limited widgets/apps
+     */
     property string userSkeleton: '{'+
         '"username":"",'+
         '"password":"",'+
@@ -20,9 +25,9 @@ Flickable {
         '"units":"F",'+
         '"homeWidgets":['+
             '{'+
-                '"name":"news"'+
+                '"name":"todo"'+
             '},{'+
-                '"name":"unitconverter"'+
+                '"name":"news"'+
             '},{'+
                 '"name":"weather"'+
             '}'+
@@ -193,7 +198,6 @@ Flickable {
         source: "fonts/Exo-Regular.otf"
     }
 
-    //For logging in
     function getUser(username) {
         var users = JSON.parse(userInfo)
         for(var key in users) {
@@ -286,7 +290,7 @@ Flickable {
         qMenuWidgetLoad(1, getSetting("widgets."+getSetting("qmWidgets[0].name")+".file"), false, {"y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false});
         qMenuWidgetLoad(2, getSetting("widgets."+getSetting("qmWidgets[1].name")+".file"), false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false, "clickable":false});
         loadWidget(getSetting("widgets."+getSetting("homeWidgets[0].name")+".file"), {"x": 0,"y":300});
-        loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": 1920/2-100,"y":300})
+        loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": (1920/2)-200,"y":300})
         loadWidget(getSetting("widgets."+getSetting("homeWidgets[2].name")+".file"), {"x": 1500,"y":300})
         mainColor = getSetting("theme");
 
@@ -443,18 +447,18 @@ Flickable {
        Component.onCompleted: {
            var newUser = addUser("Guest", "", "Image/User/chess.png");
 
-           //Get setting example
+           /*//Get setting example
            console.log("U: " + getSetting("username"));
            //Set setting example
            setSetting("username", "1337Guest")
-           console.log("NEW U: " + getSetting("username"));
+           console.log("NEW U: " + getSetting("username"));*/
 
-           //Get setting example
+           /*//Get setting example
            console.log("HW[0]: " + getSetting("homeWidgets[0].name"));
            //Set setting example
            setSetting("homeWidgets[0].name", "gallery")
            console.log("NEW HW[0]: " + getSetting("homeWidgets[0].name"));
-           setSetting("homeWidgets[0].name", "todo")
+           setSetting("homeWidgets[0].name", "todo")*/
 
            refreshHome();
        }

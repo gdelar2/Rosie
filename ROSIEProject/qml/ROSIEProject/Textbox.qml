@@ -75,6 +75,7 @@ Rectangle {
             textboxText.visible = false;
             strText = textboxText.text;
             parent.textEntered();
+            textboxText.text = "";
         }
     }
 }
