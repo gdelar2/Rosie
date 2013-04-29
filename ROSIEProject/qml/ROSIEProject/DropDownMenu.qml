@@ -1,9 +1,11 @@
 import QtQuick 2.0
 
+/*This is used in the unit converter alone to work with its drop down display */
+
 Rectangle {
     width:400;
     height: 400;
-    //Menu settings
+    //public variables
     property variant items: ["Gram(g)", "Kilogram(kg)", "Pound(lb)", "Liter(L)", "Milliliter(ml)", "teaspoon", "tablespoon",
         "cup"]
     property alias selectedItem: chosenItemText.text;
@@ -11,6 +13,7 @@ Rectangle {
     color: mainColor
     signal comboClicked;
 
+    //fix the items in the menu so proper conversions can be done
     function setText(){
         //Update the units
         if(dropdownmenu1.selectedItem == "Gram(g)" || dropdownmenu1.selectedItem == "Kilogram(kg)" || dropdownmenu1.selectedItem == "Pound(lb)"){
@@ -25,15 +28,12 @@ Rectangle {
     //Display the menu
     Rectangle {
             id:comboBox
-            //property variant items: ["Meter", "Liter", "Gram"]
-           // property alias selectedItem: chosenItemText.text;
-           // property alias selectedIndex: listView.currentIndex;
-           // signal comboClicked;
             width: parent.width
             height: parent.height
             z: 100;
             smooth:true;
 
+            //the initial text shown in the menu (the currently selected item)
             Rectangle {
                 id:chosenItem
                 radius:4;
@@ -62,6 +62,7 @@ Rectangle {
                     anchors.rightMargin: 0
                     anchors.bottomMargin: 0
                     anchors.fill: parent;
+                    //show the dropdown menu on click/touch
                     onClicked: {
                         comboBox.state = comboBox.state==="dropDown"?"":"dropDown"
                         setText()
@@ -98,12 +99,15 @@ Rectangle {
                         }
                         MouseArea {
                             anchors.fill: parent;
+                            //select an item to show in the main window of the menu and retract drop menu, or just
+                            //retract drop menu
                             onClicked: {
                                 comboBox.state = ""
                                 var prevSelection = chosenItemText.text
                                 chosenItemText.text = modelData
                                 if(chosenItemText.text != prevSelection){
                                     comboClicked();
+                                    //perform conversions from unit converter
                                     conversion()
                                 }
                                 listView.currentIndex = index;

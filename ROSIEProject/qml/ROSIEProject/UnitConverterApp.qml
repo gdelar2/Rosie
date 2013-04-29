@@ -143,6 +143,7 @@ Rectangle {
         border.width: 2
         border.color: "#000000"
 
+        //editable text.  Put the value you want to convert here
         Text{
             id: cFrom
             x: 0
@@ -198,6 +199,7 @@ Rectangle {
         border.width: 2
         border.color: "#000000"
 
+        //uneditable text that shows converted value
         Text {
             id: cTo
             x: 5
