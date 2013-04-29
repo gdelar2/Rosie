@@ -9,7 +9,7 @@ Rectangle {
     color:mainColor
     opacity: 0.700
     border.width: 3
-    property variant picArray:[]//array with the paths of all the pictures in the GalleryPhotos folder.
+    property variant picArray:picPaths//array with the paths of all the pictures in the GalleryPhotos folder.
     property int picIndex:0
 
     property int size: picArray.length

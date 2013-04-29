@@ -774,7 +774,6 @@ Rectangle {
                         else if (appArray[2] === "")
                             appArray[2] = lastMod;
                     }
-                    console.log(appArray);
                     lastMod = "";
                 }
 
