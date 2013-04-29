@@ -11,16 +11,54 @@ ROSIE is a project for CS422, its main purpose is as a family display to be used
 
 apps to implement:
 Progress as of 4/28/2013:
-- [x] unit conversion		Widget DONE	App DONE	Implementation DONE	===FINISHED===
-- [x] gallery			Widget DONE	App DONE	Implementation DONE	===FINISHED===
-- [x] recipe			Widget DONE	App DONE	Implementation DONE	===FINISHED===
-- [x] timer			Widget DONE	NONE NEEED	Implementation DONE	===FINISHED===
-- [x] todo list notes.		Widget DONE	App DONE	Implementation DONE	===FINISHED===
-- [x] video			Widget DONE	App DONE	Implementation DONE	===FINISHED===
-- [x] news			Widget DONE	App DONE	Implementation DONE	===FINISHED===
-- [x] browser			Widget DONE	App DONE	Implementation DONE	===FINISHED===
-- [x] weather			Widget DONE	App DONE	Implementation DONE	===FINISHED===
-- [x] time			Widget DONE	App DONE	Implementation DONE	===FINISHED===
-- [x] date			Widget DONE	App DONE	Implementation DONE	===FINISHED===
-- [x] traffic/transit 		Widget DONE	App DONE	Implementation DONE	===FINISHED===
-- [x] calendar/shcedule		Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] unit conversion
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
+- [x] gallery
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
+- [x] recipe
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
+- [x] timer
+  - [x] Widget
+  - [x] Implementation
+- [x] todo list notes.
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
+- [x] video
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
+- [x] news
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
+- [x] browser
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
+- [x] weather
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
+- [x] time
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
+- [x] date
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
+- [x] traffic/transit
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
+- [x] calendar/shcedule
+  - [x] Widget
+  - [x] App
+  - [x] Implementation
