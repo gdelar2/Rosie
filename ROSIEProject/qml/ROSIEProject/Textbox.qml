@@ -16,13 +16,14 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: {
+            //When the user clicks on the textbox display the keyboard
             textbox.visible = true;
             keyboard.visible = true;
             textboxText.visible = true;
         }
     }
 
-    Rectangle {
+    Rectangle { //the textbox rectangle
         anchors.fill: parent
         smooth:true;
         radius: 20
@@ -42,7 +43,7 @@ Rectangle {
         scale: tboxScale
     }
 
-    Rectangle {
+    Rectangle { //We use another "textbox" to enter text into, incase the keyboard covers up the original one
         id: textbox
         width: parent.parent.parent.parent.width
         height: 140
@@ -64,7 +65,7 @@ Rectangle {
         visible: false
     }
 
-    VirtualKeyboard {
+    VirtualKeyboard { //The keyboard object
         id: keyboard
         x:0 - parent.x - parent.parent.x-parent.parent.parent.x
         y: 1080-height-parent.y-parent.height
@@ -74,10 +75,13 @@ Rectangle {
         hasSpace: space
 
         onReturnClicked: {
+            //When return is pressed on the keyboard we
+            // hide the keyboard and update the "textbox"
             textbox.visible = false;
             keyboard.visible = false;
             textboxText.visible = false;
             strText = textboxText.text;
+            //Issue the textEntered signal
             parent.textEntered();
             textboxText.text = "";
         }
