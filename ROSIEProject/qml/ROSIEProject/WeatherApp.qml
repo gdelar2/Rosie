@@ -5,20 +5,24 @@ Rectangle {
     height: 980
     color: mainColor
 
+    //Load weather data when loaded
     Component.onCompleted: getData()
 
-    property var jsonObject // weather data stored hear no need to recall api
+    property var jsonObject
     property string city: getSetting("city");
 
 
     function loadData(jsonObject){
+        //Load all the info in the json result into the various
+        // gui objects
          currentWeatherIcon.source=convertWeatherIcon(jsonObject.data.current_condition[0].weatherCode, true)
+
+        //Make sure we respect users choices
         if (getSetting("units") === "F")
             currentTemp.text=qsTr(jsonObject.data.current_condition[0].temp_F+"°F")
         else
             currentTemp.text=qsTr(jsonObject.data.current_condition[0].temp_C+"°C")
 
-        //not sure if these max and min are the temps for tomorrow or today
         if (getSetting("units") === "F")
             currentHigh.text=qsTr(jsonObject.data.weather[0].tempMaxF+"°F")
         else
@@ -28,10 +32,16 @@ Rectangle {
             currentLow.text=qsTr(jsonObject.data.weather[0].tempMinF+"°F")
         else
             currentLow.text=qsTr(jsonObject.data.weather[0].tempMinC+"°C")
+        //Trim the string if it's too long
         var desc = jsonObject.data.current_condition[0].weatherDesc[0].value;
         if (desc.length > 14)
             desc = desc.substring(0, 14) + "...";
         currentDescription.text=qsTr(desc)
+
+        /**
+          * repeat above process for each of the five days
+          *
+          */
 
         icon1.source = convertWeatherIcon(jsonObject.data.weather[0].weatherCode, false)
         desc = jsonObject.data.weather[0].weatherDesc[0].value;
@@ -108,6 +118,7 @@ Rectangle {
             high5.text = qsTr(jsonObject.data.weather[4].tempMaxC+"°C")
         dayText5.text = qsTr(Qt.formatDate(jsonObject.data.weather[4].date, "dddd"))
 
+        //Clear the loading text display and show the app
         all.visible = true
         loading.visible = false
     }
@@ -116,16 +127,17 @@ Rectangle {
         var doc = new XMLHttpRequest();
         doc.onreadystatechange = function() {
            if (doc.readyState === XMLHttpRequest.DONE) {
-               console.log(city);
+               //Parse the result
                jsonObject = eval('(' + doc.responseText + ')');
                loadData(jsonObject);
             }
         }
-        // Replace YOURPRIVATEKEY by your key from free.worldweatheronline.com
+        //Load the weather data
         doc.open("GET", "http://free.worldweatheronline.com/feed/weather.ashx?q=" + city + "&format=json&num_of_days=5&extra=localObsTime&key=6d31e73ed0202130133001");
         doc.send();
     }
 
+    //GUI display for the weather app below
     Text {
         id: loading
         font.family: boldFont.name

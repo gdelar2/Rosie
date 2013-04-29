@@ -11,20 +11,22 @@ Rectangle {
     property bool draggable: true;
     property bool clickable: true;
 
+    //Load data on load
     Component.onCompleted: getData()
 
-    property var jsonObject // weather data stored hear no need to recall api
+    property var jsonObject
     property var city: getSetting("city");
 
 
     function loadData(jsonObject){
+        //Parse the various data from the json object and display it
          currentWeatherImage.source=convertWeatherIcon(jsonObject.data.current_condition[0].weatherCode, true)
+        //Respect users choice of units
         if(getSetting("units") === "F")
             currentTemp.text=qsTr(jsonObject.data.current_condition[0].temp_F+"°F")
         else
             currentTemp.text=qsTr(jsonObject.data.current_condition[0].temp_C+"°C")
 
-        //not sure if these max and min are the temps for tomorrow or today
         if(getSetting("units") === "F")
             maxTemp.text=qsTr(jsonObject.data.weather[0].tempMaxF+"°F")
         else
@@ -35,6 +37,7 @@ Rectangle {
         else
             minTemp.text=qsTr(jsonObject.data.weather[0].tempMinC+"°C")
         var desc = jsonObject.data.current_condition[0].weatherDesc[0].value;
+        //Trim the description string if too long
         if (desc.length > 10)
             desc = desc.substring(0, 10) + "...";
         currentDesc.text=qsTr(desc)
@@ -45,15 +48,17 @@ Rectangle {
         var doc = new XMLHttpRequest();
         doc.onreadystatechange = function() {
            if (doc.readyState === XMLHttpRequest.DONE) {
+               //Parse the json result
                 jsonObject = JSON.parse(doc.responseText);
                loadData(jsonObject);
             }
         }
-        // Replace YOURPRIVATEKEY by your key from free.worldweatheronline.com
+        //Fetch the weather information
         doc.open("GET", "http://free.worldweatheronline.com/feed/weather.ashx?q=" + city + "&format=json&num_of_days=1&extra=localObsTime&key=6d31e73ed0202130133001");
         doc.send();
     }
 
+    //Make the widget draggable and load the weather app on click
     MouseArea {
         anchors.fill: parent
         drag.target: parent
@@ -73,6 +78,7 @@ Rectangle {
         }
     }
 
+    //GUI display for the weather widget
     Image {
         id: currentWeatherImage
         x: 72
