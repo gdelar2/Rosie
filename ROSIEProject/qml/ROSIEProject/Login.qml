@@ -8,16 +8,20 @@ Rectangle {
     property var selectedUserImage;
 
     onSelectedUserChanged: {
+        //Only enable the password box when a user is selected
         if (selectedUser != -1)
             passwordBox.enabled = true;
         else
             passwordBox.enabled = false;
     }
 
+    //Fill the background with a fake mouse area
+    // so that we don't click things behind it
     MouseArea {
         anchors.fill: parent
     }
 
+    //Gui elements
     Text {
         id: loginTxt
         width: 100
@@ -54,6 +58,7 @@ Rectangle {
         color: mainColor
 
         Component.onCompleted: {
+            //Grab all the current users
             var uInfo = JSON.parse(userInfo);
             var userOverlays = "";
             for (var user in uInfo) {
@@ -64,18 +69,18 @@ Rectangle {
                     var anchor = "";
                     if (user != 1)
                         anchor = ' x:(200*'+(user-1)+')+(20*'+(user-1)+');';
-                    console.log(user)
+
+                    //Create all the user icons dynamically
                     var newObject = Qt.createQmlObject('import QtQuick 2.0; Rectangle {'+anchor+' Rectangle{height:200;width:200;color:"#000";opacity:0.5}Image {id: user'+user+'; width: 200; height: 200; source: "' + avatar + '"} Text {anchors.top: user'+user+'.bottom;anchors.horizontalCenter: user'+user+'.horizontalCenter;font.family:mediumFont.name;font.pointSize:32;text:"'+userName+'";} Rectangle{id:user'+user+'Overlay; anchors.fill:user'+user+';color:"#FFF";opacity:0.2;visible:false}MouseArea { anchors.fill: user'+user+'; onClicked: {if(selectedUser==-1 && user'+user+'Overlay.visible==false){user'+user+'Overlay.visible = true;selectedUser = '+user+'}else if (selectedUser=='+user+' && user'+user+'Overlay.visible == true){selectedUser=-1;user'+user+'Overlay.visible=false;}}}}',
                          userList, "dynamicImg1");
                     if (user != 1)
                         x -= (110);
-
-                    //need to figure out how to support more than 1 user
                 }
             }
         }
     }
 
+    //Show the password text box
     Textbox {
         id: passwordBox
         anchors.horizontalCenter: parent.horizontalCenter
@@ -85,7 +90,9 @@ Rectangle {
 
         onTextEntered: {
             var uInfo = JSON.parse(userInfo);
+            //Check if passwords match
             if (uInfo[selectedUser].password === strText) {
+                //Update the current user and refresh the home screen
                 currentUser = selectedUser;
                 refreshHome();
             } else

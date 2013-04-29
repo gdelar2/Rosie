@@ -11,6 +11,7 @@ Rectangle {
     radius: 10
     property bool draggable: true;
 
+    //Make the widget draggable
     MouseArea {
         anchors.fill: parent
         drag.target: parent
@@ -26,6 +27,7 @@ Rectangle {
         }
     }
 
+    //Create a media player and populate it with some songs
     MediaPlayer{
         id: currentMusic
         property var myArray: ["music/02 - November 25_ Morning.mp3", "music/02 - Roy Orbison - In Dreams.mp3", "music/03 - 1934_ Grandmother & Kimitake.mp3", "music/06 - 1937_ Saint Sebastian.mp3", "music/07 Cousins.mp3"];
@@ -33,6 +35,7 @@ Rectangle {
         property int arrayIndex: 0
     }
 
+    //Create the various player controls
     MouseArea {
         id: music_back
         x: 176
@@ -50,6 +53,7 @@ Rectangle {
         }
 
         onClicked:{
+            //Load in the correct song into the player
             currentMusic.stop()
             currentMusic.arrayIndex -= 1
             if (currentMusic.arrayIndex === -1){
@@ -83,7 +87,7 @@ Rectangle {
         }
 
         onClicked: {
-
+            //Load in the correct song into the player
             songTitle.text = currentMusic.metaData.title
             artist.text = currentMusic.metaData.albumArtist
             if(whichState === 1){
@@ -119,6 +123,7 @@ Rectangle {
         }
 
         onClicked:{
+            //Load in the correct song into the player
             currentMusic.stop()
             currentMusic.arrayIndex += 1
             if (currentMusic.arrayIndex === 5){
