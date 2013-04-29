@@ -1,7 +1,7 @@
 import QtQuick 2.0
 Flickable {
-    width: 1360//800
-    height: 760//600
+    width: 1920//1360//800
+    height: 1080//760//600
     contentWidth: application.width
     contentHeight: application.height
 

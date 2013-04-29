@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 
     //Load the QML project
     QtQuick2ApplicationViewer viewer;
+    viewer.setFlags( Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint );
     viewer.setMainQmlFile(QStringLiteral("qml/ROSIEProject/ROSIE.qml"));
     viewer.showExpanded();
 
