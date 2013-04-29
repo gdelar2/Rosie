@@ -6,13 +6,15 @@ Rectangle {
     color: mainColor
     property string changedSetting
     property int view: 0
-    signal settingChanged
     property bool setSettingsEnabled: true
 
+    //set up a fake mouse area behind the settings so we don't
+    // click anything behind them
     MouseArea {
         anchors.fill: parent
     }
 
+    //Display the settings list
     Rectangle {
         id: settingsChooser
         height: parent.height
@@ -21,10 +23,12 @@ Rectangle {
         opacity: .45
 
         Component.onCompleted: {
+            //Show a certain group on load
             showSettings(view);
             gridView.currentIndex = view;
         }
 
+        //Switch the settings group that is currently displayed
         function showSettings(view) {
             if (view === 0) {
                 generalSettings.visible = true;
@@ -85,8 +89,9 @@ Rectangle {
             }
         }
 
+        //Define the groups of settings
         ListModel {
-            id: calendarInfoModel
+            id: accountInfoModel
             ListElement {txt:"General";}
             ListElement {txt:"Accounts";}
             ListElement {txt:"Location";}
@@ -96,7 +101,7 @@ Rectangle {
             ListElement {txt:"Quick Menu";}
         }
         Component {
-            id: calendarDelegate
+            id: accountDelegate
             Rectangle {
                 width: parent.width
                 height: 100
@@ -117,28 +122,31 @@ Rectangle {
                 }
             }
         }
-        //Create the gridview that displays weather information in the block
+        //Create the list view for the groups of settings
         ListView {
             id: gridView
-            enabled: setSettingsEnabled
+            enabled: setSettingsEnabled //menu choices can be disabled
             anchors.fill: parent
-            model: calendarInfoModel
-            delegate: calendarDelegate
+            model: accountInfoModel
+            delegate: accountDelegate
             highlight: Rectangle { color: "#FFF" }
         }
     }
 
+    //The settings view display for a particular group of settings
     Rectangle {
         id: settingsView
         anchors.left: settingsChooser.right
         width: parent.width - settingsChooser.width
 
+        //General settings group
         Rectangle {
             id: generalSettings
             anchors.fill: parent
             color: mainColor
             z:2
             onVisibleChanged: {
+                //When group is visible load in store options
                 if (visible == true) {
                     switch (getSetting("theme")) {
                         case "#2C3E50": themeCombo.setSelectedText("Default", 0);break;
@@ -174,6 +182,7 @@ Rectangle {
                 opacity: .68
                 text: "Theme:"
             }
+            //Choose a theme
             Combobox {
                 id: themeCombo
                 anchors.right: parent.right
@@ -183,7 +192,7 @@ Rectangle {
                 items: ["Default", "Nephritis", "Belize Hole", "Wisteria", "Alizarin"]
                 z:1000
 
-                onComboClicked: {
+                onComboClicked: { //Update the main color and save it
                     if (selectedIndex == 0)
                         mainColor = "#2C3E50";
                     else if (selectedIndex == 1)
@@ -209,6 +218,7 @@ Rectangle {
                 opacity: .68
                 text: "Language:"
             }
+            //Choose a language
             Combobox {
                 id: langCombo
                 anchors.right: parent.right
@@ -231,6 +241,7 @@ Rectangle {
                 opacity: .68
                 text: "Units:"
             }
+            //Choose the types of units
             Combobox {
                 id: unitCombo
                 anchors.right: parent.right
@@ -241,7 +252,7 @@ Rectangle {
                 z:900
 
                 onComboClicked: {
-                    console.log(selectedIndex)
+                    //Save the new setting and update any widgets on the home screen
                     if (selectedIndex == 0)
                         setSetting("units", "F");
                     else
@@ -262,6 +273,7 @@ Rectangle {
                 opacity: .68
                 text: "Date Format:"
             }
+            //Choose the date format
             Combobox {
                 id: dateCombo
                 anchors.right: parent.right
@@ -272,6 +284,7 @@ Rectangle {
                 z:800
 
                 onComboClicked: {
+                    //Save the date format
                     if (selectedIndex == 0)
                         setSetting("dateFormat", "MM/dd/yy")
                     else
@@ -291,6 +304,7 @@ Rectangle {
                 opacity: .68
                 text: "Time Format:"
             }
+            //Choose the time format
             Combobox {
                 id: timeCombo
                 anchors.right: parent.right
@@ -301,6 +315,7 @@ Rectangle {
                 z:700
 
                 onComboClicked: {
+                    //Save the time format
                     if (selectedIndex == 0)
                         setSetting("timeFormat", "hh:mm AP")
                     else
@@ -309,12 +324,14 @@ Rectangle {
             }
         }
 
+        //Account settings group
         Rectangle {
             id: accountSettings
             anchors.fill: parent
             color: mainColor
 
             onVisibleChanged: {
+                //If not the guest load in the users info
                 if (currentUser != 0) {
                     nameTxtbox.enabled = false;
                     nameTxtbox.strText = getSetting("username");
@@ -423,6 +440,7 @@ Rectangle {
                 opacity: 0.680
             }
 
+            //Avatar choice
             Row {
                 id: row1
                 x: 370
@@ -433,6 +451,8 @@ Rectangle {
                 property string imageSource: ""
                 //Store the User's imageSource of their avatar
 
+                //Display all the icons and highlight/select them when they are clicked
+                // allows only 1 to be selected
                 Rectangle {
                     id: rectangle1
                     x: 0
@@ -705,6 +725,7 @@ Rectangle {
                 font.family: mediumFont.name
             }
 
+            //Display the app choices
             Row {
                 id: appRow1
                 x: 80
@@ -718,6 +739,11 @@ Rectangle {
                 property string lastMod: "";
 
                 onNumSelectedChanged: {
+                    //When the number of selected items changes
+                    // we figure out whether an app was deselected
+                    // or selected and either remove it from
+                    // the app array or find an open spot and
+                    // put the new app in
                     if (numSelected == 0) {
                         if (appArray[0] === lastMod)
                             appArray[0] = "";
@@ -749,9 +775,10 @@ Rectangle {
                             appArray[2] = lastMod;
                     }
                     lastMod = "";
-                    refreshHome(false);
                 }
 
+                //Displays all the available app choices and only allows 3
+                // to be chosen
                 Rectangle {
                     id: rectangle9
                     x: 13
@@ -1071,68 +1098,6 @@ Rectangle {
                         }
                     }
                 }
-
-                /*Rectangle {
-                    id: rectangle14
-                    x: 12
-                    y: 0
-                    width: 112
-                    height: 112
-                    color: "#000000"
-                    opacity: 0.800
-                    property int stateSel: 0
-
-                    Image {
-                        id: image6
-                        x: 15
-                        y: 6
-                        width: 83
-                        height: 83
-                        source: "Image/User/world.png"
-                    }
-
-                    Text {
-                        id: text6
-                        x: 34
-                        y: 92
-                        color: "#ffffff"
-                        text: qsTr("Browser")
-                        verticalAlignment: Text.AlignVCenter
-                        font.pixelSize: 12
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked:{
-                            appRow1.lastMod = "webbrowser";
-                            if(appRow1.numSelected < 3){
-                                if(rectangle14.stateSel === 0){
-                                    rectangle14.color = "#ffffff"
-                                    rectangle14.stateSel = 1
-                                    appRow1.numSelected = appRow1.numSelected + 1
-                                }
-
-                                else{
-                                    rectangle14.color = "#000000"
-                                    rectangle14.stateSel = 0
-                                    appRow1.numSelected = appRow1.numSelected - 1
-                                }
-
-                            }
-
-                            else if(appRow1.numSelected === 3){
-                                if(rectangle14.stateSel === 1){
-                                    rectangle14.color = "#000000"
-                                    rectangle14.stateSel = 0
-                                    appRow1.numSelected = appRow1.numSelected - 1
-                                }
-
-                            }
-
-                        }
-                    }
-                }*/
 
                 Rectangle {
                     id: rectangle15
@@ -1535,6 +1500,7 @@ Rectangle {
                 font.pointSize: 64
             }
 
+            //Allow user to define a password
             Textbox {
                 id: passTxtbox1
                 x: 485
@@ -1544,6 +1510,7 @@ Rectangle {
                 z:100
             }
 
+            //Define the account modify button
             Rectangle {
                 id: modifyButton
                 x: 80
@@ -1569,6 +1536,8 @@ Rectangle {
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
+                        //Update the current user with the available
+                        // options when modify button is clicked
                         setSetting("avatar", row1.imageSource);
                         setSetting("password", passTxtbox1.strText);
                         if (appRow1.appArray[0] === "")
@@ -1580,16 +1549,16 @@ Rectangle {
                         setSetting("homeWidgets[0].name", appRow1.appArray[0]);
                         setSetting("homeWidgets[1].name", appRow1.appArray[1]);
                         setSetting("homeWidgets[2].name", appRow1.appArray[2]);
+                        //close the settings and refresh the home screen
                         refreshHome();
                     }
                 }
             }
 
+            //Add user button
             Rectangle {
                 id: addBox
                 x: modifyButton.x + modifyButton.width + 20
-                //anchors.left: modifyButton.right
-                //anchors.leftMargin: 20
                 y: 811
                 width: 429
                 height: 120
@@ -1614,7 +1583,11 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         //User information get's stored and calls the addUser function.
+                        //If the username box is disable that means the current users
+                        // information is loaded in
+                        // otherwise we can create a new user with the information
                         if (nameTxtbox.enabled == true) {
+                            //make the new user and store the settings
                             var newUser = addUser(nameTxtbox.strText, passTxtbox1.strText, row1.imageSource);
                             if (appRow1.appArray[0] === "")
                                 appRow1.appArray[0] = "-1";
@@ -1626,11 +1599,14 @@ Rectangle {
                             setSetting("homeWidgets[0].name", appRow1.appArray[0], newUser);
                             setSetting("homeWidgets[1].name", appRow1.appArray[1], newUser);
                             setSetting("homeWidgets[2].name", appRow1.appArray[2], newUser);
+                            //If this is the first user we want them to log in
                             if (newUser === 1)
                                 loadApp("Login.qml", {});
                             else
                                 refreshHome();
                         } else {
+                            //Clear all the account settings to prepare for a new
+                            // account
                             nameTxtbox.enabled = true;
                             nameTxtbox.strText = "";
                             passTxtbox1.strText = "";
@@ -1650,7 +1626,6 @@ Rectangle {
                             rectangle11.color = "#000000";
                             rectangle12.color = "#000000";
                             rectangle13.color = "#000000";
-                            //rectangle14.color = "#000000";
                             rectangle15.color = "#000000";
                             rectangle16.color = "#000000";
                             rectangle17.color = "#000000";
@@ -1658,6 +1633,7 @@ Rectangle {
                             rectangle19.color = "#000000";
                             rectangle20.color = "#000000";
                             appRow1.numSelected = 0;
+                            //Hide the modify button
                             addBox.x = 80;
                             modifyButton.visible = false;
                         }
@@ -1667,16 +1643,18 @@ Rectangle {
 
         }
 
+        //Location settings group
         Rectangle {
             id: locationSettings
             anchors.fill: parent
             color: mainColor
 
-            Textbox {
+            Textbox { //Use a textbox to get users city or zip
                 id: locBox
                 x: 80
                 y: 250
                 anchors.leftMargin: 80
+                //Load in the current users setting
                 strText: getSetting("city")
                 z:999
 
@@ -1701,6 +1679,7 @@ Rectangle {
             }
         }
 
+        //News settings group
         Rectangle {
             id: newsSettings
             anchors.fill: parent
@@ -1708,9 +1687,10 @@ Rectangle {
 
             onVisibleChanged: {
                 if (visible) {
+                    //Load in the users current choice
                     switch(getSetting("news")) {
-                    case "http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss": newsCombo.setSelectedText("Google News", 0);break;
-                    case "http%3A%2F%2Frss.cnn.com%2Frss%2Fcnn_topstories.rss": newsCombo.setSelectedText("CNN News", 1);break;
+                        case "http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss": newsCombo.setSelectedText("Google News", 0);break;
+                        case "http%3A%2F%2Frss.cnn.com%2Frss%2Fcnn_topstories.rss": newsCombo.setSelectedText("CNN News", 1);break;
                     }
                 }
             }
@@ -1727,7 +1707,7 @@ Rectangle {
                 opacity: .68
                 text: "News Source:"
             }
-            Combobox {
+            Combobox { //Display the choices
                 id: newsCombo
                 anchors.right: parent.right
                 anchors.rightMargin: 200
@@ -1737,6 +1717,7 @@ Rectangle {
                 z:950
 
                 onComboClicked: {
+                    //Save the users choice
                     if (selectedIndex == 0)
                         setSetting("news", "http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss");
                     else
@@ -1747,6 +1728,7 @@ Rectangle {
 
         }
 
+        //Transit settings group
         Rectangle {
             id: transitSettings
             anchors.fill: parent
@@ -1754,6 +1736,7 @@ Rectangle {
 
             onVisibleChanged: {
                 if(visible) {
+                    //Load in the current users settings
                     transitTextbox1.strText = getSetting("transit1").replace(" ", "");
                     transitTextbox2.strText = getSetting("transit2").replace(" ", "");
                     transitTextbox3.strText = getSetting("transit3").replace(" ", "");
@@ -1771,6 +1754,7 @@ Rectangle {
                 opacity: .68
                 text: "Monitor up to 3 stops"
             }
+            //Display textboxes for the 3 possible choices
             Textbox {
                 id: transitTextbox1
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -1780,6 +1764,7 @@ Rectangle {
                 z:999
 
                 onTextEntered: {
+                    //Save users choice and update home screen
                     if (strText != "")
                         setSetting("transit1", strText);
                     else
@@ -1796,6 +1781,7 @@ Rectangle {
                 z:999
 
                 onTextEntered: {
+                    //Save users choice and update home screen
                     if (strText != "")
                         setSetting("transit2", strText);
                     else
@@ -1812,6 +1798,7 @@ Rectangle {
                 z:999
 
                 onTextEntered: {
+                    //Save users choice and update home screen
                     if (strText != "")
                         setSetting("transit3", strText);
                     else
@@ -1821,6 +1808,7 @@ Rectangle {
             }
         }
 
+        //Web browser settings group
         Rectangle {
             id: browserSettings
             anchors.fill: parent
@@ -1828,6 +1816,7 @@ Rectangle {
 
             onVisibleChanged: {
                 if(visible) {
+                    //Load in the current users settings
                     homepageTextbox.strText = getSetting("homepage");
                 }
             }
@@ -1844,7 +1833,7 @@ Rectangle {
                 opacity: .68
                 text: "Homepage:"
             }
-            Textbox {
+            Textbox { //Allow user to specify a homepage
                 id: homepageTextbox
                 anchors.right: parent.right
                 anchors.rightMargin: 200
@@ -1860,6 +1849,7 @@ Rectangle {
             }
         }
 
+        //Quick menu settings group
         Rectangle {
             id: quickMenuSettings
             anchors.fill: parent
@@ -1867,17 +1857,17 @@ Rectangle {
 
             onVisibleChanged: {
                 if (visible) {
+                    //Load in the current users choices
                     switch (getSetting("qmWidgets[0].name")) {
-                        case "weather": quickWidget1.color = "#ffffff"; quickWidget1.stateSel = 1; break;
-                        case "transit": quickWidget2.color = "#ffffff"; quickWidget2.stateSel = 1; break;
-                        case "gallerytiny": quickWidget3.color = "#ffffff"; quickWidget3.stateSel = 1; break;
+                        case "weather": quickWidget1.color = "#ffffff"; quickWidget1.stateSel = 1; tinyWidRow.numSelected++; break;
+                        case "transit": quickWidget2.color = "#ffffff"; quickWidget2.stateSel = 1; tinyWidRow.numSelected++; break;
+                        case "gallerytiny": quickWidget3.color = "#ffffff"; quickWidget3.stateSel = 1; tinyWidRow.numSelected++; break;
                     }
                     switch (getSetting("qmWidgets[1].name")) {
-                        case "weather": quickWidget1.color = "#ffffff"; quickWidget1.stateSel = 1; break;
-                        case "transit": quickWidget2.color = "#ffffff"; quickWidget2.stateSel = 1; break;
-                        case "gallerytiny": quickWidget3.color = "#ffffff"; quickWidget3.stateSel = 1; break;
+                        case "weather": quickWidget1.color = "#ffffff"; quickWidget1.stateSel = 1; tinyWidRow.numSelected++; break;
+                        case "transit": quickWidget2.color = "#ffffff"; quickWidget2.stateSel = 1; tinyWidRow.numSelected++; break;
+                        case "gallerytiny": quickWidget3.color = "#ffffff"; quickWidget3.stateSel = 1; tinyWidRow.numSelected++; break;
                     }
-                    tinyWidRow.numSelected = 2;
                 }
             }
 
@@ -1896,6 +1886,7 @@ Rectangle {
                 font.pointSize: 64
             }
 
+            //Allow user to display two quick menu widgets
             Row {
                 id: tinyWidRow
                 x: 456
@@ -1907,7 +1898,9 @@ Rectangle {
                 property string lastMod: ""
 
                 onNumSelectedChanged: {
-                    //Storing a blank string doesn't work for some odd reason, store -1 instead
+                    //When the number of selected items changes
+                    // we determine whether we need to remove an app choice
+                    // or add one in. We save the setting
                     if (numSelected == 0) {
                         if (getSetting("qmWidgets[0].name") === lastMod)
                             setSetting("qmWidgets[0].name", "-1");
@@ -1931,9 +1924,11 @@ Rectangle {
                             setSetting("qmWidgets[1].name", lastMod);
                     }
                     lastMod = "";
+                    //Refresh the home screen
                     refreshHome(false);
                 }
 
+                //Display the widget choices, allow only 2 to be selected
                 Rectangle {
                     id: quickWidget1
                     x: 13
