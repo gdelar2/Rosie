@@ -5,6 +5,7 @@ Rectangle {
     width: 1920
     height: 980
     color: mainColor
+    //Load the users homepage on open
     property string webUrl: getSetting("homepage");
 
     WebView{
@@ -18,6 +19,7 @@ Rectangle {
 
     }
 
+    //Textbox for url
     Textbox {
         id: textbox1
         x: 306
@@ -26,6 +28,7 @@ Rectangle {
         strText: "http://"
     }
 
+    //Various browser controls
     Image {
         id: back
         x: 42
@@ -122,11 +125,5 @@ Rectangle {
                 webview1.url = textbox1.strText
             }
         }
-    }
-
-    VirtualKeyboard{
-        id: vkeyboard
-        visible: false
-        y: 1080 - 400
     }
 }
