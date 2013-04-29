@@ -319,6 +319,15 @@ Flickable {
             else
                 qMenuWidgetLoad(2, getSetting("widgets."+getSetting("qmWidgets[1].name")+".file"), false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false, "clickable":false});
         }
+        //Bug that requires todo widget to be in position 0
+        if (getSetting("homeWidgets[1].name") === "todo") {
+            setSetting("homeWidgets[1].name", getSetting("homeWidgets[0].name"));
+            setSetting("homeWidgets[0].name", "todo");
+        } else if (getSetting("homeWidgets[2].name") === "todo") {
+            setSetting("homeWidgets[2].name", getSetting("homeWidgets[0].name"));
+            setSetting("homeWidgets[0].name", "todo");
+        }
+
         //Load the users home screen widgets
         if (getSetting("homeWidgets[0].name") !== "-1")
             loadWidget(getSetting("widgets."+getSetting("homeWidgets[0].name")+".file"), {"x": 0,"y":300});
