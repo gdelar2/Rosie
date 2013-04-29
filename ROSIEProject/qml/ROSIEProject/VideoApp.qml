@@ -9,6 +9,7 @@ Rectangle {
     property string fileVideo: ""
 
 
+    //Display the videos list
     Rectangle {
         id: rectangle1
         x: 0
@@ -28,7 +29,7 @@ Rectangle {
             flickDeceleration: 1748
 
 
-            FolderListModel{
+            FolderListModel{ //List all the videos in the video folder
                 id: foldermodel
                 folder: "video"
                 nameFilters: ["*.*"]
@@ -79,11 +80,12 @@ Rectangle {
 
     }
 
-    MediaPlayer{
+    MediaPlayer{ //Set up a media player for the videos
         id: videoFile
         source: "video/" + fileVideo
     }
 
+    //Video image display
     Rectangle {
         id: stage
         x: 680
@@ -108,6 +110,7 @@ Rectangle {
         font.pixelSize: 50
     }
 
+    //Display the controls in a row
     Row {
         id: row2
         x: 933
@@ -130,7 +133,7 @@ Rectangle {
             MouseArea{
                 anchors.fill: parent
 
-                onClicked: {
+                onClicked: { //Start the video
                     videoFile.play()
                     play.color = "#ffffff"
                     text1.color = "#000000"
@@ -167,7 +170,7 @@ Rectangle {
             MouseArea{
                 anchors.fill: parent
 
-                onClicked: {
+                onClicked: { //Pause the video
                     videoFile.pause()
                     pause.color = "#ffffff"
                     text2.color = "#000000"
@@ -204,7 +207,7 @@ Rectangle {
             MouseArea{
                 anchors.fill: parent
 
-                onClicked: {
+                onClicked: {// stop the video
                     videoFile.stop()
                     stop.color = "#ffffff"
                     text3.color = "#000000"

@@ -9,12 +9,12 @@ Rectangle {
     radius: 13
     property bool draggable: true;
 
-    MediaPlayer{
+    MediaPlayer{ //Create the media player for a video
         id: videoFile
         source: "video/Kodak Zi8.mp4"
     }
 
-    Text {
+    Text { //Show the video title
         id: convertTitle
         x: 12
         y: 10
@@ -32,6 +32,7 @@ Rectangle {
         font.pixelSize: 36
     }
 
+    //Make the widget draggable and have it open the video app on click
     MouseArea {
         anchors.fill: parent
         drag.target: parent
@@ -51,102 +52,103 @@ Rectangle {
         }
     }
 
+    Rectangle { //Display the video
+        id: rectangle1
+        x: 12
+        y: 64
+        width: 576
+        height: 328
+        color: "#000000"
+        opacity: 1
+
+        VideoOutput{
+            anchors.fill: parent
+            source: videoFile
+        }
+    }
+
+    //Load the controls into a row
+    Row {
+        id: row1
+        x: 140
+        y: 417
+        width: 320
+        height: 100
+        spacing: 9
+
         Rectangle {
-            id: rectangle1
-            x: 12
-            y: 64
-            width: 576
-            height: 328
+            id: rectangle2
+            x: 7
+            y: 6
+            width: 155
+            height: 90
             color: "#000000"
-            opacity: 1
+            radius: 13
+            opacity: 0.800
 
-            VideoOutput{
-                anchors.fill: parent
-                source: videoFile
-            }
-        }
+            Text {
+                id: text1
+                x: 33
+                y: 15
+                color: "#ffffff"
+                text: qsTr("Play")
+                font.family: mediumFont.name
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: 46
 
-        Row {
-            id: row1
-            x: 140
-            y: 417
-            width: 320
-            height: 100
-            spacing: 9
+                MouseArea{
+                    anchors.fill: parent
 
-            Rectangle {
-                id: rectangle2
-                x: 7
-                y: 6
-                width: 155
-                height: 90
-                color: "#000000"
-                radius: 13
-                opacity: 0.800
+                    onClicked: { //play the video
+                        text1.color = "#000000"
+                        rectangle2.color = "#ffffff"
 
-                Text {
-                    id: text1
-                    x: 33
-                    y: 15
-                    color: "#ffffff"
-                    text: qsTr("Play")
-                    font.family: mediumFont.name
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 46
+                        text2.color = "#ffffff"
+                        rectangle3.color = "#000000"
 
-                    MouseArea{
-                        anchors.fill: parent
-
-                        onClicked: {
-                            text1.color = "#000000"
-                            rectangle2.color = "#ffffff"
-
-                            text2.color = "#ffffff"
-                            rectangle3.color = "#000000"
-
-                            videoFile.play()
-                        }
+                        videoFile.play()
                     }
                 }
             }
+        }
 
-            Rectangle {
-                id: rectangle3
-                x: 180
-                y: 6
-                width: 155
-                height: 90
-                color: "#000000"
-                radius: 13
-                opacity: 0.800
+        Rectangle {
+            id: rectangle3
+            x: 180
+            y: 6
+            width: 155
+            height: 90
+            color: "#000000"
+            radius: 13
+            opacity: 0.800
 
-                Text {
-                    id: text2
-                    x: 16
-                    y: 15
-                    color: "#ffffff"
-                    text: qsTr("Pause")
-                    font.family: mediumFont.name
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pixelSize: 46
+            Text {
+                id: text2
+                x: 16
+                y: 15
+                color: "#ffffff"
+                text: qsTr("Pause")
+                font.family: mediumFont.name
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.pixelSize: 46
 
-                    MouseArea{
-                        anchors.fill: parent
+                MouseArea{
+                    anchors.fill: parent
 
-                        onClicked: {
-                            text2.color = "#000000"
-                            rectangle3.color = "#ffffff"
+                    onClicked: { //pause the video
+                        text2.color = "#000000"
+                        rectangle3.color = "#ffffff"
 
-                            text1.color = "#ffffff"
-                            rectangle2.color = "#000000"
+                        text1.color = "#ffffff"
+                        rectangle2.color = "#000000"
 
-                            videoFile.pause()
-                        }
+                        videoFile.pause()
                     }
-
                 }
+
             }
         }
+    }
 }
