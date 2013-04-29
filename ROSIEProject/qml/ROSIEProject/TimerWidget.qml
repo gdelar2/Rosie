@@ -8,7 +8,6 @@ Rectangle {
     color: "#000000"
     opacity: 0.7
     radius: 13
-    //minutes are seconds and hours are minutes
     //property int seconds:0
     property int minutes:0
     property int hours: 0
@@ -16,6 +15,9 @@ Rectangle {
     property bool draggable: true;
 
     function timeHandler(){
+        //If the timer is started we decrement the
+        // values to update display. Display a message
+        // when timer is up
         if(start){
            minutes=((minutes)%60)-1;
            if(minutes==-1){
@@ -47,22 +49,23 @@ Rectangle {
         }
     }
 
-    Audio{
+    Audio{ //an alarm for when timer is done
         id: alarm
         source: "music/alarm.mp3"
     }
 
-    Timer{
+    Timer{ //since minimum value is 1 minute we use a 1 minute interval
         interval:60000//milliseconds
         running: true
         repeat: true
 
         onTriggered: {
+            //update the timeleft and display
             timeHandler()
         }
     }
 
-
+    //GUI object to display the timer
     Text {
         id: convertTitle
         x: 12
@@ -149,166 +152,149 @@ Rectangle {
         }
     }
 
+    Rectangle {
+        id: rectangle4
+        x: 220
+        y: 108
+        width: 75
+        height: 75
+        color: "#000000"
+        opacity: 0.800
 
+        Text {
+            id: uparrow1
+            x: 23
+            y: 55
+            width: 30
+            height: 0
+            color: "#ffffff"
+            text: qsTr("^")
+            style: Text.Raised
+            font.bold: true
+            font.family: mediumFont.name
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: 125
+        }
+        MouseArea {
+            id: hoursUpButton
+           anchors.fill: parent
 
-
-
-        Rectangle {
-            id: rectangle4
-            x: 220
-            y: 108
-            width: 75
-            height: 75
-            color: "#000000"
-            opacity: 0.800
-
-            Text {
-                id: uparrow1
-                x: 23
-                y: 55
-                width: 30
-                height: 0
-                color: "#ffffff"
-                text: qsTr("^")
-                style: Text.Raised
-                font.bold: true
-                font.family: mediumFont.name
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: 125
-            }
-            MouseArea {
-                id: hoursUpButton
-               anchors.fill: parent
-
-             onClicked  :{
-                 hours=((hours+1)%24);
-
-                }
+         onClicked  :{
+             hours=((hours+1)%24);
 
             }
-}
 
+        }
+    }
 
+    Rectangle {
+        id: rectangle7
+        x: 517
+        y: 108
+        width: 75
+        height: 75
+        color: "#000000"
+        opacity: 0.800
 
+        Text {
+            id: uparrow2
+            x: 23
+            y: 55
+            width: 30
+            height: 0
+            color: "#ffffff"
+            text: qsTr("^")
+            style: Text.Raised
+            font.pixelSize: 125
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            font.family: mediumFont.name
+            font.bold: true
+        }
+        MouseArea {
+            id: upButton2
+             anchors.fill: parent
 
+             onClicked:{
+                 minutes=((minutes+1)%60);
+             }
+        }
+    }
 
+    Rectangle {
+        id: rectangle5
+        x: 220
+        y: 195
+        width: 75
+        height: 75
+        color: "#000000"
+        opacity: 0.800
 
-        Rectangle {
-            id: rectangle7
-            x: 517
-            y: 108
-            width: 75
-            height: 75
-            color: "#000000"
-            opacity: 0.800
-
-            Text {
-                id: uparrow2
-                x: 23
-                y: 55
-                width: 30
-                height: 0
-                color: "#ffffff"
-                text: qsTr("^")
-                style: Text.Raised
-                font.pixelSize: 125
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.family: mediumFont.name
-                font.bold: true
-            }
-            MouseArea {
-                id: upButton2
-                 anchors.fill: parent
-
-                 onClicked:{
-                     minutes=((minutes+1)%60);
-                 }
-
-            }
+        Text {
+            id: downarrow1
+            x: 20
+            y: 20
+            width: 30
+            height: 0
+            color: "#ffffff"
+            text: qsTr("^")
+            rotation: 180
+            style: Text.Raised
+            font.pixelSize: 125
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            font.family: mediumFont.name
+            font.bold: true
         }
 
+        MouseArea {
+            id: downButton1
+            anchors.fill: parent
+           onClicked:{
+               hours--;
+               if(hours==-1) hours=23
+           }
+        }
+    }
 
+    Rectangle {
+        id: rectangle6
+        x: 517
+        y: 195
+        width: 75
+        height: 75
+        color: "#000000"
+        opacity: 0.800
 
+        Text {
+            id: downarrow2
+            x: 20
+            y: 20
+            width: 30
+            height: 0
+            color: "#ffffff"
+            text: qsTr("^")
+            rotation: 180
+            style: Text.Raised
+            font.pixelSize: 125
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            font.family: mediumFont.name
+            font.bold: true
+        }
+        MouseArea {
+            id: downButton2
+            anchors.fill: parent
 
-        Rectangle {
-            id: rectangle5
-            x: 220
-            y: 195
-            width: 75
-            height: 75
-            color: "#000000"
-            opacity: 0.800
-
-            Text {
-                id: downarrow1
-                x: 20
-                y: 20
-                width: 30
-                height: 0
-                color: "#ffffff"
-                text: qsTr("^")
-                rotation: 180
-                style: Text.Raised
-                font.pixelSize: 125
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.family: mediumFont.name
-                font.bold: true
-            }
-
-            MouseArea {
-                id: downButton1
-                anchors.fill: parent
-               onClicked:{
-                   hours--;
-                   if(hours==-1) hours=23
-               }
+            onClicked:{
+               minutes--;
+                if(minutes==-1)minutes=59;
             }
         }
+    }
 
-
-
-
-        Rectangle {
-            id: rectangle6
-            x: 517
-            y: 195
-            width: 75
-            height: 75
-            color: "#000000"
-            opacity: 0.800
-
-            Text {
-                id: downarrow2
-                x: 20
-                y: 20
-                width: 30
-                height: 0
-                color: "#ffffff"
-                text: qsTr("^")
-                rotation: 180
-                style: Text.Raised
-                font.pixelSize: 125
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.family: mediumFont.name
-                font.bold: true
-            }
-            MouseArea {
-                id: downButton2
-                anchors.fill: parent
-
-                onClicked:{
-                   minutes--;
-                    if(minutes==-1)minutes=59;
-                }
-            }
-        }
-
-
-
+    //Start/stop button to run/stop the timer
     MouseArea {
         id: startButton
         //x: 12
@@ -321,7 +307,7 @@ Rectangle {
             id: startRectangle
             x: 0
             y: 0
-           anchors.fill: startButton
+            anchors.fill: startButton
             color: "#000000"
             opacity: 0.800
             radius:13
@@ -329,8 +315,6 @@ Rectangle {
                 id: startText
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter:  parent.verticalCenter
-               // x: 84
-                //y: 14
                 color: "#ffffff"
                 text: qsTr("Start/Stop")
                 font.family: mediumFont.name
@@ -343,32 +327,22 @@ Rectangle {
         onClicked: {
             start=!start
             if(start){
-             timerStatusText.text=qsTr("Running")
+                timerStatusText.text=qsTr("Running")
                 //rectangle4.visible=false;
             }
             else{
                 timerStatusText.text=qsTr("Not Running")}
-
         }
     }
 
-
-
-
     //status
-
     Text{
         id: timerStatusText
         text:qsTr("Not Running")
-       // x:250
         anchors.horizontalCenter: parent.horizontalCenter
         y:convertTitle.y
         font.pixelSize: 32
         font.family: mediumFont.name
         color: "#ffffff"
-
     }
-
-
-
 }
