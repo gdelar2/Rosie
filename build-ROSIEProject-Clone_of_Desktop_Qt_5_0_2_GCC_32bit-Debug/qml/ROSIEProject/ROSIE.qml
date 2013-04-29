@@ -57,8 +57,7 @@ Flickable {
         '"apps":{'+
             '"calendar":{'+
                 '"file":"CalendarApp.qml",'+
-                '"properties":{'+
-                '}'+
+                '"reminders":[]'+
             '},'+
             '"gallery":{'+
                 '"file":"GalleryApp.qml",'+
@@ -142,7 +141,8 @@ Flickable {
             '"todo":{'+
                 '"file":"TodoListWidget.qml",'+
                 '"properties":{'+
-                    '"width":600'+
+                    '"width":600,'+
+                    '"notes":[]'+
                 '}'+
             '},'+
             '"transit":{'+
@@ -333,7 +333,7 @@ Flickable {
         //load quick menu items
 
         if (currentUser == 0)
-            header.toggleQuickMenu(true);
+            header.toggleQuickMenu(false);
         else
             header.toggleQuickMenu(true);
 
@@ -341,8 +341,6 @@ Flickable {
         if (removeApp) {
             if (currentUser == 0 && JSON.parse(userInfo).length === 1)
                 loadApp("SettingsApp.qml", {view: 1, setSettingsEnabled:false});
-            else
-                loadApp("SettingsApp.qml", {});
         }
     }
 

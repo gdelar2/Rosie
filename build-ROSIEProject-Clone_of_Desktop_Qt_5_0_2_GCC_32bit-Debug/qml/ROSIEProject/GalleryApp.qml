@@ -9,24 +9,31 @@ Rectangle {
     color:mainColor
     opacity: 0.700
     border.width: 3
-    property variant picArray:[]
+    property variant picArray:[]//array with the paths of all the pictures in the GalleryPhotos folder.
     property int picIndex:0
 
-property int size: picArray.length
+    property int size: picArray.length
 
 
-    Timer{
+    Timer{//timer for the slide show
         id:timer
-        interval:10//milliseconds
+        interval:10//initialy 10 so that when the playSlide button is clicked, the first slide appears instantly
         running: false
         repeat: true
 
         onTriggered: {
-            timer.interval=4000
+            timer.interval=4000//4 seconds is the length that every picture will appear during the slide show
+
             imageToDisplay.source=picArray[picIndex];
             pictureClicked.visible=true;
             grid.visible=false
+                playSlideButton.visible=false
+
            picIndex++;
+
+             if(picIndex==size){//return to the begining of the array when the last picture is shown
+                 picIndex=0;
+             }
 
 
         }
@@ -36,7 +43,7 @@ property int size: picArray.length
 
 
 
-    function picSelected(pathOfClickedPic)
+    function picSelected(pathOfClickedPic)//this function helps determine which picture was clicked to be enlarged
 {
         imageToDisplay.source=pathOfClickedPic;
         pictureClicked.visible=true;
@@ -73,7 +80,7 @@ Row{
     x:3
     Repeater{
         id:rowRepeater
-         model:8
+         model:8//repeate the column 8 times
         delegate:
 
        Column{
@@ -84,14 +91,14 @@ Row{
             Repeater{
                 id:columnRepeater
                 property int rowIndex:index;
-                model:3
+                model:3//3 pictures per column
                 delegate:
                     Image{
 
-                    height:213 //216.66
-                    width:213  //213.33
-                  //  source:picArray[pictureToShow(row.index, column.index)]; //
-                    source:picArray[columnRepeater.rowIndex*3+index]
+                    height:213
+                    width:213
+
+                    source:picArray[columnRepeater.rowIndex*3+index]//
                     MouseArea{
 
                         anchors.fill: parent
@@ -102,9 +109,9 @@ Row{
                                 //no image is loaded so do nothing
                             }else{
 
-                            grid.visible=false
+                                grid.visible=false
 
-                            picSelected(parent.source);//display clicked image
+                                picSelected(parent.source);//display clicked image
                             }
                         }
                     }
@@ -131,7 +138,6 @@ Row{
         y: 874
         width: 253
         height: 70
-      //  horizontalCenter: parent.horizontalCenter
         Rectangle {
             id: rectangle1
             x: 0
@@ -166,7 +172,9 @@ Row{
 
 
     //this rectangle will show the picture selected. it will take up the whole screen and will close when the user touches it
-    Rectangle{
+    Rectangle{//rectangle that takes up
+
+
 
         id: pictureClicked
         width: 1920
@@ -191,6 +199,7 @@ Row{
                 parent.visible=false;
                   grid.visible=true
                 timer.running=false
+                playSlideButton.visible=true
             }
         }
 

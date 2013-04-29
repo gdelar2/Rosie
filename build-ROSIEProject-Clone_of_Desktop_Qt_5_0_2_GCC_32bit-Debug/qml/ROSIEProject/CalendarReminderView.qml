@@ -15,6 +15,8 @@ Rectangle {
     border.color: "#000000"
     border.width: 6
     z: 1000
+    property string dateA
+    property string dateB
 
     MouseArea {
         anchors.fill: parent
@@ -359,6 +361,42 @@ Rectangle {
 
             onClicked: {
                 parent.parent.visible = false
+                var uInfo = JSON.parse(userInfo);
+                var cur = uInfo[currentUser].apps.calendar.reminders;
+                var curStr = JSON.stringify(cur);
+                if (curStr === "[]")
+                    curStr = "[" + reminderSkeleton + "]";
+                else
+                    curStr = curStr.substring(0, curStr.length - 1) + "," + reminderSkeleton + "]";
+                var remArray = JSON.parse(curStr);
+                var newRem = remArray[remArray.length - 1];
+                newRem.name = "";
+                newRem.dateA = dateA;
+                newRem.dateB = dateB;
+                var h = rem.shours;
+                if (h > 12)
+                    h -= 12;
+                newRem.startA = h + ":" + rem.sminutes + " " + rem.stime;
+                h = rem.ehours;
+                if (h>12)
+                    h -= 12;
+                newRem.endA = rem.ehours + ":" + rem.eminutes + " " + rem.etime;
+                if (rem.stime === "AM") {
+                    newRem.startM = rem.shours + ":" + rem.sminutes;
+                } else {
+                    newRem.startM = (parseInt(rem.shours) + 12) + ":" + rem.sminutes;
+                }
+                if (rem.etime === "AM") {
+                    newRem.endM = rem.ehours + ":" + rem.eminutes;
+                } else {
+                    newRem.endM = (parseInt(rem.ehours) + 12) + ":" + rem.eminutes;
+                }
+                remArray[remArray.length - 1] = newRem;
+                uInfo[currentUser].apps.calendar.reminders = remArray;
+                userInfo = JSON.stringify(uInfo);
+                removeApps();
+                loadApp("CalendarApp.qml", {})
+                refreshHome(false);
             }
         }
     }
