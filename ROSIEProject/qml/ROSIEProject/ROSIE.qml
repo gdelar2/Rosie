@@ -11,8 +11,9 @@ Flickable {
     /**
      * The default home widgets should be enough for guests
      * they won't have access to settings anyway
-     * We can just say that guests have limited widgets/apps
+     * Guests have limited widgets/apps
      */
+    //Define the basic json user object skeleton in string representation
     property string userSkeleton: '{'+
         '"username":"",'+
         '"password":"",'+
@@ -43,56 +44,31 @@ Flickable {
                 '"name":"weather"'+
             '}'+
         '],'+
-        '"qmItems":['+
-            '{'+
-                '"value":"SETTINGS",'+
-                '"app":"settings",'+ //if app is not blank load app, else do action
-                '"action":""'+
-            '},{'+
-                '"value":"LOGOUT",'+
-                '"app":"",'+
-                '"action":"logout"'+
-            '}'+
-        '],'+
         '"apps":{'+
             '"calendar":{'+
                 '"file":"CalendarApp.qml",'+
                 '"reminders":[]'+
             '},'+
             '"gallery":{'+
-                '"file":"GalleryApp.qml",'+
-                '"properties":{'+
-                '}'+
+                '"file":"GalleryApp.qml"'+
             '},'+
             '"recipe":{'+
-                '"file":"RecipeApp.qml",'+
-                '"properties":{'+
-                '}'+
+                '"file":"RecipeApp.qml"'+
             '},'+
             '"settings":{'+
-                '"file":"SettingsApp.qml",'+
-                '"properties":{'+
-                '}'+
+                '"file":"SettingsApp.qml"'+
             '},'+
             '"unitconverter":{'+
-                '"file":"UnitConverterApp.qml",'+
-                '"properties":{'+
-                '}'+
+                '"file":"UnitConverterApp.qml"'+
             '},'+
             '"video":{'+
-                '"file":"VideoApp.qml",'+
-                '"properties":{'+
-                '}'+
+                '"file":"VideoApp.qml"'+
             '},'+
             '"weather":{'+
-                '"file":"WeatherApp.qml",'+
-                '"properties":{'+
-                '}'+
+                '"file":"WeatherApp.qml"'+
             '},'+
             '"webbrowser":{'+
-                '"file":"WebBrowserApp.qml",'+
-                '"properties":{'+
-                '}'+
+                '"file":"WebBrowserApp.qml"'+
             '}'+
         '},'+
         '"widgets":{'+
@@ -171,8 +147,9 @@ Flickable {
             '}'+
         '}'+
     '}'
-    //Guest is created in onCompleted event
+    //Define the json user array object
     property string userInfo: '[]'
+    //Picture paths for the gallery
     property variant picPaths:["Image/GalleryPictures/Picture (1).jpg",
         "Image/GalleryPictures/Picture (2).jpg",
         "Image/GalleryPictures/Picture (3).jpg",
@@ -199,7 +176,7 @@ Flickable {
         "Image/GalleryPictures/Picture(24).jpg",
     ]
 
-    //Load fonts
+    //Load various fonts used throughout the app
     FontLoader {
         id: mediumFont
         source: "fonts/Exo-Medium.otf"
@@ -217,99 +194,119 @@ Flickable {
         source: "fonts/Exo-Regular.otf"
     }
 
-    function getUser(username) {
-        var users = JSON.parse(userInfo)
-        for(var key in users) {
-            if (users[key].username === username)
-                return users[key];
-        }
-        return null;
-    }
-
+    //Return a certain user setting
     function getSetting(name, user) {
+        //If a specific user is not defined we use the current user
         if (typeof user === 'undefined')
             user = currentUser;
+        //Parse the user array string into a json object
         var uInfo = JSON.parse(userInfo);
         var retValue = uInfo[user];
+        //The name of the value we want will be specified in json format
+        // we parse it dynamically
         var tmpGet = name;
         while (tmpGet.length > 0) {
             var idx = -1;
-            if (tmpGet[0] === '.')
+            if (tmpGet[0] === '.') //skip periods
                 tmpGet = tmpGet.substring(1);
-            if (tmpGet[0] === '[') {
+            if (tmpGet[0] === '[') { //parse out specific indexes
                 idx = parseInt(tmpGet[1]);
                 tmpGet = tmpGet.substring(3);
             }
-            if (idx > -1)
+            if (idx > -1) //grab the index if there is one
                 retValue = retValue[idx];
             var prop = tmpGet.match(/^[a-zA-Z0-9]*/);
+            //if there exists an object with the property
+            // name we've parsed, grab it and repeat the loop
             if (retValue[prop])
                 retValue = retValue[prop];
+            //Trim out what we've parsed
             tmpGet = tmpGet.substring(prop[0].length);
         }
+        //Return the requested setting
         return retValue;
     }
 
+    //Set a certain setting
     function setSetting(name, value, user) {
+        //if a user is not provided then we
+        // are modifying the current user
         if(typeof user === 'undefined')
             user = currentUser;
+        //Parse the user array
         var uInfo = JSON.parse(userInfo);
         var retValue = uInfo[user];
-        var startedWith = JSON.stringify(retValue);
 
+        //Use a recursive function to set the desired setting
         uInfo[user] = setSettingRecurse(retValue, name, value);
 
+        //Save the user array back into a string form
         userInfo = JSON.stringify(uInfo);
     }
 
+    //Recursive function set set a particular setting
     function setSettingRecurse(json, name, value) {
+        //If there's nothing else to attempt to get
+        // return the current value
         if (name.length === 0)
             return value;
 
+        //Because the property name is in json format
+        // we parse out the current property
         var retValue = json;
         var tmpGet = name;
         var idx = -1;
-        if (tmpGet[0] === '.')
+        if (tmpGet[0] === '.') //ignore dots
             tmpGet = tmpGet.substring(1);
-        if (tmpGet[0] === '[') {
+        if (tmpGet[0] === '[') { //parse an index
             idx = parseInt(tmpGet[1]);
             tmpGet = tmpGet.substring(4);
         }
         var prop = tmpGet.match(/^[a-zA-Z]*/);
         tmpGet = tmpGet.substring(prop[0].length);
+        //Recurse into the next property until we reach the end and
+        // return the wanted assignment value into the json object
         if(idx > -1)
             json[idx][prop] = setSettingRecurse(json[idx][prop], tmpGet, value);
         else
             json[prop] = setSettingRecurse(json[prop], tmpGet, value);
 
+        //Return the current json backwards in the the recursive function calls
         return json;
     }
 
+    //Add a new user into the user array
     function addUser(username, password,avatar) {
+        //Parse the user skeleton
         var skeleton = JSON.parse(userSkeleton)
+        //Fill in the wanted information
         skeleton.username = username;
         skeleton.password = password;
         skeleton.avatar = avatar;
         var skeletonStr = JSON.stringify(skeleton);
+        //Place the new user into the string representation of the array
         if (currentUser == -1) {
             userInfo = '[' + skeletonStr + ']';
             currentUser = 0;
         } else
             userInfo = userInfo.substring(0, userInfo.length - 1) + ',' + skeletonStr + ']';
+        //Return the index of the new user
         var uInfo = JSON.parse(userInfo);
         return uInfo.length - 1;
     }
 
+    //Refresh the home screen
     function refreshHome(removeApp) {
+        //Specify whether we want to remove any open apps
         if (typeof removeApp === 'undefined')
             removeApp = true;
-        //load in currentUser settings
-        //apps, etc.
+        //Remove any apps and widgets
         if (removeApp)
             removeApps();
         removeWidgets();
         removeQmWidgets();
 
+        //Load in the users quick menu widgets
         if (getSetting("qmWidgets[0].name") !== "-1") {
             if (getSetting("qmWidgets[0].name") === "transit")
                 qMenuWidgetLoad(1, getSetting("widgets."+getSetting("qmWidgets[0].name")+".file"), false, {"scale":0.6, "y":200, "x": -122,"border.color": "#FFFFFF", "border.width": 2, "draggable": false});
@@ -322,54 +319,64 @@ Flickable {
             else
                 qMenuWidgetLoad(2, getSetting("widgets."+getSetting("qmWidgets[1].name")+".file"), false, {"x": 1620, "y": 300, "border.color": "#FFFFFF", "border.width": 2, "draggable": false, "clickable":false});
         }
+        //Load the users home screen widgets
         if (getSetting("homeWidgets[0].name") !== "-1")
             loadWidget(getSetting("widgets."+getSetting("homeWidgets[0].name")+".file"), {"x": 0,"y":300});
         if (getSetting("homeWidgets[1].name") !== "-1")
             loadWidget(getSetting("widgets."+getSetting("homeWidgets[1].name")+".file"), {"x": (1920/2)-(getSetting("widgets."+getSetting("homeWidgets[1].name")+".properties.width")/4),"y":300})
         if (getSetting("homeWidgets[2].name") !== "-1")
             loadWidget(getSetting("widgets."+getSetting("homeWidgets[2].name")+".file"), {"x": 1920-getSetting("widgets."+getSetting("homeWidgets[2].name")+".properties.width"),"y":300})
+        //Set the main color
         mainColor = getSetting("theme");
 
-        //load quick menu items
-
+        //If we are the quest we do not need the quick menu
         if (currentUser == 0)
             header.toggleQuickMenu(false);
         else
             header.toggleQuickMenu(true);
 
-        //Auto load an app you're working on
+        //If guest is the only user we load up the user settings
+        // to make them add one
         if (removeApp) {
             if (currentUser == 0 && JSON.parse(userInfo).length === 1)
                 loadApp("SettingsApp.qml", {view: 1, setSettingsEnabled:false});
         }
     }
 
+    //Load a particular widget into the quick menu
     function qMenuWidgetLoad(widgetId, widget, scale, properties) {
+        //Get the quick menu
         var quickMenu = header.getQuickMenu();
         var qMenuWidget = Qt.createComponent(widget);
         var qWidget;
+        //Grab the widget place holder
         if(widgetId === 1)
             qWidget = quickMenu.getWidget1();
         else
             qWidget = quickMenu.getWidget2();
+        //Create the object
         qMenuWidget.createObject(qWidget, properties);
-        if(scale)
-            qWidget.scale = 0.61;
     }
 
+    //Load an app
     function loadApp(appQmlFile, properties) {
+        //Change the current state
         currentState = "APP"
+        //Load the app onto the screen
         var app = Qt.createComponent(appQmlFile);
         app.createObject(currentApp, properties);
         if (!currentApp.visible)
             currentApp.visible = true;
     }
 
+    //Load a widget
     function loadWidget(widgetQmlFile, properties) {
+        //Load a particular widget onto the home screen
         var app = Qt.createComponent(widgetQmlFile);
         app.createObject(widgetScreen, properties);
     }
 
+    //remvoe any quick menu widgets
     function removeQmWidgets() {
         var quickMenu = header.getQuickMenu();
         if (quickMenu.getWidget1().children.length > 0)
@@ -378,6 +385,7 @@ Flickable {
             quickMenu.getWidget2().children[0].destroy();
     }
 
+    //Remove any open apps
     function removeApps() {
         for (var i = 0; i < currentApp.children.length; i++) {
             currentApp.children[i].destroy();
@@ -385,15 +393,20 @@ Flickable {
         currentApp.visible = false;
     }
 
+    //Remove all widgets on the home screen
     function removeWidgets() {
         for (var i = 0; i < widgetScreen.children.length; i++) {
             widgetScreen.children[i].destroy();
         }
     }
 
+    //Convert the icon id from the weather service
+    // into a particular image
     function convertWeatherIcon(icon, checkTime) {
         var daytime = true;
         var currentDate = new Date()
+        //A few images have different day and night icons, determine
+        // which we want to display based on time (displays night between 7pm and 5am)
         if(checkTime && (currentDate.getHours() > 19 || currentDate.getHours() < 5))
             daytime = false;
         switch(icon) {
@@ -468,12 +481,6 @@ Flickable {
         }
     }
 
-    function addPicture(){
-        var path
-
-        //getpathsomehow
-        picPaths.push(path)
-    }
     //Click and drag to see
     /*
     The buttons in the header hang outside the screen a bit to
@@ -485,29 +492,17 @@ Flickable {
         width: 1920
         height: 1080
         color: mainColor
-        //0-1 scale, doesn't work great but still gives a bit more insight as to how it looks
-        scale: 0.5
+        //Ability to scale down the screen
+        scale: 1
 
+       //On app load
        Component.onCompleted: {
+           //On first load we create a guest user
            var newUser = addUser("Guest", "", "Image/User/chess.png");
 
-           /*//Get setting example
-           console.log("U: " + getSetting("username"));
-           //Set setting example
-           setSetting("username", "1337Guest")
-           console.log("NEW U: " + getSetting("username"));*/
-
-           /*//Get setting example
-           console.log("HW[0]: " + getSetting("homeWidgets[0].name"));
-           //Set setting example
-           setSetting("homeWidgets[0].name", "gallery")
-           console.log("NEW HW[0]: " + getSetting("homeWidgets[0].name"));
-           setSetting("homeWidgets[0].name", "todo")*/
-
+           //Refresh the home screen
            refreshHome();
        }
-
-       //Everything below this comment is where widgets should be placed
 
        //Rectangle to load widgets into
        Rectangle {
@@ -532,24 +527,23 @@ Flickable {
         Header {
             id: header
 
+            //Top left button click actions
             onReturnShortcutClicked: {
+                //If we are a guest and on the home screen and there are other users
+                // we load the login display
                 if (currentUser == 0 && currentState === "HOME" && JSON.parse(userInfo).length > 1) {
-                    //show login, call refreshHome() after logging in
                     loadApp("Login.qml", {});
-                } else if (currentState === "HOME") {
-                    //Log out
-                    //Show message "You have been logged out"
-                    //Activate timer to fade out message
+                } else if (currentState === "HOME") { //if we are logged in and not guest this button logs us out
                     currentUser = 0;
                     refreshHome();
-                } else if (currentState === "APP") {
-                    //Close app
+                } else if (currentState === "APP") { //if we are in an app this button closes the app
                     removeApps();
                     currentState = "HOME";
                 }
             }
         }
 
+        //Welcome screen
         Rectangle {
             width: 1920;
             height: 1080;
@@ -560,11 +554,11 @@ Flickable {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
+                    //Hide welcome screen when clicked
                     parent.visible=false
                 }
             }
 
-            //Needs to be replaced!!!!
             Rectangle {
                 id: bg
                 anchors.centerIn: parent
@@ -629,6 +623,4 @@ Flickable {
             }
         }
     }
-
-
 }
