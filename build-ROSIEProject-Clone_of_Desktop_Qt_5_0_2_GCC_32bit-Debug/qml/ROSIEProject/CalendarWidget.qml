@@ -8,8 +8,31 @@ Rectangle {
     radius: 13
     property bool draggable: true;
 
+    Component.onCompleted: {
+        var reminders = getSetting("apps.calendar.reminders");
+        gridView.currentIndex = -1;
+        if (reminders.length === 0) {
+            calendarInfoModel.append({txt:"None"})
+        } else {
+            for (var key in reminders) {
+                var date = "";
+                var time = "";
+                if (getSetting("dateFormat") === "MM/dd/yy")
+                    date = reminders[key].dateA;
+                else
+                    date = reminders[key].dateB;
+                if (getSetting("timeFormat") === "hh:mm")
+                    time = reminders[key].startM;
+                else
+                    time = reminders[key].startA;
+                calendarInfoModel.append({txt: "Reminder: " + date + " " + time})
+            }
+        }
+    }
+
     Rectangle {
         id: titleView
+        height: 80
 
         Rectangle {
             id: title
@@ -34,19 +57,39 @@ Rectangle {
             font.pixelSize: 36
         }
     }
-
-    Rectangle {
-        id: list
-        y: 80
-
-        Text {
-            font.family: mediumFont.name
-            font.pointSize: 36
-            x: 10
-            color: "#FFFFFF"
-            opacity: .8
-            text: "None"
+    ListModel {
+        id: calendarInfoModel
+    }
+    Component {
+        id: calendarDelegate
+        Rectangle {
+            width: parent.width
+            height: 100
+            color: mainColor
+            Text {
+                anchors.centerIn: parent
+                font.family: mediumFont.name
+                font.pointSize: 32
+                color: "#FFF"
+                text: txt
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    gridView.currentIndex = index;
+                }
+            }
         }
+    }
+    //Create the gridview that displays weather information in the block
+    ListView {
+        id: gridView
+        width: parent.width
+        height: parent.height - title.height
+        anchors.top: titleView.bottom
+        model: calendarInfoModel
+        delegate: calendarDelegate
+        highlight: Rectangle { color: "#FFF" }
     }
 
     MouseArea {
@@ -58,7 +101,7 @@ Rectangle {
         drag.minimumY: 100
         drag.maximumY: application.height - parent.height
         onClicked: {
-            loadApp("CalendarApp.qml");
+            loadApp("CalendarApp.qml", {});
         }
 
         onPressed: {

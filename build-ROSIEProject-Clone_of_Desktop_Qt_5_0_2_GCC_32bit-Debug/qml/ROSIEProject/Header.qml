@@ -90,6 +90,7 @@ Rectangle {
 
         Behavior on y { PropertyAnimation {
                 easing.type: Easing.InOutQuad
+                duration: 1000
             }
         }
 
@@ -120,6 +121,12 @@ Rectangle {
         color: "#000000"
         opacity: 0.69
         radius: 10
+
+        Behavior on y { PropertyAnimation {
+                easing.type: Easing.InOutQuad
+                duration: 1000
+            }
+        }
         Text {
             id: qmenuTxt
             x: (parent.width / 2) - (width / 2)

@@ -9,6 +9,14 @@ Rectangle {
     z: 10000
     property bool draggable: true;
 
+    Component.onCompleted: {
+        var notes = getSetting("widgets.todo.properties.notes");
+        if (notes.length > 0) {
+            for (var key in notes) {
+                body.text += "·" + notes[key].text + "\n";
+            }
+        }
+    }
 
     Text {
         id: convertTitle
@@ -122,6 +130,16 @@ Rectangle {
                     txt = txt.substring(0, i) + "\n" + txt.substring(i, txt.length);
                 }
             }
+            var uInfo = JSON.parse(userInfo);
+            var user = uInfo[currentUser];
+            var curNotes = user.widgets.todo.properties.notes;
+            var curStr = JSON.stringify(curNotes);
+            if (curStr === '[]')
+                curStr = '[{"text":"'+txt+'"}]'
+            else
+                curStr = curStr.substring(0, curStr.length - 1) + '{"text":"'+txt+'"}]';
+            uInfo[currentUser].widgets.todo.properties.notes = JSON.parse(curStr);
+            userInfo = JSON.stringify(uInfo);
             body.text += "·" + txt + "\n";
             textboxText.text = "";
         }
