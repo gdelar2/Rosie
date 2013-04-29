@@ -10,6 +10,7 @@ Rectangle {
 
     Component.onCompleted: {
         var stops = "";
+        //Show up to 3 saved transit stops
         if (getSetting("transit1") !== " ") {
             stops += "s1=" + getSetting("transit1");
             if (getSetting("transit2") !== " ") {
@@ -19,10 +20,11 @@ Rectangle {
             }
             stops += "&";
         }
+        //Load the transit information
         transit.url = "http://www.transitchicago.com/diydisplay/?"+stops + "size=big&w=0&tto=n"
     }
 
-    WebView {
+    WebView { //We use a browser to show the info
         id: transit
         x: 2
         y: 2
@@ -31,6 +33,7 @@ Rectangle {
         url: ""
     }
 
+    //Make the widget draggable
     MouseArea {
         anchors.fill: parent
         drag.target: parent
