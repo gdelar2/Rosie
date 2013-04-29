@@ -401,7 +401,9 @@ Flickable {
     }
 
     //Convert the icon id from the weather service
-    // into a particular image
+    // into a particular image. Icons were taken from
+    // DeviantArt, a link to them is available in the
+    // Image/Weather folder in source.txt
     function convertWeatherIcon(icon, checkTime) {
         var daytime = true;
         var currentDate = new Date()
