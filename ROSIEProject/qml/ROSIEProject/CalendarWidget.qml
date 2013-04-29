@@ -9,8 +9,10 @@ Rectangle {
     property bool draggable: true;
 
     Component.onCompleted: {
+        //Retrieve any current reminders
         var reminders = getSetting("apps.calendar.reminders");
         gridView.currentIndex = -1;
+        //populate the reminders list display
         if (reminders.length === 0) {
             calendarInfoModel.append({txt:"None"})
         } else {
@@ -57,9 +59,11 @@ Rectangle {
             font.pixelSize: 36
         }
     }
+    //Reminders list
     ListModel {
         id: calendarInfoModel
     }
+    //Single reminder component
     Component {
         id: calendarDelegate
         Rectangle {
@@ -81,7 +85,7 @@ Rectangle {
             }
         }
     }
-    //Create the gridview that displays weather information in the block
+    //List display
     ListView {
         id: gridView
         width: parent.width
@@ -92,6 +96,7 @@ Rectangle {
         highlight: Rectangle { color: "#FFF" }
     }
 
+    //If widget is clicked on open up the associated app
     MouseArea {
         anchors.fill: parent
         drag.target: parent
