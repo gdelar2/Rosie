@@ -11,6 +11,7 @@ Rectangle {
     property int curIndex: 0
 
     Component.onCompleted: {
+        //Get news data on load
         getData();
     }
 
@@ -18,15 +19,18 @@ Rectangle {
         var doc = new XMLHttpRequest();
         doc.onreadystatechange = function() {
            if (doc.readyState === XMLHttpRequest.DONE) {
+               //Save the json object and start timer to begin rotating
                newsData = JSON.parse(doc.responseText);
                ticker.start();
                ticker.triggeredOnStart = true;
            }
         }
+        //Retrieve the set news feed
         doc.open("GET", "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=" + getSetting("news"));
         doc.send();
     }
 
+    //Make the widget draggable and have it open the link to the current article
     MouseArea {
         anchors.fill: parent
         drag.target: parent
@@ -47,6 +51,7 @@ Rectangle {
         }
     }
 
+    //Rotation timer
     Timer {
         id: ticker
         interval:10000//milliseconds
@@ -54,6 +59,7 @@ Rectangle {
         repeat: true
 
         onTriggered: {
+            //Rotate and display an article
             if (curIndex >= newsData.responseData.feed.entries.length)
                 curIndex = 0;
             title.text = newsData.responseData.feed.title;
@@ -108,18 +114,6 @@ Rectangle {
         font.family: mediumFont.name
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 40
-
-        //title of the news article
-    }
-
-    Image {
-        id: pressPhoto
-        x: 162
-        y: 185
-        width: 277
-        height: 217
-
-        //be able to pull (if possible) a photo from the headline
     }
 
     Rectangle {
@@ -140,8 +134,6 @@ Rectangle {
             text: qsTr("")
             font.family: mediumFont.name
             font.pixelSize: 32
-
-            //a small beginning part of the article
         }
     }
 
