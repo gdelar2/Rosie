@@ -26,6 +26,7 @@ Rectangle {
         y: 80
         width: 980
         strText: "http://"
+        maxChars: 200
     }
 
     //Various browser controls

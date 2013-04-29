@@ -349,47 +349,47 @@ Rectangle {
                     row1.imageSource = getSetting("avatar");
                     appRow1.numSelected = 0;
                     switch (getSetting("homeWidgets[0].name")) {
-                        case "unitconverter": rectangle9.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "musicplayer": rectangle10.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "gallery": rectangle11.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "news": rectangle12.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "video": rectangle13.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "webbrowser": rectangle14.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "recipe": rectangle15.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "timer": rectangle16.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "calendar": rectangle17.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "weather": rectangle18.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "transit": rectangle19.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "todo": rectangle20.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "unitconverter": rectangle9.color = "#FFFFFF"; rectangle9.stateSel = 1; appRow1.appArray[0] = "unitconverter"; appRow1.numSelected++;break;
+                        case "musicplayer": rectangle10.color = "#FFFFFF"; rectangle10.stateSel = 1; appRow1.appArray[0] = "musicplayer"; appRow1.numSelected++;break;
+                        case "gallery": rectangle11.color = "#FFFFFF"; rectangle11.stateSel = 1; appRow1.appArray[0] = "gallery"; appRow1.numSelected++;break;
+                        case "news": rectangle12.color = "#FFFFFF"; rectangle12.stateSel = 1; appRow1.appArray[0] = "news"; appRow1.numSelected++;break;
+                        case "video": rectangle13.color = "#FFFFFF"; rectangle13.stateSel = 1; appRow1.appArray[0] = "video"; appRow1.numSelected++;break;
+                        case "webbrowser": rectangle14.color = "#FFFFFF"; rectangle14.stateSel = 1; appRow1.appArray[0] = "webbrowser"; appRow1.numSelected++;break;
+                        case "recipe": rectangle15.color = "#FFFFFF"; rectangle15.stateSel = 1; appRow1.appArray[0] = "recipe"; appRow1.numSelected++;break;
+                        case "timer": rectangle16.color = "#FFFFFF"; rectangle16.stateSel = 1; appRow1.appArray[0] = "timer"; appRow1.numSelected++;break;
+                        case "calendar": rectangle17.color = "#FFFFFF"; rectangle17.stateSel = 1; appRow1.appArray[0] = "calendar"; appRow1.numSelected++;break;
+                        case "weather": rectangle18.color = "#FFFFFF"; rectangle18.stateSel = 1; appRow1.appArray[0] = "weather"; appRow1.numSelected++;break;
+                        case "transit": rectangle19.color = "#FFFFFF"; rectangle19.stateSel = 1; appRow1.appArray[0] = "transit"; appRow1.numSelected++;break;
+                        case "todo": rectangle20.color = "#FFFFFF"; rectangle20.stateSel = 1; appRow1.appArray[0] = "todo"; appRow1.numSelected++;break;
                     }
                     switch (getSetting("homeWidgets[1].name")) {
-                        case "unitconverter": rectangle9.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "musicplayer": rectangle10.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "gallery": rectangle11.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "news": rectangle12.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "video": rectangle13.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "webbrowser": rectangle14.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "recipe": rectangle15.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "timer": rectangle16.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "calendar": rectangle17.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "weather": rectangle18.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "transit": rectangle19.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "todo": rectangle20.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "unitconverter": rectangle9.color = "#FFFFFF"; rectangle9.stateSel = 1; appRow1.appArray[1] = "unitconverter"; appRow1.numSelected++;break;
+                        case "musicplayer": rectangle10.color = "#FFFFFF"; rectangle10.stateSel = 1; appRow1.appArray[1] = "musicplayer"; appRow1.numSelected++;break;
+                        case "gallery": rectangle11.color = "#FFFFFF"; rectangle11.stateSel = 1; appRow1.appArray[1] = "gallery"; appRow1.numSelected++;break;
+                        case "news": rectangle12.color = "#FFFFFF"; rectangle12.stateSel = 1; appRow1.appArray[1] = "news"; appRow1.numSelected++;break;
+                        case "video": rectangle13.color = "#FFFFFF"; rectangle13.stateSel = 1; appRow1.appArray[1] = "video"; appRow1.numSelected++;break;
+                        case "webbrowser": rectangle14.color = "#FFFFFF"; rectangle14.stateSel = 1; appRow1.appArray[1] = "webbrowser"; appRow1.numSelected++;break;
+                        case "recipe": rectangle15.color = "#FFFFFF"; rectangle15.stateSel = 1; appRow1.appArray[1] = "recipe"; appRow1.numSelected++;break;
+                        case "timer": rectangle16.color = "#FFFFFF"; rectangle16.stateSel = 1; appRow1.appArray[1] = "timer"; appRow1.numSelected++;break;
+                        case "calendar": rectangle17.color = "#FFFFFF"; rectangle17.stateSel = 1; appRow1.appArray[1] = "calendar"; appRow1.numSelected++;break;
+                        case "weather": rectangle18.color = "#FFFFFF"; rectangle18.stateSel = 1; appRow1.appArray[1] = "weather"; appRow1.numSelected++;break;
+                        case "transit": rectangle19.color = "#FFFFFF"; rectangle19.stateSel = 1; appRow1.appArray[1] = "transit"; appRow1.numSelected++;break;
+                        case "todo": rectangle20.color = "#FFFFFF"; rectangle20.stateSel = 1; appRow1.appArray[1] = "todo"; appRow1.numSelected++;break;
 
                     }
                     switch (getSetting("homeWidgets[2].name")) {
-                        case "unitconverter": rectangle9.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "musicplayer": rectangle10.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "gallery": rectangle11.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "news": rectangle12.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "video": rectangle13.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "webbrowser": rectangle14.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "recipe": rectangle15.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "timer": rectangle16.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "calendar": rectangle17.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "weather": rectangle18.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "transit": rectangle19.color = "#FFFFFF"; appRow1.numSelected++;break;
-                        case "todo": rectangle20.color = "#FFFFFF"; appRow1.numSelected++;break;
+                        case "unitconverter": rectangle9.color = "#FFFFFF"; rectangle9.stateSel = 1; appRow1.appArray[2] = "unitconverter"; appRow1.numSelected++;break;
+                        case "musicplayer": rectangle10.color = "#FFFFFF"; rectangle10.stateSel = 1; appRow1.appArray[2] = "musicplayer"; appRow1.numSelected++;break;
+                        case "gallery": rectangle11.color = "#FFFFFF"; rectangle11.stateSel = 1; appRow1.appArray[2] = "gallery"; appRow1.numSelected++;break;
+                        case "news": rectangle12.color = "#FFFFFF"; rectangle12.stateSel = 1; appRow1.appArray[2] = "news"; appRow1.numSelected++;break;
+                        case "video": rectangle13.color = "#FFFFFF"; rectangle13.stateSel = 1; appRow1.appArray[2] = "video"; appRow1.numSelected++;break;
+                        case "webbrowser": rectangle14.color = "#FFFFFF"; rectangle14.stateSel = 1; appRow1.appArray[2] = "webbrowser"; appRow1.numSelected++;break;
+                        case "recipe": rectangle15.color = "#FFFFFF"; rectangle15.stateSel = 1; appRow1.appArray[2] = "recipe"; appRow1.numSelected++;break;
+                        case "timer": rectangle16.color = "#FFFFFF"; rectangle16.stateSel = 1; appRow1.appArray[2] = "timer"; appRow1.numSelected++;break;
+                        case "calendar": rectangle17.color = "#FFFFFF"; rectangle17.stateSel = 1; appRow1.appArray[2] = "calendar"; appRow1.numSelected++;break;
+                        case "weather": rectangle18.color = "#FFFFFF"; rectangle18.stateSel = 1; appRow1.appArray[2] = "weather"; appRow1.numSelected++;break;
+                        case "transit": rectangle19.color = "#FFFFFF"; rectangle19.stateSel = 1; appRow1.appArray[2] = "transit"; appRow1.numSelected++;break;
+                        case "todo": rectangle20.color = "#FFFFFF"; rectangle20.stateSel = 1; appRow1.appArray[2] = "todo"; appRow1.numSelected++;break;
                     }
                     passTxtbox1.strText = getSetting("password");
                 } else {
@@ -751,7 +751,7 @@ Rectangle {
                             appArray[1] = "";
                         else if (appArray[2] === lastMod)
                             appArray[2] = "";
-                    } else if (numSelected == 1) {
+                    } else if (numSelected == 1 || numSelected == 2) {
                         if (appArray[0] === lastMod)
                             appArray[0] = "";
                         else if (appArray[1] === lastMod)
@@ -774,6 +774,7 @@ Rectangle {
                         else if (appArray[2] === "")
                             appArray[2] = lastMod;
                     }
+                    console.log(appArray);
                     lastMod = "";
                 }
 
