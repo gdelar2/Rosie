@@ -8,12 +8,14 @@ Rectangle {
     opacity: 0.900
 
     function setRecipe(title, ingredients, directions, image){
+        //Set the recipe info
         recipeTitleText.text = title
         ingredientsText.text = ingredients
         directionText.text = directions
         recipeImage.source = image
     }
 
+    //Display the recipe
     Rectangle {
         id: rectangle1
         x: 22

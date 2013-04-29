@@ -60,7 +60,7 @@ Rectangle {
                 }
             }
 
-            onClicked:{
+            onClicked:{ //Update what recipes are displayed
                 rectangle5.visible = false
                 if(stateCode === 1)
                     recipeview1.setRecipe(breakfast1.recipeTitle, breakfast1.ingredients, breakfast1.directions, breakfast1.imageSource)
@@ -117,7 +117,7 @@ Rectangle {
                 }
             }
 
-            onClicked:{
+            onClicked:{ //update the recipe that is displayed
                 rectangle5.visible = false
                 if(stateCode === 1)
                     recipeview1.setRecipe(breakfast2.recipeTitle, breakfast2.ingredients, breakfast2.directions, breakfast2.imageSource)
@@ -173,7 +173,7 @@ Rectangle {
                 }
             }
 
-            onClicked:{
+            onClicked:{ //update the recipe that is displayed
                 rectangle5.visible = false
                 if(stateCode === 1)
                     recipeview1.setRecipe(breakfast3.recipeTitle, breakfast3.ingredients, breakfast3.directions, breakfast3.imageSource)
@@ -230,7 +230,7 @@ Rectangle {
                 }
             }
 
-            onClicked:{
+            onClicked:{ //update the recipe that is displayed
                 rectangle5.visible = false
                 if(stateCode === 1)
                     recipeview1.setRecipe(breakfast4.recipeTitle, breakfast4.ingredients, breakfast4.directions, breakfast4.imageSource)
@@ -244,6 +244,7 @@ Rectangle {
         }
     }
 
+    //Define the available recipes
     Item{
         id: breakfast1
         property string recipeTitle: "Cereal and Milk"
@@ -492,6 +493,7 @@ Oil, for frying, preferably peanut oil\n"
         }
 
         onClicked: {
+            //Display the recipe
             rectangle1.color = "#ffffff"
             text1.color = "#000000"
             rectangle2.color = "#000000"
@@ -549,7 +551,7 @@ Oil, for frying, preferably peanut oil\n"
             }
         }
 
-        onClicked:{
+        onClicked:{ //display the recipe
             rectangle2.color = "#ffffff"
             text2.color = "#000000"
             rectangle1.color = "#000000"
@@ -608,7 +610,7 @@ Oil, for frying, preferably peanut oil\n"
             }
         }
 
-        onClicked: {
+        onClicked: { //display the recipe
             rectangle3.color = "#ffffff"
             text3.color = "#000000"
             rectangle1.color = "#000000"
@@ -666,7 +668,7 @@ Oil, for frying, preferably peanut oil\n"
             }
         }
 
-        onClicked:{
+        onClicked:{ //display the recipe
             rectangle4.color = "#ffffff"
             text4.color = "#000000"
             rectangle1.color = "#000000"
@@ -689,7 +691,7 @@ Oil, for frying, preferably peanut oil\n"
         }
     }
 
-    RecipeView {
+    RecipeView {  //Recipe view object
         id: recipeview1
         x: 639
         y: 20

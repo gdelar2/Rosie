@@ -10,6 +10,7 @@ Rectangle {
     radius: 13
     property bool draggable: true;
 
+    //Display a static recipe
     Text {
         id: foodTitle
         x: 12
@@ -66,6 +67,8 @@ Rectangle {
         }
     }
 
+    //Make the widget draggable and open the recipe app
+    // when clicked
     MouseArea {
         anchors.fill: parent
         drag.target: parent
