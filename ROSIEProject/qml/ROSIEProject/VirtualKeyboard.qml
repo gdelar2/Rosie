@@ -10,8 +10,9 @@ Rectangle {
     width: 1920
     height: 500
     color: "#000000"
+    //Load the keyboard keys into a list
     ListModel {
-        id: calendarInfoModel
+        id: keyboardInfoModel
         ListElement {day:"1";clr:"#FFFFFF";full:false}
         ListElement {day:"2";clr:"#FFFFFF"}
         ListElement {day:"3";clr:"#FFFFFF"}
@@ -54,14 +55,16 @@ Rectangle {
         ListElement {day:"↵";clr:"#000000";ret:true}
     }
     Component.onCompleted: {
+        //In special cases we can display a space bar
         if (hasSpace) {
-            calendarInfoModel.append({day:"SPACE",clr:"#FFFFFF",full:true})
+            keyboardInfoModel.append({day:"SPACE",clr:"#FFFFFF",full:true})
             y -= 150;
         }
     }
 
+    //A single key component
     Component {
-        id: calendarDelegate
+        id: keyboardDelegate
         Item {
             height: (parent.height / 4)
             width: parent.width / 10
@@ -72,6 +75,7 @@ Rectangle {
                 color: mainColor
 
                 Component.onCompleted: {
+                    //Special options make it display differently
                     if(caps)
                         clIcon.visible = true;
 
@@ -124,16 +128,19 @@ Rectangle {
 
                 MouseArea {
                     anchors.fill: parent
+                    //Highlight when key is pressed
                     onPressed: {
                         clickRect.visible = true;
                     }
 
                     onClicked: {
-                        if (ret)
+                        //Check what key was pressed
+                        if (ret) //return pressed so issue returnClicked signal
                             vkeyb.returnClicked();
-                        else if(del)
+                        else if(del) //delete key was pressed so remove 1 character
                             txtBox.text = txtBox.text.substr(0,txtBox.text.length-1);
-                        else if (caps)
+                        else if (caps) //caps lock key was pressed
+                            //Alternate what case the keys are in
                             if (vkeyb.capsLock == Font.AllUppercase) {
                                 vkeyb.capsLock = Font.AllLowercase;
                                 clIcon.source = "Image/clOff.png";
@@ -142,10 +149,13 @@ Rectangle {
                                 clIcon.source = "Image/clOn.png";
                             }
                         else {
+                            //Check that we are under the character limit
                             if (txtBox.text.length < maximumChars) {
+                                //Check for special space key
                                 if (key.text === "SPACE") {
                                     txtBox.text += " ";
                                 } else {
+                                    //Add the key into the text box
                                     if (vkeyb.capsLock == Font.AllUppercase)
                                         txtBox.text += key.text.toUpperCase();
                                     else
@@ -154,7 +164,7 @@ Rectangle {
                             }
                         }
                     }
-
+                    //hide the highlight when key is released
                     onReleased: {
                         clickRect.visible = false;
                     }
@@ -162,15 +172,15 @@ Rectangle {
             }
         }
     }
-    //Create the gridview that displays weather information in the block
+    //Create the gridview for the keyboard
     GridView {
         id: gridView
         width: parent.width
         height: parent.height
         cellHeight: height / 4
         cellWidth: width / 10
-        model: calendarInfoModel
-        delegate: calendarDelegate
+        model: keyboardInfoModel
+        delegate: keyboardDelegate
 
     }
 }
