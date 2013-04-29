@@ -9,6 +9,7 @@ Rectangle {
     property bool draggable: true;
     z: 50000
 
+    //Make the widget draggable and have it open the app when clicked
     MouseArea {
         anchors.fill: parent
         drag.target: parent
@@ -29,6 +30,7 @@ Rectangle {
 
     property string conversionTo: ""
 
+    //Convert a value
     function conversion(){
         //conversions (26 of them total)
         if(dropdownmenu1.selectedItem == "Gram(g)" && dropdownmenu2.selectedItem == "Kilogram(kg)"){
@@ -111,6 +113,7 @@ Rectangle {
         }
     }
 
+    //Display the converter widget gui
     Text {
         id: convertTitle
         x: 12
@@ -175,11 +178,13 @@ Rectangle {
         MouseArea{
             anchors.fill: parent
             onClicked: {
+                //Open keyboard for the value text box
                 vkeyboard.visible = true
             }
         }
     }
 
+    //Display the drop down menus for units
     DropDownMenu {
         id: dropdownmenu1
         //variables to change:
@@ -226,7 +231,7 @@ Rectangle {
     }
 
 
-    VirtualKeyboard{
+    VirtualKeyboard{ //Keyboard for the value text box
         id: vkeyboard
         visible: false
         x: 0 - parent.x

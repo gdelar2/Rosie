@@ -8,6 +8,7 @@ Rectangle {
 
     property string conversionTo: ""
 
+    //Convert the value
     function conversion(){
         //conversions (26 of them total)
         if(dropdownmenu1.selectedItem == "Gram(g)" && dropdownmenu2.selectedItem == "Kilogram(kg)"){
@@ -91,6 +92,7 @@ Rectangle {
 
     }
 
+    //Display the unit converter gui
     Text {
         id: convertTitle
         x: 12
@@ -156,11 +158,13 @@ Rectangle {
         MouseArea{
             anchors.fill: parent
             onClicked: {
+                //Show the keyboard to enter value
                 vkeyboard.visible = true
             }
         }
     }
 
+    //Display the drop down menus for units
     DropDownMenu {
         id: dropdownmenu1
         //variables to change:
@@ -207,7 +211,7 @@ Rectangle {
         }
     }
 
-    VirtualKeyboard{
+    VirtualKeyboard{ //Keyboard for the values textbox
         id: vkeyboard
         visible: false
         txtBox: cFrom
