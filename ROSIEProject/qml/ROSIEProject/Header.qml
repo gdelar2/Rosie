@@ -4,10 +4,11 @@ Rectangle {
     width: 1920
     height: 100
     color: mainColor
-
+    //Top left button is supposed to return to a previous screen and or log off
     signal returnShortcutClicked
 
     function toggleQuickMenu(vis) {
+        //We don't want to display the quick menu shortcut all the time
         quickMenuShortcut.visible = vis;
     }
 
@@ -55,6 +56,7 @@ Rectangle {
         color: "#000000"
         opacity: 0.69
         radius: 10
+        //Show the date and time
         Text {
             id: dateTxt
             x: 59
@@ -88,17 +90,20 @@ Rectangle {
         y: 0-height
         visible: false
 
+        //Ease in and out based on y position
         Behavior on y { PropertyAnimation {
                 easing.type: Easing.InOutQuad
                 duration: 1000
             }
         }
 
+        //Toggle visibility when off the screen
         onYChanged: {
             if(quickMenuShortcut.rotation == 0 && y == 0-height)
                 visible = false;
         }
 
+        //Put the quick menu in or out of view
         function toggle() {
             if (qMenuView.visible == true) {
                 quickMenuShortcut.rotation = 0
@@ -145,11 +150,13 @@ Rectangle {
             anchors.fill: quickMenuShortcut
             //Call clicked signal if button is clicked
             onClicked: {
+                //Pull up/down the quick menu
                 qMenuView.toggle()
             }
         }
     }
 
+    //Update the date and time every second
     Timer {
         id: timeTimer
         running: true

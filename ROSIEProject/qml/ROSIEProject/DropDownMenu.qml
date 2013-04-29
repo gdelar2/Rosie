@@ -3,7 +3,7 @@ import QtQuick 2.0
 Rectangle {
     width:400;
     height: 400;
-
+    //Menu settings
     property variant items: ["Gram(g)", "Kilogram(kg)", "Pound(lb)", "Liter(L)", "Milliliter(ml)", "teaspoon", "tablespoon",
         "cup"]
     property alias selectedItem: chosenItemText.text;
@@ -12,6 +12,7 @@ Rectangle {
     signal comboClicked;
 
     function setText(){
+        //Update the units
         if(dropdownmenu1.selectedItem == "Gram(g)" || dropdownmenu1.selectedItem == "Kilogram(kg)" || dropdownmenu1.selectedItem == "Pound(lb)"){
             dropdownmenu2.items = ["Gram(g)", "Kilogram(kg)", "Pound(lb)"]
         }
@@ -19,10 +20,9 @@ Rectangle {
                 dropdownmenu1.selectedItem == "tablespoon" || dropdownmenu1.selectedItem == "cup"){
             dropdownmenu2.items = ["Liter(L)", "Milliliter(ml)", "teaspoon", "tablespoon","cup"]
         }
-
     }
 
-
+    //Display the menu
     Rectangle {
             id:comboBox
             //property variant items: ["Meter", "Liter", "Gram"]
@@ -112,9 +112,7 @@ Rectangle {
                     }
                 }
             }
-
-
-
+            //Use states to animate drop down
             states: State {
                 name: "dropDown";
                 PropertyChanges { target: dropDown; height:20*items.length }
