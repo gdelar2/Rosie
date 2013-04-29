@@ -1,21 +1,26 @@
 Rosie
 =====
+ROSIE is ready!
+---------------
+ROSIE is now in a stable condition and is available to try out.
+Checkout the [Codename ROSIE blog](http://codenamerosie.wordpress.com)
 
-Family Display in the kitchen Project for CS 422
+What is it?
+-----------
+ROSIE is a project for CS422, its main purpose is as a family display to be used in the kitchen.
 
 apps to implement:
-
-Progress as of 4/26/2013:
-unit conversion - Widget DONE - App TODO - Implementation TODO ===FINISHED===
-gallery - Widget TODO - App TODO - Implmentation TODO
-recipe - Widget DONE - App DONE - Implmentation DONE ===FINISHED===
-timer - Widget DONE - App DONE (not needed) - Implmentation DONE ===FINISHED===
-todo list notes. - Widget TODO - App TODO - Implmentation TODO
-video - Widget DONE - App DONE - Implmentation DONE ===FINISHED===
-news - Widget TODO - App TODO - Implmentation TODO
-browser - Widget DONE - App DONE - Implmentation DONE ===FINISHED===
-weather - Widget DONE - App DONE - Implmentation DONE ===FINISHED===
-time - Widget DONE - App TODO - Implmentation DONE
-date - Widget DONE - App TODO - Implmentation TODO
-traffic/transit - Widget DONE - App TODO - Implmentation DONEish
-calendar/shcedule - Widget TODO - App TODO - Implmentation TODO
+Progress as of 4/28/2013:
+- [x] unit conversion		Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] gallery			Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] recipe			Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] timer			Widget DONE	NONE NEEED	Implementation DONE	===FINISHED===
+- [x] todo list notes.		Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] video			Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] news			Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] browser			Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] weather			Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] time			Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] date			Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] traffic/transit 		Widget DONE	App DONE	Implementation DONE	===FINISHED===
+- [x] calendar/shcedule		Widget DONE	App DONE	Implementation DONE	===FINISHED===
