@@ -22,6 +22,7 @@ Rectangle {
         anchors.fill: parent
     }
 
+    //Set up various gui objects
     Text {
         id: remText
         font.pointSize: 64
@@ -68,6 +69,8 @@ Rectangle {
 
         Component.onCompleted: {
             var curDate = new Date();
+            //Default values for reminder are current
+            //time and 30 minutes forward
             shours = Qt.formatDateTime(curDate, "hh");
             sminutes = Qt.formatDateTime(curDate, "mm");
             stime = Qt.formatDateTime(curDate, "AP");
@@ -94,9 +97,12 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         var date = new Date();
-                        if(rem.shours === "12")
+                        //we only want to use 12-hour display
+                        // for reminders
+                        if(parseInt(rem.shours) >= 12)
                             rem.shours = "0";
                         date.setHours(rem.shours);
+                        //Increase the hours
                         date.setHours(date.getHours()+1)
                         date.setMinutes(rem.sminutes);
                         rem.shours = Qt.formatDateTime(date, "hh");
@@ -116,6 +122,7 @@ Rectangle {
                         var date = new Date();
                         date.setHours(rem.shours);
                         date.setMinutes(rem.sminutes);
+                        //Increase the minutes
                         date.setMinutes(date.getMinutes()+1)
                         rem.sminutes = Qt.formatDateTime(date, "mm");
                     }
@@ -131,6 +138,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
+                        //Update AM/PM display
                         if (rem.stime === "AM")
                             rem.stime = "PM";
                         else
@@ -157,9 +165,11 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         var date = new Date();
-                        if(rem.shours === "01")
+                        //We only want to use 12 hour dispaly
+                        if(parseInt(rem.shours) <= 1)
                             rem.shours = "13";
                         date.setHours(rem.shours);
+                        //Subtract an hour
                         date.setHours(date.getHours()-1)
                         date.setMinutes(rem.sminutes);
                         rem.shours = Qt.formatDateTime(date, "hh");
@@ -180,6 +190,7 @@ Rectangle {
                         var date = new Date();
                         date.setHours(rem.shours);
                         date.setMinutes(rem.sminutes);
+                        //Subtract a minutes
                         date.setMinutes(date.getMinutes()-1)
                         rem.sminutes = Qt.formatDateTime(date, "mm");
                     }
@@ -222,9 +233,10 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         var date = new Date();
-                        if(rem.ehours === "12")
+                        if(parseInt(rem.ehours) >= 12)
                             rem.ehours = "0";
                         date.setHours(rem.ehours);
+                        //Increase hour
                         date.setHours(date.getHours()+1)
                         date.setMinutes(rem.eminutes);
                         rem.ehours = Qt.formatDateTime(date, "hh");
@@ -244,6 +256,7 @@ Rectangle {
                         var date = new Date();
                         date.setHours(rem.ehours);
                         date.setMinutes(rem.eminutes);
+                        //Increase minute
                         date.setMinutes(date.getMinutes()+1)
                         rem.eminutes = Qt.formatDateTime(date, "mm");
                     }
@@ -285,9 +298,10 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         var date = new Date();
-                        if(rem.ehours === "01")
+                        if(parseInt(rem.ehours) <= 1)
                             rem.ehours = "13";
                         date.setHours(rem.ehours);
+                        //Subtract hours
                         date.setHours(date.getHours()-1)
                         date.setMinutes(rem.eminutes);
                         rem.ehours = Qt.formatDateTime(date, "hh");
@@ -308,6 +322,7 @@ Rectangle {
                         var date = new Date();
                         date.setHours(rem.ehours);
                         date.setMinutes(rem.eminutes);
+                        //subtract minutes
                         date.setMinutes(date.getMinutes()-1)
                         rem.eminutes = Qt.formatDateTime(date, "mm");
                     }
@@ -359,17 +374,21 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
 
+            //When the set button is clicked
             onClicked: {
                 parent.parent.visible = false
                 var uInfo = JSON.parse(userInfo);
+                //get the existing reminders
                 var cur = uInfo[currentUser].apps.calendar.reminders;
                 var curStr = JSON.stringify(cur);
+                //Insert the new reminders as the last element in the array
                 if (curStr === "[]")
                     curStr = "[" + reminderSkeleton + "]";
                 else
                     curStr = curStr.substring(0, curStr.length - 1) + "," + reminderSkeleton + "]";
                 var remArray = JSON.parse(curStr);
                 var newRem = remArray[remArray.length - 1];
+                //Store the reminder information
                 newRem.name = "";
                 newRem.dateA = dateA;
                 newRem.dateB = dateB;
@@ -391,9 +410,13 @@ Rectangle {
                 } else {
                     newRem.endM = (parseInt(rem.ehours) + 12) + ":" + rem.eminutes;
                 }
+                //Replace the new info into the array
                 remArray[remArray.length - 1] = newRem;
+                //Place the reminders back into the user array
                 uInfo[currentUser].apps.calendar.reminders = remArray;
+                //Save the user array object a a string
                 userInfo = JSON.stringify(uInfo);
+                //Close the calendar and reopen it again to refresh view
                 removeApps();
                 loadApp("CalendarApp.qml", {})
                 refreshHome(false);
@@ -424,6 +447,7 @@ Rectangle {
             text: "Cancel"
         }
 
+        //Close the reminder set if cancel button is clicked
         MouseArea {
             anchors.fill: parent
 

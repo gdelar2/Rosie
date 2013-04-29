@@ -4,6 +4,7 @@ Rectangle {
     property string strText
     property double tboxScale: 1
     property int maxChars: 12
+    property bool space: false
     signal textEntered
 
     width: 655;
@@ -70,6 +71,7 @@ Rectangle {
         visible: false
         txtBox: textboxText
         maximumChars: maxChars
+        hasSpace: space
 
         onReturnClicked: {
             textbox.visible = false;

@@ -5,13 +5,14 @@ Rectangle {
     property variant txtBox
     property int maximumChars: 12
     property int capsLock: Font.AllLowercase
+    property bool hasSpace: false
     signal returnClicked
     width: 1920
-    height: 400
+    height: 500
     color: "#000000"
     ListModel {
         id: calendarInfoModel
-        ListElement {day:"1";clr:"#FFFFFF"}
+        ListElement {day:"1";clr:"#FFFFFF";full:false}
         ListElement {day:"2";clr:"#FFFFFF"}
         ListElement {day:"3";clr:"#FFFFFF"}
         ListElement {day:"4";clr:"#FFFFFF"}
@@ -52,6 +53,13 @@ Rectangle {
         ListElement {day:".";clr:"#FFFFFF"}
         ListElement {day:"↵";clr:"#000000";ret:true}
     }
+    Component.onCompleted: {
+        if (hasSpace) {
+            calendarInfoModel.append({day:"SPACE",clr:"#FFFFFF",full:true})
+            y -= 150;
+        }
+    }
+
     Component {
         id: calendarDelegate
         Item {
@@ -71,12 +79,15 @@ Rectangle {
                         clIcon.source = "Image/clOff.png"
                     else
                         clIcon.source = "Image/clOn.pnh"
+
+                    if(full)
+                        width = parent.parent.width;
                 }
 
                 Rectangle {
                     anchors.fill: parent
                     border.color: "#000000"
-                    border.width: 1
+                    border.width: 2
                     color: mainColor;
                     opacity: .2
                 }
@@ -132,10 +143,14 @@ Rectangle {
                             }
                         else {
                             if (txtBox.text.length < maximumChars) {
-                                if (vkeyb.capsLock == Font.AllUppercase)
-                                    txtBox.text += key.text.toUpperCase();
-                                else
-                                    txtBox.text += key.text.toLowerCase();
+                                if (key.text === "SPACE") {
+                                    txtBox.text += " ";
+                                } else {
+                                    if (vkeyb.capsLock == Font.AllUppercase)
+                                        txtBox.text += key.text.toUpperCase();
+                                    else
+                                        txtBox.text += key.text.toLowerCase();
+                                }
                             }
                         }
                     }

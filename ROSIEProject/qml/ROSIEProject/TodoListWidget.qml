@@ -1,13 +1,14 @@
 import QtQuick 2.0
 //import FileIO 1.0
 Rectangle {
+    property bool draggable: true;
+Rectangle {
     width: 600
     height: 650
     color: "#000000"
     opacity: 0.7
     radius: 13
-    z: 10000
-    property bool draggable: true;
+    z: 1000
 
     Component.onCompleted: {
         var notes = getSetting("widgets.todo.properties.notes");
@@ -76,8 +77,8 @@ Rectangle {
         drag.axis: Drag.XandYAxis
         drag.minimumX: 0
         drag.maximumX: application.width - parent.width
-        drag.minimumY: 100
-        drag.maximumY: application.height - parent.height
+        drag.minimumY: -200
+        drag.maximumY: application.height - height -300
 
         onPressed: {
             if(!draggable)
@@ -93,6 +94,7 @@ Rectangle {
             textboxText.visible = true;
         }
     }
+}
     Rectangle {
         id: textbox
         width: 1920
@@ -112,6 +114,7 @@ Rectangle {
         color: "#000000"
         visible: false
     }
+
     VirtualKeyboard {
         id: keyboard
         x: 0 - parent.x
@@ -119,6 +122,8 @@ Rectangle {
         visible: false
         txtBox: textboxText
         maximumChars:300
+        hasSpace: true
+        z: 1000
 
         onReturnClicked: {
             keyboard.visible = false;

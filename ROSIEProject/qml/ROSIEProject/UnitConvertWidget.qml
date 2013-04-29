@@ -7,6 +7,7 @@ Rectangle {
     opacity: 0.7
     radius: 13
     property bool draggable: true;
+    z: 50000
 
     MouseArea {
         anchors.fill: parent
@@ -231,14 +232,12 @@ Rectangle {
         x: 0 - parent.x
         y: 1080-height-parent.y
         txtBox: cFrom
-        z:12
+        z:50000
 
         onReturnClicked: {
             vkeyboard.visible = false
         }
 
     }
-
-
 }
 
